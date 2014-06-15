@@ -89,4 +89,58 @@
 			</GradeLevel>
 		</SearchMetaData>
 </Subject>
+<Subject id="5">
+		<SearchMetaData>
+			<SubjectType>
+				<Math>1</Math>
+				<Reading>1</Reading>
+				<English>1</English>
+				<SocialStudies>9</SocialStudies>
+				<Science>1</Science>
+				<Professional>1</Professional>
+			</SubjectType>
+			<GradeLevel>
+				<primary>1</primary>
+				<middle>1</middle>
+				<high>1</high>
+				<college>9</college>
+			</GradeLevel>
+		</SearchMetaData>
+</Subject>
+<Subject id="6">
+		<SearchMetaData>
+			<SubjectType>
+				<Math>9</Math>
+				<Reading>1</Reading>
+				<English>1</English>
+				<SocialStudies>1</SocialStudies>
+				<Science>1</Science>
+				<Professional>1</Professional>
+			</SubjectType>
+			<GradeLevel>
+				<primary>9</primary>
+				<middle>1</middle>
+				<high>1</high>
+				<college>1</college>
+			</GradeLevel>
+		</SearchMetaData>
+</Subject>
+<Subject id="7">
+		<SearchMetaData>
+			<SubjectType>
+				<Math>1</Math>
+				<Reading>1</Reading>
+				<English>1</English>
+				<SocialStudies>9</SocialStudies>
+				<Science>1</Science>
+				<Professional>1</Professional>
+			</SubjectType>
+			<GradeLevel>
+				<primary>1</primary>
+				<middle>1</middle>
+				<high>1</high>
+				<college>9</college>
+			</GradeLevel>
+		</SearchMetaData>
+</Subject>
 </Subjects>

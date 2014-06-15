@@ -45,4 +45,32 @@
 			<Other>1</Other>
 		</SearchMetaData>
 </Theme>
+<Theme id="5">
+		<SearchMetaData>
+			<Gooble>9</Gooble>
+			<Dream>1</Dream>
+			<VirtualTour> 1 </VirtualTour>
+			<Workplace>1</Workplace>
+			<Other>1</Other>
+		</SearchMetaData>
+</Theme>
+<Theme id="6">
+		<SearchMetaData>
+			<Gooble>9</Gooble>
+			<Dream>1</Dream>
+			<VirtualTour> 1 </VirtualTour>
+			<Workplace>1</Workplace>
+			<Other>1</Other>
+			
+		</SearchMetaData>
+</Theme>
+<Theme id="7">
+		<SearchMetaData>
+			<Gooble>9</Gooble>
+			<Dream>1</Dream>
+			<VirtualTour> 1 </VirtualTour>
+			<Workplace>1</Workplace>
+			<Other>1</Other>
+		</SearchMetaData>
+</Theme>
 </Themes>

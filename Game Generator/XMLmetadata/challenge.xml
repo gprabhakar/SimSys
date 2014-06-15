@@ -94,4 +94,61 @@
 			</Subject>
 		</SearchMetaData>
 </Challenge>
+<Challenge id="5">
+		<SearchMetaData>
+			<Length>
+				<Short>2</Short>
+				<Medium>8</Medium>
+				<Long>1</Long>
+			</Length>
+			<Difficulty>
+				<Easy>1</Easy>
+				<Medium>8</Medium>
+				<Hard>2</Hard>
+			</Difficulty>
+			<Subject>
+				<Personal>1</Personal>
+				<Professional>1</Professional>
+				<School>9</School>
+			</Subject>
+		</SearchMetaData>
+</Challenge>
+<Challenge id="6">
+		<SearchMetaData>
+			<Length>
+				<Short>9</Short>
+				<Medium>1</Medium>
+				<Long>1	</Long>
+			</Length>
+			<Difficulty>
+				<Easy>9</Easy>
+				<Medium>1</Medium>
+				<Hard>1</Hard>
+			</Difficulty>
+			<Subject>
+				<Personal>1</Personal>
+				<Professional>1</Professional>
+				<School>9</School>
+			</Subject>
+		</SearchMetaData>
+</Challenge>
+<Challenge id="7">
+		<SearchMetaData>
+			<Length>
+				<Short>2</Short>
+				<Medium>8</Medium>
+				<Long>1</Long>
+			</Length>
+			<Difficulty>
+				<Easy>1</Easy>
+				<Medium>8</Medium>
+				<Hard>2</Hard>
+			</Difficulty>
+			<Subject>
+				<Personal>1</Personal>
+				<Professional>1</Professional>
+				<School>9</School>
+			</Subject>
+		</SearchMetaData>
+</Challenge>
 </Challenges>

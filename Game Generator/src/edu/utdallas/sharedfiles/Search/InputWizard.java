@@ -19,16 +19,15 @@ import edu.utdallas.sharedfiles.Challenge.Summary;
 import edu.utdallas.sharedfiles.Shared.*;
 import edu.utdallas.sharedfiles.Structure.*;
 import edu.utdallas.previewtool.View.BackgroundSelectWindow;
-import edu.utdallas.previewtool.View.CharacterProfileWindow;
-import edu.utdallas.previewtool.View.CharacterSelectWindow;
 import edu.utdallas.previewtool.View.PropSelectWindow;
 import edu.utdallas.previewtool.View.ScenePanel;
 import edu.utdallas.previewtool.View.SoundSelectWindow;
+import edu.utdallas.previewtool.View.Character.CharacterProfileWindow;
+import edu.utdallas.previewtool.View.Character.CharacterSelectWindow;
 import edu.utdallas.gamegenerator.Character.Character;
 import edu.utdallas.previewtool.Error.PreviewError;
 import edu.utdallas.previewtool.Error.GameErrorChecker;
 import edu.utdallas.previewtool.Error.GameErrorList;
-
 import Jama.Matrix;
 
 import java.awt.*;
