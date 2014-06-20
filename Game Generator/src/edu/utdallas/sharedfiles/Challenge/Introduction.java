@@ -1,41 +1,62 @@
 package edu.utdallas.sharedfiles.Challenge;
 
-import java.util.List;
 
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlElementWrapper;
-import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlType;
 
-import edu.utdallas.sharedfiles.Shared.Asset;
 
-@XmlRootElement(name = "Introduction")
-public class Introduction 
-{
-	private String name;
-    private List<Asset> assets;
+/**
+* <p>Java class for Introduction complex type.
+* 
+* <p>The following schema fragment specifies the expected content contained within this class.
+* 
+* <pre>
+* &lt;complexType name="Introduction">
+*   &lt;complexContent>
+*     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
+*       &lt;sequence>
+*         &lt;element name="IntroductionName" type="{http://www.w3.org/2001/XMLSchema}string"/>
+*       &lt;/sequence>
+*     &lt;/restriction>
+*   &lt;/complexContent>
+* &lt;/complexType>
+* </pre>
+* 
+* 
+*/
+@XmlAccessorType(XmlAccessType.FIELD)
+@XmlType(name = "Introduction", propOrder = {
+ "introductionName"
+})
+public class Introduction {
 
-	@XmlElement(name = "Name")
-	public String getName() {
-		return name;
-	}
+ @XmlElement(name = "IntroductionName", required = true)
+ protected String introductionName;
 
-	public void setName(String name) {
-		this.name = name;
-	}
-	
-	@Override
-	public String toString()
-	{
-		return name;
-	}
+ /**
+  * Gets the value of the introductionName property.
+  * 
+  * @return
+  *     possible object is
+  *     {@link String }
+  *     
+  */
+ public String getIntroductionName() {
+     return introductionName;
+ }
 
-    @XmlElementWrapper(name = "Assets")
-    @XmlElement(name = "AssetBase")
-	public List<Asset> getAssets() {
-		return assets;
-	}
+ /**
+  * Sets the value of the introductionName property.
+  * 
+  * @param value
+  *     allowed object is
+  *     {@link String }
+  *     
+  */
+ public void setIntroductionName(String value) {
+     this.introductionName = value;
+ }
 
-	public void setAssets(List<Asset> assets) {
-		this.assets = assets;
-	}
 }
