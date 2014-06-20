@@ -1,0 +1,328 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://www.example.org/Game/"
+	targetNamespace="http://www.example.org/Game/">
+
+	<element name="Game">
+		<complexType>
+			<sequence>
+				<element name="Act" type="tns:ActType" maxOccurs="unbounded"
+					minOccurs="1">
+				</element>
+				<element name="LearningObjective" type="tns:LearningObjectiveType"
+					maxOccurs="unbounded" minOccurs="1">
+				</element>
+				<element name="Character" type="tns:Character" maxOccurs="unbounded"
+					minOccurs="1"></element>
+			</sequence>
+		</complexType>
+	</element>
+
+	<element name="GameElement" type="tns:GameElementType"
+		abstract="true"></element>
+
+	<complexType name="GameElementType">
+		<sequence>
+			<element name="AnimationEffect" type="tns:AnimationEffectType" maxOccurs="1"
+				minOccurs="0">
+			</element>
+			<element name="SoundEffect" type="string" maxOccurs="1"
+				minOccurs="0">
+			</element>
+		</sequence>
+	</complexType>
+
+<complexType name="AnimationEffectType">
+		<sequence>
+		<element name="Effect" type="string" maxOccurs="unbounded"
+				minOccurs="1"></element>
+			<element name="Speed" type="tns:SpeedType" maxOccurs="1"
+				minOccurs="1"></element>
+			<element name="StartLocation" type="string" maxOccurs="1"
+				minOccurs="1"></element>
+			<element name="EndLocation" type="string" maxOccurs="1"
+				minOccurs="1"></element>
+			<element name="Duration" type="string"></element>
+			<element name="Images" type="tns:ImageType" maxOccurs="unbounded"
+				minOccurs="1"></element>
+		</sequence>
+	</complexType>
+	
+		 <simpleType name="SpeedType">
+          <restriction base="string">
+         <enumeration value="FAST"/>
+            <enumeration value="MEDIUM"/>
+            <enumeration value="SLOW"/>
+          </restriction>
+        </simpleType>
+
+	<complexType name="Prop">
+		<complexContent>
+			<extension base="tns:GameElementType">
+				<sequence>
+					<element name="Hint" type="tns:HintType"></element>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+
+	<complexType name="GenericInteraction">
+		<complexContent>
+			<extension base="tns:Prop"></extension>
+		</complexContent>
+	</complexType>
+
+	<complexType name="EducationInteraction">
+		<complexContent>
+			<extension base="tns:Prop"></extension>
+		</complexContent>
+	</complexType>
+
+	<complexType name="Decoration">
+		<complexContent>
+			<extension base="tns:Prop"></extension>
+		</complexContent>
+	</complexType>
+
+	<complexType name="ActType">
+		<complexContent>
+			<extension base="tns:GameUnitType">
+				<sequence>
+					<element name="LearningObjective" type="tns:LearningObjectiveType">
+					</element>
+					<element name="Scene" type="tns:SceneType" maxOccurs="unbounded"
+						minOccurs="1"></element>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+
+	<complexType name="SceneType">
+		<complexContent>
+			<extension base="tns:GameUnitType">
+				<sequence>
+					<element name="LearningObjective" type="tns:LearningObjectiveType">
+					</element>
+					<element name="Screen" type="tns:ScreenType" maxOccurs="unbounded"
+						minOccurs="1">
+					</element>
+					<element name="Backgroud" type="tns:BackgroundType"
+						maxOccurs="1" minOccurs="1"></element>
+					<element name="Music" type="tns:MusicType" maxOccurs="1"
+						minOccurs="0"></element>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+
+	<complexType name="ScreenType">
+		<complexContent>
+			<extension base="tns:GameUnitType">
+				<sequence>
+					<element name="LearningObjective" type="tns:LearningObjectiveType">
+					</element>
+					<element name="Challenge" type="tns:ChallengeType"
+						maxOccurs="unbounded" minOccurs="0">
+					</element>
+					<element name="GameElement" type="tns:GameElementType"
+						maxOccurs="unbounded" minOccurs="0"></element>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+
+
+
+	<complexType name="ChallengeType">
+		<complexContent>
+			<extension base="tns:GameUnitType">
+				<sequence>
+					<element name="LearningObjective" type="tns:LearningObjectiveType">
+					</element>
+					<element name="GameElement" type="tns:GameElementType"
+						maxOccurs="unbounded" minOccurs="0"></element>
+						<element name="Classification" type="tns:ClassificationType">
+											</element>
+
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	
+	 <simpleType name="ClassificationType">
+          <restriction base="string">
+         <enumeration value="Interactive"/>
+            <enumeration value="Deliberation"/>
+            <enumeration value="Composition"/>
+          </restriction>
+        </simpleType>
+
+	<complexType name="Quiz">
+		<complexContent>
+			<extension base="tns:ChallengeType">
+				<sequence>
+					<element name="Introduction" type="tns:Introduction">
+					</element>
+					<element name="Pedagogy" type="tns:PedagogyType"></element>
+					<element name="Item" type="tns:Item"></element>
+					<element name="Summary" type="tns:Summary"></element>
+					<element name="Layout" type="tns:Layout"></element>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+
+	<complexType name="SandBox">
+		<complexContent>
+			<extension base="tns:ChallengeType"></extension>
+		</complexContent>
+	</complexType>
+
+	<complexType name="Introduction">
+		<sequence>
+			<element name="IntroductionName" type="string"></element>
+		</sequence>
+	</complexType>
+
+	<complexType name="Item">
+		<sequence>
+			<element name="Itemname" type="string"></element>
+		</sequence>
+	</complexType>
+
+	<complexType name="Summary">
+		<sequence>
+			<element name="SummaryName" type="string"></element>
+		</sequence>
+	</complexType>
+
+	<complexType name="PedagogyType">
+		<sequence>
+			<element name="PedagogyName" type="string"></element>
+		</sequence>
+	</complexType>
+
+	<complexType name="Layout">
+		<sequence>
+			<element name="LayoutName" type="string"></element>
+		</sequence>
+	</complexType>
+
+	<complexType name="MultipleChoiceItem">
+		<complexContent>
+			<extension base="tns:Item">
+				<sequence>
+					<element name="Image" type="tns:ImageType"></element>
+					<element name="Stem" type="tns:StemType"></element>
+					<element name="Option" type="tns:OptionType"></element>
+					<element name="LearningObjective" type="tns:LearningObjectiveType"></element>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+
+	<complexType name="ImageType">
+		<sequence>
+			<element name="ImageName" type="string"></element>
+		</sequence>
+	</complexType>
+
+	<complexType name="StemType">
+		<sequence>
+			<element name="StemText" type="tns:StemTextType"></element>
+			<element name="StemQuestion" type="tns:StemQuestionType"></element>
+		</sequence>
+	</complexType>
+
+	<complexType name="OptionType">
+		<sequence>
+			<element name="Assessment" type="string"></element>
+			<element name="Reward" type="string"></element>
+			<element name="Feedback" type="string"></element>
+			<element name="Hint" type="tns:HintType" maxOccurs="1"
+				minOccurs="0"></element>
+		</sequence>
+	</complexType>
+
+	<complexType name="StemTextType">
+		<sequence>
+			<element name="Hint" type="tns:HintType" maxOccurs="1"
+				minOccurs="0"></element>
+		</sequence>
+	</complexType>
+
+	<complexType name="StemQuestionType">
+		<sequence>
+			<element name="Hint" type="tns:HintType" maxOccurs="1"
+				minOccurs="0"></element>
+		</sequence>
+	</complexType>
+
+	<complexType name="HintType">
+		<sequence>
+			<element name="Hint" type="string" maxOccurs="1" minOccurs="0"></element>
+		</sequence>
+	</complexType>
+
+	<complexType name="LearningObjectiveType">
+		<sequence>
+			<element name="LearningObjective" type="string"></element>
+		</sequence>
+	</complexType>
+
+	<complexType name="Player">
+		<complexContent>
+			<extension base="tns:Character">
+				<sequence>
+
+					<element name="PlayerID" type="ID" maxOccurs="1" minOccurs="1"></element>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+
+	<complexType name="NonPlayer">
+		<complexContent>
+			<extension base="tns:Character">
+				<sequence>
+					<element name="NonPlayerID" type="string" maxOccurs="unbounded"
+						minOccurs="0"></element>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+
+	<element name="GameUnits" type="tns:GameUnitType">
+
+	</element>
+
+	<complexType name="GameUnitType">
+		<sequence>
+			<element name="Transition" type="string"></element>
+			<element name="Sequence" type="string"></element>
+		</sequence>
+	</complexType>
+
+	<complexType name="Character">
+		<complexContent>
+			<extension base="tns:GameElementType">
+				<sequence>
+					<element name="AutonomousBehaviour" type="string"></element>
+					<element name="Profile" type="string"></element>
+					<element name="Rewards" type="string"></element>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+
+<complexType name="BackgroundType">
+		<sequence>
+			<element name="Background" type="string"></element>
+		</sequence>
+	</complexType>
+
+	<complexType name="MusicType">
+		<sequence>
+			<element name="Music" type="string"></element>
+		</sequence>
+	</complexType>
+</schema>
