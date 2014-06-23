@@ -15,8 +15,6 @@ import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
 
-import edu.utdallas.sharedfiles.Challenge.Layout;
-
 
 /**
  * <p>Java class for Quiz complex type.

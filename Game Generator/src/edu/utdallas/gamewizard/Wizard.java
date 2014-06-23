@@ -14,13 +14,13 @@ import javax.xml.bind.JAXBException;
 import javax.xml.bind.Marshaller;
 
  import edu.utdallas.gamegenerator.RepoUpdate.Updates;
-import edu.utdallas.sharedfiles.Challenge.Layout;
 import edu.utdallas.sharedfiles.Shared.*;
 import edu.utdallas.sharedfiles.Structure.*;
 import edu.utdallas.sharedfiles.gamespec.Challenge;
 import edu.utdallas.sharedfiles.gamespec.Character;
 import edu.utdallas.sharedfiles.gamespec.Introduction;
 import edu.utdallas.sharedfiles.gamespec.Item;
+import edu.utdallas.sharedfiles.gamespec.Layout;
 import edu.utdallas.sharedfiles.gamespec.MultipleChoiceItem;
 import edu.utdallas.sharedfiles.gamespec.QuizChallenge;
 import edu.utdallas.sharedfiles.gamespec.Summary;
