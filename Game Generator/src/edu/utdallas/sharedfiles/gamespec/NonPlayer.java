@@ -1,4 +1,4 @@
-package edu.utdallas.gamegenerator.Character;
+package edu.utdallas.sharedfiles.gamespec;
 
 import java.util.ArrayList;
 import java.util.List;

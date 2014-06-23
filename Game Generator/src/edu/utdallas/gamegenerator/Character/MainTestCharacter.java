@@ -7,6 +7,9 @@ import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Marshaller;
 
+import edu.utdallas.sharedfiles.gamespec.Character;
+import edu.utdallas.sharedfiles.gamespec.Player;
+
 public class MainTestCharacter 
 {
 	public static void main(String[] args)

@@ -9,26 +9,28 @@ import javax.xml.bind.JAXBException;
 import javax.xml.bind.Marshaller;
 
 import edu.utdallas.gamegenerator.RepoUpdate.Updates;
-import edu.utdallas.sharedfiles.Challenge.Challenge;
-import edu.utdallas.sharedfiles.Challenge.Introduction;
-import edu.utdallas.sharedfiles.Challenge.Item;
 import edu.utdallas.sharedfiles.Challenge.Layout;
-import edu.utdallas.sharedfiles.Challenge.MultipleChoiceItem;
-import edu.utdallas.sharedfiles.Challenge.QuizChallenge;
-import edu.utdallas.sharedfiles.Challenge.Summary;
 import edu.utdallas.sharedfiles.Shared.*;
 import edu.utdallas.sharedfiles.Structure.*;
+import edu.utdallas.sharedfiles.gamespec.Act;
+import edu.utdallas.sharedfiles.gamespec.Challenge;
+import edu.utdallas.sharedfiles.gamespec.Character;
+import edu.utdallas.sharedfiles.gamespec.Introduction;
+import edu.utdallas.sharedfiles.gamespec.Item;
+import edu.utdallas.sharedfiles.gamespec.MultipleChoiceItem;
+import edu.utdallas.sharedfiles.gamespec.QuizChallenge;
+import edu.utdallas.sharedfiles.gamespec.Scene;
+import edu.utdallas.sharedfiles.gamespec.Screen;
+import edu.utdallas.sharedfiles.gamespec.Summary;
 import edu.utdallas.previewtool.View.BackgroundSelectWindow;
 import edu.utdallas.previewtool.View.CharacterProfileWindow;
 import edu.utdallas.previewtool.View.CharacterSelectWindow;
 import edu.utdallas.previewtool.View.PropSelectWindow;
 import edu.utdallas.previewtool.View.ScenePanel;
 import edu.utdallas.previewtool.View.SoundSelectWindow;
-import edu.utdallas.gamegenerator.Character.Character;
 import edu.utdallas.previewtool.Error.PreviewError;
 import edu.utdallas.previewtool.Error.GameErrorChecker;
 import edu.utdallas.previewtool.Error.GameErrorList;
-
 import Jama.Matrix;
 
 import java.awt.*;

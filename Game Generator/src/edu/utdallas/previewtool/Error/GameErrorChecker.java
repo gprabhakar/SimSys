@@ -9,15 +9,6 @@ import java.util.List;
 import javax.imageio.ImageIO;
 import javax.xml.ws.Response;
 
-import edu.utdallas.sharedfiles.Challenge.Challenge;
-import edu.utdallas.sharedfiles.Challenge.Introduction;
-import edu.utdallas.sharedfiles.Challenge.Item;
-import edu.utdallas.sharedfiles.Challenge.MultipleChoiceItem;
-import edu.utdallas.sharedfiles.Challenge.Option;
-import edu.utdallas.sharedfiles.Challenge.QuizChallenge;
-import edu.utdallas.sharedfiles.Challenge.Stem;
-import edu.utdallas.sharedfiles.Challenge.Summary;
-import edu.utdallas.gamegenerator.Character.Character;
 import edu.utdallas.gamegenerator.Character.Profile;
 import edu.utdallas.previewtool.Error.PreviewError.Level;
 import edu.utdallas.previewtool.Error.PreviewError.Severity;
@@ -31,6 +22,18 @@ import edu.utdallas.sharedfiles.Shared.ImageHelper;
 import edu.utdallas.sharedfiles.Shared.InformationBoxAsset;
 import edu.utdallas.sharedfiles.Shared.ThoughtBubbleAsset;
 import edu.utdallas.sharedfiles.Structure.*;
+import edu.utdallas.sharedfiles.gamespec.Act;
+import edu.utdallas.sharedfiles.gamespec.Challenge;
+import edu.utdallas.sharedfiles.gamespec.Character;
+import edu.utdallas.sharedfiles.gamespec.Introduction;
+import edu.utdallas.sharedfiles.gamespec.Item;
+import edu.utdallas.sharedfiles.gamespec.MultipleChoiceItem;
+import edu.utdallas.sharedfiles.gamespec.Option;
+import edu.utdallas.sharedfiles.gamespec.QuizChallenge;
+import edu.utdallas.sharedfiles.gamespec.Scene;
+import edu.utdallas.sharedfiles.gamespec.Screen;
+import edu.utdallas.sharedfiles.gamespec.Stem;
+import edu.utdallas.sharedfiles.gamespec.Summary;
 
 public class GameErrorChecker 
 {

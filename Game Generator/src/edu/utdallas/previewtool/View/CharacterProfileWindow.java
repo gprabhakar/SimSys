@@ -5,7 +5,7 @@ import java.awt.*;
 import javax.swing.*;
 import javax.swing.border.Border;
 
-import edu.utdallas.gamegenerator.Character.Character;
+import edu.utdallas.sharedfiles.gamespec.Character;
 
 public class CharacterProfileWindow extends JDialog
 {

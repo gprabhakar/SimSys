@@ -1,4 +1,4 @@
-package edu.utdallas.sharedfiles.Challenge;
+package edu.utdallas.sharedfiles.gamespec;
 
 
 import javax.xml.bind.annotation.XmlAccessType;

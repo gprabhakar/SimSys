@@ -11,13 +11,14 @@ import edu.utdallas.sharedfiles.Shared.GameObject;
 import edu.utdallas.sharedfiles.Shared.SharedButton;
 import edu.utdallas.sharedfiles.Shared.SharedCharacter;
 import edu.utdallas.sharedfiles.Shared.SharedInformationBox;
-import edu.utdallas.sharedfiles.Structure.Screen;
+import edu.utdallas.sharedfiles.gamespec.Screen;
 import edu.utdallas.gamegenerator.Subject.Subject;
 
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlElementWrapper;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;

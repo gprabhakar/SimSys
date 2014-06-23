@@ -17,13 +17,14 @@ import edu.utdallas.gamegenerator.LearningAct.Prop.TextType;
 import edu.utdallas.gamegenerator.LearningAct.Screen.ChallengeScreen;
 import edu.utdallas.gamegenerator.LearningAct.Screen.BaseScreen;
 import edu.utdallas.sharedfiles.Shared.*;
-import edu.utdallas.sharedfiles.Structure.Screen;
+import edu.utdallas.sharedfiles.gamespec.Screen;
 import edu.utdallas.gamegenerator.Theme.Theme;
 import edu.utdallas.gamegenerator.Theme.ThemeStory;
 
 import javax.xml.bind.annotation.XmlElementWrapper;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
+
 import java.util.*;
 
 /**

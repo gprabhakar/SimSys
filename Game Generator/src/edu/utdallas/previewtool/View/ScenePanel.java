@@ -3,7 +3,7 @@ package edu.utdallas.previewtool.View;
 import edu.utdallas.previewtool.Error.PreviewError;
 import edu.utdallas.sharedfiles.Search.InputWizard;
 import edu.utdallas.sharedfiles.Shared.*;
-import edu.utdallas.sharedfiles.Structure.Act;
+import edu.utdallas.sharedfiles.gamespec.Act;
 
 import java.awt.*;
 import java.awt.Color;

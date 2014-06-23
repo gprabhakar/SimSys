@@ -18,7 +18,7 @@ public class PlayerCharacter extends Character
 //
 
 
-package edu.utdallas.gamegenerator.Character;
+package edu.utdallas.sharedfiles.gamespec;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;

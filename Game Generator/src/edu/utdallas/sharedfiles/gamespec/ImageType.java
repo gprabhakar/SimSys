@@ -6,7 +6,7 @@
 //
 
 
-package edu.utdallas.sharedfiles.Structure;
+package edu.utdallas.sharedfiles.gamespec;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
@@ -15,16 +15,16 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Java class for LearningObjectiveType complex type.
+ * <p>Java class for ImageType complex type.
  * 
  * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
- * &lt;complexType name="LearningObjectiveType">
+ * &lt;complexType name="ImageType">
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
- *         &lt;element name="LearningObjective" type="{http://www.w3.org/2001/XMLSchema}string"/>
+ *         &lt;element name="ImageName" type="{http://www.w3.org/2001/XMLSchema}string"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -34,36 +34,36 @@ import javax.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "LearningObjectiveType", propOrder = {
-    "learningObjective"
+@XmlType(name = "ImageType", propOrder = {
+    "imageName"
 })
-public class LearningObjectiveType {
+public class ImageType {
 
-    @XmlElement(name = "LearningObjective", required = true)
-    protected String learningObjective;
+    @XmlElement(name = "ImageName", required = true)
+    protected String imageName;
 
     /**
-     * Gets the value of the learningObjective property.
+     * Gets the value of the imageName property.
      * 
      * @return
      *     possible object is
      *     {@link String }
      *     
      */
-    public String getLearningObjective() {
-        return learningObjective;
+    public String getImageName() {
+        return imageName;
     }
 
     /**
-     * Sets the value of the learningObjective property.
+     * Sets the value of the imageName property.
      * 
      * @param value
      *     allowed object is
      *     {@link String }
      *     
      */
-    public void setLearningObjective(String value) {
-        this.learningObjective = value;
+    public void setImageName(String value) {
+        this.imageName = value;
     }
 
 }

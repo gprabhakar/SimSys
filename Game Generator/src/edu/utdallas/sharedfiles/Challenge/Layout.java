@@ -8,6 +8,8 @@ import javax.swing.JPanel;
 import edu.utdallas.sharedfiles.Shared.Asset;
 import edu.utdallas.sharedfiles.Shared.ButtonAsset;
 import edu.utdallas.sharedfiles.Shared.InformationBoxAsset;
+import edu.utdallas.sharedfiles.gamespec.Hint;
+import edu.utdallas.sharedfiles.gamespec.MultipleChoiceItem;
 
 
 /*
