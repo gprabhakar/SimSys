@@ -119,7 +119,7 @@ public class Test {
     private static void test() throws JAXBException {
         Scene scene = new Scene();
         List<Screen> screens = new ArrayList<Screen>();
-        scene.setScreens(screens);
+        scene.setScreen(screens);
 
         JAXBContext jaxbContext = JAXBContext.newInstance(Scene.class);
         Marshaller marshaller = jaxbContext.createMarshaller();

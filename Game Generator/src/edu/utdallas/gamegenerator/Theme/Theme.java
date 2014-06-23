@@ -65,8 +65,8 @@ public class Theme {
         UUID nextScreen = UUID.randomUUID();
         for(ThemeScreen screen : screens) {
             Screen screenNode = new Screen();
-            screenNode.setId(currentScreen);
-            screenNode.setBackground(screen.getBackground());
+            //screenNode.setId(currentScreen);
+            //screenNode.setBackground(screen.getBackground());
             List<Asset> assets = new ArrayList<Asset>();
             if(screen.getGameObjects() != null) {
                 for(GameObject object : screen.getGameObjects()) {
@@ -99,7 +99,7 @@ public class Theme {
                     assets.add(asset);
                 }
             }
-            screenNode.setAssets(assets);
+            //screenNode.setAssets(assets);
             screenNodes.add(screenNode);
             currentScreen = nextScreen;
             nextScreen = UUID.randomUUID();

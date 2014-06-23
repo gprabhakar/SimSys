@@ -80,7 +80,7 @@ public class GameErrorChecker
 						});
 						cName = "[in position " + (i+1) + "]";
 					}
-					if(isNullOrEmpty(characters.get(i).getBehavior()))
+					if(isNullOrEmpty(characters.get(i).getAutonomousBehaviour()))
 					{
 						errors.add(new PreviewError(Level.GAME, Severity.LOW, "The <Behavior> property of Character " + cName + " is not specified") {
 							public void fixError() { } //TODO

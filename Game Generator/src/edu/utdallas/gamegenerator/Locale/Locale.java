@@ -191,12 +191,12 @@ public class Locale {
         List<Screen> screenNodes = new ArrayList<Screen>();
         Screen screenNode = new Screen();
         screenNodes.add(screenNode);
-        screenNode.setId(screenId);
-        screenNode.setBackground(localeScreen.getBackground());
-        screenNode.setName("LESSON_" + learningActId + " - ");
+        //screenNode.setId(screenId);
+        //screenNode.setBackground(localeScreen.getBackground());
+        //screenNode.setName("LESSON_" + learningActId + " - ");
 
         List<Asset> assets = new ArrayList<Asset>();
-        screenNode.setAssets(assets);
+        //screenNode.setAssets(assets);
         List<GameObject> localeObjects = localeScreen.getGameObjects();
         if(localeObjects != null) {
             for(GameObject object : localeObjects) {

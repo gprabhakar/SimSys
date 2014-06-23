@@ -114,6 +114,9 @@ public class Scene//Type
      return this.screen;
  }
 
+ public void setScreen(List<Screen> value) {
+	 this.screen = value;
+ }
  /**
   * Gets the value of the background property.
   * 
