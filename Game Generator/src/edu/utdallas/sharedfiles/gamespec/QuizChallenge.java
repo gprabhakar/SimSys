@@ -48,19 +48,18 @@ import javax.xml.bind.annotation.XmlType;
     "layout"
 })
 public class QuizChallenge
-    extends Challenge
-{
+    extends Challenge {
 
     @XmlElement(name = "Introduction", required = true)
-    protected Introduction introduction;
+    private Introduction introduction;
     @XmlElement(name = "Pedagogy", required = true)
-    protected PedagogyType pedagogy;
+    private PedagogyType pedagogy;
     @XmlElement(name = "Item", required = true)
-    protected Item item;
+    private Item item;
     @XmlElement(name = "Summary", required = true)
-    protected Summary summary;
+    private Summary summary;
     @XmlElement(name = "Layout", required = true)
-    protected Layout layout;
+    private Layout layout;
 
     /**
      * Gets the value of the introduction property.
@@ -70,7 +69,7 @@ public class QuizChallenge
      *     {@link Introduction }
      *
      */
-    public Introduction getIntroduction() {
+    public final Introduction getIntroduction() {
         return introduction;
     }
 
@@ -82,7 +81,7 @@ public class QuizChallenge
      *     {@link Introduction }
      *
      */
-    public void setIntroduction(Introduction value) {
+    public final void setIntroduction(final Introduction value) {
         this.introduction = value;
     }
 
@@ -94,7 +93,7 @@ public class QuizChallenge
      *     {@link PedagogyType }
      *
      */
-    public PedagogyType getPedagogy() {
+    public final PedagogyType getPedagogy() {
         return pedagogy;
     }
 
@@ -106,7 +105,7 @@ public class QuizChallenge
      *     {@link PedagogyType }
      *
      */
-    public void setPedagogy(PedagogyType value) {
+    public final void setPedagogy(final PedagogyType value) {
         this.pedagogy = value;
     }
 
@@ -118,7 +117,7 @@ public class QuizChallenge
      *     {@link Item }
      *
      */
-    public Item getItem() {
+    public final Item getItem() {
         return item;
     }
 
@@ -130,7 +129,7 @@ public class QuizChallenge
      *     {@link Item }
      *
      */
-    public void setItem(Item value) {
+    public final void setItem(final Item value) {
         this.item = value;
     }
 
@@ -142,7 +141,7 @@ public class QuizChallenge
      *     {@link Summary }
      *
      */
-    public Summary getSummary() {
+    public final Summary getSummary() {
         return summary;
     }
 
@@ -154,7 +153,7 @@ public class QuizChallenge
      *     {@link Summary }
      *
      */
-    public void setSummary(Summary value) {
+    public final void setSummary(final Summary value) {
         this.summary = value;
     }
 
@@ -166,7 +165,7 @@ public class QuizChallenge
      *     {@link Layout }
      *
      */
-    public Layout getLayout() {
+    public final Layout getLayout() {
         return layout;
     }
 
@@ -178,7 +177,7 @@ public class QuizChallenge
      *     {@link Layout }
      *
      */
-    public void setLayout(Layout value) {
+    public final void setLayout(final Layout value) {
         this.layout = value;
     }
 

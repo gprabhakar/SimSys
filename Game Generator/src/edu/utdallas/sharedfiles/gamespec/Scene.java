@@ -48,18 +48,17 @@ import javax.xml.bind.annotation.XmlType;
  "background",
  "music"
 })
-public class Scene//Type
- //extends GameUnitType
-{
+public class Scene
+   extends GameUnitType {
 
  @XmlElement(name = "LearningObjective", required = true)
- protected LearningObjectiveType learningObjective;
+ private LearningObjectiveType learningObjective;
  @XmlElement(name = "Screen", required = true)
- protected List<Screen> screen;
+ private List<Screen> screen;
  @XmlElement(name = "Background", required = true)
- protected BackgroundType background;
+ private BackgroundType background;
  @XmlElement(name = "Music")
- protected MusicType music;
+ private MusicType music;
 
  /**
   * Gets the value of the learningObjective property.
@@ -69,7 +68,7 @@ public class Scene//Type
   *     {@link LearningObjectiveType }
   *
   */
- public LearningObjectiveType getLearningObjective() {
+ public final LearningObjectiveType getLearningObjective() {
      return learningObjective;
  }
 
@@ -81,7 +80,7 @@ public class Scene//Type
   *     {@link LearningObjectiveType }
   *
   */
- public void setLearningObjective(LearningObjectiveType value) {
+ public final void setLearningObjective(LearningObjectiveType value) {
      this.learningObjective = value;
  }
 
@@ -102,20 +101,28 @@ public class Scene//Type
   *
   *
   * <p>
-  * Objects of the following type(s) are allowed in the list
-  * {@link ScreenType }
+  * @return
+  *      possible object is
+  *      {@link ScreenType }
   *
   *
   */
- public List<Screen> getScreen() {
+ public final List<Screen> getScreen() {
      if (screen == null) {
          screen = new ArrayList<Screen>();
      }
      return this.screen;
  }
-
- public void setScreen(List<Screen> value) {
-	 this.screen = value;
+ /**
+  * Sets the value of the music property.
+  *
+  * @param value
+  *     allowed object is
+  *     {@link ScreenType }
+  *
+  */
+ public final void setScreen(final List<Screen> value) {
+     this.screen = value;
  }
  /**
   * Gets the value of the background property.
@@ -125,7 +132,7 @@ public class Scene//Type
   *     {@link BackgroundType }
   *
   */
- public BackgroundType getbackground() {
+ public final BackgroundType getbackground() {
      return background;
  }
 
@@ -137,7 +144,7 @@ public class Scene//Type
   *     {@link BackgroundType }
   *
   */
- public void setBackground(BackgroundType value) {
+ public final void setBackground(final BackgroundType value) {
      this.background = value;
  }
 
@@ -149,7 +156,7 @@ public class Scene//Type
   *     {@link MusicType }
   *
   */
- public MusicType getMusic() {
+ public final MusicType getMusic() {
      return music;
  }
 
@@ -161,119 +168,8 @@ public class Scene//Type
   *     {@link MusicType }
   *
   */
- public void setMusic(MusicType value) {
+ public final void setMusic(final MusicType value) {
      this.music = value;
  }
 
 }
-
-/*
-import edu.utdallas.sharedfiles.Shared.Asset;
-import edu.utdallas.sharedfiles.Shared.Behavior;
-
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlElementWrapper;
-import javax.xml.bind.annotation.XmlRootElement;
-
-import java.util.List;
-import java.util.UUID;
-
-/**
- * User: clocke
- * Date: 2/24/13
- * Time: 8:58 PM
- *//*
-@XmlRootElement(name = "Scene")
-public class Scene {
-    List<Screen> screens;
-    String background;
-    String name;
-    String backgroundAudio;
-    UUID id = UUID.randomUUID();
-    List<Behavior> behaviorList;
-    List<Asset> assets;
-    List<String> learningObjectives;
-
-    public List<Screen> getScreens() {
-        return screens;
-    }
-
-    @XmlElementWrapper(name = "Screens")
-    @XmlElement(name = "Screen")
-    public void setScreens(List<Screen> screens) {
-        this.screens = screens;
-    }
-
-    @XmlElement(name = "Background")
-    public String getBackground() {
-        return background;
-    }
-
-    public void setBackground(String background) {
-        this.background = background;
-    }
-
-    @XmlElement(name = "Name")
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    @XmlElement(name = "ID")
-    public UUID getId() {
-        return id;
-    }
-
-    public void setId(UUID id) {
-        this.id = id;
-    }
-
-    @XmlElement(name = "BackgroundAudio")
-    public String getBackgroundMusic() {
-        return backgroundAudio;
-    }
-
-    public void setBackgroundMusic(String backgroundMusic) {
-    	this.backgroundAudio=backgroundMusic;
-    }
-
-    @XmlElement
-    public List<Behavior> getBehaviorList() {
-        return behaviorList;
-    }
-
-    public void setBehaviorList(List<Behavior> behaviorList) {
-        this.behaviorList = behaviorList;
-    }
-
-    @XmlElementWrapper(name = "Assets")
-    @XmlElement(name = "Asset")
-    public List<Asset> getAssets() {
-        return assets;
-    }
-
-    public void setAssets(List<Asset> assets) {
-        this.assets = assets;
-    }
-
-
-    @XmlElementWrapper(name = "LearningObjectives")
-    @XmlElement(name = "Objective")
-    public List<String> getLearningObjectives() {
-        return learningObjectives;
-    }
-
-    public void setLearningObjectives(List<String> lOs) {
-        this.learningObjectives = lOs;
-    }
-
-    @Override
-    public String toString()
-    {
-    	return name;
-    }
-}
-*/

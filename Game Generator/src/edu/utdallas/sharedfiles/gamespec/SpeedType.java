@@ -40,7 +40,7 @@ public enum SpeedType {
         return name();
     }
 
-    public static SpeedType fromValue(String v) {
+    public static SpeedType fromValue(final String v) {
         return valueOf(v);
     }
 

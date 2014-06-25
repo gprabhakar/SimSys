@@ -32,8 +32,7 @@ import javax.xml.bind.annotation.XmlType;
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "SandBox")
 public class SandBox
-    extends Challenge
-{
+    extends Challenge {
 
 
 }

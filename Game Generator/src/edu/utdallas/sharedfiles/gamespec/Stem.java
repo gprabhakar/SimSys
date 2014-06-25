@@ -44,9 +44,9 @@ import javax.xml.bind.annotation.XmlType;
 public class Stem {
 
     @XmlElement(name = "StemText", required = true)
-    protected StemText stemText;
+    private StemText stemText;
     @XmlElement(name = "StemQuestion", required = true)
-    protected StemQuestion stemQuestion;
+    private StemQuestion stemQuestion;
 
     /**
      * Gets the value of the stemText property.
@@ -56,7 +56,7 @@ public class Stem {
      *     {@link StemTextType }
      *
      */
-    public StemText getStemText() {
+    public final StemText getStemText() {
         return stemText;
     }
 
@@ -68,7 +68,7 @@ public class Stem {
      *     {@link StemTextType }
      *
      */
-    public void setStemText(StemText value) {
+    public final void setStemText(final StemText value) {
         this.stemText = value;
     }
 
@@ -80,7 +80,7 @@ public class Stem {
      *     {@link StemQuestionType }
      *
      */
-    public StemQuestion getStemQuestion() {
+    public final StemQuestion getStemQuestion() {
         return stemQuestion;
     }
 
@@ -92,7 +92,7 @@ public class Stem {
      *     {@link StemQuestionType }
      *
      */
-    public void setStemQuestion(StemQuestion value) {
+    public final void setStemQuestion(final StemQuestion value) {
         this.stemQuestion = value;
     }
 

@@ -93,8 +93,9 @@ public class Act extends GameUnitType {
   *
   *
   * <p>
-  * Objects of the following type(s) are allowed in the list
-  * {@link SceneType }
+  * @return
+  *      possible object is
+  *      {@link SceneType }
   *
   *@return the list of scenes for the act
   */

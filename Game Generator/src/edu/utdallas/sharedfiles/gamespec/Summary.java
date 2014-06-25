@@ -42,7 +42,7 @@ import javax.xml.bind.annotation.XmlType;
 public class Summary {
 
  @XmlElement(name = "SummaryName", required = true)
- protected String summaryName;
+ private String summaryName;
 
  /**
   * Gets the value of the summaryName property.
@@ -52,7 +52,7 @@ public class Summary {
   *     {@link String }
   *
   */
- public String getSummaryName() {
+ public final String getSummaryName() {
      return summaryName;
  }
 
@@ -64,50 +64,8 @@ public class Summary {
   *     {@link String }
   *
   */
- public void setSummaryName(String value) {
+ public final void setSummaryName(final String value) {
      this.summaryName = value;
  }
 
 }
-
-/*
-import java.util.List;
-
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlElementWrapper;
-import javax.xml.bind.annotation.XmlRootElement;
-
-import edu.utdallas.sharedfiles.Shared.Asset;
-
-@XmlRootElement(name = "Summary")
-public class Summary
-{
-	private String name;
-    private List<Asset> assets;
-
-	@XmlElement(name = "Name")
-	public String getName() {
-		return name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
-	}
-
-	@Override
-	public String toString()
-	{
-		return name;
-	}
-
-    @XmlElementWrapper(name = "Assets")
-    @XmlElement(name = "AssetBase")
-	public List<Asset> getAssets() {
-		return assets;
-	}
-
-	public void setAssets(List<Asset> assets) {
-		this.assets = assets;
-	}
-}
-*/

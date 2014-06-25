@@ -42,7 +42,7 @@ import javax.xml.bind.annotation.XmlType;
 public class StemText {
 
  @XmlElement(name = "Hint")
- protected Hint hint;
+ private Hint hint;
 
  /**
   * Gets the value of the hint property.
@@ -52,7 +52,7 @@ public class StemText {
   *     {@link HintType }
   *
   */
- public Hint getHint() {
+ public final Hint getHint() {
      return hint;
  }
 
@@ -64,7 +64,7 @@ public class StemText {
   *     {@link HintType }
   *
   */
- public void setHint(Hint value) {
+ public final void setHint(final Hint value) {
      this.hint = value;
  }
 

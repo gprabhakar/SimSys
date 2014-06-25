@@ -51,9 +51,8 @@ import javax.xml.bind.annotation.XmlType;
  SandBox.class,
  QuizChallenge.class
 })
-public class Challenge//Type
- //extends GameUnitType
-{
+public class Challenge
+   extends GameUnitType {
 
  @XmlElement(name = "LearningObjective", required = true)
  private LearningObjectiveType learningObjective;
@@ -103,10 +102,9 @@ public class Challenge//Type
   *
   *
   * <p>
-  * Objects of the following type(s) are allowed in the list
-  * {@link GameElementType }
-  *
-  *@return the list of GameElements for this challenge
+  * @return
+  *      possible object is
+  *      {@link GameElementType }
   */
  public final List<GameElementType> getGameElement() {
      if (gameElement == null) {

@@ -82,8 +82,9 @@ public class AnimationEffectType {
      *
      *
      * <p>
-     * Objects of the following type(s) are allowed in the list
-     * {@link String }
+     * @return
+     *      possible object is
+     *      {@link String }
      *
      *@return the list of effects for the background
      */
@@ -207,8 +208,9 @@ public class AnimationEffectType {
      *
      *
      * <p>
-     * Objects of the following type(s) are allowed in the list
-     * {@link ImageType }
+     * @return
+     *      possible object is
+     *      {@link ImageType }
      *
      *@return the list of images associated with the animation effect
      */

@@ -71,10 +71,11 @@ public class Game {
   *
   *
   * <p>
-  * Objects of the following type(s) are allowed in the list
-  * {@link ActType }
+  * @return 
+  *      possible object is
+  *      {@link ActType }
   *
-  * @return the list of acts for the game
+  *
   */
  public final List<Act> getAct() {
      if (act == null) {
@@ -100,10 +101,11 @@ public class Game {
   *
   *
   * <p>
-  * Objects of the following type(s) are allowed in the list
-  * {@link LearningObjectiveType }
+  * @return
+  *      possible object is
+  *      {@link LearningObjectiveType }
   *
-  * @return the list of LearningObjectives
+  *
   */
  public final List<LearningObjectiveType> getLearningObjective() {
      if (learningObjective == null) {
@@ -130,10 +132,11 @@ public class Game {
   *
   *
   * <p>
-  * Objects of the following type(s) are allowed in the list
-  * {@link Character }
+  * @return
+  *      possible object is
+  *      {@link Character }
   *
-  * @return the list of Character objects for the game
+  *
   */
  public final List<Character> getCharacter() {
      if (character == null) {

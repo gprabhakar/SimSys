@@ -44,16 +44,15 @@ import javax.xml.bind.annotation.XmlType;
  "challenge",
  "gameElement"
 })
-public class Screen//Type
- //extends GameUnitType
-{
+public class Screen
+     extends GameUnitType {
 
  @XmlElement(name = "LearningObjective", required = true)
- protected LearningObjectiveType learningObjective;
+ private LearningObjectiveType learningObjective;
  @XmlElement(name = "Challenge")
- protected List<Challenge> challenge;
+ private List<Challenge> challenge;
  @XmlElement(name = "GameElement")
- protected List<GameElementType> gameElement;
+ private List<GameElementType> gameElement;
 
  /**
   * Gets the value of the learningObjective property.
@@ -63,7 +62,7 @@ public class Screen//Type
   *     {@link LearningObjectiveType }
   *
   */
- public LearningObjectiveType getLearningObjective() {
+ public final LearningObjectiveType getLearningObjective() {
      return learningObjective;
  }
 
@@ -75,7 +74,7 @@ public class Screen//Type
   *     {@link LearningObjectiveType }
   *
   */
- public void setLearningObjective(LearningObjectiveType value) {
+ public final void setLearningObjective(final LearningObjectiveType value) {
      this.learningObjective = value;
  }
 
@@ -86,7 +85,8 @@ public class Screen//Type
   * This accessor method returns a reference to the live list,
   * not a snapshot. Therefore any modification you make to the
   * returned list will be present inside the JAXB object.
-  * This is why there is not a <CODE>set</CODE> method for the challenge property.
+  * This is why there is not a <CODE>set</CODE> method for the
+  * challenge property.
   *
   * <p>
   * For example, to add a new item, do as follows:
@@ -96,12 +96,13 @@ public class Screen//Type
   *
   *
   * <p>
-  * Objects of the following type(s) are allowed in the list
-  * {@link ChallengeType }
+  * @return
+  *      possible object is
+  *      {@link ChallengeType }
   *
   *
   */
- public List<Challenge> getChallenge() {
+ public final List<Challenge> getChallenge() {
      if (challenge == null) {
          challenge = new ArrayList<Challenge>();
      }
@@ -115,7 +116,8 @@ public class Screen//Type
   * This accessor method returns a reference to the live list,
   * not a snapshot. Therefore any modification you make to the
   * returned list will be present inside the JAXB object.
-  * This is why there is not a <CODE>set</CODE> method for the gameElement property.
+  * This is why there is not a <CODE>set</CODE> method for the
+  * gameElement property.
   *
   * <p>
   * For example, to add a new item, do as follows:
@@ -125,12 +127,13 @@ public class Screen//Type
   *
   *
   * <p>
-  * Objects of the following type(s) are allowed in the list
-  * {@link GameElementType }
+  * @return
+  *      possible object is
+  *      {@link GameElementType }
   *
   *
   */
- public List<GameElementType> getGameElement() {
+ public final List<GameElementType> getGameElement() {
      if (gameElement == null) {
          gameElement = new ArrayList<GameElementType>();
      }
@@ -138,99 +141,3 @@ public class Screen//Type
  }
 
 }
-
-
-/*
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlElementWrapper;
-import javax.xml.bind.annotation.XmlRootElement;
-
-import edu.utdallas.sharedfiles.Challenge.Challenge;
-import edu.utdallas.sharedfiles.Shared.Asset;
-
-import java.util.List;
-import java.util.UUID;
-
-/**
- * User: clocke
- * Date: 2/15/13
- * Time: 9:44 PM
- *//*
-@XmlRootElement(name = "Screen")
-public class Screen {
-    private UUID id;
-    private String background;
-    private String name;
-    private List<Asset> assets;
-    private Challenge challenge;
-    private List<String> learningObjectives;
-
-    public Screen() {
-        id = UUID.randomUUID();
-    }
-
-    @XmlElement(name = "ID")
-    public UUID getId() {
-        return id;
-    }
-
-    public void setId(UUID id) {
-        this.id = id;
-    }
-
-    @XmlElement(name = "Background")
-    public String getBackground() {
-        return background;
-    }
-
-    public void setBackground(String background) {
-        this.background = background;
-    }
-
-    @XmlElement(name = "Name")
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    @XmlElementWrapper(name = "Assets")
-    @XmlElement(name = "AssetBase")
-    public List<Asset> getAssets() {
-        return assets;
-    }
-
-    public void setAssets(List<Asset> assets) {
-        this.assets = assets;
-    }
-
-    @XmlElement(name = "Challenge")
-	public Challenge getChallenge() {
-		return challenge;
-	}
-
-	public void setChallenge(Challenge challenge) {
-		this.challenge = challenge;
-	}
-
-
-    @XmlElementWrapper(name = "LearningObjectives")
-    @XmlElement(name = "Objective")
-    public List<String> getLearningObjectives() {
-        return learningObjectives;
-    }
-
-    public void setLearningObjectives(List<String> lOs) {
-        this.learningObjectives = lOs;
-    }
-
-    @Override
-    public String toString()
-    {
-    	return name;
-    }
-
-}
-*/
