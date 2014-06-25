@@ -3,6 +3,7 @@ package edu.utdallas.sharedfiles.Structure;
 import edu.utdallas.gamegenerator.Locale.Locale;
 import edu.utdallas.sharedfiles.Shared.*;
 import edu.utdallas.sharedfiles.gamespec.Act;
+import edu.utdallas.sharedfiles.gamespec.Game;
 import edu.utdallas.sharedfiles.gamespec.Scene;
 import edu.utdallas.sharedfiles.gamespec.Screen;
 import edu.utdallas.gamegenerator.Theme.Theme;

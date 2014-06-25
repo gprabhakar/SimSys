@@ -25,6 +25,7 @@ import edu.utdallas.sharedfiles.Structure.*;
 import edu.utdallas.sharedfiles.gamespec.Act;
 import edu.utdallas.sharedfiles.gamespec.Challenge;
 import edu.utdallas.sharedfiles.gamespec.Character;
+import edu.utdallas.sharedfiles.gamespec.Game;
 import edu.utdallas.sharedfiles.gamespec.Introduction;
 import edu.utdallas.sharedfiles.gamespec.Item;
 import edu.utdallas.sharedfiles.gamespec.MultipleChoiceItem;

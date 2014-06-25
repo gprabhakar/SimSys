@@ -9,9 +9,9 @@ import javax.xml.bind.annotation.XmlType;
 
 /**
 * <p>Java class for Introduction complex type.
-* 
+*
 * <p>The following schema fragment specifies the expected content contained within this class.
-* 
+*
 * <pre>
 * &lt;complexType name="Introduction">
 *   &lt;complexContent>
@@ -23,8 +23,8 @@ import javax.xml.bind.annotation.XmlType;
 *   &lt;/complexContent>
 * &lt;/complexType>
 * </pre>
-* 
-* 
+*
+*
 */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "Introduction", propOrder = {
@@ -37,11 +37,11 @@ public class Introduction {
 
  /**
   * Gets the value of the introductionName property.
-  * 
+  *
   * @return
   *     possible object is
   *     {@link String }
-  *     
+  *
   */
  public String getIntroductionName() {
      return introductionName;
@@ -49,11 +49,11 @@ public class Introduction {
 
  /**
   * Sets the value of the introductionName property.
-  * 
+  *
   * @param value
   *     allowed object is
   *     {@link String }
-  *     
+  *
   */
  public void setIntroductionName(String value) {
      this.introductionName = value;

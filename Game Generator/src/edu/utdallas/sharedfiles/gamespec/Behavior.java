@@ -1,6 +1,5 @@
 package edu.utdallas.sharedfiles.gamespec;
 
-public class Behavior
-{
+public class Behavior {
 
 }
