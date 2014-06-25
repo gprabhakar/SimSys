@@ -40,7 +40,7 @@ import javax.xml.bind.annotation.XmlType;
 public class Hint {
 
     @XmlElement(name = "Hint")
-    protected String hint;
+    private String hint;
 
     /**
      * Gets the value of the hint property.
@@ -50,7 +50,7 @@ public class Hint {
      *     {@link String }
      *
      */
-    public String getHint() {
+    public final String getHint() {
         return hint;
     }
 
@@ -62,7 +62,7 @@ public class Hint {
      *     {@link String }
      *
      */
-    public void setHint(String value) {
+    public final void setHint(final String value) {
         this.hint = value;
     }
 

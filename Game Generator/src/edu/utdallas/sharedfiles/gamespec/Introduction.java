@@ -33,7 +33,7 @@ import javax.xml.bind.annotation.XmlType;
 public class Introduction {
 
  @XmlElement(name = "IntroductionName", required = true)
- protected String introductionName;
+ private String introductionName;
 
  /**
   * Gets the value of the introductionName property.
@@ -43,7 +43,7 @@ public class Introduction {
   *     {@link String }
   *
   */
- public String getIntroductionName() {
+ public final String getIntroductionName() {
      return introductionName;
  }
 
@@ -55,7 +55,7 @@ public class Introduction {
   *     {@link String }
   *
   */
- public void setIntroductionName(String value) {
+ public final void setIntroductionName(final String value) {
      this.introductionName = value;
  }
 

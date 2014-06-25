@@ -46,7 +46,7 @@ import javax.xml.bind.annotation.XmlType;
 public class Item {
 
  @XmlElement(name = "Itemname", required = true)
- protected String itemname;
+ private String itemname;
 
  /**
   * Gets the value of the itemname property.
@@ -56,7 +56,7 @@ public class Item {
   *     {@link String }
   *
   */
- public String getItemname() {
+ public final String getItemname() {
      return itemname;
  }
 
@@ -68,46 +68,8 @@ public class Item {
   *     {@link String }
   *
   */
- public void setItemname(String value) {
+ public final void setItemname(final String value) {
      this.itemname = value;
  }
 
 }
-
-/*
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlSeeAlso;
-
-@XmlRootElement(name = "Item")
-@XmlSeeAlso({MultipleChoiceItem.class})
-public class Item
-{
-	private String name;
-	private String learningObjective;
-
-	@XmlElement(name = "Name")
-	public String getName() {
-		return name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
-	}
-
-	@XmlElement(name = "Objective")
-	public String getLearningObjective() {
-		return learningObjective;
-	}
-
-	public void setLearningObjective(String learningObjective) {
-		this.learningObjective = learningObjective;
-	}
-
-	@Override
-	public String toString()
-	{
-		return name;
-	}
-}
-*/

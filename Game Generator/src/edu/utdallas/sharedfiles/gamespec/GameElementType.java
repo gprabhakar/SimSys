@@ -47,9 +47,9 @@ import javax.xml.bind.annotation.XmlType;
 public class GameElementType {
 
     @XmlElement(name = "AnimationEffect")
-    protected AnimationEffectType animationEffect;
+    private AnimationEffectType animationEffect;
     @XmlElement(name = "SoundEffect")
-    protected String soundEffect;
+    private String soundEffect;
 
     /**
      * Gets the value of the animationEffect property.
@@ -59,7 +59,7 @@ public class GameElementType {
      *     {@link AnimationEffectType }
      *
      */
-    public AnimationEffectType getAnimationEffect() {
+    public final AnimationEffectType getAnimationEffect() {
         return animationEffect;
     }
 
@@ -71,7 +71,7 @@ public class GameElementType {
      *     {@link AnimationEffectType }
      *
      */
-    public void setAnimationEffect(AnimationEffectType value) {
+    public final void setAnimationEffect(final AnimationEffectType value) {
         this.animationEffect = value;
     }
 
@@ -83,7 +83,7 @@ public class GameElementType {
      *     {@link String }
      *
      */
-    public String getSoundEffect() {
+    public final String getSoundEffect() {
         return soundEffect;
     }
 
@@ -95,7 +95,7 @@ public class GameElementType {
      *     {@link String }
      *
      */
-    public void setSoundEffect(String value) {
+    public final void setSoundEffect(final String value) {
         this.soundEffect = value;
     }
 

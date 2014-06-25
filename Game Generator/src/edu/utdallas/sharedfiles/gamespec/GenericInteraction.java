@@ -32,8 +32,7 @@ import javax.xml.bind.annotation.XmlType;
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "GenericInteraction")
 public class GenericInteraction
-    extends Prop
-{
+    extends Prop {
 
 
 }

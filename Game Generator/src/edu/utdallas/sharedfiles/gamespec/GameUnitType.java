@@ -49,9 +49,9 @@ import javax.xml.bind.annotation.XmlType;
 public class GameUnitType {
 
     @XmlElement(name = "Transition", required = true)
-    protected String transition;
+    private String transition;
     @XmlElement(name = "Sequence", required = true)
-    protected String sequence;
+    private String sequence;
 
     /**
      * Gets the value of the transition property.
@@ -61,7 +61,7 @@ public class GameUnitType {
      *     {@link String }
      *
      */
-    public String getTransition() {
+    public final String getTransition() {
         return transition;
     }
 
@@ -73,7 +73,7 @@ public class GameUnitType {
      *     {@link String }
      *
      */
-    public void setTransition(String value) {
+    public final void setTransition(final String value) {
         this.transition = value;
     }
 
@@ -85,7 +85,7 @@ public class GameUnitType {
      *     {@link String }
      *
      */
-    public String getSequence() {
+    public final String getSequence() {
         return sequence;
     }
 
@@ -97,7 +97,7 @@ public class GameUnitType {
      *     {@link String }
      *
      */
-    public void setSequence(String value) {
+    public final void setSequence(final String value) {
         this.sequence = value;
     }
 

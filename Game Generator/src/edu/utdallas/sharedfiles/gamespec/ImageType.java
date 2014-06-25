@@ -40,7 +40,7 @@ import javax.xml.bind.annotation.XmlType;
 public class ImageType {
 
     @XmlElement(name = "ImageName", required = true)
-    protected String imageName;
+    private String imageName;
 
     /**
      * Gets the value of the imageName property.
@@ -50,7 +50,7 @@ public class ImageType {
      *     {@link String }
      *
      */
-    public String getImageName() {
+    public final String getImageName() {
         return imageName;
     }
 
@@ -62,7 +62,7 @@ public class ImageType {
      *     {@link String }
      *
      */
-    public void setImageName(String value) {
+    public final void setImageName(final String value) {
         this.imageName = value;
     }
 
