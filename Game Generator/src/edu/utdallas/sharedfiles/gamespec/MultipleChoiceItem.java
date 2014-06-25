@@ -50,13 +50,13 @@ public class MultipleChoiceItem
 {
 
  @XmlElement(name = "Image", required = true)
- protected ItemImage image;
+ private ItemImage image;
  @XmlElement(name = "Stem", required = true)
- protected Stem stem;
+ private Stem stem;
  @XmlElement(name = "Option", required = true)
- protected Option option;
+ private Option option;
  @XmlElement(name = "LearningObjective", required = true)
- protected LearningObjectiveType learningObjective;
+ private LearningObjectiveType learningObjective;
 
  /**
   * Gets the value of the image property.
@@ -66,7 +66,7 @@ public class MultipleChoiceItem
   *     {@link ImageType }
   *
   */
- public ItemImage getImage() {
+ public final ItemImage getImage() {
      return image;
  }
 
@@ -78,7 +78,7 @@ public class MultipleChoiceItem
   *     {@link ImageType }
   *
   */
- public void setImage(ItemImage value) {
+ public final void setImage(final ItemImage value) {
      this.image = value;
  }
 
@@ -90,7 +90,7 @@ public class MultipleChoiceItem
   *     {@link StemType }
   *
   */
- public Stem getStem() {
+ public final Stem getStem() {
      return stem;
  }
 
@@ -102,7 +102,7 @@ public class MultipleChoiceItem
   *     {@link StemType }
   *
   */
- public void setStem(Stem value) {
+ public final void setStem(final Stem value) {
      this.stem = value;
  }
 
@@ -114,7 +114,7 @@ public class MultipleChoiceItem
   *     {@link OptionType }
   *
   */
- public Option getOption() {
+ public final Option getOption() {
      return option;
  }
 
@@ -126,7 +126,7 @@ public class MultipleChoiceItem
   *     {@link OptionType }
   *
   */
- public void setOption(Option value) {
+ public final void setOption(final Option value) {
      this.option = value;
  }
 
@@ -138,7 +138,7 @@ public class MultipleChoiceItem
   *     {@link LearningObjectiveType }
   *
   */
- public LearningObjectiveType getLearningObjective() {
+ public final LearningObjectiveType getLearningObjective() {
      return learningObjective;
  }
 
@@ -150,55 +150,8 @@ public class MultipleChoiceItem
   *     {@link LearningObjectiveType }
   *
   */
- public void setLearningObjective(LearningObjectiveType value) {
+ public final void setLearningObjective(final LearningObjectiveType value) {
      this.learningObjective = value;
  }
 
 }
-
-/*
-import java.util.List;
-
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlElementWrapper;
-import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlType;
-
-@XmlRootElement(name = "MultipleChoiceItem")
-@XmlType(name = "MultipleChoiceItem")
-public class MultipleChoiceItem extends Item
-{
-	private Stem stem;
-	private ItemImage image;
-	private List<Option> options;
-
-    @XmlElement(name = "Stem")
-	public Stem getStem()
-	{
-		return stem;
-	}
-	public void setStem(Stem stem)
-	{
-		this.stem = stem;
-	}
-    @XmlElement(name = "ItemImage")
-	public ItemImage getImage()
-	{
-		return image;
-	}
-	public void setImage(ItemImage image)
-	{
-		this.image = image;
-	}
-	@XmlElementWrapper(name = "Options")
-    @XmlElement(name = "Option")
-	public List<Option> getOptions()
-	{
-		return options;
-	}
-	public void setOptions(List<Option> options)
-	{
-		this.options = options;
-	}
-}
-*/

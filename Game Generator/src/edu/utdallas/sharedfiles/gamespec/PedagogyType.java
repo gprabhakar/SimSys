@@ -39,7 +39,7 @@ import javax.xml.bind.annotation.XmlType;
 public class PedagogyType {
 
  @XmlElement(name = "PedagogyName", required = true)
- protected String pedagogyName;
+ private String pedagogyName;
 
  /**
   * Gets the value of the pedagogyName property.
@@ -49,7 +49,7 @@ public class PedagogyType {
   *     {@link String }
   *
   */
- public String getPedagogyName() {
+ public final String getPedagogyName() {
      return pedagogyName;
  }
 
@@ -61,7 +61,7 @@ public class PedagogyType {
   *     {@link String }
   *
   */
- public void setPedagogyName(String value) {
+ public final void setPedagogyName(final String value) {
      this.pedagogyName = value;
  }
 

@@ -40,7 +40,7 @@ import javax.xml.bind.annotation.XmlType;
 public class LearningObjectiveType {
 
     @XmlElement(name = "LearningObjective", required = true)
-    protected String learningObjective;
+    private String learningObjective;
 
     /**
      * Gets the value of the learningObjective property.
@@ -50,7 +50,7 @@ public class LearningObjectiveType {
      *     {@link String }
      *
      */
-    public String getLearningObjective() {
+    public final String getLearningObjective() {
         return learningObjective;
     }
 
@@ -62,7 +62,7 @@ public class LearningObjectiveType {
      *     {@link String }
      *
      */
-    public void setLearningObjective(String value) {
+    public final void setLearningObjective(final String value) {
         this.learningObjective = value;
     }
 

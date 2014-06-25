@@ -40,7 +40,7 @@ import javax.xml.bind.annotation.XmlType;
 public class MusicType {
 
     @XmlElement(name = "Music", required = true)
-    protected String music;
+    private String music;
 
     /**
      * Gets the value of the music property.
@@ -50,7 +50,7 @@ public class MusicType {
      *     {@link String }
      *
      */
-    public String getMusic() {
+    public final String getMusic() {
         return music;
     }
 
@@ -62,7 +62,7 @@ public class MusicType {
      *     {@link String }
      *
      */
-    public void setMusic(String value) {
+    public final void setMusic(final String value) {
         this.music = value;
     }
 

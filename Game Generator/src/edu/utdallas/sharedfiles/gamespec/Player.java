@@ -54,14 +54,13 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
     "playerID"
 })
 public class Player
-    extends Character
-{
+    extends Character {
 
     @XmlElement(name = "PlayerID", required = true)
     @XmlJavaTypeAdapter(CollapsedStringAdapter.class)
     @XmlID
     @XmlSchemaType(name = "ID")
-    protected String playerID;
+    private String playerID;
 
     /**
      * Gets the value of the playerID property.
@@ -71,7 +70,7 @@ public class Player
      *     {@link String }
      *
      */
-    public String getPlayerID() {
+    public final String getPlayerID() {
         return playerID;
     }
 
@@ -83,7 +82,7 @@ public class Player
      *     {@link String }
      *
      */
-    public void setPlayerID(String value) {
+    public final void setPlayerID(final String value) {
         this.playerID = value;
     }
 

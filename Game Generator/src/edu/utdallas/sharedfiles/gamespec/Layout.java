@@ -39,7 +39,7 @@ import javax.xml.bind.annotation.XmlType;
 public class Layout {
 
  @XmlElement(name = "LayoutName", required = true)
- protected String layoutName;
+ private String layoutName;
 
  /**
   * Gets the value of the layoutName property.
@@ -49,7 +49,7 @@ public class Layout {
   *     {@link String }
   *
   */
- public String getLayoutName() {
+ public final String getLayoutName() {
      return layoutName;
  }
 
@@ -61,7 +61,7 @@ public class Layout {
   *     {@link String }
   *
   */
- public void setLayoutName(String value) {
+ public final void setLayoutName(final String value) {
      this.layoutName = value;
  }
 

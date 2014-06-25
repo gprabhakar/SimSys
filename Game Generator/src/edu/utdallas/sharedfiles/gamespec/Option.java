@@ -48,13 +48,13 @@ import javax.xml.bind.annotation.XmlType;
 public class Option {
 
     @XmlElement(name = "Assessment", required = true)
-    protected String assessment;
+    private String assessment;
     @XmlElement(name = "Reward", required = true)
-    protected String reward;
+    private String reward;
     @XmlElement(name = "Feedback", required = true)
-    protected String feedback;
+    private String feedback;
     @XmlElement(name = "Hint")
-    protected Hint hint;
+    private Hint hint;
 
     /**
      * Gets the value of the assessment property.
@@ -64,7 +64,7 @@ public class Option {
      *     {@link String }
      *
      */
-    public String getAssessment() {
+    public final String getAssessment() {
         return assessment;
     }
 
@@ -76,7 +76,7 @@ public class Option {
      *     {@link String }
      *
      */
-    public void setAssessment(String value) {
+    public final void setAssessment(final String value) {
         this.assessment = value;
     }
 
@@ -88,7 +88,7 @@ public class Option {
      *     {@link String }
      *
      */
-    public String getReward() {
+    public final String getReward() {
         return reward;
     }
 
@@ -100,7 +100,7 @@ public class Option {
      *     {@link String }
      *
      */
-    public void setReward(String value) {
+    public final void setReward(final String value) {
         this.reward = value;
     }
 
@@ -112,7 +112,7 @@ public class Option {
      *     {@link String }
      *
      */
-    public String getFeedback() {
+    public final String getFeedback() {
         return feedback;
     }
 
@@ -124,7 +124,7 @@ public class Option {
      *     {@link String }
      *
      */
-    public void setFeedback(String value) {
+    public final void setFeedback(final String value) {
         this.feedback = value;
     }
 
@@ -136,7 +136,7 @@ public class Option {
      *     {@link HintType }
      *
      */
-    public Hint getHint() {
+    public final Hint getHint() {
         return hint;
     }
 
@@ -148,7 +148,7 @@ public class Option {
      *     {@link HintType }
      *
      */
-    public void setHint(Hint value) {
+    public final void setHint(final Hint value) {
         this.hint = value;
     }
 

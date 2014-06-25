@@ -44,11 +44,10 @@ import javax.xml.bind.annotation.XmlType;
     EducationInteraction.class
 })
 public class Prop
-    extends GameElementType
-{
+    extends GameElementType {
 
     @XmlElement(name = "Hint", required = true)
-    protected Hint hint;
+    private Hint hint;
 
     /**
      * Gets the value of the hint property.
@@ -58,7 +57,7 @@ public class Prop
      *     {@link HintType }
      *
      */
-    public Hint getHint() {
+    public final Hint getHint() {
         return hint;
     }
 
@@ -70,7 +69,7 @@ public class Prop
      *     {@link HintType }
      *
      */
-    public void setHint(Hint value) {
+    public final void setHint(final Hint value) {
         this.hint = value;
     }
 

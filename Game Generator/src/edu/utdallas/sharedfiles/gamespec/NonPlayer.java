@@ -36,7 +36,7 @@ public class NonPlayer
 {
 
     @XmlElement(name = "NonPlayerID")
-    protected List<String> nonPlayerID;
+    private List<String> nonPlayerID;
 
     /**
      * Gets the value of the nonPlayerID property.
@@ -55,12 +55,13 @@ public class NonPlayer
      *
      *
      * <p>
-     * Objects of the following type(s) are allowed in the list
-     * {@link String }
+     * @return
+     *    possible object is
+     *    {@link String }
      *
      *
      */
-    public List<String> getNonPlayerID() {
+    public final List<String> getNonPlayerID() {
         if (nonPlayerID == null) {
             nonPlayerID = new ArrayList<String>();
         }
@@ -68,16 +69,3 @@ public class NonPlayer
     }
 
 }
-
-
-/*
-import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlType;
-
-@XmlRootElement(name = "NonPlayerCharacter")
-@XmlType(name = "NonPlayerCharacter")
-public class NonPlayerCharacter extends Character
-{
-
-}*/
-
