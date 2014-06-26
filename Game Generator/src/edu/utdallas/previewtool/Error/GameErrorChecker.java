@@ -61,7 +61,7 @@ public class GameErrorChecker
 			}
 			
 			// Check for global character errors
-			if(game.getCharacters() == null || game.getCharacters().size() == 0)
+			if(game.getCharacter() == null || game.getCharacter().size() == 0)
 			{
 				errors.add(new PreviewError(Level.GAME, Severity.HIGH, "No <Characters> detected in Game") {
 					public void fixError() { } //TODO
@@ -69,7 +69,7 @@ public class GameErrorChecker
 			}
 			else
 			{
-				List<Character> characters = game.getCharacters();
+				List<Character> characters = game.getCharacter();
 				for(int i = 0; i < characters.size(); i++)
 				{
 					// Need a way to refer to which Character has an error
@@ -164,7 +164,7 @@ public class GameErrorChecker
 
 			// Check for Act-level errors
 			//TODO Acts wrapper check needed, or if this is not possible may need to change error to be more general
-			if(game.getActs() == null || game.getActs().size() == 0)
+			if(game.getAct() == null || game.getAct().size() == 0)
 			{
 				errors.add(new PreviewError(Level.ACT, Severity.HIGH, "No <Acts> detected in Game") {
 					public void fixError() { } //TODO
@@ -172,7 +172,7 @@ public class GameErrorChecker
 			}
 			else
 			{
-				List<Act> acts = game.getActs();
+				List<Act> acts = game.getAct();
 				for(int i = 0; i < acts.size(); i++)
 				{
 					// Need a way to refer to which Act has an error
@@ -187,7 +187,7 @@ public class GameErrorChecker
 					
 					//Check for Scene-level errors
 					//TODO Scenes wrapper check needed, or if this is not possible may need to change error to be more general
-					List<Scene> scenes = acts.get(i).getScenes();
+					List<Scene> scenes = acts.get(i).getScene();
 					if(scenes == null || scenes.size() == 0)
 					{
 						errors.add(new PreviewError(Level.SCENE, Severity.HIGH, "No <Scenes> detected for " + aName) {
@@ -216,7 +216,7 @@ public class GameErrorChecker
 							//TODO: should we warn about no background audio?
 							//TODO: Ryan 4/8 10AM "Don't think so, Longstreet never specified that backgeound music is mandatory"
 							//Check for Screen-level errors
-							List<Screen> screens = scenes.get(j).getScreens();
+							List<Screen> screens = scenes.get(j).getScreen();
 							if(screens == null || screens.size() == 0)
 							{
 								errors.add(new PreviewError(Level.SCREEN, Severity.HIGH, "No <Screens> detected for " + sName) {
@@ -356,7 +356,7 @@ public class GameErrorChecker
 												});
 											}
 											
-											Introduction intro = qChallenge.getIntro();
+											Introduction intro = qChallenge.getIntroduction();
 											if(intro == null)
 											{
 												errors.add(new PreviewError(Level.SCREEN, Severity.MEDIUM, "No Introduction in Challenge in " + srName) {

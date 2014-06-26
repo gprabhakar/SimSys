@@ -351,11 +351,11 @@ public class InputWizard implements ActionListener {
           			scenePanel.clear();
           			System.out.println("calling clear scene node\n");
           			scenePanel.loadBackground(s.getBackground());
-          			scenePanel.backgroundMusicPreview(lastSelectedScene.getBackgroundMusic() != null);
+          			scenePanel.backgroundMusicPreview(lastSelectedScene.getMusic() != null);
             	}
             	else if(isGameNode(selectedNode))
             	{
-            		List<Character> chars = game.getCharacters();
+            		List<Character> chars = game.getCharacter();
             		
             		scenePanel.clear();
             		System.out.println("calling clear rootnode\n");
@@ -817,7 +817,7 @@ public class InputWizard implements ActionListener {
 	private ArrayList<String> getGameGenericCharacterNames()
 	{
 		ArrayList<String> charStrings = new ArrayList<String>();
-		for(Character ch : game.getCharacters())
+		for(Character ch : game.getCharacter())
 		{
 			String filePath = ch.getProfile().getProfilePhoto();
 			String charName = filePath.substring(0, filePath.indexOf('\\'));
@@ -960,19 +960,19 @@ public class InputWizard implements ActionListener {
         rootNode.setUserObject(game1);
         ((DefaultTreeModel) gameTree.getModel()).setRoot(rootNode);
 		
-		List<Act> acts = game1.getActs();
+		List<Act> acts = game1.getAct();
 		for(int i = 0; i < acts.size(); i++)
 		{
 			DefaultMutableTreeNode actNode = new DefaultMutableTreeNode("Act " + (i + 1));
 			actNode.setUserObject(acts.get(i));
 			
-			List<Scene> scenes = acts.get(i).getScenes();
+			List<Scene> scenes = acts.get(i).getScene();
 			for(int j = 0; j < scenes.size(); j++)
 			{
 				DefaultMutableTreeNode sceneNode = new DefaultMutableTreeNode("Scene " + (j + 1));
 				sceneNode.setUserObject(scenes.get(j));
 				actNode.add(sceneNode);
-				List<Screen> screens = scenes.get(j).getScreens();
+				List<Screen> screens = scenes.get(j).getScreen();
 				for(int k = 0; k < screens.size(); k++)
 				{
 					DefaultMutableTreeNode screenNode = new DefaultMutableTreeNode("Screen " + (k + 1));
@@ -982,15 +982,15 @@ public class InputWizard implements ActionListener {
 					{
 						QuizChallenge challenge = (QuizChallenge)screens.get(k).getChallenge();
 
-						Introduction intro = challenge.getIntro();
+						Introduction intro = challenge.getIntroduction();
 						if(intro != null)
 						{
 							DefaultMutableTreeNode introNode = new DefaultMutableTreeNode("Introduction");
-							introNode.setUserObject(challenge.getIntro());
+							introNode.setUserObject(challenge.getIntroduction());
 							screenNode.add(introNode);
 						}
 						
-						List<Item> items = challenge.getItems();
+						List<Item> items = challenge.getItem();
 						if(items != null && items.size() > 0)
 						{
 							for(int m = 0; m < items.size(); m++)
@@ -1001,7 +1001,7 @@ public class InputWizard implements ActionListener {
 							}
 						}
 
-						List<Summary> summaries = challenge.getSummaries();
+						List<Summary> summaries = challenge.getSummary();
 						if(summaries != null && summaries.size() > 0)
 						{
 							for(int m = 0; m < summaries.size(); m++)
@@ -1442,7 +1442,7 @@ public class InputWizard implements ActionListener {
 			break;
 		case "backgroundToolbar":
 			backgroundSelectPath = null;
-			String currentBackgroundPath = lastSelectedScene.getBackground();
+			String currentBackgroundPath = lastSelectedScene.getBackground().getBackground();
 			currentBackgroundPath = currentBackgroundPath.substring(0, currentBackgroundPath.lastIndexOf('\\'));
 			backgroundSelectWindow.setBackgroundPathString(backgroundSelectPath);
 			backgroundSelectWindow.setBackgroundFolderPath(currentBackgroundPath);
@@ -1491,8 +1491,8 @@ public class InputWizard implements ActionListener {
 			break;
 		case "backgroundMusicPreviewPlay":
 			//TODO finish
-			if(lastSelectedScene.getBackgroundMusic()!=null){
-				String insideSoundFolderPath = lastSelectedScene.getBackgroundMusic();
+			if(lastSelectedScene.getMusic()!=null){
+				String insideSoundFolderPath = lastSelectedScene.getMusic().getMusic();
 				AudioPlayer.playAudio(soundFolder + insideSoundFolderPath);
 			} else {
 				System.out.println("Error: No background music found.");

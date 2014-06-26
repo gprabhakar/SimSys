@@ -38,9 +38,9 @@ public class MainTestChallenge
 		{
 			options.add(option);
 		}
-		item.setOptions(options);
+		item.setOption(options);
 		items.add(item);
-		challenge.setItems(items);
+		challenge.setItem(items);
 		
 		try {
 			 

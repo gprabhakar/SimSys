@@ -53,9 +53,9 @@ public class Structure {
     private void wireUpActs(List<Act> acts) {
         for(int i = 0; i < acts.size() - 1; i++) {
             Act act = acts.get(i);
-            UUID nextActId = acts.get(i+1).getScenes().get(0).getScreens().get(0).getId();
-            for(Scene scene : act.getScenes()) {
-                Screen screenNode = scene.getScreens().get(0);
+            UUID nextActId = acts.get(i+1).getScene().get(0).getScreen().get(0).getId();
+            for(Scene scene : act.getScene()) {
+                Screen screenNode = scene.getScreen().get(0);
                 if(screenNode.getAssets() != null) {
                     for(Asset asset : screenNode.getAssets()) {
                         if(asset.getBehaviors() != null) {
@@ -84,8 +84,8 @@ public class Structure {
             for(int b = 0; b < act.getScenes().size(); b++) {
                 Scene scene = act.getScenes().get(b);
                 scene.setName("Act" + a + " Scene" + b);
-                for(int c = 0; c < scene.getScreens().size(); c++) {
-                    Screen screen = scene.getScreens().get(c);
+                for(int c = 0; c < scene.getScreen().size(); c++) {
+                    Screen screen = scene.getScreen().get(c);
                     screen.setName("Act" + a + " Scene" + b + " Screen" + c);
                 }
             }
@@ -100,8 +100,8 @@ public class Structure {
             Act act = game.getActs().get(a);
             for(int b = 0; b < act.getScenes().size(); b++) {
                 Scene scene = act.getScenes().get(b);
-                for(int c = 0; c < scene.getScreens().size(); c++) {
-                    Screen screen = scene.getScreens().get(c);
+                for(int c = 0; c < scene.getScreen().size(); c++) {
+                    Screen screen = scene.getScreen().get(c);
                     for(int d = 0; d < screen.getAssets().size(); d++) {
                         Asset asset = screen.getAssets().get(d);
                         Asset newAsset = null;
@@ -152,7 +152,7 @@ public class Structure {
         List<Scene> scenes = new ArrayList<Scene>();
         for(int i = 0; i < screenNodes.size(); i++) {
             Scene scene = new Scene();
-            scene.setScreens(screenNodes.subList(i,i+1));
+            scene.setScreen(screenNodes.subList(i,i+1));
             scene.setBackground(screenNodes.get(i).getBackground());
             scenes.add(scene);
         }
