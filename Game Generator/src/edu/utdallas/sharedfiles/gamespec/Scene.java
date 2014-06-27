@@ -56,7 +56,7 @@ public class Scene
  @XmlElement(name = "Screen", required = true)
  private List<Screen> screen;
  @XmlElement(name = "Background", required = true)
- private BackgroundType background;
+ private Background background;
  @XmlElement(name = "Music")
  private MusicType music;
 
@@ -129,10 +129,10 @@ public class Scene
   *
   * @return
   *     possible object is
-  *     {@link BackgroundType }
+  *     {@link Background }
   *
   */
- public final BackgroundType getbackground() {
+ public final Background getBackground() {
      return background;
  }
 
@@ -141,10 +141,10 @@ public class Scene
   *
   * @param value
   *     allowed object is
-  *     {@link BackgroundType }
+  *     {@link Background }
   *
   */
- public final void setBackground(final BackgroundType value) {
+ public final void setBackground(final Background value) {
      this.background = value;
  }
 

@@ -265,7 +265,7 @@ public class ScenePanel extends JPanel
 				label.setBackground(Color.YELLOW);
 				label.setOpaque(true);
 				if(a.getHint() != null){
-					JLabel hint = new JLabel(a.getHint().getText());
+					JLabel hint = new JLabel(a.getHint().getHint());
 					hint.setFont(new Font(a.getFontFamily(), Font.PLAIN, a.getFontSize()));
 					hint.setHorizontalAlignment(JLabel.CENTER);
 					hint.setForeground(Color.BLACK);
@@ -693,6 +693,7 @@ public class ScenePanel extends JPanel
 		JPanel actDisplay = new JPanel();
 		actDisplay.setBounds(0,0,that.getWidth(),that.getHeight());
 		actDisplay.setBackground(Color.red);
+		/*
 		JLabel actText = new JLabel("<html><p style=\"text-align:center\">" + act.getName() + "</p></html>");
 		actText.setBounds(actDisplay.getX()+(actDisplay.getWidth()/8), actDisplay.getY()+(actDisplay.getHeight()/20), actDisplay.getWidth()/2, actDisplay.getHeight()/4);
 		actText.setBackground(Color.WHITE);
@@ -701,7 +702,7 @@ public class ScenePanel extends JPanel
 		actText.setFont(new Font("Comic Sans MS", Font.BOLD, 76));
 		actText.setHorizontalAlignment(JLabel.CENTER);
 		actText.setVerticalAlignment(JLabel.CENTER);
-		actText.setOpaque(true);
+		actText.setOpaque(true);*/
 		JLabel actTextShadow = new JLabel();
 		actTextShadow.setBounds(actDisplay.getX()+(actDisplay.getWidth()/8)+4, actDisplay.getY()+(actDisplay.getHeight()/20)+4, actDisplay.getWidth()/2, actDisplay.getHeight()/4);
 		actTextShadow.setBackground(new Color(150, 36, 36));
@@ -709,7 +710,7 @@ public class ScenePanel extends JPanel
 		if(act.getLearningObjective() != null){
 			//TODO Hard coded for WDPI but would just need to add a source in XML and a act.getSource
 			//TODO Also HTMLListWrap needs a nesting component to nest 1.1.1 within 1.1 when necessary.
-			JLabel actLearningObjectives = new JLabel("<html><p style=\"text-align:left\">Learning Objectives provided by WDPI" + htmlListWrap(act.getLearningObjective()) + "</p></html>");
+			JLabel actLearningObjectives = new JLabel("<html><p style=\"text-align:left\">Learning Objectives provided by WDPI" + (act.getLearningObjective().getLearningObjective()) + "</p></html>");
 			actLearningObjectives.setBounds(actDisplay.getWidth()/16, (actDisplay.getHeight()/3) +15, actDisplay.getWidth()/8 *7, (actDisplay.getHeight()/2)+20);
 			actLearningObjectives.setBackground(Color.WHITE);
 			actLearningObjectives.setForeground(Color.BLACK);
@@ -719,7 +720,7 @@ public class ScenePanel extends JPanel
 			actLearningObjectives.setOpaque(true);
 			add(actLearningObjectives);
 		}
-		add(actText);
+		//add(actText);
 		add(actTextShadow);
 		add(actDisplay);
 		

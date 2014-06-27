@@ -15,6 +15,7 @@ import edu.utdallas.sharedfiles.gamespec.QuizChallenge;
 import edu.utdallas.sharedfiles.gamespec.Stem;
 import edu.utdallas.sharedfiles.gamespec.StemQuestion;
 import edu.utdallas.sharedfiles.gamespec.StemText;
+import edu.utdallas.sharedfiles.gamespec.Hint;
 
 public class MainTestChallenge 
 {
@@ -26,21 +27,27 @@ public class MainTestChallenge
 		ArrayList<Option> options = new ArrayList<Option>();
 		Stem stem = new Stem();
 		StemText st = new StemText();
-		st.setText("this explains whatever");
+		Hint stHint = new Hint();
+		Hint stemQHint = new Hint();
+		Hint optionHint = new Hint();
+		stHint.setHint("this explains whatever");
+		st.setHint(stHint);
 		stem.setStemText(st);
 		StemQuestion sq = new StemQuestion();
-		sq.setText("answer this question");
+		stemQHint.setHint("answer this question");
+		sq.setHint(stemQHint);
 		stem.setStemQuestion(sq);
 		item.setStem(stem);
 		Option option = new Option();
-		option.setText("an option");
+		optionHint.setHint("an option");
+		option.setHint(optionHint);
 		for(int i = 0; i < 4; i++)
 		{
 			options.add(option);
 		}
-		item.setOption(options);
+		item.setItemname("ItemTest");
 		items.add(item);
-		challenge.setItem(items);
+		//challenge.setItem(items);
 		
 		try {
 			 

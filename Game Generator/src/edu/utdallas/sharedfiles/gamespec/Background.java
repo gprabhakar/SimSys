@@ -37,10 +37,10 @@ import javax.xml.bind.annotation.XmlType;
 @XmlType(name = "BackgroundType", propOrder = {
     "background"
 })
-public class BackgroundType {
+public class Background {
 
     @XmlElement(name = "Background", required = true)
-    protected String background;
+    private String background;
 
     /**
      * Gets the value of the background property.
@@ -50,7 +50,7 @@ public class BackgroundType {
      *     {@link String }
      *
      */
-    public String getBackground() {
+    public final String getBackground() {
         return background;
     }
 
@@ -62,7 +62,7 @@ public class BackgroundType {
      *     {@link String }
      *
      */
-    public void setBackground(String value) {
+    public final void setBackground(final String value) {
         this.background = value;
     }
 
