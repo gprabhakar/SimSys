@@ -231,7 +231,7 @@ public class GameErrorChecker
 												
 												Item item = qChallenge.getItem();
 												//Catches C_13 & C_14
-												if(items == null || items.size() == 0) 
+												if(item == null ) 
 												{
 													errors.add(new PreviewError(Level.SCREEN, Severity.MEDIUM, "There are no Questions in the Challenge in " + srName) {
 														public void fixError() { } //TODO
@@ -239,15 +239,15 @@ public class GameErrorChecker
 												} 
 												else 
 												{
-													for (int u = 0; u < items.size(); u++)
+													for (int u = 0; u < 1; u++) //TODO get rid of for loop entirely
 													{
-														if(items.get(u) instanceof MultipleChoiceItem)
+														if(item instanceof MultipleChoiceItem)
 														{
-															MultipleChoiceItem mcItem = (MultipleChoiceItem) items.get(u);
+															MultipleChoiceItem mcItem = (MultipleChoiceItem) item;
 															
-															List<Option> options = mcItem.getOptions();
+															Option option = mcItem.getOption();
 															//Catches C_15 & C_16
-															if(options == null || options.size() == 0) 
+															if(option == null) 
 															{
 																errors.add(new PreviewError(Level.SCREEN, Severity.MEDIUM, "There are no answers to choose from in Question " + (u+1) +" in " + srName) {
 																	public void fixError() { } //TODO
@@ -255,16 +255,15 @@ public class GameErrorChecker
 															}
 															else
 															{
-																for(Option o : options)
-																{
-																	if(o == null || isNullOrEmpty(o.getText()))
+																	if(option == null || isNullOrEmpty(option.getHint().getHint()))
 																	{
-																		errors.add(new PreviewError(Level.SCREEN, Severity.LOW, "Option in Challenge Question in " + srName + " has no text") {
+																		errors.add(new PreviewError(Level.SCREEN, Severity.LOW, "Option in Challenge Question in " + srName + " has no hint") {
 																			public void fixError() { } //TODO
 																		});
 																	}
-																}
+																
 															}
+															/*Editing this out, since there's only one option right now.
 															if(options.size() == 1)
 															{
 																errors.add(new PreviewError(Level.SCREEN, Severity.LOW, "Only one response in Challenge Question in " + srName) {
@@ -277,7 +276,7 @@ public class GameErrorChecker
 																	public void fixError() { } //TODO
 																});
 															}
-															
+															*/
 															Stem stem = mcItem.getStem();
 															if(stem == null)
 															{
@@ -293,7 +292,7 @@ public class GameErrorChecker
 																		public void fixError() { } //TODO
 																	});
 																}
-																else if(isNullOrEmpty(stem.getStemQuestion().getText()))
+																else if(isNullOrEmpty(stem.getStemQuestion().getHint().getHint()))
 																{
 																	errors.add(new PreviewError(Level.SCREEN, Severity.LOW, "STEM Question with empty Text field in Challenge in " + srName) {
 																		public void fixError() { } //TODO
@@ -305,7 +304,7 @@ public class GameErrorChecker
 																		public void fixError() { } //TODO
 																	});
 																}
-																else if(isNullOrEmpty(stem.getStemText().getText()))
+																else if(isNullOrEmpty(stem.getStemText().getHint().getHint()))
 																{
 																	errors.add(new PreviewError(Level.SCREEN, Severity.LOW, "STEM Text with empty Text field in Challenge in " + srName) {
 																		public void fixError() { } //TODO
