@@ -80,7 +80,7 @@ public class Scene
   *     {@link LearningObjectiveType }
   *
   */
- public final void setLearningObjective(LearningObjectiveType value) {
+ public final void setLearningObjective(final LearningObjectiveType value) {
      this.learningObjective = value;
  }
 
