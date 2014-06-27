@@ -169,6 +169,7 @@ public class InputWizard implements ActionListener {
 			public void windowClosed(WindowEvent e) { }
 			public void windowClosing(WindowEvent e) { }
 			public void windowDeactivated(WindowEvent e) {
+				/*
 				if(characterSelectWindow.getNewCharacterAsset() == null)
 				{
 					return;
@@ -179,7 +180,7 @@ public class InputWizard implements ActionListener {
 					currentAssets.add(characterSelectWindow.getNewCharacterAsset());
 					lastSelectedScreen.setAssets(currentAssets);
 					displayScreen(lastSelectedScene, lastSelectedScreen);
-				}
+				}*/
 			}
 			public void windowDeiconified(WindowEvent e) { }
 			public void windowIconified(WindowEvent e) { }
@@ -193,6 +194,7 @@ public class InputWizard implements ActionListener {
 			public void windowClosed(WindowEvent e) { }
 			public void windowClosing(WindowEvent e) { }
 			public void windowDeactivated(WindowEvent e) {
+				/*
 				if(propSelectWindow.getNewImageAsset() == null)
 				{
 					return;
@@ -203,7 +205,7 @@ public class InputWizard implements ActionListener {
 					currentAssets.add(propSelectWindow.getNewImageAsset());
 					lastSelectedScreen.setAssets(currentAssets);
 					displayScreen(lastSelectedScene, lastSelectedScreen);
-				}
+				}*/
 			}
 			public void windowDeiconified(WindowEvent e) { }
 			public void windowIconified(WindowEvent e) { }
@@ -223,7 +225,7 @@ public class InputWizard implements ActionListener {
 				}
 				else
 				{
-					lastSelectedScene.setBackground(backgroundSelectWindow.getNewBackgroundPath());
+					lastSelectedScreen.setBackground(backgroundSelectWindow.getNewBackgroundPath());
 					scenePanel.loadBackground(lastSelectedScene.getBackground());
 				}
 			}
@@ -379,7 +381,7 @@ public class InputWizard implements ActionListener {
             			CharacterAsset c = new CharacterAsset();
 
             			//set image path for character
-            			c.setDisplayImage(ca.getProfile().getProfilePhoto());
+            			//c.setDisplayImage(ca.getProfile().getProfilePhoto());
             			//make all images the standard character width and height
             			c.setWidth(defaultWidth);
             			c.setHeight(defaultHeight);
