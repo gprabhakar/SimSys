@@ -35,7 +35,7 @@ public class Structure {
         }
         acts.add(createActFromScreens(theme.getOutro()));
         game = new Game();
-        game.setActs(acts);
+        game.setAct(acts);
 
         wireUpActs(acts);
         nameEverything();
@@ -53,14 +53,19 @@ public class Structure {
     private void wireUpActs(List<Act> acts) {
         for(int i = 0; i < acts.size() - 1; i++) {
             Act act = acts.get(i);
-            UUID nextActId = acts.get(i+1).getScene().get(0).getScreen().get(0).getId();
+            // Commenting out this line as new spec does not have Id field for Screen
+            //UUID nextActId = acts.get(i+1).getScene().get(0).getScreen().get(0).getId();  
             for(Scene scene : act.getScene()) {
                 Screen screenNode = scene.getScreen().get(0);
-                if(screenNode.getAssets() != null) {
+                
+                // Commenting out this line as new spec does not have Asset field for Screen
+                // Need to set transition here I guess - Prabha
+                
+                /*if(screenNode.getAssets() != null) {
                     for(Asset asset : screenNode.getAssets()) {
                         if(asset.getBehaviors() != null) {
                             for(Behavior behavior : asset.getBehaviors()) {
-                                if(behavior != null &&
+                               if(behavior != null &&
                                         BehaviorType.TRANSITION_BEHAVIOR.equals(behavior.getBehaviorType()) &&
                                         behavior.getTransitionId() == null) {
                                     behavior.setTransitionId(nextActId);
@@ -68,7 +73,7 @@ public class Structure {
                             }
                         }
                     }
-                }
+                }*/
             }
         }
     }
@@ -76,17 +81,19 @@ public class Structure {
     /**
      * Names all acts, scenes, and screens in the game
      */
+    // This whole method seems unnecessary as it Names game, acts, scenes, screen but they don't have name field
     private void nameEverything() {
-        game.setName("Game");
-        for(int a = 0; a < game.getActs().size(); a++) {
-            Act act = game.getActs().get(a);
-            act.setName("Act" + a);
-            for(int b = 0; b < act.getScenes().size(); b++) {
-                Scene scene = act.getScenes().get(b);
-                scene.setName("Act" + a + " Scene" + b);
+        // No Name field for Game, Act, Scene, Screen in new spec
+    	//  game.setName("Game");
+        for(int a = 0; a < game.getAct().size(); a++) {
+            Act act = game.getAct().get(a);
+           // act.setName("Act" + a);
+            for(int b = 0; b < act.getScene().size(); b++) {
+                Scene scene = act.getScene().get(b);
+                //scene.setName("Act" + a + " Scene" + b);
                 for(int c = 0; c < scene.getScreen().size(); c++) {
-                    Screen screen = scene.getScreen().get(c);
-                    screen.setName("Act" + a + " Scene" + b + " Screen" + c);
+                   // Screen screen = scene.getScreen().get(c);
+                   // screen.setName("Act" + a + " Scene" + b + " Screen" + c);
                 }
             }
         }
@@ -96,12 +103,13 @@ public class Structure {
      * Converts every asset into it a new object of the correct type
      */
     private void convertAssetsAndBehaviors() {
-        for(int a = 0; a < game.getActs().size(); a++) {
-            Act act = game.getActs().get(a);
-            for(int b = 0; b < act.getScenes().size(); b++) {
-                Scene scene = act.getScenes().get(b);
+        for(int a = 0; a < game.getAct().size(); a++) {
+            Act act = game.getAct().get(a);
+            for(int b = 0; b < act.getScene().size(); b++) {
+                Scene scene = act.getScene().get(b);
                 for(int c = 0; c < scene.getScreen().size(); c++) {
                     Screen screen = scene.getScreen().get(c);
+                    // Assets are not a part in the new game spec. I'm not sure what replaces assets in screen
                     for(int d = 0; d < screen.getAssets().size(); d++) {
                         Asset asset = screen.getAssets().get(d);
                         Asset newAsset = null;
@@ -118,6 +126,7 @@ public class Structure {
                         } else if ("ThoughtBubbleAsset".equals(asset.getType())) {
                             newAsset = new ThoughtBubbleAsset(asset);
                         }
+                        
                         if(newAsset != null) {
                             screen.getAssets().set(d, newAsset);
                         }
@@ -153,10 +162,11 @@ public class Structure {
         for(int i = 0; i < screenNodes.size(); i++) {
             Scene scene = new Scene();
             scene.setScreen(screenNodes.subList(i,i+1));
-            scene.setBackground(screenNodes.get(i).getBackground());
+            // getBackground is in Scene in new spec and not in Screen
+            scene.setBackground(scene.getBackground());
             scenes.add(scene);
         }
-        act.setScenes(scenes);
+        act.setScene(scenes);
         return act;
     }
 

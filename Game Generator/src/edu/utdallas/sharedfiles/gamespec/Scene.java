@@ -132,7 +132,7 @@ public class Scene
   *     {@link BackgroundType }
   *
   */
- public final BackgroundType getbackground() {
+ public final BackgroundType getBackground() {
      return background;
  }
 
