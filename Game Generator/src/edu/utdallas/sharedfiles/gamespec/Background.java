@@ -8,9 +8,9 @@ import javax.xml.bind.annotation.XmlType;
 
 /**
  * <p>Java class for BackgroundType complex type.
- * 
+ *
  * <p>The following schema fragment specifies the expected content contained within this class.
- * 
+ *
  * <pre>
  * &lt;complexType name="BackgroundType">
  *   &lt;complexContent>
@@ -22,39 +22,39 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;/complexContent>
  * &lt;/complexType>
  * </pre>
- * 
- * 
+ *
+ *
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "BackgroundType", propOrder = {
     "background"
 })
-public class BackgroundType {
+public class Background {
 
     @XmlElement(name = "Background", required = true)
-    protected String background;
+    private String background;
 
     /**
      * Gets the value of the background property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link String }
-     *     
+     *
      */
-    public String getBackground() {
+    public final String getBackground() {
         return background;
     }
 
     /**
      * Sets the value of the background property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link String }
-     *     
+     *
      */
-    public void setBackground(String value) {
+    public final void setBackground(final String value) {
         this.background = value;
     }
 
