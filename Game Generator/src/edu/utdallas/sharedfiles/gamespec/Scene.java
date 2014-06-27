@@ -1,3 +1,4 @@
+
 package edu.utdallas.sharedfiles.gamespec;
 
 //
@@ -171,5 +172,4 @@ public class Scene
  public final void setMusic(final MusicType value) {
      this.music = value;
  }
-
 }

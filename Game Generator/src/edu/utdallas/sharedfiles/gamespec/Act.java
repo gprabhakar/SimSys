@@ -52,7 +52,8 @@ public class Act extends GameUnitType {
  @XmlElement(name = "Scene", required = true)
  private List<Scene> scene;
 
- /**
+
+/**
   * Gets the value of the learningObjective property.
   *
   * @return
@@ -105,5 +106,9 @@ public class Act extends GameUnitType {
      }
      return this.scene;
  }
+// Sets list of scenes for the act
+ public void setScene(List<Scene> scene) {
+	this.scene = scene;
+}
 
 }

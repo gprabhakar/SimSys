@@ -1,0 +1,383 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!--       -->
+<!-- Top Level Game -->
+<!-- Test Game 4 contains 1 act, 1 scene, 2 screens and a challenge-->
+<!-- **FINALIZED  -->
+<game>
+     <!--       -->
+     <!-- The game contains a default player with an initial point of 1000 -->
+     <!--       -->
+<gameElement xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="PLAYER">
+           <location>OSR</location>
+           <size>LARGE</size>
+           <!--       -->
+           <!-- The profile of the player starts here -->
+           <!--       -->
+           <profile>
+                <name> Default Player </name>
+                <type> Protagonist </type>
+		<!--		-->
+		<!-- The player title change to Junior Programmer on successful completion of challenge 1 -->
+		<!--		-->
+                <title> Intern, Software Engineering </title>
+                <skills> Software engineering, Unified Process, agile methods, project management, OO programming, IDE, configuration management, UML case tool, UM notation. </skills>
+                <experience> 0 </experience>
+                <communication> Good </communication>
+                <leadership> Good </leadership>
+                <teamwork> Good </teamwork>
+                <demographics> Male, Caucasian </demographics>
+                <degrees> NONE </degrees>
+           </profile>
+           <reward>
+                <certificates>0</certificates>
+                <hint>0</hint>
+                <!--       -->
+                <!-- The player initally has 1000 points -->
+                <!--       -->
+                <points>1000</points>
+                <promotions>0</promotions>
+                <trophies>0</trophies>
+           </reward>
+	   <behavior> 
+		<levelOfEngagement> Positive </levelOfEngagement>
+	   </behavior>
+     </gameElement>
+     <!--       -->
+     <!--       -->
+     <!-- The following section defines the constant values in test game 4 -->
+     <!--	-->
+     <!--	-->
+     <gameConstants>
+	   <!--		-->
+           <!-- This game has a scene backdrop which CUTS IN in 'QUICK' amount of time -->
+	   <!--		-->
+           <timer name="QUICK">
+                <value>150000</value>
+           </timer>           
+           <timer name="MODERATE">
+		   		<value>5000</value>
+		   </timer>
+     </gameConstants>
+     <!--       -->
+     <!--       -->
+     <!-- The static structure of the game starts here -->
+     <!--       -->
+     <!--       -->
+	
+	<actStructure>
+                     <!--       -->
+                     <!-- The act is identified as act1 -->
+                     <!--       -->
+		<gameElement xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="IDENTIFIER">
+			<id> act1 </id>
+		</gameElement>
+		<sceneStructure>			
+				<identifier> scene1 </identifier>						
+				<backdrop>blue_bg.png</backdrop>			
+			<screenStructure>
+				<gameElement xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+						xsi:type="prop">
+						<gameElement xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+							xsi:type="IDENTIFIER">
+							<id> screen1_a </id>
+						</gameElement>	
+				<challengeStructure>
+			    <quiz> 		    	     
+					<gameElement xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+						xsi:type="prop">
+						<gameElement xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+							xsi:type="IDENTIFIER">
+							<id> quiz1 </id>
+						</gameElement>
+					
+<!-- 
+++++ acts, scenes, screens, challenges are not game elements - need to rename
+++++ challenge can have one or more items in it (questions)
+++++ each item has learning objectives
+++++ each question has a learning objective type: dialogue, deliberation, composition
+++++ each option (answer) may have a hint
+++++ each option has an evaluation (present)
+++++ each option has a reward
+++++ each stem question may have a hint
+++++ please see sample questions in the quiz repository folder  -->
+						<stemDescription>
+							<type>
+							<typeName>InformationBox</typeName>
+							<event>
+								<eventName>NONE</eventName>
+								<animation>FADEIN</animation>
+								<time>QUICK</time>
+							</event>	
+							</type>		
+							<color>GREEN</color>
+							<location>UUC</location>
+							<size>EXTRA_LARGE</size>
+							<text> The designers need to use a complex AI algorithm that is available as a 3rd party component with an API. The designers know there are a number of possible components available on marketplace, which are undergoing extensive performance evaluations.</text>
+                            
+						</stemDescription>
+						<stemQuestion>
+							<type>
+								<typeName>InformationBox</typeName>
+							<event>
+								<eventName>NONE</eventName>
+								<animation>FADEIN</animation>
+								<time>QUICK</time>
+							</event>	
+							</type>							
+							<color>GREEN</color>
+							<location>UURC</location>
+							<size>EXTRA_LARGE</size>
+							<text> Which design pattern would be suitable to reduce the impact of this eventual recommendation? </text>					
+							<textSize>14</textSize>					
+						</stemQuestion>
+						<stemOption>
+						<type>
+							<typeName>Button</typeName>
+							<event>
+								<eventName>NONE</eventName>
+								<animation>FADEIN</animation>
+								<time>QUICK</time>
+							</event>
+							<event>
+								<eventName>Click</eventName>
+								<animation>FADEOUT</animation>								
+								<next> Screen1_b </next>
+							</event>
+						</type>
+							<name> Option1 </name>
+							<text> Strategy Pattern </text>
+							<location>UULC</location>
+							<color> GREEN </color>
+							<evaluation>Incorrect</evaluation>
+							<hint>The Strategy pattern defines a family of algorithms, encapsulates each one, and makes them interchangeable; algorithms are selected at runtime. It is a behavioral pattern.</hint>
+						</stemOption>
+						<stemOption>
+						<type>						
+							<typeName>Button</typeName>
+							<event>
+								<eventName>NONE</eventName>
+								<animation>FADEIN</animation>
+								<time>QUICK</time>
+							</event>
+							<event>
+								<eventName>Click</eventName>
+								<animation>FADEOUT</animation>								
+								<next> Screen1_b </next>
+							</event>
+						</type>
+							<name> Option2 </name>
+							<text> Bridge Pattern </text>
+							<location>URC</location>
+							<color> GREEN </color>
+							<evaluation>Correct</evaluation>
+							<hint>The Bridge pattern decouples an interface and its implementation. The implementation can be modified without changing the interface. It is a structural pattern.</hint>							
+						</stemOption>
+						<stemOption>
+						<type>
+							<typeName>Button</typeName>
+							<event>
+								<eventName>NONE</eventName>
+								<animation>FADEIN</animation>
+								<time>QUICK</time>
+							</event>
+							<event>
+								<eventName>Click</eventName>
+								<animation>FADEOUT</animation>								
+								<next> Screen1_b </next>
+							</event>
+						</type>
+						<name> Option3 </name>
+							<text> Factory Pattern </text>
+							<location>UR</location>
+							<color> GREEN </color>
+							<evaluation>Incorrect</evaluation>		
+							<hint>The Factory pattern defines an interface for creating an object, but lets the classes that implement the interface decide which class to instantiate.  It is a creational pattern.</hint>					
+						</stemOption>
+						<stemOption>
+						<type>
+							<typeName>Button</typeName>
+							<event>	
+								<eventName>NONE</eventName>
+								<animation>FADEIN</animation>
+								<time>QUICK</time>
+							</event>
+							<event>
+								<eventName>Click</eventName>
+								<animation>FADEOUT</animation>								
+								<next> Screen1_b </next>
+							</event>
+						</type>
+						<name> Option4 </name>
+							<text> Singleton Pattern </text>
+							<location>DDLC</location>
+							<color> GREEN </color>
+							<evaluation>Incorrect</evaluation>
+							<hint>The Singleton pattern that restricts the instantiation of a class to only one object. It is a creational pattern.</hint>
+						</stemOption>	
+													
+					</gameElement>	
+				  </quiz> 
+				</challengeStructure>
+								
+				</gameElement>
+			 	<gameElement xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+						xsi:type="prop">
+						<gameElement xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+							xsi:type="IDENTIFIER">
+							<id> screen2 </id>
+						</gameElement>
+						
+						<behavior>Submit</behavior>
+						<type>
+							<typeName>Button3</typeName>
+							<event>
+								<eventName>NONE</eventName>
+								<animation>FADEIN</animation>
+								<time>QUICK</time>
+							</event>
+							<event>
+								<eventName>CLICK</eventName>
+								<animation>FADEOUT</animation>
+								<time>QUICK</time>								
+							</event>
+                             	</type>
+						<color>GREEN</color>
+						<location>DC</location>
+						<size>SMALL</size>
+						
+						<!-- The below text is presented on the button1 -->
+						
+						<text>Submit </text>
+						<textSize>12</textSize>
+					    <font>Comic Sans MS-PLAIN-12</font>
+					    <next>screen56</next>						
+					</gameElement> 
+			</screenStructure>
+						
+			<screenStructure>
+				<gameElement xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+						xsi:type="prop">
+						<gameElement xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+							xsi:type="IDENTIFIER">
+							<id>screen56</id>
+						</gameElement>
+						<type>
+							<typeName>FeedbackBox1</typeName>							
+							<event>
+								<eventName>NONE</eventName>
+								<animation>FADEIN</animation>
+								<time>MODERATE</time>
+							</event>
+							<if>
+							    <evaluation>Correct</evaluation>
+							    <text> The Bridge Pattern is Correct! </text>
+							    <rewardPointsToAdd>500</rewardPointsToAdd>
+						        <rewardTitle>Junior Programmer</rewardTitle>							    
+							</if>
+							<if>
+							    <evaluation>Incorrect</evaluation>
+							    <text> Sorry - The correct answer is bridge pattern </text>
+							<textSize>12</textSize>
+							<font>Aerial</font>
+									    
+							</if>							
+						</type>	
+						<color>GREEN</color>
+						<location>DRC</location>
+						<size>MEDIUM</size>
+						<text>AAA</text>
+						<textSize>12</textSize>
+						<font>Aerial</font>
+						<next>screen3</next>
+				</gameElement>	
+			</screenStructure>						
+			
+			<screenStructure>
+				    <timer>NONE</timer>
+					<gameElement xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+						xsi:type="prop">
+						<gameElement xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+							xsi:type="IDENTIFIER">
+							<id>screen3</id>
+						</gameElement>
+						<!-- -->
+						<!-- The below properties are identified as screen2 -->
+						<!-- -->
+						<type>
+							<typeName>InformationBox</typeName>
+							<event>
+								<eventName>NONE</eventName>
+								<animation>FADEIN</animation>
+								<time>QUICK</time>
+							</event>
+							<event>
+								<eventName>ENDGAME</eventName>
+								<animation>FADEOUT</animation>
+								<time>QUICK</time>								
+							</event>
+							
+						</type>
+						<color>GREEN</color>
+							<location>UC</location>
+							<size>MEDIUM</size>
+							<!-- -->
+							<!-- The below text is appended with the points that the GetPoints 
+								method of the Reward class returns and is displayed on the view -->
+							<!-- The GetPoints method updates the points of the player adding the 
+								reward points to the player's initial player -->
+							<!-- -->
+							
+							
+						<text>Your points are </text>
+							<textSize>12</textSize>
+							<font>Aerial</font>
+						<behavior> Reward </behavior>
+						<next>screen4</next>
+						
+						
+					</gameElement>
+				</screenStructure>	
+				
+			<screenStructure>
+			<gameElement xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+						xsi:type="prop">
+						<gameElement xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+							xsi:type="IDENTIFIER">
+							<id> screen4 </id>
+						</gameElement>
+						<!-- -->
+						<!-- The Stop method to stop the all the acts, scenes and screens is 
+							called when the player clicks on button1 to stop the game -->
+						<!-- -->
+						<behavior>End</behavior>
+						<type>
+							<typeName>Button2</typeName>
+							<event>
+								<eventName>NONE</eventName>
+								<animation>FADEIN</animation>
+								<time>QUICK</time>
+							</event>
+							<event>
+								<eventName>CLICK</eventName>
+								<animation>FADEOUT</animation>
+								<time>QUICK</time>								
+							</event>
+                             
+						</type>
+						<color>GREEN</color>
+						<location>DLC</location>
+						<size>SMALL</size>
+						<!-- -->
+						<!-- The below text is presented on the button1 -->
+						<!-- -->
+						<text>End Game </text>
+						<textSize>12</textSize>
+					    <font>Comic Sans MS-PLAIN-12</font>
+					    <next>End Game</next>						
+					</gameElement>
+			</screenStructure>
+					
+		</sceneStructure>
+	</actStructure>				
+</game>
+	

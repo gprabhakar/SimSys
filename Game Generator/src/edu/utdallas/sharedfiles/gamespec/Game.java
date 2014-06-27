@@ -49,7 +49,10 @@ public class Game {
 
  @XmlElement(name = "Act", required = true)
  private List<Act> act;
- @XmlElement(name = "LearningObjective", required = true)
+ 
+ 
+
+@XmlElement(name = "LearningObjective", required = true)
  private List<LearningObjectiveType> learningObjective;
  @XmlElement(name = "Character", required = true)
  private List<Character> character;
@@ -83,7 +86,11 @@ public class Game {
      }
      return this.act;
  }
-
+ 
+//Sets a list of Act for the game
+public void setAct(List<Act> act) {
+	this.act = act;
+}
  /**
   * Gets the value of the learningObjective property.
   *
