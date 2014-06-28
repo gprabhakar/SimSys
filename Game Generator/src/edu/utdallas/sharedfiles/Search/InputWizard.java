@@ -225,8 +225,8 @@ public class InputWizard implements ActionListener {
 				}
 				else
 				{
-					lastSelectedScreen.setBackground(backgroundSelectWindow.getNewBackgroundPath());
-					scenePanel.loadBackground(lastSelectedScene.getBackground());
+					//lastSelectedScreen.setBackground(backgroundSelectWindow.getNewBackgroundPath());
+					//scenePanel.loadBackground(lastSelectedScene.getBackground());
 				}
 			}
 			public void windowDeiconified(WindowEvent e) { }
@@ -272,7 +272,7 @@ public class InputWizard implements ActionListener {
             	if (isQuestionNode(selectedNode))
             	{
             		Item item = (Item)selectedNode.getUserObject();
-            		Challenge challenge = ((Screen)((DefaultMutableTreeNode)selectedNode.getParent()).getUserObject()).getChallenge();
+            		Challenge challenge = ((Screen)((DefaultMutableTreeNode)selectedNode.getParent()).getUserObject()).getChallenge().get(0); //Temporary addition of .get(0) to make it play nice with a list
             		Scene scene = (Scene)((DefaultMutableTreeNode)selectedNode.getParent().getParent()).getUserObject();
             		selectedLevel = gameLevel.CHALLENGE;
             		characterButton.setEnabled(false);
@@ -302,8 +302,8 @@ public class InputWizard implements ActionListener {
             		textButton.setEnabled(false);
                     buttonButton.setEnabled(false);
             		
-            		scenePanel.loadAssets(intro.getAssets(), true);
-            		scenePanel.loadBackground(scene.getBackground());
+            		//scenePanel.loadAssets(intro.getAssets(), true);
+            		//scenePanel.loadBackground(scene.getBackground());
             	}
             	else if (isSummaryNode(selectedNode))
             	{
@@ -319,8 +319,8 @@ public class InputWizard implements ActionListener {
             		textButton.setEnabled(false);
                     buttonButton.setEnabled(false);
             		
-            		scenePanel.loadAssets(summary.getAssets(), true);
-            		scenePanel.loadBackground(scene.getBackground());
+            		//scenePanel.loadAssets(summary.getAssets(), true);
+            		//scenePanel.loadBackground(scene.getBackground());
             	}
             	else if (isScreenNode(selectedNode))
             	{
@@ -352,7 +352,7 @@ public class InputWizard implements ActionListener {
           			lastSelectedScene = s;
           			scenePanel.clear();
           			System.out.println("calling clear scene node\n");
-          			scenePanel.loadBackground(s.getBackground());
+          			//scenePanel.loadBackground(s.getBackground());
           			scenePanel.backgroundMusicPreview(lastSelectedScene.getMusic() != null);
             	}
             	else if(isGameNode(selectedNode))
@@ -821,8 +821,9 @@ public class InputWizard implements ActionListener {
 		ArrayList<String> charStrings = new ArrayList<String>();
 		for(Character ch : game.getCharacter())
 		{
-			String filePath = ch.getProfile().getProfilePhoto();
-			String charName = filePath.substring(0, filePath.indexOf('\\'));
+			//String filePath = ch.getProfile().getProfilePhoto();
+			//String charName = filePath.substring(0, filePath.indexOf('\\'));
+			String charName = ch.getName();
 			
 			if(!charStrings.contains(charName))
 			{
@@ -992,26 +993,29 @@ public class InputWizard implements ActionListener {
 							screenNode.add(introNode);
 						}
 						
-						List<Item> items = challenge.getItem();
-						if(items != null && items.size() > 0)
+						//
+						Item item = challenge.getItem();
+						if(item != null)
 						{
-							for(int m = 0; m < items.size(); m++)
-							{
-								DefaultMutableTreeNode questionNode = new DefaultMutableTreeNode("Challenge Question " + (m + 1));
-								questionNode.setUserObject(items.get(m));
+							//for(int m = 0; m < items.size(); m++)
+							//{
+								DefaultMutableTreeNode questionNode = new DefaultMutableTreeNode("Challenge Question ");
+								//questionNode.setUserObject(items.get(m));
+								questionNode.setUserObject(item);
 								screenNode.add(questionNode);
-							}
+							//}
 						}
 
-						List<Summary> summaries = challenge.getSummary();
-						if(summaries != null && summaries.size() > 0)
+						//List<Summary> summaries = challenge.getSummary();
+						Summary summary = challenge.getSummary();
+						if(summary != null)
 						{
-							for(int m = 0; m < summaries.size(); m++)
-							{
-								DefaultMutableTreeNode summaryNode = new DefaultMutableTreeNode("Summary " + (m + 1));
-								summaryNode.setUserObject(summaries.get(m));
+							//for(int m = 0; m < summaries.size(); m++)
+							//{
+								DefaultMutableTreeNode summaryNode = new DefaultMutableTreeNode("Summary ");
+								summaryNode.setUserObject(summary);
 								screenNode.add(summaryNode);
-							}
+							//}
 						}
 					}
 					
@@ -1027,14 +1031,15 @@ public class InputWizard implements ActionListener {
 	//paint the scene in all of its glory
 	private void displayScreen(Scene scene, Screen screen)
 	{
-		List<Asset> assets = screen.getAssets();
+		//List<Asset> assets = screen.getAssets();
+		List<Asset> assets = null; //Temporary to get this working
 		if(assets != null){
 			scenePanel.loadAssets(assets, false);
 		}
 		else
 			System.out.println("assets null");
 
-		scenePanel.loadBackground(scene.getBackground());
+		//scenePanel.loadBackground(scene.getBackground());
 	}
 	
 	//paint the Challenge Multiple Choice question
@@ -1048,13 +1053,16 @@ public class InputWizard implements ActionListener {
 			if(((QuizChallenge)challenge).getLayout() == null)
 				return;
 			
-			switch(((QuizChallenge)challenge).getLayout())
+			switch(((QuizChallenge)challenge).getLayout().getLayoutName())
 			{
-				case MULTIPLE_CHOICE_LAYOUT:
+				//case MULTIPLE_CHOICE_LAYOUT:
+				case "Multiple Choice Layout": //Temporary until the above constant is defined again
 				{
 					if(item instanceof MultipleChoiceItem)
 					{
-						layout = new Layout((MultipleChoiceItem)item);
+						//layout = new Layout((MultipleChoiceItem)item);
+						layout = new Layout();
+						layout.setLayoutName("MultipleChoiceItem");
 					}
 					break;
 				}
@@ -1064,8 +1072,8 @@ public class InputWizard implements ActionListener {
 				}
 			}
 			
-			scenePanel.loadAssets(layout.getAssets(), true);
-			scenePanel.loadBackground(scene.getBackground());
+			//scenePanel.loadAssets(layout.getAssets(), true);
+			//scenePanel.loadBackground(scene.getBackground());
 		}
 	}
 	
@@ -1409,7 +1417,8 @@ public class InputWizard implements ActionListener {
 			characterSelectAsset = null;
 			characterSelectWindow.setCharacterAsset(characterSelectAsset);
 			ArrayList<CharacterAsset> chars = new ArrayList<CharacterAsset>();
-			List<Asset> assets = lastSelectedScreen.getAssets();
+			//List<Asset> assets = lastSelectedScreen.getAssets(); 
+			List<Asset> assets = null; //Temporary fix to stop the code from breaking for now.
 			for(Asset as : assets)
 			{
 				if(as instanceof CharacterAsset)
@@ -1468,6 +1477,9 @@ public class InputWizard implements ActionListener {
 			break;
 			//JD end
 		case "deleteElement":
+			
+			//Comments below are to temporarily remove code until we know what to do with Assets.
+			/*
 			Asset toDelete = scenePanel.getTargetedAsset();
 			if(lastSelectedScreen.getAssets().contains(toDelete))
 			{
@@ -1477,9 +1489,10 @@ public class InputWizard implements ActionListener {
 			else
 			{
 				System.out.println("Error: Attempt to delete asset not in screen!");
-			}
+			}*/
 			break;
 		case "previewSound":
+			/*
 			Asset toPreviewSound = scenePanel.getTargetedAsset();
 			if(lastSelectedScreen.getAssets().contains(toPreviewSound))
 			{
@@ -1489,7 +1502,7 @@ public class InputWizard implements ActionListener {
 			else
 			{
 				System.out.println("Error: Attempt to preview asset not in screen!");
-			}
+			}*/
 			break;
 		case "backgroundMusicPreviewPlay":
 			//TODO finish
