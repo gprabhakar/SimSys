@@ -354,6 +354,7 @@ public class GameErrorChecker
 								}
 									
 									//Check for Asset-level errors
+									/*
 									final List<Asset> assets = screens.get(k).getAssets();
 									if(assets == null || assets.size() == 0)
 									{
@@ -475,7 +476,7 @@ public class GameErrorChecker
 												}
 											}
 										}
-									}
+									}*/
 								}
 							}
 							
