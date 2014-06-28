@@ -54,13 +54,13 @@ public class Structure {
         for(int i = 0; i < acts.size() - 1; i++) {
             Act act = acts.get(i);
             // Commenting out this line as new spec does not have Id field for Screen
-            //UUID nextActId = acts.get(i+1).getScene().get(0).getScreen().get(0).getId();  
+            //UUID nextActId = acts.get(i+1).getScene().get(0).getScreen().get(0).getId();
             for(Scene scene : act.getScene()) {
                 Screen screenNode = scene.getScreen().get(0);
-                
+
                 // Commenting out this line as new spec does not have Asset field for Screen
                 // Need to set transition here I guess - Prabha
-                
+
                 /*if(screenNode.getAssets() != null) {
                     for(Asset asset : screenNode.getAssets()) {
                         if(asset.getBehaviors() != null) {
@@ -126,7 +126,7 @@ public class Structure {
                         } else if ("ThoughtBubbleAsset".equals(asset.getType())) {
                             newAsset = new ThoughtBubbleAsset(asset);
                         }
-                        
+
                         if(newAsset != null) {
                             screen.getAssets().set(d, newAsset);
                         }
