@@ -318,9 +318,9 @@ public class GameErrorChecker
 														}
 													}
 												}
-											}
-											List<Summary> summaries = qChallenge.getSummaries();
-											if(summaries == null || summaries.size() == 0)
+											// Only one summary for a Quiz Challenge. So replacing List with a single Summary object
+											Summary summary = qChallenge.getSummary();
+											if(summary == null)
 											{
 												errors.add(new PreviewError(Level.SCREEN, Severity.MEDIUM, "No Summaries in Challenge in " + srName) {
 													public void fixError() { } //TODO
@@ -344,11 +344,14 @@ public class GameErrorChecker
 											});
 										}
 										
-									} else {
+									  } 
+									
+									else {
 										//TODO At this point the screen could either have no challenge at all or a null
 										//challenge tag correct? One needing an error, the other being a normal occurrence
 										//Any ways to distinguish
 									}
+								}
 									
 									//Check for Asset-level errors
 									final List<Asset> assets = screens.get(k).getAssets();
