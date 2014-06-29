@@ -49,9 +49,6 @@ public class Game {
 
  @XmlElement(name = "Act", required = true)
  private List<Act> act;
- 
- 
-
 @XmlElement(name = "LearningObjective", required = true)
  private List<LearningObjectiveType> learningObjective;
  @XmlElement(name = "Character", required = true)
