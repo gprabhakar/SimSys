@@ -256,4 +256,13 @@ public class Structure {
     public void setActs(List<Act> acts) {
         this.acts = acts;
     }
+
+	public Game createGame() {
+		// TODO Auto-generated method stub
+		Game game = new Game();
+		return game;
+	}
+	
+
+	
 }
