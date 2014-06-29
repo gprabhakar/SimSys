@@ -32,7 +32,6 @@ import java.text.AttributedString;
 import java.util.List;
 
 import javax.swing.JLabel;
-
 import org.jdesktop.animation.timing.Animator;
 import org.jdesktop.animation.timing.Animator.Direction;
 import org.jdesktop.animation.timing.Animator.RepeatBehavior;
