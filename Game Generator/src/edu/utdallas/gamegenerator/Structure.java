@@ -1,4 +1,4 @@
-package edu.utdallas.sharedfiles.Structure;
+package edu.utdallas.gamegenerator;
 
 import java.util.ArrayList;
 import java.util.List;

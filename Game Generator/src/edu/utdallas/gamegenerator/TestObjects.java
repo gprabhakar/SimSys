@@ -1,7 +1,6 @@
 package edu.utdallas.gamegenerator;
 
 import edu.utdallas.gamegenerator.Characters.*;
-import edu.utdallas.gamegenerator.Characters.Characters;
 import edu.utdallas.gamegenerator.LearningAct.Challenge.ChallengeOption;
 import edu.utdallas.gamegenerator.LearningAct.Challenge.ChallengeOptionType;
 import edu.utdallas.gamegenerator.LearningAct.Challenge.Reward;
@@ -18,7 +17,6 @@ import edu.utdallas.gamegenerator.Locale.LocaleScreen;
 import edu.utdallas.gamegenerator.Locale.ObjectMovement;
 import edu.utdallas.gamegenerator.Locale.ObjectMovementType;
 import edu.utdallas.sharedfiles.Shared.*;
-import edu.utdallas.sharedfiles.Structure.Structure;
 import edu.utdallas.gamegenerator.Subject.Subject;
 import edu.utdallas.gamegenerator.Theme.*;
 
