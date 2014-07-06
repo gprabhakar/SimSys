@@ -32,12 +32,13 @@ import static edu.utdallas.gamegenerator.Layers.*;
  */
 public class GameGenerator {
 	public static void main(String[] args) {
-
+		final int sEXPECTEDARGS = 6;
 		Search search = new Search();
-		args=search.getAllFiles();
+		args = search.getAllFiles();
 
-		if(args.length == 6) {
-			Map<String, String> xmlFiles = new HashMap<String, String>();
+		if (args.length == sEXPECTEDARGS) {
+			Map<String, String> xmlFiles = 
+					new HashMap<String, String>();
 			xmlFiles.put(CHARACTERS, args[0]);
 			xmlFiles.put(LESSONS, args[1]);
 			xmlFiles.put(CHALLENGES, args[2]);
@@ -50,7 +51,8 @@ public class GameGenerator {
 			String exportFilename = search.getFileLocation();
 			 //  String exportFilename = "C:\\Users\\Chris Mojica\\Documents\\2013\\Summer\\Git Output\\TestRunGame.xml";
 			try {
-				Layers layers = gameGenerator.loadXmlComponents(xmlFiles);
+				Layers layers =
+						gameGenerator.loadXmlComponents(xmlFiles);
 				Game game = gameGenerator.buildGame(layers);
 				gameGenerator.exportGame(game, exportFilename);
 			} catch (JAXBException e) {
@@ -64,11 +66,13 @@ public class GameGenerator {
 	}
 
 	/**
-	 * Exports the Game object to xml
+	 * Exports the Game object to xml.
 	 * @param game the Game object containing the game
+	 * @param exportFilename the name of the file to export to
 	 * @throws JAXBException
 	 */
-	public void exportGame(Game game, String exportFilename) throws JAXBException {
+	public final void exportGame(final Game game, 
+			final String exportFilename) throws JAXBException {
 		JAXBContext jaxbContext = JAXBContext.newInstance(Game.class);
 		Marshaller marshaller = jaxbContext.createMarshaller();
 		marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
@@ -77,16 +81,16 @@ public class GameGenerator {
 	}
 
 	/**
-	 * Builds the Game object from the layers
+	 * Builds the Game object from the layers.
 	 * @param layers a Layer object containing all game layers
 	 * @return a Game object built from the layers
 	 */
-	public Game buildGame(Layers layers) {
+	public final Game buildGame(final Layers layers) {
 		return layers.getStructure().createGame();
 	}
 
 	/**
-	 * Loads the xml for each layer from a map of filenames
+	 * Loads the xml for each layer from a map of filenames.
 	 * @param xmlFiles a map of layer constants to filenames
 	 * @return Layers object containing the loaded xml
 	 * @throws JAXBException
@@ -172,6 +176,7 @@ public class GameGenerator {
 		layers.getTheme().setCharacters(layers.getCharacters());
 		layers.getStructure().setLocale(layers.getLocale());
 		layers.getStructure().setTheme(layers.getTheme());
+		layers.getStructure().setCharacters(layers.getCharacters());
 	}
 
 
