@@ -7,7 +7,7 @@ import javax.xml.bind.annotation.XmlElementWrapper;
 import javax.xml.bind.annotation.XmlRootElement;
 
 @XmlRootElement(name = "Profile")
-public class Profile 
+public class Profile
 {
 	private String profilePhoto;
 	private String title;

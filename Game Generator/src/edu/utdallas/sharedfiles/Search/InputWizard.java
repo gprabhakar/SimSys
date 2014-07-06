@@ -8,6 +8,8 @@ import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Marshaller;
 
+import edu.utdallas.gamePlayEngine.menuFrame;
+import edu.utdallas.gamePlayEngine.view.GameView;
 import edu.utdallas.gamegenerator.RepoUpdate.Updates;
 import edu.utdallas.sharedfiles.Shared.*;
 import edu.utdallas.sharedfiles.Structure.*;
@@ -62,12 +64,14 @@ public class InputWizard implements ActionListener {
  	private JMenuBar menuBar;
  	private JMenu menu;
  	private JMenu fileMenu;
+ 	private JMenu gameEngineMenu;
  	private JMenuItem openFileItem;
  	private JMenuItem addToRepo;
  	private JMenuItem remakeRepo;
  	private JMenuItem saveToRepo;
  	private JMenuItem saveToRepoAs;
  	private JMenuItem checkErrorList;
+ 	private JMenuItem openEngine;
  	private static String label1 = "Preview after generating: ";
  	private JTree gameTree;
  	private ScenePanel scenePanel;
@@ -161,7 +165,15 @@ public class InputWizard implements ActionListener {
         checkErrorList.setActionCommand("viewErrorList");
         checkErrorList.setEnabled(false);
         fileMenu.add(checkErrorList);
-
+        
+        //---Game Engine code added by Sreeram---
+        gameEngineMenu=new JMenu("Game Engine");
+        openEngine = new JMenuItem ("Open Engine", KeyEvent.VK_S);
+        openEngine.addActionListener(this);
+        openEngine.setActionCommand("openEngine");
+        gameEngineMenu.add(openEngine);
+        menuBar.add(gameEngineMenu);
+        
         //Create Character Select Window
         characterSelectWindow = new CharacterSelectWindow(window);
         characterSelectWindow.addWindowListener(new WindowListener(){
@@ -1387,6 +1399,11 @@ public class InputWizard implements ActionListener {
 	{
 		switch(e.getActionCommand()) 
 		{
+		case "openEngine": //---Game Engine code added by Sreeram---
+			System.out.println("Invoking Game Engine..");
+			GameView gameView = new GameView();
+    		menuFrame myMenuFrame = new menuFrame(gameView);
+			break;
 		case "Submit":
 			printStrings();
 			distributeInputs();

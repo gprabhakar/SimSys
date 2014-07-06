@@ -35,7 +35,8 @@ public class CharacterProfileWindow extends JDialog
 		JLabel nameLabel = addProfileLabel("Name", ch.getName(), true);
 		nameLabel.setBorder(bottomOfLabel);
 		
-		//Attendance
+		//Commented out the following code as Profile is a String in new specification and not an user defined object
+		/*//Attendance
 		JLabel attendanceLabel = addProfileLabel("Attendance", ch.getProfile().getAttendance(), true);
 		attendanceLabel.setBorder(bottomOfLabel);
 		
@@ -95,7 +96,7 @@ public class CharacterProfileWindow extends JDialog
 		profilePanel.add(tagGrid, BorderLayout.WEST);
 		profilePanel.add(elementGrid, BorderLayout.CENTER);
 		JScrollPane scrollPane = new JScrollPane(profilePanel);
-		add(scrollPane, BorderLayout.CENTER);
+		add(scrollPane, BorderLayout.CENTER);*/
 	}
 	
 	private JLabel addProfileLabel(String title, String text, boolean isLastEntry)

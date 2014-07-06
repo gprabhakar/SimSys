@@ -127,7 +127,7 @@ public abstract class Character extends GameElementType {
     private String autonomousBehaviour;
     @XmlElement(name = "Profile", required = true)
 
-    private Profile profile;
+    private String profile;
     @XmlElement(name = "Rewards", required = true)
     private String rewards;
     /**
@@ -185,7 +185,7 @@ public abstract class Character extends GameElementType {
      *     {@link String }
      *
      */
-    public final Profile getProfile() {
+    public final String getProfile() {
         return profile;
     }
 
@@ -197,7 +197,7 @@ public abstract class Character extends GameElementType {
      *     {@link String }
      *
      */
-    public final void setProfile(final Profile profile) {
+    public final void setProfile(final String profile) {
         this.profile = profile;
     }
 
