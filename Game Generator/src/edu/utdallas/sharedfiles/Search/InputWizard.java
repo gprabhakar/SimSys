@@ -64,11 +64,8 @@ public class InputWizard implements ActionListener {
  	private JMenuBar menuBar;
  	private JMenu menu;
  	private JMenu fileMenu;
-<<<<<<< HEAD
  	private JMenu gameengine;
-=======
  	private JMenu gameEngineMenu;
->>>>>>> FETCH_HEAD
  	private JMenuItem openFileItem;
  	private JMenuItem opengame;
  	private JMenuItem addToRepo;
