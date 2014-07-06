@@ -63,7 +63,7 @@ public class AnimationEffectType {
     @XmlElement(name = "Duration", required = true)
     private String duration;
     @XmlElement(name = "Images", required = true)
-    private List<ImageType> images;
+    private List<ItemImage> images;
 
     /**
      * Gets the value of the effect property.
@@ -214,9 +214,9 @@ public class AnimationEffectType {
      *
      *@return the list of images associated with the animation effect
      */
-    public final List<ImageType> getImages() {
+    public final List<ItemImage> getImages() {
         if (images == null) {
-            images = new ArrayList<ImageType>();
+            images = new ArrayList<ItemImage>();
         }
         return this.images;
     }

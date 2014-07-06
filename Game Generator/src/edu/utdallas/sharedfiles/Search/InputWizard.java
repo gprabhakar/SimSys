@@ -12,7 +12,7 @@ import edu.utdallas.gamePlayEngine.menuFrame;
 import edu.utdallas.gamePlayEngine.view.GameView;
 import edu.utdallas.gamegenerator.RepoUpdate.Updates;
 import edu.utdallas.sharedfiles.Shared.*;
-import edu.utdallas.sharedfiles.Structure.*;
+import edu.utdallas.gamegenerator.Structure.*;
 import edu.utdallas.sharedfiles.gamespec.Act;
 import edu.utdallas.sharedfiles.gamespec.Challenge;
 import edu.utdallas.sharedfiles.gamespec.Character;

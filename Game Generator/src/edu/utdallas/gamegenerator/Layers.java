@@ -3,7 +3,6 @@ package edu.utdallas.gamegenerator;
 import edu.utdallas.gamegenerator.Characters.Characters;
 import edu.utdallas.gamegenerator.LearningAct.LearningAct;
 import edu.utdallas.gamegenerator.Locale.Locale;
-import edu.utdallas.sharedfiles.Structure.Structure;
 import edu.utdallas.gamegenerator.Subject.Subject;
 import edu.utdallas.gamegenerator.Theme.Theme;
 

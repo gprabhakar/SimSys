@@ -1,27 +1,29 @@
 package edu.utdallas.gamegenerator.Theme;
 
-import edu.utdallas.gamegenerator.LearningAct.Character.LearningActCharacterType;
-import edu.utdallas.sharedfiles.Shared.Asset;
-import edu.utdallas.sharedfiles.Shared.Behavior;
-import edu.utdallas.sharedfiles.Shared.BehaviorType;
-import edu.utdallas.gamegenerator.Characters.Characters;
-import edu.utdallas.gamegenerator.Characters.GameCharacter;
-import edu.utdallas.gamegenerator.LearningAct.Screen.TransitionType;
-import edu.utdallas.sharedfiles.Shared.GameObject;
-import edu.utdallas.sharedfiles.Shared.SharedButton;
-import edu.utdallas.sharedfiles.Shared.SharedCharacter;
-import edu.utdallas.sharedfiles.Shared.SharedInformationBox;
-import edu.utdallas.sharedfiles.gamespec.Screen;
-import edu.utdallas.gamegenerator.Subject.Subject;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.UUID;
 
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlElementWrapper;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.UUID;
+import edu.utdallas.gamegenerator.Characters.Characters;
+import edu.utdallas.gamegenerator.Characters.GameCharacter;
+import edu.utdallas.gamegenerator.LearningAct.Character.LearningActCharacterType;
+import edu.utdallas.gamegenerator.LearningAct.Screen.TransitionType;
+import edu.utdallas.gamegenerator.Subject.Subject;
+import edu.utdallas.sharedfiles.Shared.Asset;
+import edu.utdallas.sharedfiles.Shared.Behavior;
+import edu.utdallas.sharedfiles.Shared.BehaviorType;
+import edu.utdallas.sharedfiles.Shared.GameObject;
+import edu.utdallas.sharedfiles.Shared.SharedButton;
+import edu.utdallas.sharedfiles.Shared.SharedCharacter;
+import edu.utdallas.sharedfiles.Shared.SharedInformationBox;
+import edu.utdallas.sharedfiles.gamespec.BackgroundType;
+import edu.utdallas.sharedfiles.gamespec.Scene;
+import edu.utdallas.sharedfiles.gamespec.Screen;
 
 /**
  * User: clocke
@@ -41,8 +43,8 @@ public class Theme {
      * If there are no intro screens it will return an empty list
      * @return the list of intro screens
      */
-    public List<Screen> getIntro() {
-        return (introScreens != null ? getScreens(introScreens) : new ArrayList<Screen>());
+    public Scene getIntro() {
+        return (introScreens != null ? getScreens(introScreens) : new Scene());
     }
 
     /**
@@ -50,8 +52,8 @@ public class Theme {
      * If there are no outro screens it will return an empty list
      * @return the list of outro screens
      */
-    public List<Screen> getOutro() {
-        return (outroScreens != null ? getScreens(outroScreens) : new ArrayList<Screen>());
+    public Scene getOutro() {
+        return (outroScreens != null ? getScreens(outroScreens) : new Scene());
     }
 
     /**
@@ -59,14 +61,17 @@ public class Theme {
      * @param screens a list of ThemeScreen
      * @return a list of ScreenNode
      */
-    private List<Screen> getScreens(List<ThemeScreen> screens) {
-        List<Screen> screenNodes = new ArrayList<Screen>();
-        UUID currentScreen = UUID.randomUUID();
+    private Scene getScreens(List<ThemeScreen> screens) {
+        //List<Screen> screenNodes = new ArrayList<Screen>();
+        Scene currentScene = new Scene();
+        BackgroundType currentBackground = new BackgroundType();
+        //UUID currentScreen = UUID.randomUUID();
         UUID nextScreen = UUID.randomUUID();
         for(ThemeScreen screen : screens) {
             Screen screenNode = new Screen();
             //screenNode.setId(currentScreen);
-            //screenNode.setBackground(screen.getBackground());
+            currentBackground.setBackground(screen.getBackground());
+            currentScene.setBackground(currentBackground);
             List<Asset> assets = new ArrayList<Asset>();
             if(screen.getGameObjects() != null) {
                 for(GameObject object : screen.getGameObjects()) {
@@ -100,11 +105,11 @@ public class Theme {
                 }
             }
             //screenNode.setAssets(assets);
-            screenNodes.add(screenNode);
-            currentScreen = nextScreen;
+            currentScene.getScreen().add(screenNode);
+            //currentScreen = nextScreen;
             nextScreen = UUID.randomUUID();
         }
-        return screenNodes;
+        return currentScene;
     }
 
     public Subject getSubject() {

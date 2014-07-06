@@ -16,13 +16,23 @@ import java.util.List;
 public class Challenge {
     private List<ChallengeScreen> lessonChallenges;
 
-    public List<ChallengeScreen> getLessonChallenges() {
+    /**
+     *
+     * @return a list of type ChallengeScreen
+     */
+
+    public final List<ChallengeScreen> getLessonChallenges() {
         return lessonChallenges;
     }
 
+    /**
+     *
+     * @param lessonChallenges, a List of type lessonChallenge
+     */
     @XmlElementWrapper(name = "LessonChallenges")
     @XmlElement(name = "LessonChallenge")
-    public void setLessonChallenges(List<ChallengeScreen> lessonChallenges) {
+    public final void setLessonChallenges(
+    		final List<ChallengeScreen> lessonChallenges) {
         this.lessonChallenges = lessonChallenges;
     }
 }
