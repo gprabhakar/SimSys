@@ -186,8 +186,8 @@ public class Structure {
                         	newElement = new NonPlayer();
                         }
                         
-                        newElement.setAnimationEffect(element.getAnimationEffect());
-                    	newElement.setSoundEffect(element.getSoundEffect());
+                        //newElement.setAnimationEffect(element.getAnimationEffect());
+                    	//newElement.setSoundEffect(element.getSoundEffect());
                         /*
                         if("ImageAsset".equals(asset.getType())) {
                             newAsset = new ImageAsset(asset);

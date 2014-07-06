@@ -37,6 +37,9 @@ import edu.utdallas.sharedfiles.Shared.SharedInformationBox;
 import edu.utdallas.sharedfiles.gamespec.Act;
 import edu.utdallas.sharedfiles.gamespec.BackgroundType;
 import edu.utdallas.sharedfiles.gamespec.Challenge;
+import edu.utdallas.sharedfiles.gamespec.ClassificationType;
+import edu.utdallas.sharedfiles.gamespec.GenericInteraction;
+import edu.utdallas.sharedfiles.gamespec.Hint;
 import edu.utdallas.sharedfiles.gamespec.Scene;
 import edu.utdallas.sharedfiles.gamespec.Screen;
 
@@ -94,6 +97,7 @@ public class Locale {
         actScenes.addAll(buildLesson(learningActId));
         actScenes.addAll(buildChallenges(learningActId));
         actScenes.addAll(buildScreens(learningActId, ScreenType.LESSON_STORY_OUTRO));
+        currentAct.getScene().addAll(actScenes);
         return currentAct;
     }
 
@@ -115,7 +119,7 @@ public class Locale {
             sceneNodes.add(buildChallenge(learningActId, challenge, currentScreen));
             currentScreen = nextChallenge;
         }
-
+        
         return sceneNodes;
     }
 
@@ -265,16 +269,30 @@ public class Locale {
         if(screenInformationBoxes != null) {
             for(GameText gameText : screenInformationBoxes) {
                 assets.add(new Asset(localeInformationBoxes.get(gameText.getTextType()), gameText));
+                GenericInteraction infoBox = new GenericInteraction();
+                infoBox.setHint(new Hint());
+                infoBox.getHint().setHint(gameText.getText());
+                screenNode.getGameElement().add(infoBox);
             }
         }
 
         List<GameButton> gameButtons = new ArrayList<GameButton>(screen.getButtons());
         if(screen instanceof ChallengeScreen) {
+        	
             ChallengeScreen challenge = (ChallengeScreen) screen;
             if(challenge.getChallengeOptions() != null) {
                 gameButtons.addAll(challenge.getChallengeOptions());
             }
-            screenNode.getChallenge().add(new Challenge());
+            //Add in buttons, which are Generic interactionElements
+            Challenge currentChallenge = new Challenge();
+            for (GameButton button: gameButtons) {
+            	GenericInteraction nextElement = new GenericInteraction();
+            	nextElement.setHint(new Hint());
+            	nextElement.getHint().setHint(button.getText());
+            	currentChallenge.getGameElement().add(nextElement);
+            }
+            currentChallenge.setClassification(ClassificationType.INTERACTIVE);
+            screenNode.getChallenge().add(currentChallenge);
         }
         Map<ButtonLocationType, SharedButton> localeButtons = localeScreen.getButtons();
         if(gameButtons != null) {
@@ -325,6 +343,7 @@ public class Locale {
         }
 
         screenNodes.add(screenNode);
+        currentScene.getScreen().addAll(screenNodes);
         //return screenNodes;
         return currentScene;
     }
