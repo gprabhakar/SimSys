@@ -4,15 +4,16 @@ import edu.utdallas.gamegenerator.Characters.Characters;
 import edu.utdallas.gamegenerator.LearningAct.LearningAct;
 import edu.utdallas.gamegenerator.Lesson.Lesson;
 import edu.utdallas.gamegenerator.Locale.Locale;
-import edu.utdallas.sharedfiles.Structure.Game;
-import edu.utdallas.sharedfiles.Structure.Scene;
-import edu.utdallas.sharedfiles.Structure.Screen;
 import edu.utdallas.sharedfiles.Structure.Structure;
+import edu.utdallas.sharedfiles.gamespec.Game;
+import edu.utdallas.sharedfiles.gamespec.Scene;
+import edu.utdallas.sharedfiles.gamespec.Screen;
 import edu.utdallas.gamegenerator.Subject.Subject;
 import edu.utdallas.gamegenerator.Theme.Theme;
 import edu.utdallas.gamegenerator.old.Challenge.Challenge;
 
 import javax.xml.bind.*;
+
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -118,7 +119,7 @@ public class Test {
     private static void test() throws JAXBException {
         Scene scene = new Scene();
         List<Screen> screens = new ArrayList<Screen>();
-        scene.setScreens(screens);
+        scene.setScreen(screens);
 
         JAXBContext jaxbContext = JAXBContext.newInstance(Scene.class);
         Marshaller marshaller = jaxbContext.createMarshaller();

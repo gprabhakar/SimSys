@@ -1,12 +1,34 @@
 package edu.utdallas.sharedfiles.Structure;
 
-import edu.utdallas.gamegenerator.Locale.Locale;
-import edu.utdallas.sharedfiles.Shared.*;
-import edu.utdallas.gamegenerator.Theme.Theme;
-
 import java.util.ArrayList;
 import java.util.List;
-import java.util.UUID;
+
+
+
+
+import edu.utdallas.gamegenerator.Locale.Locale;
+import edu.utdallas.gamegenerator.Theme.Theme;
+import edu.utdallas.sharedfiles.Shared.Asset;
+import edu.utdallas.sharedfiles.Shared.Behavior;
+import edu.utdallas.sharedfiles.Shared.BehaviorType;
+import edu.utdallas.sharedfiles.Shared.ButtonAsset;
+import edu.utdallas.sharedfiles.Shared.CharacterAsset;
+import edu.utdallas.sharedfiles.Shared.ConversationBubbleAsset;
+import edu.utdallas.sharedfiles.Shared.EndGameBehavior;
+import edu.utdallas.sharedfiles.Shared.ImageAsset;
+import edu.utdallas.sharedfiles.Shared.InformationBoxAsset;
+import edu.utdallas.sharedfiles.Shared.ThoughtBubbleAsset;
+import edu.utdallas.sharedfiles.Shared.TransitionBehavior;
+import edu.utdallas.sharedfiles.gamespec.Act;
+import edu.utdallas.sharedfiles.gamespec.BackgroundType;
+import edu.utdallas.sharedfiles.gamespec.Challenge;
+import edu.utdallas.sharedfiles.gamespec.Game;
+import edu.utdallas.sharedfiles.gamespec.Character;
+import edu.utdallas.sharedfiles.gamespec.GameElementType;
+import edu.utdallas.sharedfiles.gamespec.LearningObjectiveType;
+import edu.utdallas.sharedfiles.gamespec.MusicType;
+import edu.utdallas.sharedfiles.gamespec.Scene;
+import edu.utdallas.sharedfiles.gamespec.Screen;
 
 /**
  * User: clocke
@@ -20,24 +42,27 @@ public class Structure {
     private Game game;
 
     /**
-     * Builds the game from the injected layers
+     * Builds the game from the Acts, Characters, and LearningObjectives
+     * @param objectives a list of LearningObjectiveType
+     * @param characters a list of Character
+     * @param acts a list of Act
      * @return a Game object representing the created game
      */
-    public Game createGame() {
-        acts = new ArrayList<Act>();
-        acts.add(createActFromScreens(theme.getIntro()));
-        for(int i = 0; i < locale.getLearningActs().size(); i++) {
-            acts.add(createActFromScreens(locale.getAct(i)));
-        }
-        acts.add(createActFromScreens(theme.getOutro()));
-        game = new Game();
-        game.setActs(acts);
-
-        wireUpActs(acts);
-        nameEverything();
-        convertAssetsAndBehaviors();
-
-        return game;
+    public Game createGame(List<LearningObjectiveType> objectives, List<Character> characters,
+    		List<Act> acts) {
+    	
+    	Game game = new Game();
+    	for (int i = 0; i < objectives.size(); i++){
+    		game.getLearningObjective().add(objectives.get(i));
+    	}
+    	for (int i = 0; i < objectives.size(); i++){
+    		game.getCharacter().add(characters.get(i));
+    	}
+    	for (int i = 0; i < objectives.size(); i++){
+    		game.getAct().add(acts.get(i));
+    	}
+    	
+    	return game;
     }
 
     /**
@@ -46,17 +71,23 @@ public class Structure {
      * the next act's first scene's first screen's id
      * @param acts a list of Acts
      */
+    /*
     private void wireUpActs(List<Act> acts) {
         for(int i = 0; i < acts.size() - 1; i++) {
             Act act = acts.get(i);
-            UUID nextActId = acts.get(i+1).getScenes().get(0).getScreens().get(0).getId();
-            for(Scene scene : act.getScenes()) {
-                Screen screenNode = scene.getScreens().get(0);
+            // Commenting out this line as new spec does not have Id field for Screen
+            //UUID nextActId = acts.get(i+1).getScene().get(0).getScreen().get(0).getId();
+            for(Scene scene : act.getScene()) {
+                Screen screenNode = scene.getScreen().get(0);
+
+                // Commenting out this line as new spec does not have Asset field for Screen
+                // Need to set transition here I guess - Prabha
+
                 if(screenNode.getAssets() != null) {
                     for(Asset asset : screenNode.getAssets()) {
                         if(asset.getBehaviors() != null) {
                             for(Behavior behavior : asset.getBehaviors()) {
-                                if(behavior != null &&
+                               if(behavior != null &&
                                         BehaviorType.TRANSITION_BEHAVIOR.equals(behavior.getBehaviorType()) &&
                                         behavior.getTransitionId() == null) {
                                     behavior.setTransitionId(nextActId);
@@ -67,37 +98,42 @@ public class Structure {
                 }
             }
         }
-    }
-
+    }*/
+    
     /**
      * Names all acts, scenes, and screens in the game
      */
+    // This whole method seems unnecessary as it Names game, acts, scenes, screen but they don't have name field
+    /*
     private void nameEverything() {
-        game.setName("Game");
-        for(int a = 0; a < game.getActs().size(); a++) {
-            Act act = game.getActs().get(a);
-            act.setName("Act" + a);
-            for(int b = 0; b < act.getScenes().size(); b++) {
-                Scene scene = act.getScenes().get(b);
-                scene.setName("Act" + a + " Scene" + b);
-                for(int c = 0; c < scene.getScreens().size(); c++) {
-                    Screen screen = scene.getScreens().get(c);
-                    screen.setName("Act" + a + " Scene" + b + " Screen" + c);
+        // No Name field for Game, Act, Scene, Screen in new spec
+    	//  game.setName("Game");
+        for(int a = 0; a < game.getAct().size(); a++) {
+            Act act = game.getAct().get(a);
+           // act.setName("Act" + a);
+            for(int b = 0; b < act.getScene().size(); b++) {
+                Scene scene = act.getScene().get(b);
+                //scene.setName("Act" + a + " Scene" + b);
+                for(int c = 0; c < scene.getScreen().size(); c++) {
+                   // Screen screen = scene.getScreen().get(c);
+                   // screen.setName("Act" + a + " Scene" + b + " Screen" + c);
                 }
             }
         }
-    }
+    }*/
 
     /**
      * Converts every asset into it a new object of the correct type
      */
+    /*
     private void convertAssetsAndBehaviors() {
-        for(int a = 0; a < game.getActs().size(); a++) {
-            Act act = game.getActs().get(a);
-            for(int b = 0; b < act.getScenes().size(); b++) {
-                Scene scene = act.getScenes().get(b);
-                for(int c = 0; c < scene.getScreens().size(); c++) {
-                    Screen screen = scene.getScreens().get(c);
+        for(int a = 0; a < game.getAct().size(); a++) {
+            Act act = game.getAct().get(a);
+            for(int b = 0; b < act.getScene().size(); b++) {
+                Scene scene = act.getScene().get(b);
+                for(int c = 0; c < scene.getScreen().size(); c++) {
+                    Screen screen = scene.getScreen().get(c);
+                    // Assets are not a part in the new game spec. I'm not sure what replaces assets in screen
                     for(int d = 0; d < screen.getAssets().size(); d++) {
                         Asset asset = screen.getAssets().get(d);
                         Asset newAsset = null;
@@ -114,6 +150,7 @@ public class Structure {
                         } else if ("ThoughtBubbleAsset".equals(asset.getType())) {
                             newAsset = new ThoughtBubbleAsset(asset);
                         }
+
                         if(newAsset != null) {
                             screen.getAssets().set(d, newAsset);
                         }
@@ -136,24 +173,64 @@ public class Structure {
             }
         }
 
-    }
+    }*/
 
     /**
      * Creates an Act object from a list of ScreenNode
-     * @param screenNodes a list of ScreenNode
+     * Sets learning objective from the scene
+     * @param sceneNode a list of Scene
      * @return an Act object containing all ScreenNodes from the list
      */
-    private Act createActFromScreens(List<Screen> screenNodes) {
+    private Act createActFromScenes(List<Scene> sceneNodes) {
         Act act = new Act();
-        List<Scene> scenes = new ArrayList<Scene>();
-        for(int i = 0; i < screenNodes.size(); i++) {
-            Scene scene = new Scene();
-            scene.setScreens(screenNodes.subList(i,i+1));
-            scene.setBackground(screenNodes.get(i).getBackground());
-            scenes.add(scene);
+        for(int i = 0; i < sceneNodes.size(); i++) {
+            act.getScene().add(sceneNodes.get(i));
         }
-        act.setScenes(scenes);
+        act.setLearningObjective(act.getScene().get(0).getLearningObjective());
         return act;
+    }
+    
+    /**
+     * Creates a Scene object from a list of Screens, Backgrounds, and music.
+     * Takes the learning objective from the screens.
+     * @param screenNodes a list of Screen
+     * @param background a BackgroundType
+     * @param music a MusicType
+     * @return
+     */
+    private Scene createSceneFromScreens(List<Screen> screenNodes, BackgroundType background, 
+    		MusicType music) {
+    	Scene scene = new Scene();
+    	for(int i = 0; i < screenNodes.size(); i++) {
+    		scene.getScreen().add(screenNodes.get(i));
+    	}
+    	scene.setBackground(background);
+    	scene.setMusic(music);
+    	scene.setLearningObjective(scene.getScreen().get(0).getLearningObjective());
+    	
+    	return scene;
+    }
+    
+    /**
+     * Creates a Screen object from a list of Challenges, GameElements, and LearningObjectives
+     * @param challengeNodes a list of Challenge
+     * @param elementNodes a list of GameElement
+     * @param objective a LearningObjectiveType
+     * @return a Screen object containing all Challenges from the list
+     */
+    
+    private Screen createScreenFromChallenges(List<Challenge> challengeNodes, 
+    		List<GameElementType> elementNodes, LearningObjectiveType objective) {
+    	Screen screen = new Screen();
+    	for(int i = 0; i < challengeNodes.size(); i++) {
+    		screen.getChallenge().add(challengeNodes.get(i));
+    	}
+    	for(int i = 0; i < elementNodes.size(); i++) {
+    		screen.getGameElement().add(elementNodes.get(i));
+    	}
+    	screen.setLearningObjective(objective);
+    	
+    	return screen;
     }
 
     public Theme getTheme() {
@@ -179,4 +256,13 @@ public class Structure {
     public void setActs(List<Act> acts) {
         this.acts = acts;
     }
+
+	public Game createGame() {
+		// TODO Auto-generated method stub
+		Game game = new Game();
+		return game;
+	}
+	
+
+	
 }

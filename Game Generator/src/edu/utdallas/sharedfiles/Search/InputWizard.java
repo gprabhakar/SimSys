@@ -8,23 +8,29 @@ import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Marshaller;
 
+import edu.utdallas.gamePlayEngine.menuFrame;
+import edu.utdallas.gamePlayEngine.view.GameView;
 import edu.utdallas.gamegenerator.RepoUpdate.Updates;
-import edu.utdallas.sharedfiles.Challenge.Challenge;
-import edu.utdallas.sharedfiles.Challenge.Introduction;
-import edu.utdallas.sharedfiles.Challenge.Item;
-import edu.utdallas.sharedfiles.Challenge.Layout;
-import edu.utdallas.sharedfiles.Challenge.MultipleChoiceItem;
-import edu.utdallas.sharedfiles.Challenge.QuizChallenge;
-import edu.utdallas.sharedfiles.Challenge.Summary;
 import edu.utdallas.sharedfiles.Shared.*;
 import edu.utdallas.sharedfiles.Structure.*;
+import edu.utdallas.sharedfiles.gamespec.Act;
+import edu.utdallas.sharedfiles.gamespec.Challenge;
+import edu.utdallas.sharedfiles.gamespec.Character;
+import edu.utdallas.sharedfiles.gamespec.Game;
+import edu.utdallas.sharedfiles.gamespec.Introduction;
+import edu.utdallas.sharedfiles.gamespec.Item;
+import edu.utdallas.sharedfiles.gamespec.Layout;
+import edu.utdallas.sharedfiles.gamespec.MultipleChoiceItem;
+import edu.utdallas.sharedfiles.gamespec.QuizChallenge;
+import edu.utdallas.sharedfiles.gamespec.Scene;
+import edu.utdallas.sharedfiles.gamespec.Screen;
+import edu.utdallas.sharedfiles.gamespec.Summary;
 import edu.utdallas.previewtool.View.BackgroundSelectWindow;
+import edu.utdallas.previewtool.View.CharacterProfileWindow;
+import edu.utdallas.previewtool.View.CharacterSelectWindow;
 import edu.utdallas.previewtool.View.PropSelectWindow;
 import edu.utdallas.previewtool.View.ScenePanel;
 import edu.utdallas.previewtool.View.SoundSelectWindow;
-import edu.utdallas.previewtool.View.Character.CharacterProfileWindow;
-import edu.utdallas.previewtool.View.Character.CharacterSelectWindow;
-import edu.utdallas.gamegenerator.Character.Character;
 import edu.utdallas.previewtool.Error.PreviewError;
 import edu.utdallas.previewtool.Error.GameErrorChecker;
 import edu.utdallas.previewtool.Error.GameErrorList;
@@ -58,12 +64,16 @@ public class InputWizard implements ActionListener {
  	private JMenuBar menuBar;
  	private JMenu menu;
  	private JMenu fileMenu;
+ 	private JMenu gameengine;
+ 	private JMenu gameEngineMenu;
  	private JMenuItem openFileItem;
+ 	private JMenuItem opengame;
  	private JMenuItem addToRepo;
  	private JMenuItem remakeRepo;
  	private JMenuItem saveToRepo;
  	private JMenuItem saveToRepoAs;
  	private JMenuItem checkErrorList;
+ 	private JMenuItem openEngine;
  	private static String label1 = "Preview after generating: ";
  	private JTree gameTree;
  	private ScenePanel scenePanel;
@@ -134,6 +144,9 @@ public class InputWizard implements ActionListener {
         menu = new JMenu("Repository Tools");
         menu.setMnemonic(KeyEvent.VK_R);
         menuBar.add(menu);
+        
+       
+        // Change ends
         addToRepo = new JMenuItem("Add game to repository", KeyEvent.VK_D);
         addToRepo.setActionCommand("addToRepo");
         addToRepo.addActionListener(this);
@@ -157,7 +170,15 @@ public class InputWizard implements ActionListener {
         checkErrorList.setActionCommand("viewErrorList");
         checkErrorList.setEnabled(false);
         fileMenu.add(checkErrorList);
-
+        
+        //---Game Engine code added by Sreeram---
+        /*gameEngineMenu=new JMenu("Game Engine");
+        openEngine = new JMenuItem ("Open Engine", KeyEvent.VK_S);
+        openEngine.addActionListener(this);
+        openEngine.setActionCommand("openEngine");
+        gameEngineMenu.add(openEngine);
+        menuBar.add(gameEngineMenu);*/
+        
         //Create Character Select Window
         characterSelectWindow = new CharacterSelectWindow(window);
         characterSelectWindow.addWindowListener(new WindowListener(){
@@ -165,6 +186,7 @@ public class InputWizard implements ActionListener {
 			public void windowClosed(WindowEvent e) { }
 			public void windowClosing(WindowEvent e) { }
 			public void windowDeactivated(WindowEvent e) {
+				/*
 				if(characterSelectWindow.getNewCharacterAsset() == null)
 				{
 					return;
@@ -175,7 +197,7 @@ public class InputWizard implements ActionListener {
 					currentAssets.add(characterSelectWindow.getNewCharacterAsset());
 					lastSelectedScreen.setAssets(currentAssets);
 					displayScreen(lastSelectedScene, lastSelectedScreen);
-				}
+				}*/
 			}
 			public void windowDeiconified(WindowEvent e) { }
 			public void windowIconified(WindowEvent e) { }
@@ -189,6 +211,7 @@ public class InputWizard implements ActionListener {
 			public void windowClosed(WindowEvent e) { }
 			public void windowClosing(WindowEvent e) { }
 			public void windowDeactivated(WindowEvent e) {
+				/*
 				if(propSelectWindow.getNewImageAsset() == null)
 				{
 					return;
@@ -199,7 +222,7 @@ public class InputWizard implements ActionListener {
 					currentAssets.add(propSelectWindow.getNewImageAsset());
 					lastSelectedScreen.setAssets(currentAssets);
 					displayScreen(lastSelectedScene, lastSelectedScreen);
-				}
+				}*/
 			}
 			public void windowDeiconified(WindowEvent e) { }
 			public void windowIconified(WindowEvent e) { }
@@ -219,8 +242,8 @@ public class InputWizard implements ActionListener {
 				}
 				else
 				{
-					lastSelectedScene.setBackground(backgroundSelectWindow.getNewBackgroundPath());
-					scenePanel.loadBackground(lastSelectedScene.getBackground());
+					//lastSelectedScreen.setBackground(backgroundSelectWindow.getNewBackgroundPath());
+					//scenePanel.loadBackground(lastSelectedScene.getBackground());
 				}
 			}
 			public void windowDeiconified(WindowEvent e) { }
@@ -266,7 +289,7 @@ public class InputWizard implements ActionListener {
             	if (isQuestionNode(selectedNode))
             	{
             		Item item = (Item)selectedNode.getUserObject();
-            		Challenge challenge = ((Screen)((DefaultMutableTreeNode)selectedNode.getParent()).getUserObject()).getChallenge();
+            		Challenge challenge = ((Screen)((DefaultMutableTreeNode)selectedNode.getParent()).getUserObject()).getChallenge().get(0); //Temporary addition of .get(0) to make it play nice with a list
             		Scene scene = (Scene)((DefaultMutableTreeNode)selectedNode.getParent().getParent()).getUserObject();
             		selectedLevel = gameLevel.CHALLENGE;
             		characterButton.setEnabled(false);
@@ -296,8 +319,8 @@ public class InputWizard implements ActionListener {
             		textButton.setEnabled(false);
                     buttonButton.setEnabled(false);
             		
-            		scenePanel.loadAssets(intro.getAssets(), true);
-            		scenePanel.loadBackground(scene.getBackground());
+            		//scenePanel.loadAssets(intro.getAssets(), true);
+            		//scenePanel.loadBackground(scene.getBackground());
             	}
             	else if (isSummaryNode(selectedNode))
             	{
@@ -313,8 +336,8 @@ public class InputWizard implements ActionListener {
             		textButton.setEnabled(false);
                     buttonButton.setEnabled(false);
             		
-            		scenePanel.loadAssets(summary.getAssets(), true);
-            		scenePanel.loadBackground(scene.getBackground());
+            		//scenePanel.loadAssets(summary.getAssets(), true);
+            		//scenePanel.loadBackground(scene.getBackground());
             	}
             	else if (isScreenNode(selectedNode))
             	{
@@ -346,12 +369,12 @@ public class InputWizard implements ActionListener {
           			lastSelectedScene = s;
           			scenePanel.clear();
           			System.out.println("calling clear scene node\n");
-          			scenePanel.loadBackground(s.getBackground());
-          			scenePanel.backgroundMusicPreview(lastSelectedScene.getBackgroundMusic() != null);
+          			//scenePanel.loadBackground(s.getBackground());
+          			scenePanel.backgroundMusicPreview(lastSelectedScene.getMusic() != null);
             	}
             	else if(isGameNode(selectedNode))
             	{
-            		List<Character> chars = game.getCharacters();
+            		List<Character> chars = game.getCharacter();
             		
             		scenePanel.clear();
             		System.out.println("calling clear rootnode\n");
@@ -375,7 +398,7 @@ public class InputWizard implements ActionListener {
             			CharacterAsset c = new CharacterAsset();
 
             			//set image path for character
-            			c.setDisplayImage(ca.getProfile().getProfilePhoto());
+            			//c.setDisplayImage(ca.getProfile().getProfilePhoto());
             			//make all images the standard character width and height
             			c.setWidth(defaultWidth);
             			c.setHeight(defaultHeight);
@@ -433,8 +456,22 @@ public class InputWizard implements ActionListener {
         
         JPanel generateTab = new JPanel(new BorderLayout());
         JPanel previewTab = new JPanel(new BorderLayout());
+        JPanel gamePlayEngine = new JPanel(new BorderLayout());
         tabbedPane.addTab("Generate", null, generateTab);
         tabbedPane.addTab("Preview", null, previewTab);
+        tabbedPane.addTab("Game Play Engine", null, gamePlayEngine);
+        
+        //Adding game play engine menu in main panel
+        JMenu games = new JMenu("Games");
+	    JMenuItem openGame = new JMenuItem("Open Game");
+	    JMenuItem quit = new JMenuItem("Quit");
+	    
+	    games.add(openGame);
+	    games.addSeparator();
+	    games.add(quit);
+	    
+	    menuBar.add(games);
+        
         JPanel browsePanel = new JPanel(new BorderLayout()); // browse/click on Acts/Scenes
         browsePanel.add(scrollPane);
         
@@ -813,10 +850,11 @@ public class InputWizard implements ActionListener {
 	private ArrayList<String> getGameGenericCharacterNames()
 	{
 		ArrayList<String> charStrings = new ArrayList<String>();
-		for(Character ch : game.getCharacters())
+		for(Character ch : game.getCharacter())
 		{
-			String filePath = ch.getProfile().getProfilePhoto();
-			String charName = filePath.substring(0, filePath.indexOf('\\'));
+			//String filePath = ch.getProfile().getProfilePhoto();
+			//String charName = filePath.substring(0, filePath.indexOf('\\'));
+			String charName = ch.getName();
 			
 			if(!charStrings.contains(charName))
 			{
@@ -956,19 +994,19 @@ public class InputWizard implements ActionListener {
         rootNode.setUserObject(game1);
         ((DefaultTreeModel) gameTree.getModel()).setRoot(rootNode);
 		
-		List<Act> acts = game1.getActs();
+		List<Act> acts = game1.getAct();
 		for(int i = 0; i < acts.size(); i++)
 		{
 			DefaultMutableTreeNode actNode = new DefaultMutableTreeNode("Act " + (i + 1));
 			actNode.setUserObject(acts.get(i));
 			
-			List<Scene> scenes = acts.get(i).getScenes();
+			List<Scene> scenes = acts.get(i).getScene();
 			for(int j = 0; j < scenes.size(); j++)
 			{
 				DefaultMutableTreeNode sceneNode = new DefaultMutableTreeNode("Scene " + (j + 1));
 				sceneNode.setUserObject(scenes.get(j));
 				actNode.add(sceneNode);
-				List<Screen> screens = scenes.get(j).getScreens();
+				List<Screen> screens = scenes.get(j).getScreen();
 				for(int k = 0; k < screens.size(); k++)
 				{
 					DefaultMutableTreeNode screenNode = new DefaultMutableTreeNode("Screen " + (k + 1));
@@ -978,34 +1016,37 @@ public class InputWizard implements ActionListener {
 					{
 						QuizChallenge challenge = (QuizChallenge)screens.get(k).getChallenge();
 
-						Introduction intro = challenge.getIntro();
+						Introduction intro = challenge.getIntroduction();
 						if(intro != null)
 						{
 							DefaultMutableTreeNode introNode = new DefaultMutableTreeNode("Introduction");
-							introNode.setUserObject(challenge.getIntro());
+							introNode.setUserObject(challenge.getIntroduction());
 							screenNode.add(introNode);
 						}
 						
-						List<Item> items = challenge.getItems();
-						if(items != null && items.size() > 0)
+						//
+						Item item = challenge.getItem();
+						if(item != null)
 						{
-							for(int m = 0; m < items.size(); m++)
-							{
-								DefaultMutableTreeNode questionNode = new DefaultMutableTreeNode("Challenge Question " + (m + 1));
-								questionNode.setUserObject(items.get(m));
+							//for(int m = 0; m < items.size(); m++)
+							//{
+								DefaultMutableTreeNode questionNode = new DefaultMutableTreeNode("Challenge Question ");
+								//questionNode.setUserObject(items.get(m));
+								questionNode.setUserObject(item);
 								screenNode.add(questionNode);
-							}
+							//}
 						}
 
-						List<Summary> summaries = challenge.getSummaries();
-						if(summaries != null && summaries.size() > 0)
+						//List<Summary> summaries = challenge.getSummary();
+						Summary summary = challenge.getSummary();
+						if(summary != null)
 						{
-							for(int m = 0; m < summaries.size(); m++)
-							{
-								DefaultMutableTreeNode summaryNode = new DefaultMutableTreeNode("Summary " + (m + 1));
-								summaryNode.setUserObject(summaries.get(m));
+							//for(int m = 0; m < summaries.size(); m++)
+							//{
+								DefaultMutableTreeNode summaryNode = new DefaultMutableTreeNode("Summary ");
+								summaryNode.setUserObject(summary);
 								screenNode.add(summaryNode);
-							}
+							//}
 						}
 					}
 					
@@ -1021,14 +1062,15 @@ public class InputWizard implements ActionListener {
 	//paint the scene in all of its glory
 	private void displayScreen(Scene scene, Screen screen)
 	{
-		List<Asset> assets = screen.getAssets();
+		//List<Asset> assets = screen.getAssets();
+		List<Asset> assets = null; //Temporary to get this working
 		if(assets != null){
 			scenePanel.loadAssets(assets, false);
 		}
 		else
 			System.out.println("assets null");
 
-		scenePanel.loadBackground(scene.getBackground());
+		//scenePanel.loadBackground(scene.getBackground());
 	}
 	
 	//paint the Challenge Multiple Choice question
@@ -1042,13 +1084,16 @@ public class InputWizard implements ActionListener {
 			if(((QuizChallenge)challenge).getLayout() == null)
 				return;
 			
-			switch(((QuizChallenge)challenge).getLayout())
+			switch(((QuizChallenge)challenge).getLayout().getLayoutName())
 			{
-				case MULTIPLE_CHOICE_LAYOUT:
+				//case MULTIPLE_CHOICE_LAYOUT:
+				case "Multiple Choice Layout": //Temporary until the above constant is defined again
 				{
 					if(item instanceof MultipleChoiceItem)
 					{
-						layout = new Layout((MultipleChoiceItem)item);
+						//layout = new Layout((MultipleChoiceItem)item);
+						layout = new Layout();
+						layout.setLayoutName("MultipleChoiceItem");
 					}
 					break;
 				}
@@ -1058,8 +1103,8 @@ public class InputWizard implements ActionListener {
 				}
 			}
 			
-			scenePanel.loadAssets(layout.getAssets(), true);
-			scenePanel.loadBackground(scene.getBackground());
+			//scenePanel.loadAssets(layout.getAssets(), true);
+			//scenePanel.loadBackground(scene.getBackground());
 		}
 	}
 	
@@ -1373,6 +1418,11 @@ public class InputWizard implements ActionListener {
 	{
 		switch(e.getActionCommand()) 
 		{
+		case "openEngine": //---Game Engine code added by Sreeram---
+			System.out.println("Invoking Game Engine..");
+			GameView gameView = new GameView();
+    		menuFrame myMenuFrame = new menuFrame(gameView);
+			break;
 		case "Submit":
 			printStrings();
 			distributeInputs();
@@ -1403,7 +1453,8 @@ public class InputWizard implements ActionListener {
 			characterSelectAsset = null;
 			characterSelectWindow.setCharacterAsset(characterSelectAsset);
 			ArrayList<CharacterAsset> chars = new ArrayList<CharacterAsset>();
-			List<Asset> assets = lastSelectedScreen.getAssets();
+			//List<Asset> assets = lastSelectedScreen.getAssets(); 
+			List<Asset> assets = null; //Temporary fix to stop the code from breaking for now.
 			for(Asset as : assets)
 			{
 				if(as instanceof CharacterAsset)
@@ -1438,7 +1489,7 @@ public class InputWizard implements ActionListener {
 			break;
 		case "backgroundToolbar":
 			backgroundSelectPath = null;
-			String currentBackgroundPath = lastSelectedScene.getBackground();
+			String currentBackgroundPath = lastSelectedScene.getBackground().getBackground();
 			currentBackgroundPath = currentBackgroundPath.substring(0, currentBackgroundPath.lastIndexOf('\\'));
 			backgroundSelectWindow.setBackgroundPathString(backgroundSelectPath);
 			backgroundSelectWindow.setBackgroundFolderPath(currentBackgroundPath);
@@ -1462,6 +1513,9 @@ public class InputWizard implements ActionListener {
 			break;
 			//JD end
 		case "deleteElement":
+			
+			//Comments below are to temporarily remove code until we know what to do with Assets.
+			/*
 			Asset toDelete = scenePanel.getTargetedAsset();
 			if(lastSelectedScreen.getAssets().contains(toDelete))
 			{
@@ -1471,9 +1525,10 @@ public class InputWizard implements ActionListener {
 			else
 			{
 				System.out.println("Error: Attempt to delete asset not in screen!");
-			}
+			}*/
 			break;
 		case "previewSound":
+			/*
 			Asset toPreviewSound = scenePanel.getTargetedAsset();
 			if(lastSelectedScreen.getAssets().contains(toPreviewSound))
 			{
@@ -1483,12 +1538,12 @@ public class InputWizard implements ActionListener {
 			else
 			{
 				System.out.println("Error: Attempt to preview asset not in screen!");
-			}
+			}*/
 			break;
 		case "backgroundMusicPreviewPlay":
 			//TODO finish
-			if(lastSelectedScene.getBackgroundMusic()!=null){
-				String insideSoundFolderPath = lastSelectedScene.getBackgroundMusic();
+			if(lastSelectedScene.getMusic()!=null){
+				String insideSoundFolderPath = lastSelectedScene.getMusic().getMusic();
 				AudioPlayer.playAudio(soundFolder + insideSoundFolderPath);
 			} else {
 				System.out.println("Error: No background music found.");

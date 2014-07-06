@@ -6,8 +6,8 @@ import edu.utdallas.gamegenerator.LearningAct.LessonAct;
 import edu.utdallas.gamegenerator.Lesson.Lesson;
 import edu.utdallas.gamegenerator.Locale.Locale;
 import edu.utdallas.sharedfiles.Search.Search;
-import edu.utdallas.sharedfiles.Structure.Game;
 import edu.utdallas.sharedfiles.Structure.Structure;
+import edu.utdallas.sharedfiles.gamespec.Game;
 import edu.utdallas.gamegenerator.Subject.Subject;
 import edu.utdallas.gamegenerator.Theme.Theme;
 import edu.utdallas.gamegenerator.old.Challenge.Challenge;
@@ -17,6 +17,7 @@ import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Marshaller;
 import javax.xml.bind.Unmarshaller;
+
 import java.io.File;
 import java.util.ArrayList;
 import java.util.HashMap;

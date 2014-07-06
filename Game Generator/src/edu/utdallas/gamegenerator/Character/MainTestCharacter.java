@@ -7,16 +7,19 @@ import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Marshaller;
 
+import edu.utdallas.sharedfiles.gamespec.Character;
+import edu.utdallas.sharedfiles.gamespec.Player;
+
 public class MainTestCharacter 
 {
 	public static void main(String[] args)
 	{
-		PlayerCharacter character = new PlayerCharacter();
+		Player character = new Player();
 		
-		character = new PlayerCharacter();
-		character.setCharacterID(10);
-		character.setName("character_10");
-		character.setBehavior("Neutral");
+		character = new Player();
+		//character.setCharacterID(10);
+		//character.setName("character_10");
+		//character.setBehavior("Neutral");
 		Profile profile = new Profile();
 		profile.setProfilePhoto("profile_pic.jpg");
 		profile.setTitle("Software Engineer");
@@ -38,7 +41,7 @@ public class MainTestCharacter
 		ArrayList<String> degrees = new ArrayList<String>(1);
 		degrees.add("B.S. Computer Science, NorthEastern University");
 		profile.setDegrees(degrees);
-		character.setProfile(profile);
+		//character.setProfile(profile);
 		
 		try {
 			 
