@@ -64,10 +64,8 @@ public class InputWizard implements ActionListener {
  	private JMenuBar menuBar;
  	private JMenu menu;
  	private JMenu fileMenu;
- 	private JMenu gameengine;
  	private JMenu gameEngineMenu;
  	private JMenuItem openFileItem;
- 	private JMenuItem opengame;
  	private JMenuItem addToRepo;
  	private JMenuItem remakeRepo;
  	private JMenuItem saveToRepo;
@@ -144,16 +142,6 @@ public class InputWizard implements ActionListener {
         menu = new JMenu("Repository Tools");
         menu.setMnemonic(KeyEvent.VK_R);
         menuBar.add(menu);
-        /*changes for adding game engine to game generator
-         *  
-         */
-        gameengine = new JMenu("Game Engine");
-        opengame = new JMenuItem("Open Game");
-        opengame.addActionListener(this);
-        gameengine.add(opengame);
-        menuBar.add(gameengine);
-       
-        // Change ends
         addToRepo = new JMenuItem("Add game to repository", KeyEvent.VK_D);
         addToRepo.setActionCommand("addToRepo");
         addToRepo.addActionListener(this);
