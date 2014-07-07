@@ -9,6 +9,9 @@ import javax.xml.bind.JAXBException;
 import javax.xml.bind.Marshaller;
 
 import edu.utdallas.gamePlayEngine.menuFrame;
+import edu.utdallas.gamePlayEngine.controller.GameController;
+import edu.utdallas.gamePlayEngine.model.GameModel;
+import edu.utdallas.gamePlayEngine.model.GameModelBoundary;
 import edu.utdallas.gamePlayEngine.view.GameView;
 import edu.utdallas.gamegenerator.RepoUpdate.Updates;
 import edu.utdallas.sharedfiles.Shared.*;
@@ -126,7 +129,7 @@ public class InputWizard implements ActionListener {
 		componentInputs = input;
 		initializeComponentInputs();
         window.setSize(WIDTH, HEIGHT);
-        window.setResizable(false);
+        window.setResizable(true);
         window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         int nextOpenRow =0; // next available row slot
         final String none = "no";
@@ -471,7 +474,50 @@ public class InputWizard implements ActionListener {
 	    games.add(quit);
 	    
 	    menuBar.add(games);
+	    
+	    final GameView gameView = new GameView();
+				
+		final JPanel jPanel = new JPanel(new BorderLayout());
+		//jPanel.setLocationRelativeTo(null);
+		//jPanel.pack();
+		jPanel.setVisible(true);
+		jPanel.setSize(600, 600);
+		jPanel.setLayout(new BorderLayout());
+		
+		Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
+		jPanel.setLocation(dim.width / 2 - jPanel.getSize().width / 2,
+				dim.height / 2 - jPanel.getSize().height / 2);
         
+		 openGame.addActionListener(new ActionListener() {
+		        public void actionPerformed(ActionEvent arg0) {
+		        	JFileChooser myFileChooser = new JFileChooser();
+		        	int retval = myFileChooser.showOpenDialog(null);
+			        if (retval == JFileChooser.APPROVE_OPTION) {
+			            File myFile = myFileChooser.getSelectedFile();
+			            System.out.println("Opening File: " + myFile.toString());
+			            try
+						{
+			            	gameView.resetView();
+			            	GameController gameController = new GameController(new GameModel(), gameView);
+			            	final GameModelBoundary gameModelBoundary = gameController.getModelBoundary();
+			            	gameModelBoundary.setView(gameView);
+			            	gameModelBoundary.gmbEnd();
+			            	
+			        		gameModelBoundary.startGame(myFile.toString(), jPanel);
+						} catch (Exception e)
+						{
+							System.out.println("Exception in GameViewFrame.java, startGame: " + e.toString());
+						}
+			        }
+		        }
+		    });
+		    quit.addActionListener(new ActionListener() {
+		        public void actionPerformed(ActionEvent arg0) {
+		        	System.exit(0);
+		        }
+		    });
+		    gamePlayEngine.add(jPanel);
+		    
         JPanel browsePanel = new JPanel(new BorderLayout()); // browse/click on Acts/Scenes
         browsePanel.add(scrollPane);
         
