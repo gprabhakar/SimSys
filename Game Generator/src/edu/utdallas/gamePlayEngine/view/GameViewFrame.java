@@ -90,8 +90,8 @@ public class GameViewFrame extends javax.swing.JFrame {
 			this.jPanel = myMenuFrame;
 			
 			//this.jPanel.setLocationRelativeTo(null);
-			//this.jPanel.pack();
-			this.jPanel.setVisible(true);
+			//this.jPanel.pack(); 
+			this.jPanel.setVisible(true); 
 			this.jPanel.setSize(600, 800);
 			this.jPanel.setLayout(new BorderLayout());
 	
