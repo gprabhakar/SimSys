@@ -84,8 +84,6 @@ import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlSeeAlso;
 import javax.xml.bind.annotation.XmlType;
 
-import edu.utdallas.gamegenerator.Character.Profile;
-
 
 /**
  * <p>Java class for Character complex type.
@@ -126,8 +124,7 @@ public abstract class Character extends GameElementType {
     @XmlElement(name = "AutonomousBehaviour", required = true)
     private String autonomousBehaviour;
     @XmlElement(name = "Profile", required = true)
-
-    private String profile;
+    private Profile profile;
     @XmlElement(name = "Rewards", required = true)
     private String rewards;
     /**
@@ -185,7 +182,7 @@ public abstract class Character extends GameElementType {
      *     {@link String }
      *
      */
-    public final String getProfile() {
+    public final Profile getProfile() {
         return profile;
     }
 
@@ -197,7 +194,7 @@ public abstract class Character extends GameElementType {
      *     {@link String }
      *
      */
-    public final void setProfile(final String profile) {
+    public final void setProfile(final Profile profile) {
         this.profile = profile;
     }
 
