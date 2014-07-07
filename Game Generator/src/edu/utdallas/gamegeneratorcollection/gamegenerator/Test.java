@@ -1,4 +1,4 @@
-package edu.utdallas.gamegenerator;
+package edu.utdallas.gamegeneratorcollection.gamegenerator;
 
 import edu.utdallas.gamegenerator.Characters.Characters;
 import edu.utdallas.gamegenerator.LearningAct.LearningAct;

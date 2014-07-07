@@ -20,7 +20,7 @@ import edu.utdallas.sharedfiles.Shared.ImageAsset;
 import edu.utdallas.sharedfiles.Shared.ImageHelper;
 import edu.utdallas.sharedfiles.Shared.InformationBoxAsset;
 import edu.utdallas.sharedfiles.Shared.ThoughtBubbleAsset;
-import edu.utdallas.gamegenerator.Structure.*;
+import edu.utdallas.gamegeneratorcollection.gamegenerator.Structure.*;
 import edu.utdallas.sharedfiles.gamespec.Act;
 import edu.utdallas.sharedfiles.gamespec.Challenge;
 import edu.utdallas.sharedfiles.gamespec.Character;

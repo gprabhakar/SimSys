@@ -1,4 +1,4 @@
-package edu.utdallas.gamegenerator;
+package edu.utdallas.gamegeneratorcollection.gamegenerator;
 
 import edu.utdallas.gamegenerator.Characters.Characters;
 import edu.utdallas.gamegenerator.LearningAct.LearningAct;
@@ -22,7 +22,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import static edu.utdallas.gamegenerator.Layers.*;
+import static edu.utdallas.gamegeneratorcollection.gamegenerator.Layers.*;
 
 /**
  * User: clocke

@@ -1,4 +1,4 @@
-package edu.utdallas.gamegenerator;
+package edu.utdallas.gamegeneratorcollection.gamegenerator;
 
 import java.util.ArrayList;
 import java.util.Collection;

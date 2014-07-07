@@ -1,4 +1,4 @@
-package edu.utdallas.gamegenerator;
+package edu.utdallas.gamegeneratorcollection.gamegenerator;
 
 import javax.xml.bind.SchemaOutputResolver;
 import javax.xml.transform.Result;
