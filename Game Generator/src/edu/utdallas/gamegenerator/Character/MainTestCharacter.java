@@ -9,6 +9,7 @@ import javax.xml.bind.Marshaller;
 
 import edu.utdallas.sharedfiles.gamespec.Character;
 import edu.utdallas.sharedfiles.gamespec.Player;
+import edu.utdallas.sharedfiles.gamespec.Profile;
 
 public class MainTestCharacter 
 {
@@ -29,11 +30,11 @@ public class MainTestCharacter
 		skills.add("Python");
 		profile.setSkills(skills);
 		profile.setYearsOfExperience(3);
-		profile.setCommunication("Good");
+		//profile.setCommunication("Good");
 		//profile.setLeadership("Fair");
-		profile.setTeamwork("Poor");
-		profile.setAvailability("Excellent");
-		profile.setAttendance("Good");
+		//profile.setTeamwork("Poor");
+		//profile.setAvailability("Excellent");
+		//profile.setAttendance("Good");
 		ArrayList<String> demographics = new ArrayList<String>(2);
 		demographics.add("Male");
 		demographics.add("Caucasian");

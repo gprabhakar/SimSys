@@ -308,10 +308,26 @@
 				<sequence>
 					<element name="Name" type="string"></element>
 					<element name="AutonomousBehaviour" type="string"></element>
-					<element name="Profile" type="string"></element>
+					<element name="Profile" type="tns:ProfileType"></element>
 					<element name="Rewards" type="string"></element>
 				</sequence>
 			</extension>
+		</complexContent>
+	</complexType>
+	
+	<complexType name="Profile">
+		<complexContent>
+			<sequence>
+				<element name="ProfilePhoto" type="string"></element>
+				<element name="Title" type="string"></element>
+				<element name="YearsOfExperience" type="integer"></element>
+				<element name="Skills" type="string" maxOccurs="unbounded"
+						minOccurs="1"></element>
+				<element name="Demographics" type="string" maxOccurs="unbounded"
+						minOccurs="1"></element>
+				<element name="Degrees" type="string" maxOccurs="unbounded"
+						minOccurs="1" ></element>
+			</sequence>
 		</complexContent>
 	</complexType>
 

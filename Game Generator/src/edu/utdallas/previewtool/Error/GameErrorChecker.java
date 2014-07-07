@@ -9,7 +9,6 @@ import java.util.List;
 import javax.imageio.ImageIO;
 import javax.xml.ws.Response;
 
-import edu.utdallas.gamegenerator.Character.Profile;
 import edu.utdallas.previewtool.Error.PreviewError.Level;
 import edu.utdallas.previewtool.Error.PreviewError.Severity;
 import edu.utdallas.sharedfiles.Search.InputWizard;
@@ -30,6 +29,7 @@ import edu.utdallas.sharedfiles.gamespec.Introduction;
 import edu.utdallas.sharedfiles.gamespec.Item;
 import edu.utdallas.sharedfiles.gamespec.MultipleChoiceItem;
 import edu.utdallas.sharedfiles.gamespec.Option;
+import edu.utdallas.sharedfiles.gamespec.Profile;
 import edu.utdallas.sharedfiles.gamespec.QuizChallenge;
 import edu.utdallas.sharedfiles.gamespec.Scene;
 import edu.utdallas.sharedfiles.gamespec.Screen;

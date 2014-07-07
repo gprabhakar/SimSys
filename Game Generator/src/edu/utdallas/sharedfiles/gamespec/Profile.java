@@ -1,24 +1,41 @@
-package edu.utdallas.gamegenerator.Character;
+package edu.utdallas.sharedfiles.gamespec;
 
 import java.util.List;
 
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlElementWrapper;
 import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlType;
 
-@XmlRootElement(name = "Profile")
+@XmlAccessorType(XmlAccessType.FIELD)
+@XmlType(name = "Profile", propOrder = {
+	"ProfilePhoto",
+    "Title",
+    "YearsOfExperience",
+    "Skills",
+    "Demographics",
+    "Degrees"
+})
 public class Profile
-{
-	private String profilePhoto;
-	private String title;
-	private int yearsOfExperience;
-	private String communication;
-	private String availability;
-	private List<String> skills;
-	private List<String> demographics;
-	private List<String> degrees;
-	private String teamwork;
-	private String attendance;
+{   
+    @XmlElement(name = "ProfilePhoto", required = true)
+	private String profilePhoto; 
+    @XmlElement(name = "Title", required = true)
+	private String title; 
+    @XmlElement(name = "YearsOfExperience", required = true)
+	private int yearsOfExperience; 
+	//private String communication;
+	//private String availability;
+    @XmlElement(name = "Skills", required = true)
+	private List<String> skills; 
+    @XmlElement(name = "Demographics", required = true)
+	private List<String> demographics;  
+    @XmlElement(name = "Degrees", required = true)
+	private List<String> degrees; 
+	//private String teamwork;
+	//private String attendance;
 
     @XmlElement(name = "ProfilePhoto")
 	public String getProfilePhoto() {
@@ -27,13 +44,14 @@ public class Profile
 	public void setProfilePhoto(String profilePhoto) {
 		this.profilePhoto = profilePhoto;
 	}
+	/*
     @XmlElement(name = "Communication")
 	public String getCommunication() {
 		return communication;
 	}
 	public void setCommunication(String communication) {
 		this.communication = communication;
-	}
+	} */
     @XmlElement(name = "Title")
 	public String getTitle() {
 		return title;
@@ -48,13 +66,14 @@ public class Profile
 	public void setYearsOfExperience(int yearsOfExperience) {
 		this.yearsOfExperience = yearsOfExperience;
 	}
+	/*
     @XmlElement(name = "Availability")
 	public String getAvailability() {
 		return availability;
 	}
 	public void setAvailability(String availability) {
 		this.availability = availability;
-	}
+	}*/
 	@XmlElementWrapper(name = "Skills")
     @XmlElement(name = "Skill")
 	public List<String> getSkills() {
@@ -79,6 +98,7 @@ public class Profile
 	public void setDegrees(List<String> degrees) {
 		this.degrees = degrees;
 	}
+	/*
     @XmlElement(name = "Teamwork")
 	public String getTeamwork() {
 		return teamwork;
@@ -92,5 +112,5 @@ public class Profile
 	}
 	public void setAttendance(String attendance) {
 		this.attendance = attendance;
-	}
+	}*/
 }
