@@ -37,6 +37,9 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "GameElementType", propOrder = {
+	"name",
+	"location",
+	"size",
     "animationEffect",
     "soundEffect"
 })
@@ -46,12 +49,43 @@ import javax.xml.bind.annotation.XmlType;
 })
 public class GameElementType {
 
+	@XmlElement(name = "Name", required = true)
+	private String name;
+	@XmlElement(name = "Location", required = true)
+	private Location location;
+	@XmlElement(name = "Size", required = true)
+	private String size;
     @XmlElement(name = "AnimationEffect")
     private AnimationEffectType animationEffect;
     @XmlElement(name = "SoundEffect")
     private String soundEffect;
+    
 
-    /**
+    public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public Location getLocation() {
+		return location;
+	}
+
+	public void setLocation(Location location) {
+		this.location = location;
+	}
+
+	public String getSize() {
+		return size;
+	}
+
+	public void setSize(String size) {
+		this.size = size;
+	}
+
+	/**
      * Gets the value of the animationEffect property.
      *
      * @return

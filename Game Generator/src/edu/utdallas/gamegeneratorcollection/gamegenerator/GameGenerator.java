@@ -49,10 +49,9 @@ public class GameGenerator {
 			GameGenerator gameGenerator = new GameGenerator();
 
 			String exportFilename = search.getFileLocation();
-			 //  String exportFilename = "C:\\Users\\Chris Mojica\\Documents\\2013\\Summer\\Git Output\\TestRunGame.xml";
+
 			try {
-				Layers layers =
-						gameGenerator.loadXmlComponents(xmlFiles);
+                Layers layers = gameGenerator.loadXmlComponents(xmlFiles);
 				Game game = gameGenerator.buildGame(layers);
 				gameGenerator.exportGame(game, exportFilename);
 			} catch (JAXBException e) {
@@ -103,22 +102,22 @@ public class GameGenerator {
 		Unmarshaller unmarshaller = null;
 
 		jaxbContext = JAXBContext.newInstance(Characters.class);
-		file = new File("XMLrepo\\"+xmlFiles.get(CHARACTERS)+".xml");
+		file = new File("XMLrepo\\"+ xmlFiles.get(CHARACTERS) + ".xml");
 		unmarshaller = jaxbContext.createUnmarshaller();
 		layers.setCharacters((Characters) unmarshaller.unmarshal(file));
 
 		jaxbContext = JAXBContext.newInstance(Subject.class);
-		file = new File("XMLrepo\\"+xmlFiles.get(SUBJECT)+".xml");
+		file = new File("XMLrepo\\" + xmlFiles.get(SUBJECT) + ".xml");
 		unmarshaller = jaxbContext.createUnmarshaller();
 		layers.setSubject((Subject) unmarshaller.unmarshal(file));
 
 		jaxbContext = JAXBContext.newInstance(Theme.class);
-		file = new File("XMLrepo\\"+xmlFiles.get(THEME)+".xml");
+		file = new File("XMLrepo\\" + xmlFiles.get(THEME) + ".xml");
 		unmarshaller = jaxbContext.createUnmarshaller();
 		layers.setTheme((Theme) unmarshaller.unmarshal(file));
 
 		jaxbContext = JAXBContext.newInstance(Locale.class);
-		file = new File("XMLrepo\\"+xmlFiles.get(LOCALE)+".xml");
+		file = new File("XMLrepo\\" + xmlFiles.get(LOCALE) + ".xml");
 		unmarshaller = jaxbContext.createUnmarshaller();
 		layers.setLocale((Locale) unmarshaller.unmarshal(file));
 
@@ -127,8 +126,8 @@ public class GameGenerator {
 		jaxbContext = JAXBContext.newInstance(Lesson.class);
 		unmarshaller = jaxbContext.createUnmarshaller();
 		List<Lesson> lessons = new ArrayList<Lesson>();
-		for(int i = 0; i < lessonFiles.length; i++) {
-			file = new File("XMLrepo\\"+lessonFiles[i]+".xml");
+		for (int i = 0; i < lessonFiles.length; i++) {
+			file = new File("XMLrepo\\" + lessonFiles[i] + ".xml");
 			Lesson lesson = ((Lesson) unmarshaller.unmarshal(file));
 			lessons.add(lesson);
 		}
@@ -138,14 +137,14 @@ public class GameGenerator {
 		jaxbContext = JAXBContext.newInstance(Challenge.class);
 		unmarshaller = jaxbContext.createUnmarshaller();
 		List<Challenge> challenges = new ArrayList<Challenge>();
-		for(int i = 0; i < challengeFiles.length; i++) {
-			file = new File("XMLrepo\\"+challengeFiles[i]+".xml");
+		for (int i = 0; i < challengeFiles.length; i++) {
+			file = new File("XMLrepo\\" + challengeFiles[i] + ".xml");
 			Challenge challenge = ((Challenge) unmarshaller.unmarshal(file));
 			challenges.add(challenge);
 		}
 
 		List<LearningAct> learningActs = new ArrayList<LearningAct>();
-		for(int i = 0; i < lessons.size(); i++) {
+		for (int i = 0; i < lessons.size(); i++) {
 			LearningAct learningAct = new LearningAct();
 			List<LessonAct> lessonActs = new ArrayList<LessonAct>();
 			LessonAct lessonAct = new LessonAct();
@@ -165,7 +164,7 @@ public class GameGenerator {
 	}
 
 	/**
-	 * Injects dependent layers into each other
+	 * Injects dependent layers into each other.
 	 * @param layers a Layers object with all layers populated
 	 */
 	private void wireUpLayers(Layers layers) {

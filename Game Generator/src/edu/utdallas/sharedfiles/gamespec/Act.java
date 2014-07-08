@@ -47,8 +47,8 @@ import javax.xml.bind.annotation.XmlType;
 })
 public class Act extends GameUnitType {
 
- @XmlElement(name = "LearningObjective", required = true)
- private LearningObjectiveType learningObjective;
+@XmlElement(name = "LearningObjective")
+ private List<LearningObjectiveType> learningObjective;
  @XmlElement(name = "Scene", required = true)
  private List<Scene> scene;
 
@@ -61,7 +61,7 @@ public class Act extends GameUnitType {
   *     {@link LearningObjectiveType }
   *
   */
- public final LearningObjectiveType getLearningObjective() {
+ public final List<LearningObjectiveType> getLearningObjective() {
      return learningObjective;
  }
 
@@ -73,7 +73,7 @@ public class Act extends GameUnitType {
   *     {@link LearningObjectiveType }
   *
   */
- public final void setLearningObjective(final LearningObjectiveType value) {
+ public final void setLearningObjective(final List<LearningObjectiveType> value) {
      this.learningObjective = value;
  }
 

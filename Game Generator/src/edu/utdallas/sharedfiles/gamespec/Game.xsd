@@ -22,6 +22,15 @@
 
 	<complexType name="GameElementType">
 		<sequence>
+			<element name="Name" type="string" maxOccurs="1"
+				minOccurs="1">
+			</element>
+			<element name="Location" type="tns:Location" maxOccurs="1"
+				minOccurs="1">
+			</element>
+			<element name="Size" type="string" maxOccurs="1"
+				minOccurs="1">
+			</element>
 			<element name="AnimationEffect" type="tns:AnimationEffectType" maxOccurs="1"
 				minOccurs="0">
 			</element>
@@ -87,8 +96,8 @@
 		<complexContent>
 			<extension base="tns:GameUnitType">
 				<sequence>
-					<element name="LearningObjective" type="tns:LearningObjectiveType">
-					</element>
+					<element name="LearningObjective" type="tns:LearningObjectiveType"
+					maxOccurs="unbounded" minOccurs="0"></element>
 					<element name="Scene" type="tns:SceneType" maxOccurs="unbounded"
 						minOccurs="1"></element>
 				</sequence>
@@ -100,8 +109,8 @@
 		<complexContent>
 			<extension base="tns:GameUnitType">
 				<sequence>
-					<element name="LearningObjective" type="tns:LearningObjectiveType">
-					</element>
+					<element name="LearningObjective" type="tns:LearningObjectiveType"
+					maxOccurs="unbounded" minOccurs="0"></element>
 					<element name="Screen" type="tns:ScreenType" maxOccurs="unbounded"
 						minOccurs="1">
 					</element>
@@ -118,8 +127,8 @@
 		<complexContent>
 			<extension base="tns:GameUnitType">
 				<sequence>
-					<element name="LearningObjective" type="tns:LearningObjectiveType">
-					</element>
+					<element name="LearningObjective" type="tns:LearningObjectiveType"
+					maxOccurs="unbounded" minOccurs="0"></element>
 					<element name="Challenge" type="tns:ChallengeType"
 						maxOccurs="unbounded" minOccurs="0">
 					</element>
@@ -136,8 +145,8 @@
 		<complexContent>
 			<extension base="tns:GameUnitType">
 				<sequence>
-					<element name="LearningObjective" type="tns:LearningObjectiveType">
-					</element>
+					<element name="LearningObjective" type="tns:LearningObjectiveType"
+					maxOccurs="unbounded" minOccurs="0"></element>
 					<element name="GameElement" type="tns:GameElementType"
 						maxOccurs="unbounded" minOccurs="0"></element>
 						<element name="Classification" type="tns:ClassificationType">

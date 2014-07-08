@@ -296,7 +296,7 @@ public class Structure {
     	for(int i = 0; i < elementNodes.size(); i++) {
     		screen.getGameElement().add(elementNodes.get(i));
     	}
-    	screen.setLearningObjective(objective);
+    	screen.getLearningObjective().add(objective);
     	
     	return screen;
     }

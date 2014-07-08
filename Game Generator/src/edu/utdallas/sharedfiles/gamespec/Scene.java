@@ -52,8 +52,8 @@ import javax.xml.bind.annotation.XmlType;
 public class Scene
    extends GameUnitType {
 
- @XmlElement(name = "LearningObjective", required = true)
- private LearningObjectiveType learningObjective;
+@XmlElement(name = "LearningObjective")
+private List<LearningObjectiveType> learningObjective;
  @XmlElement(name = "Screen", required = true)
  private List<Screen> screen;
  @XmlElement(name = "Background", required = true)
@@ -69,7 +69,7 @@ public class Scene
   *     {@link LearningObjectiveType }
   *
   */
- public final LearningObjectiveType getLearningObjective() {
+ public final List<LearningObjectiveType> getLearningObjective() {
      return learningObjective;
  }
 
@@ -81,7 +81,7 @@ public class Scene
   *     {@link LearningObjectiveType }
   *
   */
- public final void setLearningObjective(final LearningObjectiveType value) {
+ public final void setLearningObjective(final List <LearningObjectiveType> value) {
      this.learningObjective = value;
  }
 
