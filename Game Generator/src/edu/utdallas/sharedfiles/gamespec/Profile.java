@@ -11,12 +11,12 @@ import javax.xml.bind.annotation.XmlType;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "Profile", propOrder = {
-	"ProfilePhoto",
-    "Title",
-    "YearsOfExperience",
-    "Skills",
-    "Demographics",
-    "Degrees"
+	"profilePhoto",
+    "title",
+    "yearsOfExperience",
+    "skills",
+    "demographics",
+    "degrees"
 })
 public class Profile
 {   
@@ -37,7 +37,7 @@ public class Profile
 	//private String teamwork;
 	//private String attendance;
 
-    @XmlElement(name = "ProfilePhoto")
+    
 	public String getProfilePhoto() {
 		return profilePhoto;
 	}
@@ -52,14 +52,14 @@ public class Profile
 	public void setCommunication(String communication) {
 		this.communication = communication;
 	} */
-    @XmlElement(name = "Title")
+    
 	public String getTitle() {
 		return title;
 	}
 	public void setTitle(String title) {
 		this.title = title;
 	}
-    @XmlElement(name = "YearsOfExperience")
+    
 	public int getYearsOfExperience() {
 		return yearsOfExperience;
 	}
@@ -74,43 +74,26 @@ public class Profile
 	public void setAvailability(String availability) {
 		this.availability = availability;
 	}*/
-	@XmlElementWrapper(name = "Skills")
-    @XmlElement(name = "Skill")
+	
 	public List<String> getSkills() {
 		return skills;
 	}
 	public void setSkills(List<String> skills) {
 		this.skills = skills;
 	}
-	@XmlElementWrapper(name = "Demographics")
-    @XmlElement(name = "Demographic")
+	
 	public List<String> getDemographics() {
 		return demographics;
 	}
 	public void setDemographics(List<String> demographics) {
 		this.demographics = demographics;
 	}
-	@XmlElementWrapper(name = "Degrees")
-    @XmlElement(name = "Degree")
+	
 	public List<String> getDegrees() {
 		return degrees;
 	}
 	public void setDegrees(List<String> degrees) {
 		this.degrees = degrees;
 	}
-	/*
-    @XmlElement(name = "Teamwork")
-	public String getTeamwork() {
-		return teamwork;
-	}
-	public void setTeamwork(String teamwork) {
-		this.teamwork = teamwork;
-	}
-    @XmlElement(name = "Attendance")
-	public String getAttendance() {
-		return attendance;
-	}
-	public void setAttendance(String attendance) {
-		this.attendance = attendance;
-	}*/
+
 }
