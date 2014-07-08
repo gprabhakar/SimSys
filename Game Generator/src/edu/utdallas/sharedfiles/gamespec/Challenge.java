@@ -54,12 +54,12 @@ import javax.xml.bind.annotation.XmlType;
 public class Challenge
    extends GameUnitType {
 
- @XmlElement(name = "LearningObjective", required = true)
- private LearningObjectiveType learningObjective;
- @XmlElement(name = "GameElement")
- private List<GameElementType> gameElement;
- @XmlElement(name = "Classification", required = true)
- private ClassificationType classification;
+@XmlElement(name = "LearningObjective")
+private List<LearningObjectiveType> learningObjective;
+@XmlElement(name = "GameElement")
+private List<GameElementType> gameElement;
+@XmlElement(name = "Classification", required = true)
+private ClassificationType classification;
 
  /**
   * Gets the value of the learningObjective property.
@@ -69,7 +69,7 @@ public class Challenge
   *     {@link LearningObjectiveType }
   *
   */
- public final LearningObjectiveType getLearningObjective() {
+ public final List<LearningObjectiveType> getLearningObjective() {
      return learningObjective;
  }
 
@@ -81,7 +81,7 @@ public class Challenge
   *     {@link LearningObjectiveType }
   *
   */
- public final void setLearningObjective(final LearningObjectiveType value) {
+ public final void setLearningObjective(final List<LearningObjectiveType> value) {
      this.learningObjective = value;
  }
 
