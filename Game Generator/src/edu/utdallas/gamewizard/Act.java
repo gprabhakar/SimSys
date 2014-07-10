@@ -15,6 +15,10 @@ public class Act {
 	public Act(){
 		sceneList = new ArrayList<Scene>();
 	}
+	
+	public Act(Act a){
+		this.sceneList = a.sceneList;
+	}
 	public String getName(){
 		return name;
 	}

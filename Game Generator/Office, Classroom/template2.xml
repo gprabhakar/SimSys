@@ -7,14 +7,12 @@
 					<screens>
 						<screen>
 							<type>Introduction</type>
-						</screen>
+			 			</screen>
 						<screen>
 							<type>Summary Screen</type>
 						</screen>
-						<screen>
-							<type>Text that states: "Let's Begin!" Screen</type>
-						</screen>
 					</screens>
+					<transitionType>Text that states: "Let's Begin!"</transitionType>
 				</scene>
 			</scenes>
 		</act>
@@ -23,12 +21,34 @@
 				<scene>
 					<screens>
 						<screen>
-							<type>Question</type>
-						</screen>
-						<screen>
-							<type>Transition: Response To Answer</type>
+							<type>Introduction</type>
 						</screen>
 					</screens>
+					<transitionType>Text that states: "First Challenge!"</transitionType>
+				</scene>
+				<scene>
+					<screens>
+						<screen>
+							<type>Question</type>
+						</screen>
+					</screens>
+					<transitionType>Text that states: "Next Round!"</transitionType>
+				</scene>
+				<scene>
+					<screens>
+						<screen>
+							<type>Question</type>
+						</screen>
+					</screens>
+					<transitionType>Text that states: "Next Round!"</transitionType>
+				</scene>
+				<scene>
+					<screens>
+						<screen>
+							<type>Question</type>
+						</screen>
+					</screens>
+					<transitionType>Text that states: "Challenge Complete!"</transitionType>
 				</scene>
 			</scenes>
 		</act>
@@ -39,21 +59,18 @@
 						<screen>
 							<type>Introduction</type>
 						</screen>
-						<screen>
-							<type>Transition: Text that states: "See Your Score!"</type>
-						</screen>
 					</screens>
+					<transitionType>Text that states: "See Your Score!"</transitionType>
 				</scene>
 				<scene>
 					<screens>
 						<screen>
 							<type>Summary</type>
 						</screen>
-						<screen>
-							<type>Transition: Progress Options</type>
-						</screen>
 					</screens>
+					<transitionType>Progress Options</transitionType>
 				</scene>
+				
 			</scenes>
 		</act>
 	</acts>

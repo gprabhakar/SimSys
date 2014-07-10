@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<charList>
+	<characters>
+		<character name = "Sneaky Jimmy">    
+			<fileName>character_15/char15_SitCurseChairD.png</fileName>
+			<type>Trickster</type>
+		</character>
+		<character name = "Allen">    
+			<fileName>character_21/char21_SitCurseChairD.png</fileName>
+			<type>Prop</type>
+		</character>
+		<character name = "Ms. Applewood">    
+			<fileName>character_13/char13_SitCurseChairD.png</fileName>
+			<type>Interlocutor</type>
+		</character>
+	</characters>
+</charList>
