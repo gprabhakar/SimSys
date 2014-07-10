@@ -44,7 +44,7 @@ import javax.xml.bind.annotation.XmlType;
  "learningObjective",
  "character"
 })
-@XmlRootElement(name = "Game")
+@XmlRootElement(name = "game")
 public class Game {
 
  @XmlElement(name = "Act", required = true)

@@ -10,7 +10,10 @@ package edu.utdallas.sharedfiles.gamespec;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
+
+import edu.utdallas.sharedfiles.Shared.GameObject;
 
 
 /**
@@ -30,9 +33,38 @@ import javax.xml.bind.annotation.XmlType;
  *
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "GenericInteraction")
+@XmlType(name = "GenericInteraction", propOrder = {
+		"text"
+})
 public class GenericInteraction
     extends Prop {
+	
+	@XmlElement(name = "Text", required = true)
+    private String text;
+	
+		
+	public GenericInteraction(GameObject rawObject) {
+    	
+    	super(rawObject);
+    	this.text = rawObject.getText();    	
+    }
 
+	public GenericInteraction() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	public GenericInteraction(String text) {
+		super();
+		this.text = text;
+	}
+
+	public String getText() {
+		return text;
+	}
+
+	public void setText(String text) {
+		this.text = text;
+	}	
 
 }

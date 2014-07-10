@@ -9,6 +9,7 @@ import edu.utdallas.gamegenerator.Locale.Locale;
 import edu.utdallas.gamegenerator.Theme.Theme;
 import edu.utdallas.sharedfiles.gamespec.Act;
 import edu.utdallas.sharedfiles.gamespec.BackgroundType;
+import edu.utdallas.sharedfiles.gamespec.Behavior;
 import edu.utdallas.sharedfiles.gamespec.Challenge;
 import edu.utdallas.sharedfiles.gamespec.Character;
 import edu.utdallas.sharedfiles.gamespec.Decoration;
@@ -20,6 +21,7 @@ import edu.utdallas.sharedfiles.gamespec.LearningObjectiveType;
 import edu.utdallas.sharedfiles.gamespec.MusicType;
 import edu.utdallas.sharedfiles.gamespec.NonPlayer;
 import edu.utdallas.sharedfiles.gamespec.Player;
+import edu.utdallas.sharedfiles.gamespec.Profile;
 import edu.utdallas.sharedfiles.gamespec.Scene;
 import edu.utdallas.sharedfiles.gamespec.Screen;
 
@@ -84,16 +86,28 @@ public class Structure {
 			Characters chars) {
 		List allCharacters = new ArrayList<Character>();
 		Player player = new Player();
-		player.setName(chars.getPlayer().getName());
+		player.setCharacterName(chars.getPlayer().getName());
+		player.setName(player.getCharacterName());
+		player.setProfile(new Profile());
+		player.setAutonomousBehaviour("Behavior");
 		allCharacters.add(player);
 		NonPlayer hero = new NonPlayer();
-		hero.setName(chars.getHero().getName());
+		hero.setCharacterName(chars.getHero().getName());
+		hero.setName(hero.getCharacterName());
+		hero.setProfile(new Profile());
+		hero.setAutonomousBehaviour("Behavior");
 		allCharacters.add(hero);
 		NonPlayer villain = new NonPlayer();
-		villain.setName(chars.getVillain().getName());
+		villain.setCharacterName(chars.getVillain().getName());
+		villain.setName(villain.getCharacterName());
+		villain.setProfile(new Profile());
+		villain.setAutonomousBehaviour("Behavior");
 		allCharacters.add(villain);
 		NonPlayer alt = new NonPlayer();
-		alt.setName(chars.getAlt().getName());
+		alt.setCharacterName(chars.getAlt().getName());
+		alt.setName(alt.getCharacterName());
+		alt.setProfile(new Profile());
+		alt.setAutonomousBehaviour("Behavior");
 		allCharacters.add(alt);
 		
 		return allCharacters;

@@ -108,7 +108,7 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "Character", propOrder = {
-	"name",
+	"characterName",
     "autonomousBehaviour",
     "profile",
     "rewards"
@@ -119,8 +119,8 @@ import javax.xml.bind.annotation.XmlType;
 })
 public abstract class Character extends GameElementType {
 	
-	@XmlElement(name = "Name", required = true)
-	private String name;
+	@XmlElement(name = "CharacterName", required = true)
+	private String characterName;
     @XmlElement(name = "AutonomousBehaviour", required = true)
     private String autonomousBehaviour;
     @XmlElement(name = "Profile", required = true)
@@ -135,8 +135,8 @@ public abstract class Character extends GameElementType {
      *     {@link String }
      *
      */
-    public final String getName() {
-        return name;
+    public final String getCharacterName() {
+        return characterName;
     }
 
     /**
@@ -147,8 +147,8 @@ public abstract class Character extends GameElementType {
      *     {@link String }
      *
      */
-    public final void setName(final String value) {
-        this.name = value;
+    public final void setCharacterName(final String value) {
+        this.characterName = value;
     }
     /**
      * Gets the value of the autonomousBehaviour property.

@@ -38,10 +38,14 @@ import edu.utdallas.sharedfiles.gamespec.Act;
 import edu.utdallas.sharedfiles.gamespec.BackgroundType;
 import edu.utdallas.sharedfiles.gamespec.Challenge;
 import edu.utdallas.sharedfiles.gamespec.ClassificationType;
+import edu.utdallas.sharedfiles.gamespec.GameElementType;
 import edu.utdallas.sharedfiles.gamespec.GenericInteraction;
 import edu.utdallas.sharedfiles.gamespec.Hint;
+import edu.utdallas.sharedfiles.gamespec.Location;
+import edu.utdallas.sharedfiles.gamespec.Option;
 import edu.utdallas.sharedfiles.gamespec.Scene;
 import edu.utdallas.sharedfiles.gamespec.Screen;
+import edu.utdallas.sharedfiles.gamespec.Size;
 
 /**
  * User: clocke
@@ -249,9 +253,12 @@ public class Locale {
         List<Asset> assets = new ArrayList<Asset>();
         //screenNode.setAssets(assets);
         List<GameObject> localeObjects = localeScreen.getGameObjects();
+        //System.out.println("Path to first asset is: " + localeObjects.get(0).getPathToAsset());
         if(localeObjects != null) {
             for(GameObject object : localeObjects) {
-                assets.add(new Asset(object));
+            	GameElementType nextElement = convertGameObjects(object);            	
+            	screenNode.getGameElement().add(nextElement);
+                //assets.add(new Asset(object));
             }
         }
         List<LearningActCharacter> screenCharacters = screen.getCharacters();
@@ -260,6 +267,8 @@ public class Locale {
                 LearningActCharacterType characterType = themeCharacter.getCharacterType();
                 SharedCharacter localeCharacter = localeScreen.getCharacters().get(characterType);
                 GameCharacter gameCharacter = characters.getCharacter(characterType);
+                GameElementType nextElement = convertGameObjects(localeCharacter);             
+                
                 assets.add(new Asset(localeCharacter, gameCharacter, themeCharacter));
             }
         }
@@ -280,13 +289,24 @@ public class Locale {
         if(screen instanceof ChallengeScreen) {
         	
             ChallengeScreen challenge = (ChallengeScreen) screen;
-            if(challenge.getChallengeOptions() != null) {
-                gameButtons.addAll(challenge.getChallengeOptions());
+            List<ChallengeOption> options = challenge.getChallengeOptions();
+            
+            if(options != null) {
+            	
+                gameButtons.addAll(options);
+                for (ChallengeOption option : options) {
+                	Option nextOption = new Option();
+                	nextOption.setReward(option.getReward().toString()); //Need to change this to a proper reward
+                	
+                	//Need to set all the options up as buttons. 
+                }
+                
             }
             //Add in buttons, which are Generic interactionElements
             Challenge currentChallenge = new Challenge();
             for (GameButton button: gameButtons) {
             	GenericInteraction nextElement = new GenericInteraction();
+            	
             	nextElement.setHint(new Hint());
             	nextElement.getHint().setHint(button.getText());
             	currentChallenge.getGameElement().add(nextElement);
@@ -366,6 +386,14 @@ public class Locale {
         }
 
         return screenNodes;
+    }
+    
+    public GameElementType convertGameObjects(GameObject rawObject) {
+    	GameElementType nextElement = new GameElementType();
+    	nextElement.setLocation(new Location(rawObject.getX(), rawObject.getY()));
+    	nextElement.setSize(new Size(rawObject.getWidth(), rawObject.getHeight()));
+    	nextElement.setName(rawObject.getPathToAsset());
+    	return nextElement;
     }
 
     public Map<ScreenType, LocaleScreen> getLocaleScreens() {

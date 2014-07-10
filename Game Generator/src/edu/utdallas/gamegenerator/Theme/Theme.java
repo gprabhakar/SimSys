@@ -22,8 +22,12 @@ import edu.utdallas.sharedfiles.Shared.SharedButton;
 import edu.utdallas.sharedfiles.Shared.SharedCharacter;
 import edu.utdallas.sharedfiles.Shared.SharedInformationBox;
 import edu.utdallas.sharedfiles.gamespec.BackgroundType;
+import edu.utdallas.sharedfiles.gamespec.GameElementType;
+import edu.utdallas.sharedfiles.gamespec.GenericInteraction;
+import edu.utdallas.sharedfiles.gamespec.Location;
 import edu.utdallas.sharedfiles.gamespec.Scene;
 import edu.utdallas.sharedfiles.gamespec.Screen;
+import edu.utdallas.sharedfiles.gamespec.Size;
 
 /**
  * User: clocke
@@ -76,6 +80,8 @@ public class Theme {
             if(screen.getGameObjects() != null) {
                 for(GameObject object : screen.getGameObjects()) {
                     assets.add(new Asset(object));
+                	GameElementType nextElement = convertGameObjects(object);
+                	screenNode.getGameElement().add(nextElement);
                 }
             }
             if(screen.getThemeCharacters() != null) {
@@ -83,16 +89,23 @@ public class Theme {
                     LearningActCharacterType characterType = character.getCharacterType();
                     GameCharacter gameCharacter = characters.getCharacter(characterType);
                     assets.add(new Asset(character, gameCharacter));
+                    GameElementType nextElement = convertGameObjects(character);
+                    nextElement.setName(character.getText());
+                    screenNode.getGameElement().add(nextElement);
                 }
             }
             if(screen.getInformationBoxes() != null) {
                 for(SharedInformationBox informationBox : screen.getInformationBoxes()) {
-                    assets.add(new Asset(informationBox));
+                	assets.add(new Asset(informationBox));
+                    GameElementType nextElement = new GenericInteraction(informationBox);
+                    screenNode.getGameElement().add(nextElement);
                 }
             }
             if(screen.getButtons() != null) {
                 for(SharedButton button : screen.getButtons().values()) {
                     Asset asset = new Asset(button);
+                    GameElementType nextElement = new GenericInteraction(button);
+                    screenNode.getGameElement().add(nextElement);
                     if(asset.getBehaviors() != null) {
                         for(Behavior behavior : asset.getBehaviors()) {
                             if(BehaviorType.TRANSITION_BEHAVIOR == behavior.getBehaviorType() &&
@@ -110,6 +123,14 @@ public class Theme {
             nextScreen = UUID.randomUUID();
         }
         return currentScene;
+    }
+    
+    public GameElementType convertGameObjects(GameObject rawObject) {
+    	GameElementType nextElement = new GameElementType();
+    	nextElement.setLocation(new Location(rawObject.getX(), rawObject.getY()));
+    	nextElement.setSize(new Size(rawObject.getWidth(), rawObject.getHeight()));
+    	nextElement.setName(rawObject.getPathToAsset());
+    	return nextElement;
     }
 
     public Subject getSubject() {

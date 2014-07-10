@@ -31,16 +31,22 @@ public class GameObject {
         return x;
     }
 
+    @XmlElement(name = "Height")
+    public void setHeight(int height) {
+        this.height = height;
+    }
+    
     @XmlElement(name = "X")
     public void setX(int x) {
         this.x = x;
     }
 
+    
     public int getY() {
         return y;
     }
 
-    @XmlElement(name = "Y")
+    @XmlElement(name = "LocY")
     public void setY(int y) {
         this.y = y;
     }
@@ -58,10 +64,7 @@ public class GameObject {
         return height;
     }
 
-    @XmlElement(name = "Height")
-    public void setHeight(int height) {
-        this.height = height;
-    }
+    
 
     public String getPathToAsset() {
         return pathToAsset;

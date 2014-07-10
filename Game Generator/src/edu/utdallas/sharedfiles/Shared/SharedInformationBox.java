@@ -5,6 +5,7 @@ package edu.utdallas.sharedfiles.Shared;
  * Date: 3/7/13
  * Time: 8:57 PM
  */
+
 public class SharedInformationBox extends GameObject {
     private String name;
 

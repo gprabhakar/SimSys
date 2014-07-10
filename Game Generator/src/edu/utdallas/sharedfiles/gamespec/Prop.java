@@ -14,6 +14,8 @@ import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlSeeAlso;
 import javax.xml.bind.annotation.XmlType;
 
+import edu.utdallas.sharedfiles.Shared.GameObject;
+
 
 /**
  * <p>Java class for Prop complex type.
@@ -48,6 +50,15 @@ public class Prop
 
     @XmlElement(name = "Hint", required = true)
     private Hint hint;
+    
+    public Prop() {
+    	super();
+    }
+    
+    public Prop(GameObject rawObject) {
+    	
+    	super(rawObject);    	
+    }
 
     /**
      * Gets the value of the hint property.

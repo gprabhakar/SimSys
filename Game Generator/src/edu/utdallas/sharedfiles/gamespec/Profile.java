@@ -66,14 +66,6 @@ public class Profile
 	public void setYearsOfExperience(int yearsOfExperience) {
 		this.yearsOfExperience = yearsOfExperience;
 	}
-	/*
-    @XmlElement(name = "Availability")
-	public String getAvailability() {
-		return availability;
-	}
-	public void setAvailability(String availability) {
-		this.availability = availability;
-	}*/
 	
 	public List<String> getSkills() {
 		return skills;

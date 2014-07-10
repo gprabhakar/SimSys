@@ -14,6 +14,8 @@ import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlSeeAlso;
 import javax.xml.bind.annotation.XmlType;
 
+import edu.utdallas.sharedfiles.Shared.GameObject;
+
 
 /**
  * <p>Java class for GameElementType complex type.
@@ -54,12 +56,23 @@ public class GameElementType {
 	@XmlElement(name = "Location", required = true)
 	private Location location;
 	@XmlElement(name = "Size", required = true)
-	private String size;
+	private Size size;
     @XmlElement(name = "AnimationEffect")
     private AnimationEffectType animationEffect;
     @XmlElement(name = "SoundEffect")
     private String soundEffect;
     
+    public GameElementType() {
+    	
+    }
+    
+    public GameElementType(GameObject rawObject) {
+    	
+    	this.setLocation(new Location(rawObject.getX(), rawObject.getY()));
+    	this.setSize(new Size(rawObject.getWidth(), rawObject.getHeight()));
+    	this.setName(rawObject.getPathToAsset());
+    	
+    }
 
     public String getName() {
 		return name;
@@ -77,11 +90,11 @@ public class GameElementType {
 		this.location = location;
 	}
 
-	public String getSize() {
+	public Size getSize() {
 		return size;
 	}
 
-	public void setSize(String size) {
+	public void setSize(Size size) {
 		this.size = size;
 	}
 
