@@ -2,7 +2,7 @@
  * 
  */
 /**
- * @author Perry
+ * @author Sean
  *
  */
 package edu.utdallas.gamespecification;

@@ -88,9 +88,12 @@ public class Theme {
                 for(SharedCharacter character : screen.getThemeCharacters().values()) {
                     LearningActCharacterType characterType = character.getCharacterType();
                     GameCharacter gameCharacter = characters.getCharacter(characterType);
-                    assets.add(new Asset(character, gameCharacter));
-                    GameElementType nextElement = convertGameObjects(character);
-                    nextElement.setName(character.getText());
+                    Asset characterAsset = new Asset(character, gameCharacter);
+                    assets.add(characterAsset);
+                    GameElementType nextElement = convertGameObjects(character); 
+                    nextElement.setName(characterAsset.getDisplayImage());//Add the image from the asset class item.
+                    //nextElement.setName(character.getText());
+                    
                     screenNode.getGameElement().add(nextElement);
                 }
             }
@@ -105,7 +108,7 @@ public class Theme {
                 for(SharedButton button : screen.getButtons().values()) {
                     Asset asset = new Asset(button);
                     GameElementType nextElement = new GenericInteraction(button);
-                    screenNode.getGameElement().add(nextElement);
+                    
                     if(asset.getBehaviors() != null) {
                         for(Behavior behavior : asset.getBehaviors()) {
                             if(BehaviorType.TRANSITION_BEHAVIOR == behavior.getBehaviorType() &&
@@ -115,6 +118,8 @@ public class Theme {
                         }
                     }
                     assets.add(asset);
+                    nextElement.setName("Button Type");
+                    screenNode.getGameElement().add(nextElement);
                 }
             }
             //screenNode.setAssets(assets);
