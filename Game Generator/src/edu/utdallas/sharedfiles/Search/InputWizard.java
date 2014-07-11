@@ -124,17 +124,18 @@ public class InputWizard implements ActionListener {
 	CharacterAsset c;
 	final JTabbedPane tabbedPane = new JTabbedPane(JTabbedPane.TOP);
 	
-	public InputWizard(Matrix[] input)
+	public InputWizard(final Matrix[] input)
 	{
 		componentInputs = input;
 		initializeComponentInputs();
         window.setSize(WIDTH, HEIGHT);
         window.setResizable(true);
         window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        int nextOpenRow =0; // next available row slot
+        int nextOpenRow = 0;
+        // next available row slot
         final String none = "no";
-        mainPannel = new JPanel(new GridLayout(wizardRowSize,1));
-// making menu        
+        mainPannel = new JPanel(new GridLayout(wizardRowSize, 1));
+// making menu
         menuBar = new JMenuBar();
         fileMenu = new JMenu("File");
         fileMenu.setMnemonic(KeyEvent.VK_F);
@@ -147,8 +148,7 @@ public class InputWizard implements ActionListener {
         menu = new JMenu("Repository Tools");
         menu.setMnemonic(KeyEvent.VK_R);
         menuBar.add(menu);
-        
-       
+
         // Change ends
         addToRepo = new JMenuItem("Add game to repository", KeyEvent.VK_D);
         addToRepo.setActionCommand("addToRepo");
@@ -158,22 +158,22 @@ public class InputWizard implements ActionListener {
         remakeRepo.setActionCommand("remakeRepo");
         menu.add(addToRepo);
         menu.add(remakeRepo);
-        saveToRepo = new JMenuItem ("Save Game File", KeyEvent.VK_S);
+        saveToRepo = new JMenuItem("Save Game File", KeyEvent.VK_S);
         saveToRepo.addActionListener(this);
         saveToRepo.setActionCommand("saveToRepo");
         fileMenu.add(saveToRepo);
         saveToRepo.setEnabled(false);
-        saveToRepoAs = new JMenuItem ("Save Game File As", KeyEvent.VK_A);
+        saveToRepoAs = new JMenuItem("Save Game File As", KeyEvent.VK_A);
         saveToRepoAs.addActionListener(this);
         saveToRepoAs.setActionCommand("saveToRepoAs");
         fileMenu.add(saveToRepoAs);
         saveToRepoAs.setEnabled(false);
-        checkErrorList = new JMenuItem ("Check XML Errors", KeyEvent.VK_C);
+        checkErrorList = new JMenuItem("Check XML Errors", KeyEvent.VK_C);
         checkErrorList.addActionListener(this);
         checkErrorList.setActionCommand("viewErrorList");
         checkErrorList.setEnabled(false);
         fileMenu.add(checkErrorList);
-        
+
         //---Game Engine code added by Sreeram---
         /*gameEngineMenu=new JMenu("Game Engine");
         openEngine = new JMenuItem ("Open Engine", KeyEvent.VK_S);
@@ -181,14 +181,14 @@ public class InputWizard implements ActionListener {
         openEngine.setActionCommand("openEngine");
         gameEngineMenu.add(openEngine);
         menuBar.add(gameEngineMenu);*/
-        
+
         //Create Character Select Window
         characterSelectWindow = new CharacterSelectWindow(window);
         characterSelectWindow.addWindowListener(new WindowListener(){
-			public void windowActivated(WindowEvent arg0) { }
-			public void windowClosed(WindowEvent e) { }
-			public void windowClosing(WindowEvent e) { }
-			public void windowDeactivated(WindowEvent e) {
+			public void windowActivated(final WindowEvent arg0) { }
+			public void windowClosed(final WindowEvent e) { }
+			public void windowClosing(final WindowEvent e) { }
+			public void windowDeactivated(final WindowEvent e) {
 				/*
 				if(characterSelectWindow.getNewCharacterAsset() == null)
 				{
@@ -202,18 +202,18 @@ public class InputWizard implements ActionListener {
 					displayScreen(lastSelectedScene, lastSelectedScreen);
 				}*/
 			}
-			public void windowDeiconified(WindowEvent e) { }
-			public void windowIconified(WindowEvent e) { }
-			public void windowOpened(WindowEvent e) { }
+			public void windowDeiconified(final WindowEvent e) { }
+			public void windowIconified(final WindowEvent e) { }
+			public void windowOpened(final WindowEvent e) { }
         });
-        
+
         //Create Prop Select Window
         propSelectWindow = new PropSelectWindow(window);
         propSelectWindow.addWindowListener(new WindowListener(){
-			public void windowActivated(WindowEvent e) { }
-			public void windowClosed(WindowEvent e) { }
-			public void windowClosing(WindowEvent e) { }
-			public void windowDeactivated(WindowEvent e) {
+			public void windowActivated(final WindowEvent e) { }
+			public void windowClosed(final WindowEvent e) { }
+			public void windowClosing(final WindowEvent e) { }
+			public void windowDeactivated(final WindowEvent e) {
 				/*
 				if(propSelectWindow.getNewImageAsset() == null)
 				{
@@ -227,56 +227,52 @@ public class InputWizard implements ActionListener {
 					displayScreen(lastSelectedScene, lastSelectedScreen);
 				}*/
 			}
-			public void windowDeiconified(WindowEvent e) { }
-			public void windowIconified(WindowEvent e) { }
-			public void windowOpened(WindowEvent e) { }
+			public void windowDeiconified(final WindowEvent e) { }
+			public void windowIconified(final WindowEvent e) { }
+			public void windowOpened(final WindowEvent e) { }
         });
-        
+
         //Create Background Select Window
         backgroundSelectWindow = new BackgroundSelectWindow(window);
-        backgroundSelectWindow.addWindowListener(new WindowListener(){
-			public void windowActivated(WindowEvent e) { }
-			public void windowClosed(WindowEvent e) { }
-			public void windowClosing(WindowEvent e) { }
-			public void windowDeactivated(WindowEvent e) {
-				if(backgroundSelectWindow.getNewBackgroundPath() == null)
-				{
+        backgroundSelectWindow.addWindowListener(new WindowListener() {
+			public void windowActivated(final WindowEvent e) { }
+			public void windowClosed(final WindowEvent e) { }
+			public void windowClosing(final WindowEvent e) { }
+			public void windowDeactivated(final WindowEvent e) {
+		   if (backgroundSelectWindow.getNewBackgroundPath() == null) {
 					return;
-				}
-				else
-				{
+					}
+				else {
 					//lastSelectedScreen.setBackground(backgroundSelectWindow.getNewBackgroundPath());
 					//scenePanel.loadBackground(lastSelectedScene.getBackground());
 				}
 			}
-			public void windowDeiconified(WindowEvent e) { }
-			public void windowIconified(WindowEvent e) { }
-			public void windowOpened(WindowEvent e) { }
+			public void windowDeiconified(final WindowEvent e) { }
+			public void windowIconified(final WindowEvent e) { }
+			public void windowOpened(final WindowEvent e) { }
         });
-        
+
         //Create Sound Select Window
         soundSelectWindow = new SoundSelectWindow(window);
-        soundSelectWindow.addWindowListener(new WindowListener(){
-			public void windowActivated(WindowEvent e) { }
-			public void windowClosed(WindowEvent e) { }
-			public void windowClosing(WindowEvent e) { }
-			public void windowDeactivated(WindowEvent e) {
-				if(soundSelectWindow.getNewSoundPath() == null)
-				{
-					System.out.println("got here, but null");
-					return;
+        soundSelectWindow.addWindowListener(new WindowListener() {
+			public void windowActivated(final WindowEvent e) { }
+			public void windowClosed(final WindowEvent e) { }
+			public void windowClosing(final WindowEvent e) { }
+			public void windowDeactivated(final WindowEvent e) {
+			if (soundSelectWindow.getNewSoundPath() == null) {
+				System.out.println("got here, but null");
+				return;
 				}
-				else
-				{
-					soundSelectPath = soundSelectWindow.getNewSoundPath();
-					System.out.println(soundSelectPath);
-				}
+			else {
+		    soundSelectPath = soundSelectWindow.getNewSoundPath();
+			System.out.println(soundSelectPath);
 			}
-			public void windowDeiconified(WindowEvent e) { }
-			public void windowIconified(WindowEvent e) { }
-			public void windowOpened(WindowEvent e) { }
+			}
+			public void windowDeiconified(final WindowEvent e) { }
+			public void windowIconified(final WindowEvent e) { }
+			public void windowOpened(final WindowEvent e) { }
         });
-        
+
         // create tree-structure for viewing Acts/Scenes/Screens/Challenges
         gameTree = new JTree();
         DefaultMutableTreeNode rootNode = new DefaultMutableTreeNode("No game file selected");
@@ -284,7 +280,7 @@ public class InputWizard implements ActionListener {
         gameTree.setModel(model);
         gameTree.addTreeSelectionListener(new TreeSelectionListener() 
         {
-            public void valueChanged(TreeSelectionEvent e) 
+            public void valueChanged(final TreeSelectionEvent e) 
             {
             	if(game == null || hasCriticalGameErrors) { return; } // don't try to display an empty game
             	DefaultMutableTreeNode selectedNode = (DefaultMutableTreeNode) gameTree.getLastSelectedPathComponent();
@@ -415,7 +411,7 @@ public class InputWizard implements ActionListener {
         				charButton.setFont(new Font("Comic Sans MS", Font.BOLD, 15));
         				charButton.addActionListener(new ActionListener()
         				{
-							public void actionPerformed(ActionEvent e) 
+							public void actionPerformed(final ActionEvent e) 
 							{
 								CharacterProfileWindow cpw = new CharacterProfileWindow(window, ca);
 								cpw.setVisible(true);
@@ -489,7 +485,7 @@ public class InputWizard implements ActionListener {
 				dim.height / 2 - jPanel.getSize().height / 2);
         
 		 openGame.addActionListener(new ActionListener() {
-		        public void actionPerformed(ActionEvent arg0) {
+		        public void actionPerformed(final ActionEvent arg0) {
 		        	JFileChooser myFileChooser = new JFileChooser();
 		        	int retval = myFileChooser.showOpenDialog(null);
 			        if (retval == JFileChooser.APPROVE_OPTION) {
@@ -512,7 +508,7 @@ public class InputWizard implements ActionListener {
 		        }
 		    });
 		    quit.addActionListener(new ActionListener() {
-		        public void actionPerformed(ActionEvent arg0) {
+		        public void actionPerformed(final ActionEvent arg0) {
 		        	System.exit(0);
 		        }
 		    });
@@ -570,7 +566,7 @@ public class InputWizard implements ActionListener {
         ActionListener actionListener = new ActionListener() {
 
         	@Override
-        public void actionPerformed(ActionEvent actionEvent) {
+        public void actionPerformed(final ActionEvent actionEvent) {
 
             AbstractButton absB = (AbstractButton) actionEvent.getSource();
 
@@ -700,10 +696,10 @@ public class InputWizard implements ActionListener {
      		JRadioButton virtualTourButton = new JRadioButton("Virtual Tour");
      		virtualTourButton.setActionCommand("VirtualTour");
      		virtualTourButton.addActionListener(this);
-     		JRadioButton workplaceButton= new JRadioButton("Workplace");
+     		JRadioButton workplaceButton = new JRadioButton("Workplace");
      		workplaceButton.setActionCommand("Workplace");
      		workplaceButton.addActionListener(this);
-     		JRadioButton otherButton= new JRadioButton("Other");
+     		JRadioButton otherButton = new JRadioButton("Other");
      		otherButton.setActionCommand("Other");
      		otherButton.addActionListener(this);
      		JRadioButton noThemePreference = new JRadioButton("No Preference",true);
@@ -847,36 +843,36 @@ public class InputWizard implements ActionListener {
         window.setVisible(true); // this needs to happen last to avoid blank window on start-up
 	}
 	
-	private boolean isGameNode(DefaultMutableTreeNode node)
+	private boolean isGameNode(final DefaultMutableTreeNode node)
 	{
 		return node != null && node.isRoot();
 	}
-	private boolean isActNode(DefaultMutableTreeNode node)
+	private boolean isActNode(final DefaultMutableTreeNode node)
 	{
 		return node != null && node.getUserObject() != null && node.getUserObject() instanceof Act;
 	}
-	private boolean isSceneNode(DefaultMutableTreeNode node)
+	private boolean isSceneNode(final DefaultMutableTreeNode node)
 	{
 		return node != null && node.getUserObject() != null && node.getUserObject() instanceof Scene;
 	}
-	private boolean isScreenNode(DefaultMutableTreeNode node)
+	private boolean isScreenNode(final DefaultMutableTreeNode node)
 	{
 		return node != null && node.getUserObject() != null && node.getUserObject() instanceof Screen;
 	}
-	private boolean isQuestionNode(DefaultMutableTreeNode node)
+	private boolean isQuestionNode(final DefaultMutableTreeNode node)
 	{
 		return node != null && node.getUserObject() != null && node.getUserObject() instanceof Item;
 	}
-	private boolean isSummaryNode(DefaultMutableTreeNode node)
+	private boolean isSummaryNode(final DefaultMutableTreeNode node)
 	{
 		return node != null && node.getUserObject() != null && node.getUserObject() instanceof Summary;
 	}
-	private boolean isIntroNode(DefaultMutableTreeNode node)
+	private boolean isIntroNode(final DefaultMutableTreeNode node)
 	{
 		return node != null && node.getUserObject() != null && node.getUserObject() instanceof Introduction;
 	}
 	
-	private ArrayList<String> getScreenCharacterNames(ArrayList<CharacterAsset> chars)
+	private ArrayList<String> getScreenCharacterNames(final ArrayList<CharacterAsset> chars)
 	{
 		ArrayList<String> charStrings = new ArrayList<String>();
 		for(CharacterAsset charAsset : chars)
@@ -921,7 +917,7 @@ public class InputWizard implements ActionListener {
 		
 	}
 	// read in and return an XML game file given the path to the file
-	private Game readGameFile(File gameFile)
+	private Game readGameFile(final File gameFile)
 	{
 		Game game1 = null;
 		
@@ -936,7 +932,7 @@ public class InputWizard implements ActionListener {
 		
 		return game1;
 	}
-	private Game saveGameFile(File gameFile)
+	private Game saveGameFile(final File gameFile)
     {
             try {
             		JAXBContext jaxbContext = JAXBContext.newInstance(Game.class);
@@ -971,13 +967,12 @@ public class InputWizard implements ActionListener {
             game = saveGameFile(file);
             Currentfile = file;
     		System.out.println("saved as " + file.getPath());
-        } 
-		else 
-		{
+         }
+		else {
             System.out.println("Save command cancelled by user.");
         }
 	}
-	
+
 	// C40 handle loading an XML game into the preview window
 	private void loadGame()
 	{
@@ -997,8 +992,7 @@ public class InputWizard implements ActionListener {
             { 
             	displayGame(game, file.getName()); 
             }
-            else
-            {
+            else {
         		((DefaultMutableTreeNode) gameTree.getModel().getRoot()).removeAllChildren();
                 DefaultMutableTreeNode rootNode = new DefaultMutableTreeNode();
                 rootNode.setUserObject("No game file selected");
@@ -1010,14 +1004,13 @@ public class InputWizard implements ActionListener {
             Currentfile = file;
     		System.out.println("calling clear loadgame\n");
         } 
-		else 
-		{
+		else {
             System.out.println("Open command cancelled by user.");
         }
 	}
 	
 	// return true if there are critical errors
-	private void loadAndDisplayErrors(Game game)
+	private void loadAndDisplayErrors(final Game game)
 	{
         GameErrorList errorList = GameErrorChecker.checkErrors(game, scenePanel.getWidth(), scenePanel.getHeight());
         scenePanel.clear();
@@ -1025,46 +1018,40 @@ public class InputWizard implements ActionListener {
         hasCriticalGameErrors = errorList.hasCriticalErrors();
         
         //Debug
-        for(PreviewError e : errorList)
-        {
+        for (PreviewError e : errorList) {
         	System.out.println(e);
         }
 	}
 	
 	// divide game into Acts and Scenes translating to java swing TreeNodes
 	// file name is required because it will be the name of the root node
-	private void displayGame(Game game1, String name)
+	private void displayGame(final Game game1, final String name)
 	{
 		((DefaultMutableTreeNode) gameTree.getModel().getRoot()).removeAllChildren();
         DefaultMutableTreeNode rootNode = new DefaultMutableTreeNode(name);
         rootNode.setUserObject(game1);
         ((DefaultTreeModel) gameTree.getModel()).setRoot(rootNode);
-		
+
 		List<Act> acts = game1.getAct();
-		for(int i = 0; i < acts.size(); i++)
-		{
+		for (int i = 0; i < acts.size(); i++) {
 			DefaultMutableTreeNode actNode = new DefaultMutableTreeNode("Act " + (i + 1));
 			actNode.setUserObject(acts.get(i));
-			
+
 			List<Scene> scenes = acts.get(i).getScene();
-			for(int j = 0; j < scenes.size(); j++)
-			{
+			for (int j = 0; j < scenes.size(); j++) {
 				DefaultMutableTreeNode sceneNode = new DefaultMutableTreeNode("Scene " + (j + 1));
 				sceneNode.setUserObject(scenes.get(j));
 				actNode.add(sceneNode);
 				List<Screen> screens = scenes.get(j).getScreen();
-				for(int k = 0; k < screens.size(); k++)
-				{
+				for (int k = 0; k < screens.size(); k++) {
 					DefaultMutableTreeNode screenNode = new DefaultMutableTreeNode("Screen " + (k + 1));
 					screenNode.setUserObject(screens.get(k));
 					
-					if(screens.get(k).getChallenge() != null)
-					{
+					if (screens.get(k).getChallenge() != null) {
 						QuizChallenge challenge = (QuizChallenge)screens.get(k).getChallenge();
 
 						Introduction intro = challenge.getIntroduction();
-						if(intro != null)
-						{
+						if (intro != null) {
 							DefaultMutableTreeNode introNode = new DefaultMutableTreeNode("Introduction");
 							introNode.setUserObject(challenge.getIntroduction());
 							screenNode.add(introNode);
@@ -1072,8 +1059,7 @@ public class InputWizard implements ActionListener {
 						
 						//
 						Item item = challenge.getItem();
-						if(item != null)
-						{
+						if (item != null) {
 							//for(int m = 0; m < items.size(); m++)
 							//{
 								DefaultMutableTreeNode questionNode = new DefaultMutableTreeNode("Challenge Question ");
@@ -1085,8 +1071,7 @@ public class InputWizard implements ActionListener {
 
 						//List<Summary> summaries = challenge.getSummary();
 						Summary summary = challenge.getSummary();
-						if(summary != null)
-						{
+						if (summary != null) {
 							//for(int m = 0; m < summaries.size(); m++)
 							//{
 								DefaultMutableTreeNode summaryNode = new DefaultMutableTreeNode("Summary ");
@@ -1095,150 +1080,134 @@ public class InputWizard implements ActionListener {
 							//}
 						}
 					}
-					
+
 					sceneNode.add(screenNode);
 				}
 			}
-			
+
 			rootNode.add(actNode);
 		}
         gameTree.expandRow(0);
 	}
-	
+
 	//paint the scene in all of its glory
-	private void displayScreen(Scene scene, Screen screen)
+	private void displayScreen(final Scene scene, final Screen screen) 
 	{
 		//List<Asset> assets = screen.getAssets();
 		List<Asset> assets = null; //Temporary to get this working
-		if(assets != null){
+		if (assets != null){
 			scenePanel.loadAssets(assets, false);
-		}
-		else
+		} else {
 			System.out.println("assets null");
+		}
 
 		//scenePanel.loadBackground(scene.getBackground());
 	}
-	
+
 	//paint the Challenge Multiple Choice question
-	private void displayChallenge(Scene scene, Challenge challenge, Item item)
+	private void displayChallenge(final Scene scene, final Challenge challenge, final Item item)
 	{
 		System.out.println("in displayChallenge()");
-		
-		if(challenge instanceof QuizChallenge)
-		{
+
+		if (challenge instanceof QuizChallenge) {
 			Layout layout = null;
-			if(((QuizChallenge)challenge).getLayout() == null)
+			if (((QuizChallenge) challenge).getLayout() == null) {
 				return;
-			
-			switch(((QuizChallenge)challenge).getLayout().getLayoutName())
-			{
+			}
+
+			switch (((QuizChallenge) challenge).getLayout().getLayoutName()) {
 				//case MULTIPLE_CHOICE_LAYOUT:
 				case "Multiple Choice Layout": //Temporary until the above constant is defined again
-				{
-					if(item instanceof MultipleChoiceItem)
-					{
-						//layout = new Layout((MultipleChoiceItem)item);
-						layout = new Layout();
-						layout.setLayoutName("MultipleChoiceItem");
-					}
-					break;
+				if (item instanceof MultipleChoiceItem)	{
+					//layout = new Layout((MultipleChoiceItem)item);
+					layout = new Layout();
+					layout.setLayoutName("MultipleChoiceItem");
 				}
-				default:
-				{
-					break;
-				}
+				break;
+			default:
+				break;
 			}
-			
+
 			//scenePanel.loadAssets(layout.getAssets(), true);
 			//scenePanel.loadBackground(scene.getBackground());
 		}
 	}
-	
+
 	// sets all the values of the matrix to the given value. 
-	private Matrix initializeMatrix(Matrix inputMatrix, double initValue)
+	private Matrix initializeMatrix(final Matrix inputMatrix, final double initValue)
 	{
 		double[][] inputMatrixArray = inputMatrix.getArray();
-		for(int y=0; y<inputMatrixArray.length;y++)
-		{
-			for(int z=0; z<inputMatrixArray[y].length;z++)
-			{
+		for (int y = 0; y < inputMatrixArray.length; y++) {
+			for (int z = 0; z < inputMatrixArray[y].length; z++) {
 				inputMatrixArray[y][z] = initValue;
 			}
 		}
-		
-		return inputMatrix;		
+     return inputMatrix;
 	}
 	//same as above, only with an array instead of a matrix 
-	private double[][] initializeArray(double[][] inputMatrixArray, double initValue)
+	private double[][] initializeArray(final double[][] inputMatrixArray, final double initValue)
 	{
-		for(int y=0; y<inputMatrixArray.length;y++)
-		{
-			for(int z=0; z<inputMatrixArray[y].length;z++)
-			{
+		for (int y = 0; y < inputMatrixArray.length; y++) {
+			for (int z = 0; z < inputMatrixArray[y].length; z++) {
 				inputMatrixArray[y][z] = initValue;
 			}
 		}
-		
-		return inputMatrixArray;		
+     return inputMatrixArray;		
 	}
 	//prints the given matrix
-	private void printMatrix(Matrix  inputMatrix)
+	private void printMatrix(final Matrix  inputMatrix)
 	{
 		double[][] inputArray = inputMatrix.getArray();
-		for(int x=0; x < inputArray.length; x++)
-		{
-			for (int y =0; y <  inputArray[x].length; y++)
-			{
-				System.out.printf("%.2f ",inputArray[x][y]);
+		for (int x = 0; x < inputArray.length; x++)	{
+			for (int y = 0; y <  inputArray[x].length; y++) {
+				System.out.printf("%.2f ", inputArray[x][y]);
 			}
 			System.out.println("");
 		}
 	}
-	public Matrix[] getWizardInputs() {
-		while(!submitClicked)
-		{
+	public final Matrix[] getWizardInputs() {
+		while (!submitClicked) {
 			//WAIT!!!! waits for the user to hit submit once called
 			// Sleep to avoid running at full CPU usage
-			try { Thread.sleep(200); } catch(Exception e) { }
+			try { Thread.sleep(200); } 
+			catch (Exception e) { }
 		}
 		return componentInputs;
 	}
-	public void previewGame(File filename){
+	public final void previewGame(final File filename){
 		System.out.println(selectedValue);
-    	  if(selectedValue == 0){
+    	  if (selectedValue == 0) {
   		  tabbedPane.setSelectedIndex(1);
-          
+
   		  //We are literally guessing how long it will take to write to disk.
   		  //TODO: sync filesystem write
   		  //note: 2 seconds was a sufficient amount of time for my computer
   		  try {Thread.sleep(3000);}catch(Exception e){}
           game = readGameFile(filename);
           displayGame(game, filename.getName());
-  		  
+
   	  }
 	}
 	// a way to weight the options for each component against each other (ie age v gender) on which is more important
 	// add a third input to this method called weight and replace the optionTotal in the assignment statement with it. 
-	private Matrix optionMatrix(int optionNumber, int optionTotal)
+	private Matrix optionMatrix(final int optionNumber, final int optionTotal)
 	{
 		double[][] outputArray = new double[optionTotal][optionTotal];
 		outputArray = initializeArray(outputArray,1);
-		for(int x=0; x<optionTotal; x++)
-		{
-			if(x!=optionNumber-1)
-			{
+		for (int x = 0; x < optionTotal; x++) {
+			if (x != optionNumber - 1) {
 				outputArray[optionNumber-1][x]=optionTotal; //replace optionTotal here with weight
 				outputArray[x][optionNumber-1]=(1.0 / optionTotal); //replace optionTotal here with weight
-			}							
-		}						
+			}
+		}
 		return new Matrix(outputArray);
 	}
 	//called once after the submit button was clicked and a valid location is given.
 	private void distributeInputs() {
 		//start with character component
 		int socialRating = 0;
-		int professionalRating =0;
-		int educationalRating =0;
+		int professionalRating = 0;
+		int educationalRating = 0;
 		System.out.println("distributing Inputs");
 		switch(gameGradeLevel){
 		//There is probably a better way to do this, with lists or whatnot but this was the quick
@@ -1265,6 +1234,8 @@ public class InputWizard implements ActionListener {
 		case "no grade":
 			socialRating++;
 		break;
+		default:
+			break;
 		}
 		switch(playerAge){
 		case "Young":
@@ -1432,7 +1403,7 @@ public class InputWizard implements ActionListener {
 			}
 		}
 	}	
-	public void printStrings()
+	public final void printStrings()
 	{
 		System.out.println(gameGradeLevel);
 		System.out.println(playerGender);
@@ -1443,27 +1414,25 @@ public class InputWizard implements ActionListener {
 		System.out.println(gameDifficulty);
 		System.out.println(gameSubject);
 	}
-	public String getFileLocation()
+	public final String getFileLocation()
 	{
 		return gameSavePath;
 	}
-	public void checkForXML(String input)
+	public final void checkForXML(final String input)
 	{			
-		if(!input.contains("."))
-		{
+		if (!input.contains(".")) {
 			gameSavePath = input+".xml";
 		}
-		else{ 
+        else { 
 			String extension = input.substring(input.lastIndexOf(".") + 1, input.length());
 			if (!extension.equalsIgnoreCase("XML")) {
 				gameSavePath= input.substring(0,input.lastIndexOf("."))+".xml";
 			}
 		}
 	}
-	public void actionPerformed(ActionEvent e) 
+	public final void actionPerformed(final ActionEvent e) 
 	{
-		switch(e.getActionCommand()) 
-		{
+		switch (e.getActionCommand()) {
 		case "openEngine": //---Game Engine code added by Sreeram---
 			System.out.println("Invoking Game Engine..");
 			GameView gameView = new GameView();
@@ -1475,8 +1444,7 @@ public class InputWizard implements ActionListener {
 			System.out.println("Submit Clicked");
 			saveFileChooser = new JFileChooser("OutputGames//");
 			int returnValue = saveFileChooser.showSaveDialog(saveFileChooser);
-			if(returnValue==JFileChooser.APPROVE_OPTION)
-			{
+			if (returnValue==JFileChooser.APPROVE_OPTION) {
 				File file = saveFileChooser.getSelectedFile();
 				gameSavePath=file.getAbsolutePath(); 
 				checkForXML(gameSavePath);
@@ -1485,14 +1453,13 @@ public class InputWizard implements ActionListener {
 				Currentfile = file;
 				previewGame(file);
 			}
-			else if(returnValue == JFileChooser.CANCEL_OPTION)
-			{
+			else if (returnValue == JFileChooser.CANCEL_OPTION) {
 				System.out.println("Save cancelled by user. \n Returning.");
-			}		
+			}
 			break;
 		case "openFile":
 			loadGame();
-			
+
 			break;
 		case "charactersToolbar":
 			//JD
@@ -1501,29 +1468,23 @@ public class InputWizard implements ActionListener {
 			ArrayList<CharacterAsset> chars = new ArrayList<CharacterAsset>();
 			//List<Asset> assets = lastSelectedScreen.getAssets(); 
 			List<Asset> assets = null; //Temporary fix to stop the code from breaking for now.
-			for(Asset as : assets)
-			{
-				if(as instanceof CharacterAsset)
-				{
-					chars.add((CharacterAsset)as);
+			for (Asset as : assets) {
+				if (as instanceof CharacterAsset) {
+					chars.add((CharacterAsset) as);
 				}
 			}
 			ArrayList<String> charNamesInScreen = getScreenCharacterNames(chars);
 			ArrayList<String> charNamesInGame = getGameGenericCharacterNames();
 			ArrayList<String> availableChars = new ArrayList<String>();
-			for(String charName : charNamesInGame)
-			{
-				if(!charNamesInScreen.contains(charName))
-				{
+			for (String charName : charNamesInGame) {
+				if (!charNamesInScreen.contains(charName)) {
 					availableChars.add(charName);
 				}
 			}
-			if(availableChars.isEmpty())
-			{
+			if (availableChars.isEmpty()) {
 				JOptionPane.showMessageDialog(null, "All characters are currently in this Screen, none to add");
 			}
-			else
-			{
+			else {
 				characterSelectWindow.setCharacterChoices(availableChars);
 				characterSelectWindow.setVisible(true);
 			}
@@ -1543,23 +1504,20 @@ public class InputWizard implements ActionListener {
 			break;
 		case "soundToolbar":
 			soundSelectPath = null;
-			if(selectedLevel.equals(gameLevel.SCENE))
-			{
+			if (selectedLevel.equals(gameLevel.SCENE)) {
 				soundSelectWindow.setSoundFolderPath(SoundSelectWindow.MUSICFOLDER);
 			}
-			else if(selectedLevel.equals(gameLevel.SCREEN))
-			{
+			else if (selectedLevel.equals(gameLevel.SCREEN)) {
 				soundSelectWindow.setSoundFolderPath(SoundSelectWindow.EFFECTSFOLDER);
 			}
-			else
-			{
+			else {
 				break;
 			}
 			soundSelectWindow.setVisible(true);
 			break;
 			//JD end
 		case "deleteElement":
-			
+
 			//Comments below are to temporarily remove code until we know what to do with Assets.
 			/*
 			Asset toDelete = scenePanel.getTargetedAsset();
@@ -1588,7 +1546,7 @@ public class InputWizard implements ActionListener {
 			break;
 		case "backgroundMusicPreviewPlay":
 			//TODO finish
-			if(lastSelectedScene.getMusic()!=null){
+			if (lastSelectedScene.getMusic() != null) {
 				String insideSoundFolderPath = lastSelectedScene.getMusic().getMusic();
 				AudioPlayer.playAudio(soundFolder + insideSoundFolderPath);
 			} else {
@@ -1605,10 +1563,10 @@ public class InputWizard implements ActionListener {
 			displayScreen(lastSelectedScene, lastSelectedScreen);
 			break;
 		case "saveToRepo":
-			if(Currentfile != null && !Currentfile.equals(""))
+			if (Currentfile != null && !Currentfile.equals(""))
 			{
 				int retval = JOptionPane.showConfirmDialog(null, "Overwrite " + Currentfile + " and save changes?", "Warning", JOptionPane.YES_NO_OPTION);
-				if(retval == JOptionPane.YES_OPTION)
+				if (retval == JOptionPane.YES_OPTION)
 				{
 					System.out.println("overwriting " + Currentfile);
 					saveGameFile(Currentfile);
@@ -1616,8 +1574,9 @@ public class InputWizard implements ActionListener {
 			}
 			break;
 		case "saveToRepoAs":
-			if(game != null)
+			if (game != null) {
 				saveGameFileAs();
+			}
 			break;
 		case "viewErrorList":
 			loadAndDisplayErrors(game);
@@ -1630,10 +1589,10 @@ public class InputWizard implements ActionListener {
 			updater= new Updates();
 			int returnValue2 = saveFileChooser.showOpenDialog(saveFileChooser);
 			String gameName;
-			if(returnValue2==JFileChooser.APPROVE_OPTION)
+			if (returnValue2 == JFileChooser.APPROVE_OPTION)
 			{
 				File file = saveFileChooser.getSelectedFile();
-				gameName= file.getAbsolutePath();
+				gameName = file.getAbsolutePath();
 				
 //				if(gameName.contains("New Games"))
 //				{ 
@@ -1778,5 +1737,5 @@ public class InputWizard implements ActionListener {
 		System.out.println("Unanticipated Input in ActionPerformed:" + e.getActionCommand());
 		break;
 		}
-	}	
+	}
 }
