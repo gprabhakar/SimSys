@@ -2,3 +2,35 @@
 Game Generator/src/edu/utdallas/sharedfiles/Structure/Structure.java
 
 Game Generator/src/edu/utdallas/sharedfiles/Structure/Structure.java
+
+*.ini
+
+*.index
+
+*.png
+
+*.xml
+
+*.snap
+
+*.prefs
+
+*.xmi
+
+*.xmi
+
+*.txt
+
+.metadata/.plugins/org.eclipse.core.resources/.history/e6/7015950f970800141472ee5a18c7c628
+
+*.dat
+
+*.history
+
+.metadata/.plugins/org.eclipse.jdt.core/externalLibsTimeStamps
+
+.metadata/.plugins/org.eclipse.core.resources/.safetable/org.eclipse.core.resources
+
+.metadata/.plugins/org.eclipse.core.resources/.projects/Game Generator/org.eclipse.egit.core/GitProjectData.properties
+
+.metadata/.log
