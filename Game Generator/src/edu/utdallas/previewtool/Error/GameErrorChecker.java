@@ -42,42 +42,44 @@ public static GameErrorList checkErrors(final Game game, final int panelWidth, f
 //don't save if no game file open
 GameErrorList errors = new GameErrorList();
 //Check for Game-level errors
-if (game == null) {
-errors.add(new PreviewError(Level.GAME, Severity.HIGH,
-"No <Game> detected in XML file") {
-public void fixError() { } // can't fix this
-});
-} else { // Check for global character errors
-if (game.getCharacter() == null || game.getCharacter().size() == 0) {
-errors.add(new PreviewError(
-Level.GAME, Severity.HIGH, "No <Characters> detected in Game") {
-public void fixError() { }
-});
-} else {
-List<Character> characters = game.getCharacter();
-for (int i = 0; i < characters.size(); i++) {
-// Need a way to refer to which Character has an error
-String cName = characters.get(i).getName();
-if (isNullOrEmpty(cName)) {
-errors.add(new PreviewError(Level.GAME, Severity.LOW,
-"The <Name> property of Character found in position " + (i + 1)
-+ " is not specified") {
-public void fixError() { }
-});
-cName = "[in position " + (i + 1) + "]";
-}
-if (isNullOrEmpty(characters.get(i).getAutonomousBehaviour())) {
-errors.add(new PreviewError(Level.GAME, Severity.LOW,
-"The <Behavior> property of Character " + cName + " is not specified") {
-public void fixError() { }
-});
-}
-if (characters.get(i).getProfile() == null) {
-errors.add(new PreviewError(Level.GAME, Severity.LOW,
-"The <Profile> property of Character " + cName + " is not specified") {
-public void fixError() { }
-});
-}
+      if (game == null) {
+       errors.add(new PreviewError(Level.GAME, Severity.HIGH,
+                                   "No <Game> detected in XML file") {
+      public void fixError() { } // can't fix this
+      });
+     }
+      else { // Check for global character errors
+      if (game.getCharacter() == null || game.getCharacter().size() == 0) {
+      errors.add(new PreviewError(
+      Level.GAME, Severity.HIGH, "No <Characters> detected in Game") {
+      public void fixError() { }
+      });
+     }
+     else {
+     List<Character> characters = game.getCharacter();
+     for (int i = 0; i < characters.size(); i++) {
+     // Need a way to refer to which Character has an error
+     String cName = characters.get(i).getName();
+     if (isNullOrEmpty(cName)) {
+     errors.add(new PreviewError(Level.GAME, Severity.LOW,
+     "The <Name> property of Character found in position " + (i + 1)
+      + " is not specified") {
+     public void fixError() { }
+     });
+     cName = "[in position " + (i + 1) + "]";
+    }
+     if (isNullOrEmpty(characters.get(i).getAutonomousBehaviour())) {
+     errors.add(new PreviewError(Level.GAME, Severity.LOW,
+     "The <Behavior> property of Character " + cName + " is not specified") {
+     public void fixError() { }
+     });
+    }
+    if (characters.get(i).getProfile() == null) {
+    errors.add(new PreviewError(Level.GAME, Severity.LOW,
+    "The <Profile> property of Character " + cName + " is not specified") {
+    public void fixError() { }
+    });
+   }
 // Check valid profile properties
 
 /*else
@@ -158,93 +160,93 @@ public void fixError() { }
 // Check for Act-level errors
 //Acts wrapper check needed, or if this is not possible
 //may need to change error to be more general
-if (game.getAct() == null || game.getAct().size() == 0) {
-errors.add(new PreviewError(
-Level.ACT, Severity.HIGH, "No <Acts> detected in Game") {
-public void fixError() { } //TODO
-});
-} else {
-List<Act> acts = game.getAct();
-for (int i = 0; i < acts.size(); i++) {
-// Need a way to refer to which Act has an error
-String aName = "Act [in position " + (i + 1) + "]";
-//Check for Scene-level errors
-//Scenes wrapper check needed, or if this is not
-//possible may need to change error to be more general
-List<Scene> scenes = acts.get(i).getScene();
-if (scenes == null || scenes.size() == 0) {
-errors.add(new PreviewError(Level.SCENE, Severity.HIGH,
-"No <Scenes> detected for act in position " + aName) {
-public void fixError() { } //TODO
-});
-} else {
-for (int j = 0; j < scenes.size(); j++) {
-// Need a way to refer to which Scene has an error
-String sName = aName + " " + "Scene [in position " + (j + 1) + "]";
-if (scenes.get(j).getBackground() == null) {
-errors.add(new PreviewError(Level.SCENE, Severity.LOW,
-"The <Background> property of " + sName + " is not specified") {
-public void fixError() { } //
-});
-}
+  if (game.getAct() == null || game.getAct().size() == 0) {
+   errors.add(new PreviewError(
+   Level.ACT, Severity.HIGH, "No <Acts> detected in Game") {
+  public void fixError() { } //TODO
+  });
+ } else {
+  List<Act> acts = game.getAct();
+  for (int i = 0; i < acts.size(); i++) {
+  // Need a way to refer to which Act has an error
+  String aName = "Act [in position " + (i + 1) + "]";
+  //Check for Scene-level errors
+  //Scenes wrapper check needed, or if this is not
+  //possible may need to change error to be more general
+  List<Scene> scenes = acts.get(i).getScene();
+  if (scenes == null || scenes.size() == 0) {
+   errors.add(new PreviewError(Level.SCENE, Severity.HIGH,
+   "No <Scenes> detected for act in position " + aName) {
+   public void fixError() { } //TODO
+   });
+  } else {
+   for (int j = 0; j < scenes.size(); j++) {
+   // Need a way to refer to which Scene has an error
+   String sName = aName + " " + "Scene [in position " + (j + 1) + "]";
+   if (scenes.get(j).getBackground() == null) {
+   errors.add(new PreviewError(Level.SCENE, Severity.LOW,
+   "The <Background> property of " + sName + " is not specified") {
+   public void fixError() { } //
+   });
+  }
 //should we warn about no background audio?
 //Ryan 4/8 10AM "Don't think so,
 //Longstreet never specified that backgeound music is mandatory"
 //Check for Screen-level errors
-List<Screen> screens = scenes.get(j).getScreen();
-if (screens == null || screens.size() == 0) {
-errors.add(new PreviewError(Level.SCREEN, Severity.HIGH,
-"No <Screens> detected for " + sName) {
-public void fixError() { } //TODO
-});
-} else {
-for (int k = 0; k < screens.size(); k++) {
-//Need a way to refer to which Screen has an error
-String srName = sName + " " + "Screen [in position " + (k + 1) + "]";
+  List<Screen> screens = scenes.get(j).getScreen();
+  if (screens == null || screens.size() == 0) {
+   errors.add(new PreviewError(Level.SCREEN, Severity.HIGH,
+   "No <Screens> detected for " + sName) {
+   public void fixError() { } //TODO
+   });
+  } else {
+   for (int k = 0; k < screens.size(); k++) {
+   //Need a way to refer to which Screen has an error
+   String srName = sName + " " + "Screen [in position " + (k + 1) + "]";
 
 //check challenges
 //Challenge checking
 //Need a way to check if their are two Challenges in a screen. First thought was
 //getting a list and checking if size was> 1 but the Screen class doesn't return
 //Challenges as lists cause it assumes their is only one.
-List<Challenge> challenges = screens.get(k).getChallenge();
-for (int l = 0; l < challenges.size(); l++) {
-Challenge challenge = challenges.get(l);
-if (challenge != null) {
-if (challenge instanceof QuizChallenge) {
-QuizChallenge qChallenge = (QuizChallenge) challenge;
-if (qChallenge.getLayout() == null) {
-errors.add(new PreviewError(Level.SCREEN, Severity.MEDIUM,
-"Layout in Challenge in " + srName + " is missing or empty") {
-public void fixError() { } //TODO
-});
-}
+   List<Challenge> challenges = screens.get(k).getChallenge();
+   for (int l = 0; l < challenges.size(); l++) {
+    Challenge challenge = challenges.get(l);
+     if (challenge != null) {
+      if (challenge instanceof QuizChallenge) {
+       QuizChallenge qChallenge = (QuizChallenge) challenge;
+        if (qChallenge.getLayout() == null) {
+        errors.add(new PreviewError(Level.SCREEN, Severity.MEDIUM,
+        "Layout in Challenge in " + srName + " is missing or empty") {
+        public void fixError() { } //TODO
+        });
+       }
 
-Item item = qChallenge.getItem();
-//Catches C_13 & C_14
-if (item == null) {
-errors.add(new PreviewError(Level.SCREEN, Severity.MEDIUM,
-"There are no Questions in the Challenge in " + srName) {
-public void fixError() { } //TODO
-});
-} else {
-for (int u = 0; u < 1; u++) {
-if (item instanceof MultipleChoiceItem) {
-MultipleChoiceItem mcItem = (MultipleChoiceItem) item;
-Option option = mcItem.getOption();
-if (option == null) {
-errors.add(new PreviewError(Level.SCREEN, Severity.MEDIUM, "There "
-+ "are no answers to choose from in Question " + (u + 1) + " in " + srName) {
-public void fixError() { } //TODO
-});
-} else {
-if (option == null || isNullOrEmpty(option.getHint().getHint())) {
-errors.add(new PreviewError(Level.SCREEN, Severity.LOW,
-"Option in Challenge Question in " + srName + " has no hint") {
-public void fixError() { } //TODO
-});
-}
-}
+      Item item = qChallenge.getItem();
+      //Catches C_13 & C_14
+      if (item == null) {
+       errors.add(new PreviewError(Level.SCREEN, Severity.MEDIUM,
+       "There are no Questions in the Challenge in " + srName) {
+       public void fixError() { } //TODO
+       });
+     } else {
+         for (int u = 0; u < 1; u++) {
+           if (item instanceof MultipleChoiceItem) {
+             MultipleChoiceItem mcItem = (MultipleChoiceItem) item;
+             Option option = mcItem.getOption();
+              if (option == null) {
+             errors.add(new PreviewError(Level.SCREEN, Severity.MEDIUM, "There "
+   + "are no answers to choose from in Question " + (u + 1) + " in " + srName) {
+             public void fixError() { } //TODO
+             });
+           } else {
+              if (option == null || isNullOrEmpty(option.getHint().getHint())) {
+              errors.add(new PreviewError(Level.SCREEN, Severity.LOW,
+              "Option in Challenge Question in " + srName + " has no hint") {
+              public void fixError() { } //TODO
+              });
+             }
+            }
 /*Editing this out, since there's only one option right now.
 if(options.size() == 1)
 {
@@ -261,69 +263,68 @@ public void fixError() { } //TODO
 });
 }
 */
-Stem stem = mcItem.getStem();
-if (stem == null) {
-errors.add(new PreviewError(Level.SCREEN, Severity.MEDIUM,
-"No STEM Collection in Challenge in " + srName) {
-public void fixError() { } //TODO
-});
-} else {
-if (stem.getStemQuestion() == null) {
-errors.add(new PreviewError(Level.SCREEN, Severity.MEDIUM,
-"No STEM question in Challenge in " + srName) {
-public void fixError() { } //TODO
-});
-} else if (isNullOrEmpty(stem.getStemQuestion().getHint().getHint())) {
-errors.add(new PreviewError(Level.SCREEN, Severity.LOW,
-"STEM Question with empty Text field in Challenge in " + srName) {
-public void fixError() { } //TODO
-});
-}
-if (stem.getStemText() == null) {
-errors.add(new PreviewError(Level.SCREEN, Severity.MEDIUM,
-"No STEM text in Challenge in " + srName) {
-public void fixError() { } //TODO
-});
-} else if (isNullOrEmpty(stem.getStemText().getHint().getHint())) {
-errors.add(new PreviewError(Level.SCREEN, Severity.LOW,
-"STEM Text with empty Text field in Challenge in " + srName) {
-public void fixError() { } //TODO
-});
-}
-}
-} else { System.out.println(); }
-}
+          Stem stem = mcItem.getStem();
+          if (stem == null) {
+          errors.add(new PreviewError(Level.SCREEN, Severity.MEDIUM,
+          "No STEM Collection in Challenge in " + srName) {
+           public void fixError() { } //TODO
+          });
+         } else {
+            if (stem.getStemQuestion() == null) {
+             errors.add(new PreviewError(Level.SCREEN, Severity.MEDIUM,
+             "No STEM question in Challenge in " + srName) {
+             public void fixError() { } //TODO
+             });
+     } else if (isNullOrEmpty(stem.getStemQuestion().getHint().getHint())) {
+              errors.add(new PreviewError(Level.SCREEN, Severity.LOW,
+         "STEM Question with empty Text field in Challenge in " + srName) {
+         public void fixError() { } //TODO
+         });
+         }
+       if (stem.getStemText() == null) {
+        errors.add(new PreviewError(Level.SCREEN, Severity.MEDIUM,
+                "No STEM text in Challenge in " + srName) {
+        public void fixError() { } //TODO
+         });
+        } else if (isNullOrEmpty(stem.getStemText().getHint().getHint())) {
+        errors.add(new PreviewError(Level.SCREEN, Severity.LOW,
+        "STEM Text with empty Text field in Challenge in " + srName) {
+        public void fixError() { } //TODO
+      });
+     }
+    }
+  } else { System.out.println(); }
+ }
 }
 // Only one summary for a Quiz Challenge.
 //So replacing List with a single Summary object
-Summary summary = qChallenge.getSummary();
-if (summary == null) {
-errors.add(new PreviewError(Level.SCREEN, Severity.MEDIUM,
-"No Summaries in Challenge in " + srName) {
-public void fixError() { } //TODO
-});
-}
-Introduction intro = qChallenge.getIntroduction();
-if (intro == null) {
-errors.add(new PreviewError(Level.SCREEN, Severity.MEDIUM,
-"No Introduction in Challenge in " + srName) {
-public void fixError() { } //TODO
-});
-}
-} else { //TODO May need enum for Level.CHALLENGE?
-errors.add(new PreviewError(Level.SCREEN, Severity.MEDIUM, "The xsi:type "
+      Summary summary = qChallenge.getSummary();
+      if (summary == null) {
+        errors.add(new PreviewError(Level.SCREEN, Severity.MEDIUM,
+        "No Summaries in Challenge in " + srName) {
+            public void fixError() { } //TODO
+        });
+      }
+      Introduction intro = qChallenge.getIntroduction();
+      if (intro == null) {
+        errors.add(new PreviewError(Level.SCREEN, Severity.MEDIUM,
+        "No Introduction in Challenge in " + srName) {
+            public void fixError() { } //TODO
+        });
+      }
+      } else { //TODO May need enum for Level.CHALLENGE?
+      errors.add(new PreviewError(Level.SCREEN, Severity.MEDIUM, "The xsi:type "
 + "is not specified for the challenge of Screen found in position " + (k + 1)) {
-public void fixError() { } //TODO
-});
-}
-
-} else {
+      public void fixError() { } //TODO
+      });
+      }
+ } else {
 //TODO At this point the screen could either have no challenge at all or a null
 //challenge tag correct?
 //One needing an error, the other being a normal occurrence
 //Any ways to distinguish
-System.out.println();
-}
+     System.out.println();
+ }
 }
 //Check for Asset-level errors
 /*
@@ -475,13 +476,13 @@ public void fixError() { } //TODO
 }
 }
 }*/
-}
-}
+   }
+  }
 
-}
-}
-}
-}
+   }
+  }
+  }
+ }
 }
 return errors;
 }
@@ -494,5 +495,5 @@ return errors;
  */
 private static boolean isNullOrEmpty(final String s) {
 return s == null || s.equals("");
-}
+  }
 }

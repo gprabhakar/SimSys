@@ -174,14 +174,6 @@ public class InputWizard implements ActionListener {
         checkErrorList.setEnabled(false);
         fileMenu.add(checkErrorList);
 
-        //---Game Engine code added by Sreeram---
-        /*gameEngineMenu=new JMenu("Game Engine");
-        openEngine = new JMenuItem ("Open Engine", KeyEvent.VK_S);
-        openEngine.addActionListener(this);
-        openEngine.setActionCommand("openEngine");
-        gameEngineMenu.add(openEngine);
-        menuBar.add(gameEngineMenu);*/
-
         //Create Character Select Window
         characterSelectWindow = new CharacterSelectWindow(window);
         characterSelectWindow.addWindowListener(new WindowListener(){
@@ -926,7 +918,8 @@ public class InputWizard implements ActionListener {
 		}
 		catch (JAXBException e) {
 			//TODO this was printing errors before, do we want it in?
-			//e.printStackTrace();
+			e.printStackTrace();
+			System.out.println(e.toString());
 			System.out.println("Unable to open " + gameFile);
 		}
 		
@@ -1022,7 +1015,7 @@ public class InputWizard implements ActionListener {
         	System.out.println(e);
         }
 	}
-	
+
 	// divide game into Acts and Scenes translating to java swing TreeNodes
 	// file name is required because it will be the name of the root node
 	private void displayGame(final Game game1, final String name)
