@@ -1,6 +1,7 @@
 package edu.utdallas.gamePlayEngine.controller;
 
-import javax.swing.JFrame;
+
+import javax.swing.JPanel;
 
 import edu.utdallas.gamePlayEngine.model.Act;
 import edu.utdallas.gamePlayEngine.model.Quiz;
@@ -18,7 +19,7 @@ public class GameState {
 	Quiz quiz;
 	ChallengeStructure challenge;
 	private String title;
-	JFrame myMainFrame;// Zac ZHANG Added
+	JPanel myMainPanel;// Zac ZHANG Added
 	
 	public String getTitle() {
 		return title;
@@ -94,16 +95,16 @@ public class GameState {
 		this.message = message;
 	}
 
-	public JFrame getMenuFrame()
+	public JPanel getMenuFrame()
 	{
-		return this.myMainFrame;
+		return this.myMainPanel;
 	}
 	
-	public GameState(JFrame myMenuFrame) {
+	public GameState(JPanel myMenuPanel) {
 		this.act = null;
 		this.scene = null;
 		this.screen = null;
 		this.message = null;
-		this.myMainFrame = myMenuFrame;
+		this.myMainPanel = myMenuPanel;
 	}
 }
