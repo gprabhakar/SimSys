@@ -13,6 +13,7 @@ import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 import javax.swing.JTextField;
 import javax.swing.border.Border;
 
@@ -71,9 +72,9 @@ JPanel profilePanel = new JPanel(new BorderLayout());
 //Name
 JLabel nameLabel = addProfileLabel("Name", ch.getName(), true);
 nameLabel.setBorder(bottomOfLabel);
+
+//Commented out the fields not in Profile Class
 /*
-//Commented out the following code as Profile is a String
-in new specification and not an user defined object
 //Attendance
 JLabel attendanceLabel = addProfileLabel("Attendance",
 ch.getProfile().getAttendance(), true);
@@ -89,51 +90,10 @@ JLabel communicationLabel = addProfileLabel("Communication",
 ch.getProfile().getCommunication(), true);
 communicationLabel.setBorder(bottomOfLabel);
 
-//Degrees
-for(int i=0;i<ch.getProfile().getDegrees().size();i++)
-{
-JLabel degreesLabel;
-if(i==0) { degreesLabel = addProfileLabel("Degrees",
-ch.getProfile().getDegrees().get(i), false); }
-else if (i+1==(ch.getProfile().getDegrees().size())) {
-degreesLabel = addProfileLabel("", ch.getProfile().getDegrees().get(i), true);
-degreesLabel.setBorder(bottomOfLabel);
-}
-else { degreesLabel = addProfileLabel("",
-ch.getProfile().getDegrees().get(i), false); }
-}
-
-//Demographics
-for(int i=0;i<ch.getProfile().getDemographics().size();i++) {
-JLabel demographicsLabel;
-if(i==0) { demographicsLabel = addProfileLabel("Demographics",
-ch.getProfile().getDemographics().get(i), false); }
-else if (i+1==(ch.getProfile().getDemographics().size())) {
-demographicsLabel = addProfileLabel("",
-ch.getProfile().getDemographics().get(i), true);
-demographicsLabel.setBorder(bottomOfLabel);
-}
-else { demographicsLabel = addProfileLabel("",
-ch.getProfile().getDemographics().get(i), false); }
-}
-
-//Skills
-for(int i=0;i<ch.getProfile().getSkills().size();i++) {
-JLabel skillsLabel;
-if(i==0) { skillsLabel = addProfileLabel("Skills",
-ch.getProfile().getSkills().get(i), false); }
-else if (i+1==(ch.getProfile().getSkills().size())) {
-skillsLabel = addProfileLabel("", ch.getProfile().getSkills().get(i), true);
-skillsLabel.setBorder(bottomOfLabel);
-}
-else { skillsLabel = addProfileLabel("",
-ch.getProfile().getSkills().get(i), false); }
-}
-
 //Teamwork
 JLabel teamworkLabel = addProfileLabel("Teamwork",
 ch.getProfile().getTeamwork(), true);
-teamworkLabel.setBorder(bottomOfLabel);
+teamworkLabel.setBorder(bottomOfLabel);*/
 
 //Title
 JLabel titleLabel = addProfileLabel("Title", ch.getProfile().getTitle(), true);
@@ -144,10 +104,53 @@ JLabel experienceLabel = addProfileLabel("Experience",
 Integer.toString(ch.getProfile().getYearsOfExperience()), true);
 experienceLabel.setBorder(bottomOfLabel);
 
+//Skills
+for (int i = 0; i < ch.getProfile().getSkills().size(); i++) {
+JLabel skillsLabel;
+if (i == 0) {
+    skillsLabel = addProfileLabel("Skills",
+                  ch.getProfile().getSkills().get(i), false);
+    }
+else if (i + 1 == (ch.getProfile().getSkills().size())) {
+skillsLabel = addProfileLabel("", ch.getProfile().getSkills().get(i), true);
+skillsLabel.setBorder(bottomOfLabel);
+}
+else { skillsLabel = addProfileLabel("",
+ch.getProfile().getSkills().get(i), false); }
+}
+
+//Demographics
+for (int i = 0; i < ch.getProfile().getDemographics().size(); i++) {
+JLabel demographicsLabel;
+if (i == 0) { demographicsLabel = addProfileLabel("Demographics",
+ch.getProfile().getDemographics().get(i), false); }
+else if (i + 1 == (ch.getProfile().getDemographics().size())) {
+demographicsLabel = addProfileLabel("",
+ch.getProfile().getDemographics().get(i), true);
+demographicsLabel.setBorder(bottomOfLabel);
+}
+else { demographicsLabel = addProfileLabel("",
+ch.getProfile().getDemographics().get(i), false); }
+}
+
+//Degrees
+for (int i = 0; i < ch.getProfile().getDegrees().size(); i++)
+{
+JLabel degreesLabel;
+if (i == 0) { degreesLabel = addProfileLabel("Degrees",
+ch.getProfile().getDegrees().get(i), false); }
+else if (i + 1 == (ch.getProfile().getDegrees().size())) {
+degreesLabel = addProfileLabel("", ch.getProfile().getDegrees().get(i), true);
+degreesLabel.setBorder(bottomOfLabel);
+}
+else { degreesLabel = addProfileLabel("",
+ch.getProfile().getDegrees().get(i), false); }
+}
+
 profilePanel.add(tagGrid, BorderLayout.WEST);
 profilePanel.add(elementGrid, BorderLayout.CENTER);
 JScrollPane scrollPane = new JScrollPane(profilePanel);
-add(scrollPane, BorderLayout.CENTER);*/
+add(scrollPane, BorderLayout.CENTER);
 }
 
 /**
