@@ -1,4 +1,5 @@
 package edu.utdallas.previewtool.View;
+
 import java.awt.BorderLayout;
 import java.awt.Dialog;
 import java.awt.Dimension;
@@ -26,146 +27,196 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import edu.utdallas.sharedfiles.Shared.ImageHelper;
 
-public class BackgroundSelectWindow extends JDialog
+/**
+ * The Class BackgroundSelectWindow.
+ */
+public class BackgroundSelectWindow extends JDialog {
+
+/** The Constant serialVersionUID. */
+private static final long serialVersionUID = 1L;
+
+/** The Constant HEIGHT. */
+public static final int WIDTH = 1050, HEIGHT = 500;
+
+/** The pic. */
+private final JLabel pic = new JLabel();
+
+/** The w panel. */
+private final JPanel wPanel = new JPanel(new GridLayout(0, 2));
+//final JPanel ePanel = new JPanel(new GridLayout(0, 1, 0, 0));
+/** The e panel. */
+private final JPanel ePanel = new JPanel(new BorderLayout());
+//final JSlider slider = new JSlider(JSlider.HORIZONTAL, 10, 130, 80);
+/** The combo box. */
+private final JComboBox<String> comboBox = new JComboBox<String>();
+
+/** The selected path. */
+private String selectedPath = "";
+
+/** The back path string. */
+private String backPathString;
+
+/** Magic Numbers. */
+public static final int SEVENHUNDRED = 700;
+
+/** The Constant TWOEIGHTY. */
+public static final int TWOEIGHTY = 280;
+
+/** The Constant THREETWENTYFIVE. */
+public static final int THREETWENTYFIVE = 325;
+
+/** The Constant SIXFIFTY. */
+public static final int SIXFIFTY = 650;
+
+/** The Constant FOURTY. */
+public static final int FOURTY = 40;
+
+/** The Constant _FOURTHREE. */
+public static final double FOURTHREE = 0.43;
+
+/**
+ * Instantiates a new background select window.
+ *
+ * @param owner the owner
+ */
+public BackgroundSelectWindow(final JFrame owner) {
+super(owner, "Background Selection", Dialog.DEFAULT_MODALITY_TYPE);
+setSize(WIDTH, HEIGHT);
+
+JPanel nPanel = new JPanel();
+//for(int i = 1; i <= 29; i++)
+//{
+//comboBox.addItem("Character_" + i);
+//}
+//comboBox.addItem("Hero-Villian");
+nPanel.add(comboBox);
+
+JScrollPane wPane = new JScrollPane();
+wPane.setPreferredSize(new Dimension(SEVENHUNDRED, SEVENHUNDRED));
+wPane.add(wPanel);
+wPane.setViewportView(wPanel);
+
+comboBox.addItemListener(new ItemListener() {
+@Override
+public void itemStateChanged(final ItemEvent e) {
+handleChangeBackgroundFolder();
+}
+});
+
+JPanel panel2 = new JPanel(new BorderLayout());
+JButton place = new JButton("Place");
+place.addActionListener(new ActionListener() {
+@Override
+public void actionPerformed(final ActionEvent arg0) {
+backPathString = selectedPath.substring(
+selectedPath.indexOf((String) comboBox.getSelectedItem()));
+setVisible(false);
+}
+});
+place.setPreferredSize(new Dimension(TWOEIGHTY, FOURTY));
+panel2.add(place, BorderLayout.SOUTH);
+
+ePanel.add(pic , BorderLayout.CENTER);
+ePanel.add(panel2 , BorderLayout.SOUTH);
+ePanel.setPreferredSize(new Dimension(THREETWENTYFIVE, SIXFIFTY));
+
+add(ePanel, BorderLayout.EAST);
+add(wPane, BorderLayout.WEST);
+add(nPanel, BorderLayout.NORTH);
+
+Dimension d = Toolkit.getDefaultToolkit().getScreenSize();
+setLocation(d.width  / 2 - WIDTH / 2, d.height / 2 - HEIGHT / 2);
+setResizable(false);
+
+handleChangeBackgroundFolder();
+}
+
+/**
+* Handle change background folder.
+*/
+private void handleChangeBackgroundFolder() {
+if (comboBox.getSelectedItem() == null) { return; }
+final ArrayList<JLabel> jlabels = new ArrayList<JLabel>();
+String item = (String) comboBox.getSelectedItem();
+
+System.out.println(item);
+
+File dir = new File("Office, Classroom/" + item + "/");
+wPanel.removeAll();
+
+for (File child : dir.listFiles()) {
+if (child.isDirectory()) {
+continue;
+}
+try {
+BufferedImage image = ImageHelper.getScaledImage(
+ImageIO.read(child), FOURTHREE);
+
+final JLabel l = new JLabel(new ImageIcon(image));
+l.setName(child.getPath().toString());
+jlabels.add(l);
+wPanel.add(l);
+wPanel.validate();
+wPanel.repaint();
+} catch (Exception e1) { e1.printStackTrace(); }
+
+}
+for (final JLabel l : jlabels) {
+l.addMouseListener(new MouseListener() {
+public void mouseClicked(final MouseEvent e) {
+}
+public void mouseEntered(final MouseEvent e) {
+}
+public void mouseExited(final MouseEvent e) {
+}
+public void mousePressed(final MouseEvent e) {
+for (int i = 0; i < jlabels.size(); i++) {
+jlabels.get(i).setBorder(null);
+}
+l.setBorder(BorderFactory.createLoweredBevelBorder());
+try {
+BufferedImage img1 = ImageHelper.getScaledImage(
+ImageIO.read(new File(l.getName())), FOURTHREE);
+pic.setIcon(new ImageIcon(img1));
+selectedPath = l.getName();
+} catch (Exception e4) { e4.printStackTrace(); }
+}
+public void mouseReleased(final MouseEvent e) {
+}
+});
+}
+}
+
+/**
+ * Sets the background path string.
+ *
+ * @param backgroundString the new background path string
+ */
+public final void setBackgroundPathString(final String backgroundString) {
+backPathString = backgroundString;
+}
+
+/**
+ * Gets the new background path.
+ *
+ * @return the new background path
+ */
+public final String getNewBackgroundPath() {
+return backPathString;
+}
+
+/**
+ * Sets the background folder path.
+ *
+ * @param folderPath the new background folder path
+ */
+public final void setBackgroundFolderPath(final String folderPath) {
+comboBox.removeAllItems();
+/*for(String charName : charNames)
 {
-	private static final long serialVersionUID = 1L;
-	public static final int WIDTH = 1050, HEIGHT = 500;
-	final JLabel pic = new JLabel();
-	final JPanel wPanel = new JPanel(new GridLayout(0, 2));
-	//final JPanel ePanel = new JPanel(new GridLayout(0, 1, 0, 0));
-	final JPanel ePanel = new JPanel(new BorderLayout());
-//	final JSlider slider = new JSlider(JSlider.HORIZONTAL, 10, 130, 80);
-	final JComboBox<String> comboBox = new JComboBox<String>();
-	String selectedPath = "";
-	private String backPathString;
-	
-	public BackgroundSelectWindow(JFrame owner)
-	{
-		super(owner, "Background Selection", Dialog.DEFAULT_MODALITY_TYPE);
-		setSize(WIDTH, HEIGHT);
-
-		JPanel nPanel = new JPanel();
-//		for(int i = 1; i <= 29; i++)
-//		{
-//			comboBox.addItem("Character_" + i);
-//		}
-//		comboBox.addItem("Hero-Villian");
-		nPanel.add(comboBox);
-		
-		JScrollPane wPane = new JScrollPane();
-		wPane.setPreferredSize(new Dimension(700, 700));
-		wPane.add(wPanel);
-		wPane.setViewportView(wPanel);
-		
-		comboBox.addItemListener(new ItemListener() {
-            @Override
-            public void itemStateChanged(ItemEvent e) {
-            	handleChangeBackgroundFolder();
-            }
-        });
-
-		JPanel panel2 = new JPanel(new BorderLayout());
-		JButton place = new JButton("Place");
-		place.addActionListener(new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent arg0) {
-				backPathString = selectedPath.substring(selectedPath.indexOf((String)comboBox.getSelectedItem()));
-				setVisible(false);
-			}
-		});
-		place.setPreferredSize(new Dimension(280, 40));
-		panel2.add(place, BorderLayout.SOUTH);
-
-		ePanel.add(pic,BorderLayout.CENTER);
-		ePanel.add(panel2,BorderLayout.SOUTH);
-		ePanel.setPreferredSize(new Dimension(325,650));
-
-		add(ePanel, BorderLayout.EAST);
-		add(wPane, BorderLayout.WEST);
-		add(nPanel, BorderLayout.NORTH);
-
-		Dimension d = Toolkit.getDefaultToolkit().getScreenSize();
-		setLocation(d.width/2 - WIDTH/2, d.height/2 - HEIGHT/2);
-		setResizable(false);
-		
-		handleChangeBackgroundFolder();
-	}
-	
-	private void handleChangeBackgroundFolder()
-	{
-		if(comboBox.getSelectedItem() == null)
-		{return;}
-		final ArrayList<JLabel> jlabels = new ArrayList<JLabel>();
-        String item = (String)comboBox.getSelectedItem();
-        
-        System.out.println(item);
-        
-    	File dir = new File("Office, Classroom/" + item + "/");
-    	wPanel.removeAll();
-    	
-    	for (File child : dir.listFiles())
-		{
-    		if(child.isDirectory())
-    		{
-    			continue;
-    		}
-    		try {
-	    		BufferedImage image = ImageHelper.getScaledImage(ImageIO.read(child), 0.43);
-	    		
-	    		final JLabel l = new JLabel(new ImageIcon(image));
-	    		l.setName(child.getPath().toString());
-				jlabels.add(l);
-				wPanel.add(l);
-				wPanel.validate();
-				wPanel.repaint();
-    		} catch(Exception e1) {}
-		
-		}
-    	for(final JLabel l : jlabels)
-		{
-			l.addMouseListener(new MouseListener() {
-				public void mouseClicked(MouseEvent e) {
-				}
-				public void mouseEntered(MouseEvent e) {
-				}
-				public void mouseExited(MouseEvent e) {
-				}
-				public void mousePressed(MouseEvent e) {
-					for(int i = 0; i < jlabels.size(); i++)
-					{
-						jlabels.get(i).setBorder(null);
-					}
-					l.setBorder(BorderFactory.createLoweredBevelBorder());
-					try {
-						BufferedImage img1 = ImageHelper.getScaledImage(ImageIO.read(new File(l.getName())), .43);
-						pic.setIcon(new ImageIcon(img1));
-			    		selectedPath = l.getName();
-					} catch(Exception e4) {}
-				}
-				public void mouseReleased(MouseEvent e) {
-				}
-			});
-		}
-	}
-	
-	public void setBackgroundPathString(String backgroundString)
-	{
-		backPathString = backgroundString;
-	}
-	
-	public String getNewBackgroundPath()
-	{
-		return backPathString;
-	}
-	
-	public void setBackgroundFolderPath(String folderPath)
-	{
-		comboBox.removeAllItems();
-		/*for(String charName : charNames)
-		{
-			comboBox.addItem(charName);
-		}*/
-		comboBox.addItem(folderPath);
-		handleChangeBackgroundFolder();
-	}
+comboBox.addItem(charName);
+}*/
+comboBox.addItem(folderPath);
+handleChangeBackgroundFolder();
+}
 }
