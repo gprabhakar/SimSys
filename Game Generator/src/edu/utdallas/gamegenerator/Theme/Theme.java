@@ -14,6 +14,13 @@ import edu.utdallas.gamegenerator.Characters.GameCharacter;
 import edu.utdallas.gamegenerator.LearningAct.Character.LearningActCharacterType;
 import edu.utdallas.gamegenerator.LearningAct.Screen.TransitionType;
 import edu.utdallas.gamegenerator.Subject.Subject;
+import edu.utdallas.gamespecification.BackgroundType;
+import edu.utdallas.gamespecification.GameElementType;
+import edu.utdallas.gamespecification.GenericInteraction;
+import edu.utdallas.gamespecification.Location;
+import edu.utdallas.gamespecification.Scene;
+import edu.utdallas.gamespecification.Screen;
+import edu.utdallas.gamespecification.Size;
 import edu.utdallas.sharedfiles.Shared.Asset;
 import edu.utdallas.sharedfiles.Shared.Behavior;
 import edu.utdallas.sharedfiles.Shared.BehaviorType;
@@ -21,13 +28,6 @@ import edu.utdallas.sharedfiles.Shared.GameObject;
 import edu.utdallas.sharedfiles.Shared.SharedButton;
 import edu.utdallas.sharedfiles.Shared.SharedCharacter;
 import edu.utdallas.sharedfiles.Shared.SharedInformationBox;
-import edu.utdallas.sharedfiles.gamespec.BackgroundType;
-import edu.utdallas.sharedfiles.gamespec.GameElementType;
-import edu.utdallas.sharedfiles.gamespec.GenericInteraction;
-import edu.utdallas.sharedfiles.gamespec.Location;
-import edu.utdallas.sharedfiles.gamespec.Scene;
-import edu.utdallas.sharedfiles.gamespec.Screen;
-import edu.utdallas.sharedfiles.gamespec.Size;
 
 /**
  * User: clocke

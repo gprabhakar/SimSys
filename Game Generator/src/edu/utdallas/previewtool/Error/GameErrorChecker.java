@@ -21,20 +21,20 @@ import edu.utdallas.sharedfiles.Shared.ImageHelper;
 import edu.utdallas.sharedfiles.Shared.InformationBoxAsset;
 import edu.utdallas.sharedfiles.Shared.ThoughtBubbleAsset;
 import edu.utdallas.gamegeneratorcollection.gamegenerator.Structure.*;
-import edu.utdallas.sharedfiles.gamespec.Act;
-import edu.utdallas.sharedfiles.gamespec.Challenge;
-import edu.utdallas.sharedfiles.gamespec.Character;
-import edu.utdallas.sharedfiles.gamespec.Game;
-import edu.utdallas.sharedfiles.gamespec.Introduction;
-import edu.utdallas.sharedfiles.gamespec.Item;
-import edu.utdallas.sharedfiles.gamespec.MultipleChoiceItem;
-import edu.utdallas.sharedfiles.gamespec.Option;
-import edu.utdallas.sharedfiles.gamespec.Profile;
-import edu.utdallas.sharedfiles.gamespec.QuizChallenge;
-import edu.utdallas.sharedfiles.gamespec.Scene;
-import edu.utdallas.sharedfiles.gamespec.Screen;
-import edu.utdallas.sharedfiles.gamespec.Stem;
-import edu.utdallas.sharedfiles.gamespec.Summary;
+import edu.utdallas.gamespecification.Act;
+import edu.utdallas.gamespecification.Challenge;
+import edu.utdallas.gamespecification.Character;
+import edu.utdallas.gamespecification.Game;
+import edu.utdallas.gamespecification.Introduction;
+import edu.utdallas.gamespecification.Item;
+import edu.utdallas.gamespecification.MultipleChoiceItem;
+import edu.utdallas.gamespecification.Option;
+import edu.utdallas.gamespecification.Profile;
+import edu.utdallas.gamespecification.QuizChallenge;
+import edu.utdallas.gamespecification.Scene;
+import edu.utdallas.gamespecification.Screen;
+import edu.utdallas.gamespecification.Stem;
+import edu.utdallas.gamespecification.Summary;
 
 public class GameErrorChecker 
 {

@@ -26,6 +26,18 @@ import edu.utdallas.gamegenerator.LearningAct.Screen.ScreenType;
 import edu.utdallas.gamegenerator.LearningAct.Screen.TransitionType;
 import edu.utdallas.gamegenerator.Theme.Theme;
 import edu.utdallas.gamegenerator.Theme.ThemeStory;
+import edu.utdallas.gamespecification.Act;
+import edu.utdallas.gamespecification.BackgroundType;
+import edu.utdallas.gamespecification.Challenge;
+import edu.utdallas.gamespecification.ClassificationType;
+import edu.utdallas.gamespecification.GameElementType;
+import edu.utdallas.gamespecification.GenericInteraction;
+import edu.utdallas.gamespecification.Hint;
+import edu.utdallas.gamespecification.Location;
+import edu.utdallas.gamespecification.Option;
+import edu.utdallas.gamespecification.Scene;
+import edu.utdallas.gamespecification.Screen;
+import edu.utdallas.gamespecification.Size;
 import edu.utdallas.sharedfiles.Shared.Asset;
 import edu.utdallas.sharedfiles.Shared.Behavior;
 import edu.utdallas.sharedfiles.Shared.BehaviorType;
@@ -34,18 +46,6 @@ import edu.utdallas.sharedfiles.Shared.GameObject;
 import edu.utdallas.sharedfiles.Shared.SharedButton;
 import edu.utdallas.sharedfiles.Shared.SharedCharacter;
 import edu.utdallas.sharedfiles.Shared.SharedInformationBox;
-import edu.utdallas.sharedfiles.gamespec.Act;
-import edu.utdallas.sharedfiles.gamespec.BackgroundType;
-import edu.utdallas.sharedfiles.gamespec.Challenge;
-import edu.utdallas.sharedfiles.gamespec.ClassificationType;
-import edu.utdallas.sharedfiles.gamespec.GameElementType;
-import edu.utdallas.sharedfiles.gamespec.GenericInteraction;
-import edu.utdallas.sharedfiles.gamespec.Hint;
-import edu.utdallas.sharedfiles.gamespec.Location;
-import edu.utdallas.sharedfiles.gamespec.Option;
-import edu.utdallas.sharedfiles.gamespec.Scene;
-import edu.utdallas.sharedfiles.gamespec.Screen;
-import edu.utdallas.sharedfiles.gamespec.Size;
 
 /**
  * User: clocke

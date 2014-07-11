@@ -18,10 +18,10 @@
           <entry>
             <key>NEXT</key>
             <value>
-              <Height>48.0999755859375</Height>
-              <LocX>571.96661376953125</LocX>
-              <LocY>335.2166748046875</LocY>
-              <Width>128.88336181640625</Width>
+              <Height>48</Height>
+              <LocX>571</LocX>
+              <LocY>335</LocY>
+              <Width>128</Width>
             </value>
           </entry>
         </Buttons>
@@ -102,10 +102,10 @@
           <entry>
             <key>VILLIAN</key>
             <value>
-              <Height>111.61668395996094</Height>
-              <LocX>444.31666564941406</LocX>
-              <LocY>129.86666870117188</LocY>
-              <Width>98.050003051757812</Width>
+              <Height>111</Height>
+              <LocX>444</LocX>
+              <LocY>129</LocY>
+              <Width>98</Width>
               <CharacterAssetType>LEFT_EVIL</CharacterAssetType>
               <CharacterType>VILLIAN</CharacterType>
               <Movements>
@@ -140,64 +140,64 @@
         <GameObjects>
 		  <!-- Player text box -->
           <GameObject>
-            <Height>143.68331909179688</Height>
-            <LocX>36.083301544189453</LocX>
-            <LocY>194.00001525878906</LocY>
+            <Height>143</Height>
+            <LocX>36</LocX>
+            <LocY>194</LocY>
             <PathToAsset>Props\GenericInteraction\Regular Speech 2.png</PathToAsset>
-            <Width>155.40000534057617</Width>
+            <Width>155</Width>
           </GameObject>
 		  <!-- Hero text box -->
           <GameObject>
-            <Height>79.550003051757812</Height>
-            <LocX>278.43331909179688</LocX>
-            <LocY>251.35002136230469</LocY>
+            <Height>79</Height>
+            <LocX>278</LocX>
+            <LocY>251</LocY>
             <PathToAsset>Props\GenericInteraction\TextBubble.png</PathToAsset>
-            <Width>235.56668090820313</Width>
+            <Width>235</Width>
           </GameObject>
 		  <!-- Villian text box -->
           <GameObject>
-            <Height>146.15000915527344</Height>
-            <LocX>68.149978637695312</LocX>
-            <LocY>205.71669006347656</LocY>
+            <Height>146</Height>
+            <LocX>68</LocX>
+            <LocY>205</LocY>
             <PathToAsset>Props\GenericInteraction\TextBubble.png</PathToAsset>
-            <Width>219.5333251953125</Width>
+            <Width>219</Width>
           </GameObject>
         </GameObjects>
         <InformationBoxes>
           <entry>
             <key>PLAYER</key>
             <value>
-              <Height>46.866683959960938</Height>
-              <LocX>61.36663818359375</LocX>
-              <LocY>224.21665954589844</LocY>
-              <Width>84.48333740234375</Width>
+              <Height>46</Height>
+              <LocX>61</LocX>
+              <LocY>224</LocY>
+              <Width>84</Width>
             </value>
           </entry>
           <entry>
             <key>HERO</key>
             <value>
-              <Height>51.183334350585938</Height>
+              <Height>51</Height>
               <LocX>292</LocX>
-              <LocY>261.83332824707031</LocY>
-              <Width>207.816650390625</Width>
+              <LocY>261</LocY>
+              <Width>207</Width>
             </value>
           </entry>
           <entry>
             <key>VILLIAN</key>
             <value>
-              <Height>107.91666436195374</Height>
-              <LocX>-0.30003738403320312</LocX>
-              <LocY>-1.4833300113677979</LocY>
-              <Width>772.0666389465332</Width>
+              <Height>107</Height>
+              <LocX>-0</LocX>
+              <LocY>-1</LocY>
+              <Width>772</Width>
             </value>
           </entry>
           <entry>
             <key>ALT1</key>
             <value>
-              <Height>151.70001220703125</Height>
-              <LocX>9.5666418075561523</LocX>
-              <LocY>129.25</LocY>
-              <Width>333.00000858306885</Width>
+              <Height>151</Height>
+              <LocX>9</LocX>
+              <LocY>129</LocY>
+              <Width>333</Width>
             </value>
           </entry>
         </InformationBoxes>
@@ -211,37 +211,37 @@
           <entry>
             <key>CHALLENGE_1</key>
             <value>
-              <Height>33.91668701171875</Height>
-              <LocX>322.83331298828125</LocX>
-              <LocY>230.38333129882813</LocY>
-              <Width>284.9000244140625</Width>
+              <Height>33</Height>
+              <LocX>322</LocX>
+              <LocY>230</LocY>
+              <Width>284</Width>
             </value>
           </entry>
           <entry>
             <key>CHALLENGE_2</key>
             <value>
-              <Height>33.91668701171875</Height>
-              <LocX>322.83331298828125</LocX>
-              <LocY>265.53335571289062</LocY>
-              <Width>284.9000244140625</Width>
+              <Height>33</Height>
+              <LocX>322</LocX>
+              <LocY>265</LocY>
+              <Width>284</Width>
             </value>
           </entry>
           <entry>
             <key>CHALLENGE_3</key>
             <value>
-              <Height>33.91668701171875</Height>
-              <LocX>322.83331298828125</LocX>
-              <LocY>303.76666259765625</LocY>
-              <Width>284.9000244140625</Width>
+              <Height>33</Height>
+              <LocX>322</LocX>
+              <LocY>303</LocY>
+              <Width>284</Width>
             </value>
           </entry>
           <entry>
             <key>CHALLENGE_4</key>
             <value>
-              <Height>33.91668701171875</Height>
-              <LocX>322.83331298828125</LocX>
-              <LocY>343.23333740234375</LocY>
-              <Width>284.9000244140625</Width>
+              <Height>33</Height>
+              <LocX>322</LocX>
+              <LocY>343</LocY>
+              <Width>284</Width>
             </value>
           </entry>
         </Buttons>
@@ -249,10 +249,10 @@
           <entry>
             <key>PLAYER</key>
             <value>
-              <Height>91.26666259765625</Height>
-              <LocX>135.98329162597656</LocX>
-              <LocY>313.01666259765625</LocY>
-              <Width>104.21666717529297</Width>
+              <Height>91</Height>
+              <LocX>135</LocX>
+              <LocY>313</LocY>
+              <Width>104</Width>
               <CharacterAssetType>RIGHT_POINT_NO</CharacterAssetType>
               <CharacterType>PLAYER</CharacterType>
               <Movements>
@@ -286,10 +286,10 @@
           <!----><entry>
             <key>HERO</key>
             <value>
-              <Height>133.816650390625</Height>
-              <LocX>295.08334350585938</LocX>
-              <LocY>277.25</LocY>
-              <Width>83.249984741210938</Width>
+              <Height>133</Height>
+              <LocX>295</LocX>
+              <LocY>277</LocY>
+              <Width>83</Width>
               <CharacterAssetType>LEFT_POINT_UP</CharacterAssetType>
               <CharacterType>HERO</CharacterType>
               <Movements>
@@ -322,10 +322,10 @@
           <entry>
             <key>VILLIAN</key>
             <value>
-              <Height>111.61668395996094</Height>
-              <LocX>444.31666564941406</LocX>
-              <LocY>129.86666870117188</LocY>
-              <Width>98.050003051757812</Width>
+              <Height>111</Height>
+              <LocX>444</LocX>
+              <LocY>129</LocY>
+              <Width>98</Width>
               <CharacterAssetType>LEFT_EVIL</CharacterAssetType>
               <CharacterType>VILLIAN</CharacterType>
               <Movements>
@@ -360,39 +360,39 @@
         <GameObjects>
 		  <!-- Hero text bubble -->
           <GameObject>
-            <Height>61.666656494140625</Height>
-            <LocX>69.383308410644531</LocX>
-            <LocY>273.55001831054688</LocY>
+            <Height>61</Height>
+            <LocX>69</LocX>
+            <LocY>273</LocY>
             <PathToAsset>Props\GenericInteraction\TextBubbleLarge.png</PathToAsset>
-            <Width>164.65000152587891</Width>
+            <Width>164</Width>
           </GameObject>
         </GameObjects>
         <InformationBoxes>
           <entry>
             <key>CHALLENGE_DESCRIPTION</key>
             <value>
-              <Height>49.95001220703125</Height>
-              <LocX>184.08331298828125</LocX>
-              <LocY>115.68333435058594</LocY>
-              <Width>568.566650390625</Width>
+              <Height>49</Height>
+              <LocX>184</LocX>
+              <LocY>115</LocY>
+              <Width>568</Width>
             </value>
           </entry>
           <entry>
             <key>CHALLENGE_QUESTION</key>
             <value>
-              <Height>56.116668701171875</Height>
-              <LocX>186.54997253417969</LocX>
-              <LocY>171.18333435058594</LocY>
-              <Width>562.40003967285156</Width>
+              <Height>56</Height>
+              <LocX>186</LocX>
+              <LocY>171</LocY>
+              <Width>562</Width>
             </value>
           </entry>
           <!-- --><entry>
             <key>HERO</key>
             <value>
-              <Height>40.70001220703125</Height>
-              <LocX>76.783298492431641</LocX>
-              <LocY>280.94998168945312</LocY>
-              <Width>149.23333358764648</Width>
+              <Height>40</Height>
+              <LocX>76</LocX>
+              <LocY>280</LocY>
+              <Width>149</Width>
             </value>
           </entry>
         </InformationBoxes>
@@ -415,10 +415,10 @@
           <entry>
             <key>NEXT</key>
             <value>
-              <Height>48.0999755859375</Height>
-              <LocX>571.96661376953125</LocX>
-              <LocY>335.2166748046875</LocY>
-              <Width>128.88336181640625</Width>
+              <Height>48</Height>
+              <LocX>571</LocX>
+              <LocY>335</LocY>
+              <Width>128</Width>
             </value>
           </entry>
         </Buttons>
@@ -426,10 +426,10 @@
           <entry>
             <key>PLAYER</key>
             <value>
-              <Height>91.26666259765625</Height>
-              <LocX>135.98329162597656</LocX>
-              <LocY>313.01666259765625</LocY>
-              <Width>104.21666717529297</Width>
+              <Height>91</Height>
+              <LocX>135</LocX>
+              <LocY>313</LocY>
+              <Width>104</Width>
               <CharacterAssetType>RIGHT_POINT_NO</CharacterAssetType>
               <CharacterType>PLAYER</CharacterType>
               <Movements>
@@ -463,10 +463,10 @@
           <entry>
             <key>HERO</key>
             <value>
-              <Height>133.816650390625</Height>
-              <LocX>295.08334350585938</LocX>
-              <LocY>277.25</LocY>
-              <Width>83.249984741210938</Width>
+              <Height>133</Height>
+              <LocX>295</LocX>
+              <LocY>277</LocY>
+              <Width>83</Width>
               <CharacterAssetType>LEFT_POINT_UP</CharacterAssetType>
               <CharacterType>HERO</CharacterType>
               <Movements>
@@ -499,10 +499,10 @@
           <entry>
             <key>VILLIAN</key>
             <value>
-              <Height>111.61668395996094</Height>
-              <LocX>444.31666564941406</LocX>
-              <LocY>129.86666870117188</LocY>
-              <Width>98.050003051757812</Width>
+              <Height>111</Height>
+              <LocX>444</LocX>
+              <LocY>129</LocY>
+              <Width>98</Width>
               <CharacterAssetType>LEFT_EVIL</CharacterAssetType>
               <CharacterType>VILLIAN</CharacterType>
               <Movements>
@@ -537,64 +537,64 @@
         <GameObjects>
 		  <!-- Player text box -->
           <GameObject>
-            <Height>143.68331909179688</Height>
-            <LocX>36.083301544189453</LocX>
-            <LocY>194.00001525878906</LocY>
+            <Height>143</Height>
+            <LocX>36</LocX>
+            <LocY>194</LocY>
             <PathToAsset>Props\GenericInteraction\Regular Speech 2.png</PathToAsset>
-            <Width>155.40000534057617</Width>
+            <Width>155</Width>
           </GameObject>
 		  <!-- Hero text box -->
           <GameObject>
-            <Height>79.550003051757812</Height>
-            <LocX>278.43331909179688</LocX>
-            <LocY>251.35002136230469</LocY>
+            <Height>79</Height>
+            <LocX>278</LocX>
+            <LocY>251</LocY>
             <PathToAsset>Props\GenericInteraction\TextBubble.png</PathToAsset>
-            <Width>235.56668090820313</Width>
+            <Width>235</Width>
           </GameObject>
 		  <!-- Villian text box -->
           <GameObject>
-            <Height>146.15000915527344</Height>
-            <LocX>68.149978637695312</LocX>
-            <LocY>205.71669006347656</LocY>
+            <Height>146</Height>
+            <LocX>68</LocX>
+            <LocY>205</LocY>
             <PathToAsset>Props\GenericInteraction\TextBubble.png</PathToAsset>
-            <Width>219.5333251953125</Width>
+            <Width>219</Width>
           </GameObject>
         </GameObjects>
         <InformationBoxes>
           <entry>
             <key>PLAYER</key>
             <value>
-              <Height>46.866683959960938</Height>
-              <LocX>61.36663818359375</LocX>
-              <LocY>224.21665954589844</LocY>
-              <Width>84.48333740234375</Width>
+              <Height>46</Height>
+              <LocX>61</LocX>
+              <LocY>224</LocY>
+              <Width>84</Width>
             </value>
           </entry>
           <entry>
             <key>HERO</key>
             <value>
-              <Height>51.183334350585938</Height>
+              <Height>51</Height>
               <LocX>292</LocX>
-              <LocY>261.83332824707031</LocY>
-              <Width>207.816650390625</Width>
+              <LocY>261</LocY>
+              <Width>207</Width>
             </value>
           </entry>
           <entry>
             <key>VILLIAN</key>
             <value>
-              <Height>107.91666436195374</Height>
-              <LocX>-0.30003738403320312</LocX>
-              <LocY>-1.4833300113677979</LocY>
-              <Width>772.0666389465332</Width>
+              <Height>107</Height>
+              <LocX>-0</LocX>
+              <LocY>-1</LocY>
+              <Width>772</Width>
             </value>
           </entry>
           <entry>
             <key>ALT1</key>
             <value>
-              <Height>151.70001220703125</Height>
-              <LocX>9.5666418075561523</LocX>
-              <LocY>129.25</LocY>
-              <Width>333.00000858306885</Width>
+              <Height>151</Height>
+              <LocX>9</LocX>
+              <LocY>129</LocY>
+              <Width>333</Width>
             </value>
           </entry>
         </InformationBoxes>
@@ -617,10 +617,10 @@
           <entry>
             <key>NEXT</key>
             <value>
-              <Height>48.0999755859375</Height>
-              <LocX>571.96661376953125</LocX>
-              <LocY>335.2166748046875</LocY>
-              <Width>128.88336181640625</Width>
+              <Height>48</Height>
+              <LocX>571</LocX>
+              <LocY>335</LocY>
+              <Width>128</Width>
             </value>
           </entry>
         </Buttons>
@@ -701,10 +701,10 @@
           <entry>
             <key>VILLIAN</key>
             <value>
-              <Height>111.61668395996094</Height>
-              <LocX>444.31666564941406</LocX>
-              <LocY>129.86666870117188</LocY>
-              <Width>98.050003051757812</Width>
+              <Height>111</Height>
+              <LocX>444</LocX>
+              <LocY>129</LocY>
+              <Width>98</Width>
               <CharacterAssetType>LEFT_EVIL</CharacterAssetType>
               <CharacterType>VILLIAN</CharacterType>
               <Movements>
@@ -739,64 +739,64 @@
         <GameObjects>
 		  <!-- Player text box -->
           <GameObject>
-            <Height>143.68331909179688</Height>
-            <LocX>36.083301544189453</LocX>
-            <LocY>194.00001525878906</LocY>
+            <Height>143</Height>
+            <LocX>36</LocX>
+            <LocY>194</LocY>
             <PathToAsset>Props\GenericInteraction\Regular Speech 2.png</PathToAsset>
-            <Width>155.40000534057617</Width>
+            <Width>155</Width>
           </GameObject>
 		  <!-- Hero text box -->
           <GameObject>
-            <Height>79.550003051757812</Height>
-            <LocX>278.43331909179688</LocX>
-            <LocY>251.35002136230469</LocY>
+            <Height>79</Height>
+            <LocX>278</LocX>
+            <LocY>251</LocY>
             <PathToAsset>Props\GenericInteraction\TextBubble.png</PathToAsset>
-            <Width>235.56668090820313</Width>
+            <Width>235</Width>
           </GameObject>
 		  <!-- Villian text box -->
           <GameObject>
-            <Height>146.15000915527344</Height>
-            <LocX>68.149978637695312</LocX>
-            <LocY>205.71669006347656</LocY>
+            <Height>146</Height>
+            <LocX>68</LocX>
+            <LocY>205</LocY>
             <PathToAsset>Props\GenericInteraction\TextBubble.png</PathToAsset>
-            <Width>219.5333251953125</Width>
+            <Width>219</Width>
           </GameObject>
         </GameObjects>
         <InformationBoxes>
           <entry>
             <key>PLAYER</key>
             <value>
-              <Height>46.866683959960938</Height>
-              <LocX>61.36663818359375</LocX>
-              <LocY>224.21665954589844</LocY>
-              <Width>84.48333740234375</Width>
+              <Height>46</Height>
+              <LocX>61</LocX>
+              <LocY>224</LocY>
+              <Width>84</Width>
             </value>
           </entry>
           <entry>
             <key>HERO</key>
             <value>
-              <Height>51.183334350585938</Height>
+              <Height>51</Height>
               <LocX>292</LocX>
-              <LocY>261.83332824707031</LocY>
-              <Width>207.816650390625</Width>
+              <LocY>261</LocY>
+              <Width>207</Width>
             </value>
           </entry>
           <entry>
             <key>VILLIAN</key>
             <value>
-              <Height>107.91666436195374</Height>
-              <LocX>-0.30003738403320312</LocX>
-              <LocY>-1.4833300113677979</LocY>
-              <Width>772.0666389465332</Width>
+              <Height>107</Height>
+              <LocX>-0</LocX>
+              <LocY>-1</LocY>
+              <Width>772</Width>
             </value>
           </entry>
           <entry>
             <key>ALT1</key>
             <value>
-              <Height>151.70001220703125</Height>
-              <LocX>9.5666418075561523</LocX>
-              <LocY>129.25</LocY>
-              <Width>333.00000858306885</Width>
+              <Height>151</Height>
+              <LocX>9</LocX>
+              <LocY>129</LocY>
+              <Width>333</Width>
             </value>
           </entry>
         </InformationBoxes>
@@ -819,10 +819,10 @@
           <entry>
             <key>NEXT</key>
             <value>
-              <Height>48.0999755859375</Height>
-              <LocX>571.96661376953125</LocX>
-              <LocY>335.2166748046875</LocY>
-              <Width>128.88336181640625</Width>
+              <Height>48</Height>
+              <LocX>571</LocX>
+              <LocY>335</LocY>
+              <Width>128</Width>
             </value>
           </entry>
         </Buttons>
@@ -903,10 +903,10 @@
           <entry>
             <key>VILLIAN</key>
             <value>
-              <Height>111.61668395996094</Height>
-              <LocX>444.31666564941406</LocX>
-              <LocY>129.86666870117188</LocY>
-              <Width>98.050003051757812</Width>
+              <Height>111</Height>
+              <LocX>444</LocX>
+              <LocY>129</LocY>
+              <Width>98</Width>
               <CharacterAssetType>LEFT_EVIL</CharacterAssetType>
               <CharacterType>VILLIAN</CharacterType>
               <Movements>
@@ -941,64 +941,64 @@
         <GameObjects>
 		  <!-- Player text box -->
           <GameObject>
-            <Height>143.68331909179688</Height>
-            <LocX>36.083301544189453</LocX>
-            <LocY>194.00001525878906</LocY>
+            <Height>143</Height>
+            <LocX>36</LocX>
+            <LocY>194</LocY>
             <PathToAsset>Props\GenericInteraction\Regular Speech 2.png</PathToAsset>
-            <Width>155.40000534057617</Width>
+            <Width>155</Width>
           </GameObject>
 		  <!-- Hero text box -->
           <GameObject>
-            <Height>79.550003051757812</Height>
-            <LocX>278.43331909179688</LocX>
-            <LocY>251.35002136230469</LocY>
+            <Height>79</Height>
+            <LocX>278</LocX>
+            <LocY>251</LocY>
             <PathToAsset>Props\GenericInteraction\TextBubble.png</PathToAsset>
-            <Width>235.56668090820313</Width>
+            <Width>235</Width>
           </GameObject>
 		  <!-- Villian text box -->
           <GameObject>
-            <Height>146.15000915527344</Height>
-            <LocX>68.149978637695312</LocX>
-            <LocY>205.71669006347656</LocY>
+            <Height>146</Height>
+            <LocX>68</LocX>
+            <LocY>205</LocY>
             <PathToAsset>Props\GenericInteraction\TextBubble.png</PathToAsset>
-            <Width>219.5333251953125</Width>
+            <Width>219</Width>
           </GameObject>
         </GameObjects>
         <InformationBoxes>
           <entry>
             <key>PLAYER</key>
             <value>
-              <Height>46.866683959960938</Height>
-              <LocX>61.36663818359375</LocX>
-              <LocY>224.21665954589844</LocY>
-              <Width>84.48333740234375</Width>
+              <Height>46</Height>
+              <LocX>61</LocX>
+              <LocY>224</LocY>
+              <Width>84</Width>
             </value>
           </entry>
           <entry>
             <key>HERO</key>
             <value>
-              <Height>51.183334350585938</Height>
+              <Height>51</Height>
               <LocX>292</LocX>
-              <LocY>261.83332824707031</LocY>
-              <Width>207.816650390625</Width>
+              <LocY>261</LocY>
+              <Width>207</Width>
             </value>
           </entry>
           <entry>
             <key>VILLIAN</key>
             <value>
-              <Height>107.91666436195374</Height>
-              <LocX>-0.30003738403320312</LocX>
-              <LocY>-1.4833300113677979</LocY>
-              <Width>772.0666389465332</Width>
+              <Height>107</Height>
+              <LocX>-0</LocX>
+              <LocY>-1</LocY>
+              <Width>772</Width>
             </value>
           </entry>
           <entry>
             <key>ALT1</key>
             <value>
-              <Height>151.70001220703125</Height>
-              <LocX>9.5666418075561523</LocX>
-              <LocY>129.25</LocY>
-              <Width>333.00000858306885</Width>
+              <Height>151</Height>
+              <LocX>9</LocX>
+              <LocY>129</LocY>
+              <Width>333</Width>
             </value>
           </entry>
         </InformationBoxes>

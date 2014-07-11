@@ -6,10 +6,10 @@ import edu.utdallas.gamegenerator.LearningAct.LessonAct;
 import edu.utdallas.gamegenerator.Lesson.Lesson;
 import edu.utdallas.gamegenerator.Locale.Locale;
 import edu.utdallas.sharedfiles.Search.Search;
-import edu.utdallas.sharedfiles.gamespec.Game;
 import edu.utdallas.gamegenerator.Subject.Subject;
 import edu.utdallas.gamegenerator.Theme.Theme;
 import edu.utdallas.gamegenerator.old.Challenge.Challenge;
+import edu.utdallas.gamespecification.Game;
 
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;

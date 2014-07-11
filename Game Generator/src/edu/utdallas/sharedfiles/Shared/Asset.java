@@ -1,11 +1,11 @@
 package edu.utdallas.sharedfiles.Shared;
 
-import edu.utdallas.sharedfiles.gamespec.Hint;
 import edu.utdallas.gamegenerator.Characters.GameCharacter;
 import edu.utdallas.gamegenerator.LearningAct.Character.LearningActCharacter;
 import edu.utdallas.gamegenerator.LearningAct.Prop.GameButton;
 import edu.utdallas.gamegenerator.LearningAct.Prop.GameText;
 import edu.utdallas.gamegenerator.Locale.ObjectMovement;
+import edu.utdallas.gamespecification.Hint;
 
 import javax.xml.bind.annotation.*;
 

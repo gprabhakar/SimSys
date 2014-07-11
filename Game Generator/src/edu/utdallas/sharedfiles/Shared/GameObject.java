@@ -1,12 +1,14 @@
 package edu.utdallas.sharedfiles.Shared;
 
 import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  * User: clocke
  * Date: 2/17/13
  * Time: 3:27 PM
  */
+@XmlRootElement(name = "GameObject")
 public class GameObject {
     private int x;
     private int y;
@@ -20,6 +22,7 @@ public class GameObject {
     }
 
     public GameObject(int locX, int locY, int width, int height, String pathToAsset) {
+    	System.out.println("I set X to: " + locX);
         this.x = locX;
         this.y = locY;
         this.width = width;
@@ -36,7 +39,7 @@ public class GameObject {
         this.height = height;
     }
     
-    @XmlElement(name = "X")
+    @XmlElement(name = "LocX")
     public void setX(int x) {
         this.x = x;
     }
@@ -48,9 +51,9 @@ public class GameObject {
 
     @XmlElement(name = "LocY")
     public void setY(int y) {
-        this.y = y;
+        this.y =  y;
     }
-
+    
     public int getWidth() {
         return width;
     }

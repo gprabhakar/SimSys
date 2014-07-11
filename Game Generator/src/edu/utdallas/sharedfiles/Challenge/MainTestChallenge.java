@@ -7,15 +7,15 @@ import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Marshaller;
 
-import edu.utdallas.sharedfiles.gamespec.Challenge;
-import edu.utdallas.sharedfiles.gamespec.Item;
-import edu.utdallas.sharedfiles.gamespec.MultipleChoiceItem;
-import edu.utdallas.sharedfiles.gamespec.Option;
-import edu.utdallas.sharedfiles.gamespec.QuizChallenge;
-import edu.utdallas.sharedfiles.gamespec.Stem;
-import edu.utdallas.sharedfiles.gamespec.StemQuestion;
-import edu.utdallas.sharedfiles.gamespec.StemText;
-import edu.utdallas.sharedfiles.gamespec.Hint;
+import edu.utdallas.gamespecification.Challenge;
+import edu.utdallas.gamespecification.Hint;
+import edu.utdallas.gamespecification.Item;
+import edu.utdallas.gamespecification.MultipleChoiceItem;
+import edu.utdallas.gamespecification.Option;
+import edu.utdallas.gamespecification.QuizChallenge;
+import edu.utdallas.gamespecification.Stem;
+import edu.utdallas.gamespecification.StemQuestion;
+import edu.utdallas.gamespecification.StemText;
 
 public class MainTestChallenge 
 {

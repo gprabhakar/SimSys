@@ -7,12 +7,12 @@
         <entry>
           <key>NEXT</key>
           <value>
-            <Height>50.566680908203125</Height>
-            <LocX>581.83331298828125</LocX>
-            <LocY>332.75</LocY>
+            <Height>50</Height>
+            <LocX>581</LocX>
+            <LocY>332</LocY>
             <PathToAsset></PathToAsset>
             <Text>Continue</Text>
-            <Width>157.86669921875</Width>
+            <Width>157</Width>
             <behavior>
               <behaviorType>TRANSITION_BEHAVIOR</behaviorType>
               <displayName>Transition Behavior</displayName>
@@ -25,20 +25,20 @@
       </ThemeButtons>
       <GameObjects>
         <GameObject>
-          <Height>78.316665649414062</Height>
-          <LocX>327.14999389648438</LocX>
-          <LocY>123.69999694824219</LocY>
+          <Height>78</Height>
+          <LocX>327</LocX>
+          <LocY>123</LocY>
           <PathToAsset>Props\GenericInteraction\TextBubble.png</PathToAsset>
-          <Width>247.89999389648438</Width>
+          <Width>247</Width>
         </GameObject>
       </GameObjects>
       <InformationBoxes>
         <InformationBox>
-          <Height>59.20001220703125</Height>
-          <LocX>346.88330078125</LocX>
-          <LocY>128.63331604003906</LocY>
+          <Height>59</Height>
+          <LocX>346</LocX>
+          <LocY>128</LocY>
           <Text>Today we will be entering the virtual world! Everyone please sit down and watch the screen.</Text>
-          <Width>210.28340148925781</Width>
+          <Width>210</Width>
           <name>Today we will be entering the virtual world! Everyone please sit down and watch the screen.</name>
         </InformationBox>
       </InformationBoxes>
@@ -46,11 +46,11 @@
         <entry>
           <key>ALT</key>
           <value>
-            <Height>352.91667175293</Height>
-            <LocX>209.36663818359375</LocX>
-            <LocY>130.48335266113281</LocY>
+            <Height>352</Height>
+            <LocX>209</LocX>
+            <LocY>130</LocY>
             <Text></Text>
-            <Width>171.433349609375</Width>
+            <Width>171</Width>
             <CharacterAssetType>WALK_RIGHT_BEHIND</CharacterAssetType>
             <CharacterType>PLAYER</CharacterType>
           </value>
@@ -58,11 +58,11 @@
         <entry>
           <key>HERO</key>
           <value>
-            <Height>583.91667175293</Height>
-            <LocX>200.366638183594</LocX>
-            <LocY>292.483352661133</LocY>
+            <Height>583</Height>
+            <LocX>200</LocX>
+            <LocY>292</LocY>
             <Text></Text>
-            <Width>336.433349609375</Width>
+            <Width>336</Width>
             <CharacterAssetType>RIGHT_POINT_UP</CharacterAssetType>
             <CharacterType>ALT</CharacterType>
           </value>
@@ -75,11 +75,11 @@
 		<entry>
           <key>NEXT</key>
           <value>
-            <Height>35.76666259765625</Height>
-            <LocX>422.11663818359375</LocX>
-            <LocY>266.1500244140625</LocY>
+            <Height>35</Height>
+            <LocX>422</LocX>
+            <LocY>266</LocY>
             <Text>View</Text>
-            <Width>98.050018310546875</Width>
+            <Width>98</Width>
             <behavior>
               <behaviorType>TRANSITION_BEHAVIOR</behaviorType>
               <displayName>Transition Behavior</displayName>
@@ -94,27 +94,27 @@
       </GameObjects>
       <InformationBoxes>
         <InformationBox>
-          <Height>67.833343505859375</Height>
-          <LocX>191.48330688476563</LocX>
-          <LocY>152.06666564941406</LocY>
+          <Height>67</Height>
+          <LocX>191</LocX>
+          <LocY>152</LocY>
           <Text>Virtual Reality!</Text>
-          <Width>390.35000610351562</Width>
+          <Width>390</Width>
           <name>Virtual Reality!</name>
         </InformationBox>
         <InformationBox>
-          <Height>36.999984741210938</Height>
-          <LocX>193.33329772949219</LocX>
-          <LocY>224.2166748046875</LocY>
+          <Height>36</Height>
+          <LocX>193</LocX>
+          <LocY>224</LocY>
           <Text>Science</Text>
-          <Width>220.15000915527344</Width>
+          <Width>220</Width>
           <name>Science</name>
         </InformationBox>
         <InformationBox>
-          <Height>64.133331298828125</Height>
-          <LocX>192.0999755859375</LocX>
-          <LocY>266.14999389648438</LocY>
+          <Height>64</Height>
+          <LocX>192</LocX>
+          <LocY>266</LocY>
           <Text>Solar System Tour</Text>
-          <Width>221.38333129882813</Width>
+          <Width>221</Width>
           <name>Solar System Tour</name>
         </InformationBox>
       </InformationBoxes>
@@ -126,11 +126,11 @@
         <entry>
           <key>NEXT</key>
           <value>
-            <Height>52.416656494140625</Height>
-            <LocX>636.71661376953125</LocX>
-            <LocY>336.45001220703125</LocY>
+            <Height>52</Height>
+            <LocX>636</LocX>
+            <LocY>336</LocY>
             <Text>Continue</Text>
-            <Width>129.50006103515625</Width>
+            <Width>129</Width>
             <behavior>
               <behaviorType>TRANSITION_BEHAVIOR</behaviorType>
               <displayName>Transition Behavior</displayName>
@@ -154,12 +154,12 @@
         <entry>
           <key>NEXT</key>
           <value>
-            <Height>46.86669921875</Height>
-            <LocX>570.7332763671875</LocX>
-            <LocY>325.9666748046875</LocY>
+            <Height>46</Height>
+            <LocX>570</LocX>
+            <LocY>325</LocY>
             <PathToAsset>PathToAsset10</PathToAsset>
             <Text>End Game</Text>
-            <Width>121.48333740234375</Width>
+            <Width>121</Width>
             <behavior>
               <behaviorType>END_GAME_BEHAVIOR</behaviorType>
               <trigger>Click</trigger>
@@ -170,20 +170,20 @@
       </ThemeButtons>
       <GameObjects>
         <GameObject>
-          <Height>109.76666259765625</Height>
-          <LocX>362.29995727539062</LocX>
-          <LocY>98.416656494140625</LocY>
+          <Height>109</Height>
+          <LocX>362</LocX>
+          <LocY>98</LocY>
           <PathToAsset>Props\GenericInteraction\TextBubble.png</PathToAsset>
-          <Width>277.50003051757812</Width>
+          <Width>277</Width>
         </GameObject>
       </GameObjects>
       <InformationBoxes>
         <InformationBox>
-          <Height>66.599990844726562</Height>
-          <LocX>375.86663818359375</LocX>
-          <LocY>113.83334350585938</LocY>
+          <Height>66</Height>
+          <LocX>375</LocX>
+          <LocY>113</LocY>
           <Text>I love virtual reality days! I learn so much.</Text>
-          <Width>249.75003051757813</Width>
+          <Width>249</Width>
           <name>I love virtual reality days! I learn so much.</name>
         </InformationBox>
       </InformationBoxes>
@@ -191,11 +191,11 @@
         <entry>
           <key>PLAYER</key>
           <value>
-            <Height>294.76665496826172</Height>
-            <LocX>218.61663818359375</LocX>
-            <LocY>126.16666412353516</LocY>
+            <Height>294</Height>
+            <LocX>218</LocX>
+            <LocY>126</LocY>
             <PathToAsset>PathToAsset10</PathToAsset>
-            <Width>239.88330078125</Width>
+            <Width>239</Width>
             <CharacterAssetType>RIGHT_POINT_UP</CharacterAssetType>
             <CharacterType>PLAYER</CharacterType>
             <Movements>

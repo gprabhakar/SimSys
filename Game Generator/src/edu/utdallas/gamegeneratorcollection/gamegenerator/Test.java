@@ -4,12 +4,12 @@ import edu.utdallas.gamegenerator.Characters.Characters;
 import edu.utdallas.gamegenerator.LearningAct.LearningAct;
 import edu.utdallas.gamegenerator.Lesson.Lesson;
 import edu.utdallas.gamegenerator.Locale.Locale;
-import edu.utdallas.sharedfiles.gamespec.Game;
-import edu.utdallas.sharedfiles.gamespec.Scene;
-import edu.utdallas.sharedfiles.gamespec.Screen;
 import edu.utdallas.gamegenerator.Subject.Subject;
 import edu.utdallas.gamegenerator.Theme.Theme;
 import edu.utdallas.gamegenerator.old.Challenge.Challenge;
+import edu.utdallas.gamespecification.Game;
+import edu.utdallas.gamespecification.Scene;
+import edu.utdallas.gamespecification.Screen;
 
 import javax.xml.bind.*;
 
