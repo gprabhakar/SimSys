@@ -1480,11 +1480,11 @@ public class InputWizard implements ActionListener {
 			soundSelectPath = null;
 			if(selectedLevel.equals(gameLevel.SCENE))
 			{
-				soundSelectWindow.setSoundFolderPath(SoundSelectWindow.musicFolder);
+				soundSelectWindow.setSoundFolderPath(SoundSelectWindow.MUSICFOLDER);
 			}
 			else if(selectedLevel.equals(gameLevel.SCREEN))
 			{
-				soundSelectWindow.setSoundFolderPath(SoundSelectWindow.effectsFolder);
+				soundSelectWindow.setSoundFolderPath(SoundSelectWindow.EFFECTSFOLDER);
 			}
 			else
 			{

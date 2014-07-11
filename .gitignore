@@ -20,3 +20,5 @@ Game Generator/src/edu/utdallas/sharedfiles/Structure/Structure.java
 *.resources
 
 .metadata/.plugins/org.eclipse.jdt.core/externalLibsTimeStamps
+
+.metadata/.plugins/org.eclipse.jdt.core/variablesAndContainers.dat
