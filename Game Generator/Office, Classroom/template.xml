@@ -6,7 +6,13 @@
 				<scene>
 					<screens>
 						<screen>
-							<type>Welcome</type>
+							<type>Introduction</type>
+						</screen>
+						<screen>
+							<type>Summary Screen</type>
+						</screen>
+						<screen>
+							<type>Text that states: "Let's Begin!" Screen</type>
 						</screen>
 					</screens>
 				</scene>
@@ -17,21 +23,10 @@
 				<scene>
 					<screens>
 						<screen>
-							<type>Question 1</type>
+							<type>Question</type>
 						</screen>
-					</screens>
-				</scene>
-				<scene>
-					<screens>
 						<screen>
-							<type>Question 2</type>
-						</screen>
-					</screens>
-				</scene>
-				<scene>
-					<screens>
-						<screen>
-							<type>Question 3</type>
+							<type>Transition: Response To Answer</type>
 						</screen>
 					</screens>
 				</scene>
@@ -42,7 +37,20 @@
 				<scene>
 					<screens>
 						<screen>
-							<type>Good-Bye!</type>
+							<type>Introduction</type>
+						</screen>
+						<screen>
+							<type>Transition: Text that states: "See Your Score!"</type>
+						</screen>
+					</screens>
+				</scene>
+				<scene>
+					<screens>
+						<screen>
+							<type>Summary</type>
+						</screen>
+						<screen>
+							<type>Transition: Progress Options</type>
 						</screen>
 					</screens>
 				</scene>

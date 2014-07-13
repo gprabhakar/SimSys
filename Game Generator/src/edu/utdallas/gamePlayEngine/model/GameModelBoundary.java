@@ -4,6 +4,7 @@
 package edu.utdallas.gamePlayEngine.model;
 
 import javax.swing.JFrame;
+import javax.swing.JPanel;
 
 import edu.utdallas.gamePlayEngine.TestGameEngine;
 import edu.utdallas.gamePlayEngine.controller.GameState;
@@ -25,7 +26,7 @@ public class GameModelBoundary {
 
 	}
 
-	public void startGame(String xmlFilePath, JFrame myMenuFrame) throws Exception {
+	public void startGame(String xmlFilePath, JPanel myMenuFrame) throws Exception {
 		gameModelControl.startGame(xmlFilePath);
 		//testing whether the values have been loaded in to model or not
 	    new TestGameEngine().testGame(gameModelControl.getGameModel());

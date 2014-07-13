@@ -12,6 +12,7 @@ public class Scene {
 	@XmlElementWrapper(name="screens")
     @XmlElement(name="screen")
 	ArrayList<Screen> screenList;
+	String transitionType;
 //	String name;
 //	
 //	public String getName(){
@@ -24,6 +25,10 @@ public class Scene {
 //	}
 	public Scene(){
 		screenList = new ArrayList<Screen>();
+	}
+	public Scene(Scene scene)
+	{
+		this.screenList = scene.screenList;
 	}
 	public ArrayList<Screen> getScreens(){
 		return screenList;

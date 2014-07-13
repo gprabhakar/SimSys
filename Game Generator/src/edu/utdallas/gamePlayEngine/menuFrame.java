@@ -19,6 +19,7 @@ import java.io.File;
 
 import javax.swing.JFileChooser;
 import javax.swing.JFrame;
+import javax.swing.JPanel;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
@@ -27,21 +28,29 @@ public class menuFrame extends JFrame
 {
 	private static final long serialVersionUID = 1L;
 	private JFrame jFrame;
+	public JPanel jPanel;
 	private static final int FRAME_WIDTH = 600;
 	private static final int FRAME_HEIGHT = 600;
 	JFileChooser myFileChooser = new JFileChooser();
 	
 	public menuFrame(final GameView gameView)
 	{
-		jFrame = new JFrame("Game");
+		/*jFrame = new JFrame("Game");
 		jFrame.setLocationRelativeTo(null);
 		jFrame.pack();
 		jFrame.setVisible(true);
 		jFrame.setSize(FRAME_WIDTH, FRAME_HEIGHT);
-		jFrame.setLayout(new BorderLayout());
-
+		jFrame.setLayout(new BorderLayout());*/
+		
+		jPanel = new JPanel(new BorderLayout());
+		//jPanel.setLocationRelativeTo(null);
+		//jPanel.pack();
+		jPanel.setVisible(true);
+		jPanel.setSize(FRAME_WIDTH, FRAME_HEIGHT);
+		jPanel.setLayout(new BorderLayout());
+		
 		Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
-		jFrame.setLocation(dim.width / 2 - jFrame.getSize().width / 2,
+		jPanel.setLocation(dim.width / 2 - jFrame.getSize().width / 2,
 				dim.height / 2 - jFrame.getSize().height / 2);
 		
 		JMenuBar mainMenu = new JMenuBar();
@@ -63,7 +72,7 @@ public class menuFrame extends JFrame
 		            	final GameModelBoundary gameModelBoundary = gameController.getModelBoundary();
 		            	gameModelBoundary.setView(gameView);
 		            	gameModelBoundary.gmbEnd();
-		        		gameModelBoundary.startGame(myFile.toString(), jFrame);
+		        		gameModelBoundary.startGame(myFile.toString(), jPanel);
 					} catch (Exception e)
 					{
 						System.out.println("Exception in GameViewFrame.java, startGame: " + e.toString());
@@ -87,3 +96,4 @@ public class menuFrame extends JFrame
 	    jFrame.setDefaultCloseOperation(EXIT_ON_CLOSE);
 	}
 }
+	

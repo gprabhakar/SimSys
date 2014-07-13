@@ -11,13 +11,13 @@ public class Test
 	{
 		try
 		{
-			File file = new File("Office, Classroom\\template.xml");
-			JAXBContext jaxbContext = JAXBContext.newInstance(GameTemplate.class);
+			File file = new File("Office, Classroom\\Enchanted Forest_Chars.xml");
+			JAXBContext jaxbContext = JAXBContext.newInstance(CharList.class);
 	 
 			Unmarshaller jaxbUnmarshaller = jaxbContext.createUnmarshaller();
-			GameTemplate gametemplate = (GameTemplate) jaxbUnmarshaller.unmarshal(file);
-			System.out.println(gametemplate);
-			System.out.println(gametemplate.getActs().get(1).getScenes().get(1).getScreens().get(0).getType());
+			CharList charList = (CharList) jaxbUnmarshaller.unmarshal(file);
+			System.out.println(charList);
+			System.out.println(charList.getCharacters().get(0).getFileName());
 		}
 		catch(Exception e)
 		{

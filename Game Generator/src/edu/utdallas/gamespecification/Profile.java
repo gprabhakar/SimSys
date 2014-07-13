@@ -19,7 +19,7 @@ import javax.xml.bind.annotation.XmlType;
     "degrees"
 })
 public class Profile
-{   
+{
     @XmlElement(name = "ProfilePhoto", required = true)
 	private String profilePhoto; 
     @XmlElement(name = "Title", required = true)

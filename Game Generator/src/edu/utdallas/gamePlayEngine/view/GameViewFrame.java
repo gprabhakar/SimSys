@@ -60,7 +60,7 @@ public class GameViewFrame extends javax.swing.JFrame {
 	private static final int FRAME_WIDTH = 600;
 	private static final int FRAME_HEIGHT = 800;
 	private GameController controller;
-	private JFrame jFrame;
+	private JPanel jPanel;
 	private JPanel jPanelScene;
 	private JLabel jLabelScene; // Zac ZHANG: use for new class
 	private static JLayeredPane layeredPane;
@@ -83,23 +83,23 @@ public class GameViewFrame extends javax.swing.JFrame {
 		this.controller = controller;
 	}
 
-	public void viewStartAct(JFrame myMenuFrame) {
+	public void viewStartAct(JPanel myMenuFrame) {
 		if (this.firstTimeRun) {
 			this.firstTimeRun = false;
-			this.jFrame = myMenuFrame;
+			this.jPanel = myMenuFrame;
 			
-			this.jFrame.setLocationRelativeTo(null);
-			this.jFrame.pack();
-			this.jFrame.setVisible(true);
-			this.jFrame.setSize(600, 800);
-			this.jFrame.setLayout(new BorderLayout());
+			//this.jPanel.setLocationRelativeTo(null);
+			//this.jPanel.pack(); 
+			this.jPanel.setVisible(true); 
+			this.jPanel.setSize(600, 800);
+			this.jPanel.setLayout(new BorderLayout());
 	
 			Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
-			this.jFrame.setLocation(dim.width / 2 - this.jFrame.getSize().width / 2,
-					dim.height / 2 - this.jFrame.getSize().height / 2);
+			this.jPanel.setLocation(dim.width / 2 - this.jPanel.getSize().width / 2,
+					dim.height / 2 - this.jPanel.getSize().height / 2);
 			
 			layeredPane = new JLayeredPane();
-			this.jFrame.add(layeredPane, BorderLayout.CENTER);
+			this.jPanel.add(layeredPane, BorderLayout.CENTER);
 			layeredPane.setBounds(0, 0, 1000, 800);
 		}
 		else
@@ -109,9 +109,9 @@ public class GameViewFrame extends javax.swing.JFrame {
 			layeredPane.repaint();
 			layeredPane.setVisible(true);
 			controller = null;
-			jFrame.remove(layeredPane);
+			jPanel.remove(layeredPane);
 			layeredPane = new JLayeredPane();
-			this.jFrame.add(layeredPane, BorderLayout.CENTER);
+			this.jPanel.add(layeredPane, BorderLayout.CENTER);
 			layeredPane.setBounds(0, 0, 1000, 800);
 		}
 	}
@@ -125,12 +125,12 @@ public class GameViewFrame extends javax.swing.JFrame {
 			e.printStackTrace();
 		}
 		if (this.myImagePanel != null)
-			this.jFrame.remove(myImagePanel);
+			this.jPanel.remove(myImagePanel);
 		myImagePanel = new ImagePanel(image);
-		this.jFrame.add(myImagePanel, 1);
-		this.jFrame.setSize(FRAME_HEIGHT, FRAME_WIDTH);
-		this.jFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		this.jFrame.setVisible(true);
+		this.jPanel.add(myImagePanel, 1);
+		this.jPanel.setSize(FRAME_HEIGHT, FRAME_WIDTH);
+		//this.jPanel.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		this.jPanel.setVisible(true);
 	}
 
 	public void displayNext(Prop prop, GameState gameState) {
@@ -470,7 +470,7 @@ public class GameViewFrame extends javax.swing.JFrame {
 		 * elements. Once we create all the panels, link the panels with user
 		 * interaction.
 		 */
-        jFrame.setVisible(true);
+		jPanel.setVisible(true);
 		
 	}
 }
