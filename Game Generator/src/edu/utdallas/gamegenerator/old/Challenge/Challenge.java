@@ -1,10 +1,11 @@
 package edu.utdallas.gamegenerator.old.Challenge;
 
-import edu.utdallas.gamegenerator.LearningAct.Screen.ChallengeScreen;
+import edu.utdallas.gamegeneratorcollection.GameComposition.ChallengeScreen;
 
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlElementWrapper;
 import javax.xml.bind.annotation.XmlRootElement;
+
 import java.util.List;
 
 /**
