@@ -1,12 +1,16 @@
-package edu.utdallas.gamegenerator.Locale;
+package edu.utdallas.gamegeneratorcollection.GameComposition;
 
-import edu.utdallas.gamegenerator.LearningAct.Character.LearningActCharacterType;
-import edu.utdallas.gamegenerator.LearningAct.Prop.TextType;
+import edu.utdallas.gamegeneratorcollection.ComponentCreation.ButtonLocationType;
+import edu.utdallas.gamegeneratorcollection.ComponentCreation.GameObject;
+import edu.utdallas.gamegeneratorcollection.ComponentCreation.SharedButton;
+import edu.utdallas.gamegeneratorcollection.ComponentCreation.SharedCharacter;
+import edu.utdallas.gamegeneratorcollection.ComponentCreation.SharedInformationBox;
 import edu.utdallas.sharedfiles.Shared.*;
 
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlElementWrapper;
 import javax.xml.bind.annotation.XmlRootElement;
+
 import java.util.List;
 import java.util.Map;
 

@@ -1,8 +1,7 @@
-package edu.utdallas.gamegenerator.LearningAct.Prop;
+package edu.utdallas.gamegeneratorcollection.GameComposition;
 
 import edu.utdallas.gamegenerator.LearningAct.Challenge.Reward;
-import edu.utdallas.gamegenerator.LearningAct.Screen.TransitionType;
-import edu.utdallas.sharedfiles.Shared.ButtonLocationType;
+import edu.utdallas.gamegeneratorcollection.ComponentCreation.ButtonLocationType;
 
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;

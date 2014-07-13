@@ -1,4 +1,4 @@
-package edu.utdallas.gamegenerator.Characters;
+package edu.utdallas.gamegeneratorcollection.GameComposition;
 
 /**
  * User: clocke

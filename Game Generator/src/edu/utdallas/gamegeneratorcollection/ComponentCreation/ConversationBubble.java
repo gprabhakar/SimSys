@@ -1,5 +1,5 @@
 //Source baseline: https://code.google.com/p/jmingle/source/browse/trunk/src/org/oep/widgets/SpeechBubble.java
-package edu.utdallas.sharedfiles.Shared;
+package edu.utdallas.gamegeneratorcollection.ComponentCreation;
 
 import java.awt.Color;
 import java.awt.Font;

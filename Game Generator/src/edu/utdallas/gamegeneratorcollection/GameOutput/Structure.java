@@ -1,12 +1,12 @@
-package edu.utdallas.gamegeneratorcollection.gamegenerator;
+package edu.utdallas.gamegeneratorcollection.GameOutput;
 
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
-import edu.utdallas.gamegenerator.Characters.Characters;
-import edu.utdallas.gamegenerator.Locale.Locale;
 import edu.utdallas.gamegenerator.Theme.Theme;
+import edu.utdallas.gamegeneratorcollection.GameComposition.Characters;
+import edu.utdallas.gamegeneratorcollection.GameComposition.Locale;
 import edu.utdallas.gamespecification.Act;
 import edu.utdallas.gamespecification.BackgroundType;
 import edu.utdallas.gamespecification.Behavior;

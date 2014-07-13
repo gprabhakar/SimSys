@@ -1,6 +1,4 @@
-package edu.utdallas.gamegenerator.Characters;
-
-import edu.utdallas.gamegenerator.LearningAct.Character.LearningActCharacterType;
+package edu.utdallas.gamegeneratorcollection.GameComposition;
 
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;

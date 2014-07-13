@@ -1,4 +1,4 @@
-package edu.utdallas.gamegenerator.LearningAct.Screen;
+package edu.utdallas.gamegeneratorcollection.GameComposition;
 
 import javax.xml.bind.annotation.XmlRootElement;
 

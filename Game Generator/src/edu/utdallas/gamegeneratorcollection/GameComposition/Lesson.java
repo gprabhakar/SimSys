@@ -1,10 +1,9 @@
-package edu.utdallas.gamegenerator.Lesson;
-
-import edu.utdallas.gamegenerator.LearningAct.Screen.LessonScreen;
+package edu.utdallas.gamegeneratorcollection.GameComposition;
 
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlElementWrapper;
 import javax.xml.bind.annotation.XmlRootElement;
+
 import java.util.List;
 
 /**

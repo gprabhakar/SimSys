@@ -23,8 +23,8 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.ListSelectionModel;
 
-import edu.utdallas.sharedfiles.Shared.AudioPlayer;
-import edu.utdallas.sharedfiles.Shared.ImageHelper;
+import edu.utdallas.gamegeneratorcollection.ComponentCreation.AudioPlayer;
+import edu.utdallas.gamegeneratorcollection.ComponentCreation.ImageHelper;
 
 /**
  * The Class SoundSelectWindow.

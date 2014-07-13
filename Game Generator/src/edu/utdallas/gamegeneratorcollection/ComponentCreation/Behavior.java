@@ -1,12 +1,13 @@
-package edu.utdallas.sharedfiles.Shared;
+package edu.utdallas.gamegeneratorcollection.ComponentCreation;
 
-import edu.utdallas.gamegenerator.LearningAct.Screen.TransitionType;
-import edu.utdallas.gamegenerator.Locale.ObjectMovement;
-import edu.utdallas.gamegenerator.Locale.ObjectMovementType;
+import edu.utdallas.gamegeneratorcollection.GameComposition.ObjectMovement;
+import edu.utdallas.gamegeneratorcollection.GameComposition.ObjectMovementType;
+import edu.utdallas.gamegeneratorcollection.GameComposition.TransitionType;
 
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlSeeAlso;
+
 import java.util.UUID;
 
 /**

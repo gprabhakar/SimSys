@@ -1,14 +1,15 @@
-package edu.utdallas.gamegeneratorcollection.gamegenerator;
+package edu.utdallas.gamegeneratorcollection.ComponentSelection;
 
-import edu.utdallas.gamegenerator.Characters.Characters;
-import edu.utdallas.gamegenerator.LearningAct.LearningAct;
-import edu.utdallas.gamegenerator.LearningAct.LessonAct;
-import edu.utdallas.gamegenerator.Lesson.Lesson;
-import edu.utdallas.gamegenerator.Locale.Locale;
-import edu.utdallas.sharedfiles.Search.Search;
 import edu.utdallas.gamegenerator.Subject.Subject;
 import edu.utdallas.gamegenerator.Theme.Theme;
 import edu.utdallas.gamegenerator.old.Challenge.Challenge;
+import edu.utdallas.gamegeneratorcollection.ComponentCreation.Layers;
+import edu.utdallas.gamegeneratorcollection.GameComposition.Characters;
+import edu.utdallas.gamegeneratorcollection.GameComposition.LearningAct;
+import edu.utdallas.gamegeneratorcollection.GameComposition.Lesson;
+import edu.utdallas.gamegeneratorcollection.GameComposition.LessonAct;
+import edu.utdallas.gamegeneratorcollection.GameComposition.Locale;
+import edu.utdallas.gamegeneratorcollection.GameOutput.Structure;
 import edu.utdallas.gamespecification.Game;
 
 import javax.xml.bind.JAXBContext;
@@ -22,7 +23,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import static edu.utdallas.gamegeneratorcollection.gamegenerator.Layers.*;
+import static edu.utdallas.gamegeneratorcollection.ComponentCreation.Layers.*;
 
 /**
  * User: clocke

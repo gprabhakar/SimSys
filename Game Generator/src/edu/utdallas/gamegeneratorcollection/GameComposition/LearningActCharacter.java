@@ -1,7 +1,6 @@
-package edu.utdallas.gamegenerator.LearningAct.Character;
+package edu.utdallas.gamegeneratorcollection.GameComposition;
 
-import edu.utdallas.gamegenerator.Locale.ObjectMovementType;
-import edu.utdallas.sharedfiles.Shared.GameObject;
+import edu.utdallas.gamegeneratorcollection.ComponentCreation.GameObject;
 
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;

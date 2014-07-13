@@ -1,10 +1,8 @@
-package edu.utdallas.gamegenerator.LearningAct;
-
-import edu.utdallas.gamegenerator.LearningAct.Screen.ChallengeScreen;
-import edu.utdallas.gamegenerator.LearningAct.Screen.LessonScreen;
+package edu.utdallas.gamegeneratorcollection.GameComposition;
 
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlElementWrapper;
+
 import java.util.List;
 
 /**

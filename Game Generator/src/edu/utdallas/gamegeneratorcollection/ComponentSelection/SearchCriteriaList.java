@@ -1,4 +1,4 @@
-package edu.utdallas.sharedfiles.Search;
+package edu.utdallas.gamegeneratorcollection.ComponentSelection;
 
 import java.util.LinkedList;
 

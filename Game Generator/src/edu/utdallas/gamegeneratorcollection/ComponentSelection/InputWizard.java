@@ -1,4 +1,4 @@
-package edu.utdallas.sharedfiles.Search;
+package edu.utdallas.gamegeneratorcollection.ComponentSelection;
 
 import javax.swing.*;
 import javax.swing.event.*;
@@ -15,7 +15,11 @@ import edu.utdallas.gamePlayEngine.model.GameModelBoundary;
 import edu.utdallas.gamePlayEngine.view.GameView;
 import edu.utdallas.gamegenerator.RepoUpdate.Updates;
 import edu.utdallas.sharedfiles.Shared.*;
-import edu.utdallas.gamegeneratorcollection.gamegenerator.Structure.*;
+import edu.utdallas.gamegeneratorcollection.ComponentCreation.Asset;
+import edu.utdallas.gamegeneratorcollection.ComponentCreation.AudioPlayer;
+import edu.utdallas.gamegeneratorcollection.ComponentCreation.CharacterAsset;
+import edu.utdallas.gamegeneratorcollection.ComponentCreation.ImageAsset;
+import edu.utdallas.gamegeneratorcollection.GameOutput.Structure.*;
 import edu.utdallas.gamespecification.Act;
 import edu.utdallas.gamespecification.Challenge;
 import edu.utdallas.gamespecification.Character;

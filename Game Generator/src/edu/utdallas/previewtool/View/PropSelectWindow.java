@@ -29,8 +29,8 @@ import javax.swing.JSlider;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 
-import edu.utdallas.sharedfiles.Shared.ImageAsset;
-import edu.utdallas.sharedfiles.Shared.ImageHelper;
+import edu.utdallas.gamegeneratorcollection.ComponentCreation.ImageAsset;
+import edu.utdallas.gamegeneratorcollection.ComponentCreation.ImageHelper;
 
 
 /**

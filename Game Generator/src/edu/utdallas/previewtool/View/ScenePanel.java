@@ -1,19 +1,20 @@
 package edu.utdallas.previewtool.View;
 
 import edu.utdallas.previewtool.Error.PreviewError;
-import edu.utdallas.sharedfiles.Search.InputWizard;
-import edu.utdallas.sharedfiles.Shared.Asset;
-import edu.utdallas.sharedfiles.Shared.AudioPlayer;
-import edu.utdallas.sharedfiles.Shared.ButtonAsset;
-import edu.utdallas.sharedfiles.Shared.CharacterAsset;
-import edu.utdallas.sharedfiles.Shared.ConversationBubble;
-import edu.utdallas.sharedfiles.Shared.ConversationBubbleAsset;
-import edu.utdallas.sharedfiles.Shared.ImageAsset;
-import edu.utdallas.sharedfiles.Shared.ImageHelper;
-import edu.utdallas.sharedfiles.Shared.InformationBoxAsset;
-import edu.utdallas.sharedfiles.Shared.ThoughtBubble;
-import edu.utdallas.sharedfiles.Shared.ThoughtBubbleAsset;
+import edu.utdallas.gamegeneratorcollection.ComponentCreation.Asset;
+import edu.utdallas.gamegeneratorcollection.ComponentCreation.AudioPlayer;
+import edu.utdallas.gamegeneratorcollection.ComponentCreation.ButtonAsset;
+import edu.utdallas.gamegeneratorcollection.ComponentCreation.CharacterAsset;
+import edu.utdallas.gamegeneratorcollection.ComponentCreation.ConversationBubble;
+import edu.utdallas.gamegeneratorcollection.ComponentCreation.ConversationBubbleAsset;
+import edu.utdallas.gamegeneratorcollection.ComponentCreation.ImageAsset;
+import edu.utdallas.gamegeneratorcollection.ComponentCreation.ImageHelper;
+import edu.utdallas.gamegeneratorcollection.ComponentCreation.InformationBoxAsset;
+import edu.utdallas.gamegeneratorcollection.ComponentCreation.ThoughtBubble;
+import edu.utdallas.gamegeneratorcollection.ComponentCreation.ThoughtBubbleAsset;
+import edu.utdallas.gamegeneratorcollection.ComponentSelection.InputWizard;
 import edu.utdallas.gamespecification.Act;
+
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Cursor;
@@ -33,6 +34,7 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
+
 import javax.imageio.ImageIO;
 import javax.swing.Box;
 import javax.swing.BoxLayout;

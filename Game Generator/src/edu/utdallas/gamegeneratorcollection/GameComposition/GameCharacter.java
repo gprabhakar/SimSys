@@ -1,4 +1,4 @@
-package edu.utdallas.gamegenerator.Characters;
+package edu.utdallas.gamegeneratorcollection.GameComposition;
 
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlTransient;

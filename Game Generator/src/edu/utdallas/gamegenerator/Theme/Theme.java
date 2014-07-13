@@ -9,11 +9,18 @@ import javax.xml.bind.annotation.XmlElementWrapper;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 
-import edu.utdallas.gamegenerator.Characters.Characters;
-import edu.utdallas.gamegenerator.Characters.GameCharacter;
-import edu.utdallas.gamegenerator.LearningAct.Character.LearningActCharacterType;
-import edu.utdallas.gamegenerator.LearningAct.Screen.TransitionType;
 import edu.utdallas.gamegenerator.Subject.Subject;
+import edu.utdallas.gamegeneratorcollection.ComponentCreation.Asset;
+import edu.utdallas.gamegeneratorcollection.ComponentCreation.Behavior;
+import edu.utdallas.gamegeneratorcollection.ComponentCreation.BehaviorType;
+import edu.utdallas.gamegeneratorcollection.ComponentCreation.GameObject;
+import edu.utdallas.gamegeneratorcollection.ComponentCreation.SharedButton;
+import edu.utdallas.gamegeneratorcollection.ComponentCreation.SharedCharacter;
+import edu.utdallas.gamegeneratorcollection.ComponentCreation.SharedInformationBox;
+import edu.utdallas.gamegeneratorcollection.GameComposition.Characters;
+import edu.utdallas.gamegeneratorcollection.GameComposition.GameCharacter;
+import edu.utdallas.gamegeneratorcollection.GameComposition.LearningActCharacterType;
+import edu.utdallas.gamegeneratorcollection.GameComposition.TransitionType;
 import edu.utdallas.gamespecification.BackgroundType;
 import edu.utdallas.gamespecification.GameElementType;
 import edu.utdallas.gamespecification.GenericInteraction;
@@ -21,13 +28,6 @@ import edu.utdallas.gamespecification.Location;
 import edu.utdallas.gamespecification.Scene;
 import edu.utdallas.gamespecification.Screen;
 import edu.utdallas.gamespecification.Size;
-import edu.utdallas.sharedfiles.Shared.Asset;
-import edu.utdallas.sharedfiles.Shared.Behavior;
-import edu.utdallas.sharedfiles.Shared.BehaviorType;
-import edu.utdallas.sharedfiles.Shared.GameObject;
-import edu.utdallas.sharedfiles.Shared.SharedButton;
-import edu.utdallas.sharedfiles.Shared.SharedCharacter;
-import edu.utdallas.sharedfiles.Shared.SharedInformationBox;
 
 /**
  * User: clocke

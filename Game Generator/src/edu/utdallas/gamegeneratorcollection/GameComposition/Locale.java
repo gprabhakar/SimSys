@@ -1,4 +1,4 @@
-package edu.utdallas.gamegenerator.Locale;
+package edu.utdallas.gamegeneratorcollection.GameComposition;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -11,22 +11,16 @@ import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 
 import edu.utdallas.gamespecification.StemQuestion;
-import edu.utdallas.gamegenerator.Characters.Characters;
-import edu.utdallas.gamegenerator.Characters.GameCharacter;
-import edu.utdallas.gamegenerator.LearningAct.LearningAct;
-import edu.utdallas.gamegenerator.LearningAct.LessonAct;
-import edu.utdallas.gamegenerator.LearningAct.Challenge.ChallengeOption;
-import edu.utdallas.gamegenerator.LearningAct.Character.LearningActCharacter;
-import edu.utdallas.gamegenerator.LearningAct.Character.LearningActCharacterType;
-import edu.utdallas.gamegenerator.LearningAct.Prop.GameButton;
-import edu.utdallas.gamegenerator.LearningAct.Prop.GameText;
-import edu.utdallas.gamegenerator.LearningAct.Prop.TextType;
-import edu.utdallas.gamegenerator.LearningAct.Screen.BaseScreen;
-import edu.utdallas.gamegenerator.LearningAct.Screen.ChallengeScreen;
-import edu.utdallas.gamegenerator.LearningAct.Screen.ScreenType;
-import edu.utdallas.gamegenerator.LearningAct.Screen.TransitionType;
 import edu.utdallas.gamegenerator.Theme.Theme;
 import edu.utdallas.gamegenerator.Theme.ThemeStory;
+import edu.utdallas.gamegeneratorcollection.ComponentCreation.Asset;
+import edu.utdallas.gamegeneratorcollection.ComponentCreation.Behavior;
+import edu.utdallas.gamegeneratorcollection.ComponentCreation.BehaviorType;
+import edu.utdallas.gamegeneratorcollection.ComponentCreation.ButtonLocationType;
+import edu.utdallas.gamegeneratorcollection.ComponentCreation.GameObject;
+import edu.utdallas.gamegeneratorcollection.ComponentCreation.SharedButton;
+import edu.utdallas.gamegeneratorcollection.ComponentCreation.SharedCharacter;
+import edu.utdallas.gamegeneratorcollection.ComponentCreation.SharedInformationBox;
 import edu.utdallas.gamespecification.Act;
 import edu.utdallas.gamespecification.BackgroundType;
 import edu.utdallas.gamespecification.Challenge;
@@ -43,14 +37,6 @@ import edu.utdallas.gamespecification.Scene;
 import edu.utdallas.gamespecification.Screen;
 import edu.utdallas.gamespecification.Size;
 import edu.utdallas.gamespecification.Stem;
-import edu.utdallas.sharedfiles.Shared.Asset;
-import edu.utdallas.sharedfiles.Shared.Behavior;
-import edu.utdallas.sharedfiles.Shared.BehaviorType;
-import edu.utdallas.sharedfiles.Shared.ButtonLocationType;
-import edu.utdallas.sharedfiles.Shared.GameObject;
-import edu.utdallas.sharedfiles.Shared.SharedButton;
-import edu.utdallas.sharedfiles.Shared.SharedCharacter;
-import edu.utdallas.sharedfiles.Shared.SharedInformationBox;
 
 /**
  * User: clocke

@@ -13,7 +13,7 @@ import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
 
-import edu.utdallas.sharedfiles.Shared.GameObject;
+import edu.utdallas.gamegeneratorcollection.ComponentCreation.GameObject;
 
 
 /**

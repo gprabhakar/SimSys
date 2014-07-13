@@ -1,4 +1,4 @@
-package edu.utdallas.gamegenerator.LearningAct.Challenge;
+package edu.utdallas.gamegeneratorcollection.GameComposition;
 
 import javax.xml.bind.annotation.XmlEnum;
 import javax.xml.bind.annotation.XmlType;

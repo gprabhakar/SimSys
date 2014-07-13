@@ -1,4 +1,4 @@
-package edu.utdallas.sharedfiles.Shared;
+package edu.utdallas.gamegeneratorcollection.ComponentCreation;
 
 import javax.xml.bind.annotation.XmlType;
 

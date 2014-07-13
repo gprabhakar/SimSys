@@ -29,8 +29,8 @@ import javax.swing.JSlider;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 
-import edu.utdallas.sharedfiles.Shared.CharacterAsset;
-import edu.utdallas.sharedfiles.Shared.ImageHelper;
+import edu.utdallas.gamegeneratorcollection.ComponentCreation.CharacterAsset;
+import edu.utdallas.gamegeneratorcollection.ComponentCreation.ImageHelper;
 
 /**
  * The Class CharacterSelectWindow.

@@ -1,4 +1,4 @@
-package edu.utdallas.sharedfiles.Search;
+package edu.utdallas.gamegeneratorcollection.ComponentSelection;
 import java.io.File;
 import java.io.FileReader;
 import java.util.Scanner;
@@ -6,16 +6,18 @@ import java.util.Scanner;
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Unmarshaller;
+
 import java.io.File;
-import org.w3c.dom.Document;
+
 import org.w3c.dom.*;
 
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.DocumentBuilder;
+
 import org.xml.sax.SAXException;
 import org.xml.sax.SAXParseException; 
 
-import edu.utdallas.gamegenerator.Characters.Characters;
+import edu.utdallas.gamegeneratorcollection.GameComposition.Characters;
 //Entity Class- reads in the search space from a file
 public class SearchSpace {
 	/**

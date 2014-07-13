@@ -1,9 +1,9 @@
-package edu.utdallas.sharedfiles.Shared;
+package edu.utdallas.gamegeneratorcollection.ComponentCreation;
 
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
 
-import edu.utdallas.sharedfiles.Shared.ConversationBubble.PointDirection;
+import edu.utdallas.gamegeneratorcollection.ComponentCreation.ConversationBubble.PointDirection;
 
 /**
  * User: Jacob Dahleen

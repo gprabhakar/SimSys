@@ -1,9 +1,8 @@
-package edu.utdallas.gamegenerator.Locale;
-
-import edu.utdallas.gamegenerator.Characters.CharacterAssetType;
+package edu.utdallas.gamegeneratorcollection.GameComposition;
 
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlElementWrapper;
+
 import java.util.List;
 
 /**

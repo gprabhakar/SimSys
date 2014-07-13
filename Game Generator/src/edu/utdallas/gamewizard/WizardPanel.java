@@ -1,15 +1,15 @@
 package edu.utdallas.gamewizard;
 
  import java.awt.Graphics;
- import java.awt.Image;
- import java.awt.Toolkit;
- import java.io.File;
- import java.io.IOException;
+import java.awt.Image;
+import java.awt.Toolkit;
+import java.io.File;
+import java.io.IOException;
 
  import javax.imageio.ImageIO;
- import javax.swing.JPanel;
+import javax.swing.JPanel;
 
- import edu.utdallas.sharedfiles.Shared.ImageHelper;
+import edu.utdallas.gamegeneratorcollection.ComponentCreation.ImageHelper;
 
  public class WizardPanel extends JPanel
  {

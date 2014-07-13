@@ -1,7 +1,7 @@
 package edu.utdallas.gamegenerator.Theme;
 
-import edu.utdallas.gamegenerator.LearningAct.Screen.BaseScreen;
-import edu.utdallas.gamegenerator.LearningAct.Screen.ScreenType;
+import edu.utdallas.gamegeneratorcollection.GameComposition.BaseScreen;
+import edu.utdallas.gamegeneratorcollection.GameComposition.ScreenType;
 
 /**
  * User: clocke

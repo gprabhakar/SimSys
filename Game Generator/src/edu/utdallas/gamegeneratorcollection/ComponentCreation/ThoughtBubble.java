@@ -1,5 +1,5 @@
 //Source baseline: https://code.google.com/p/jmingle/source/browse/trunk/src/org/oep/widgets/SpeechBubble.java
-package edu.utdallas.sharedfiles.Shared;
+package edu.utdallas.gamegeneratorcollection.ComponentCreation;
 
 import java.awt.Color;
 import java.awt.Font;
@@ -8,7 +8,7 @@ import java.awt.Point;
 
 import javax.swing.JLabel;
 
-import edu.utdallas.sharedfiles.Shared.ConversationBubble.PointDirection;
+import edu.utdallas.gamegeneratorcollection.ComponentCreation.ConversationBubble.PointDirection;
 
 public class ThoughtBubble extends JLabel {
 	private int ARROW_HEIGHT = 7;

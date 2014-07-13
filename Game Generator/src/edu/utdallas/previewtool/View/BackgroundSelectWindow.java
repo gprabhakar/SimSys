@@ -25,7 +25,8 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
-import edu.utdallas.sharedfiles.Shared.ImageHelper;
+
+import edu.utdallas.gamegeneratorcollection.ComponentCreation.ImageHelper;
 
 /**
  * The Class BackgroundSelectWindow.
