@@ -60,6 +60,10 @@ public class QuizChallenge
     private Summary summary;
     @XmlElement(name = "Layout", required = true)
     private Layout layout;
+    
+    public QuizChallenge() {
+    	
+    }
 
     /**
      * Gets the value of the introduction property.

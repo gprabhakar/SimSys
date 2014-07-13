@@ -995,7 +995,7 @@ public class InputWizard implements ActionListener {
 					
 					if(screens.get(k).getChallenge() != null)
 					{
-						QuizChallenge challenge = (QuizChallenge)screens.get(k).getChallenge();
+						QuizChallenge challenge = (QuizChallenge)(screens.get(k).getChallenge());
 
 						Introduction intro = challenge.getIntroduction();
 						if(intro != null)

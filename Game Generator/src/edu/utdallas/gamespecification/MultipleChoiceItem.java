@@ -10,6 +10,8 @@ package edu.utdallas.gamespecification;
 
 //package org.example.game;
 
+import java.util.List;
+
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
@@ -54,7 +56,7 @@ public class MultipleChoiceItem
  @XmlElement(name = "Stem", required = true)
  private Stem stem;
  @XmlElement(name = "Option", required = true)
- private Option option;
+ private List<Option> option;
  @XmlElement(name = "LearningObjective", required = true)
  private LearningObjectiveType learningObjective;
 
@@ -114,21 +116,10 @@ public class MultipleChoiceItem
   *     {@link OptionType }
   *
   */
- public final Option getOption() {
+ public final List<Option> getOption() {
      return option;
  }
 
- /**
-  * Sets the value of the option property.
-  *
-  * @param value
-  *     allowed object is
-  *     {@link OptionType }
-  *
-  */
- public final void setOption(final Option value) {
-     this.option = value;
- }
 
  /**
   * Gets the value of the learningObjective property.

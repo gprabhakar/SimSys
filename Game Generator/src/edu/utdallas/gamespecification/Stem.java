@@ -47,6 +47,11 @@ public class Stem {
     private StemText stemText;
     @XmlElement(name = "StemQuestion", required = true)
     private StemQuestion stemQuestion;
+    
+    public Stem() {
+    	this.stemText = null;
+    	this.stemQuestion = null;
+    }
 
     /**
      * Gets the value of the stemText property.

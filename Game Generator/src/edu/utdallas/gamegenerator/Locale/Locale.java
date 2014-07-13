@@ -10,6 +10,7 @@ import javax.xml.bind.annotation.XmlElementWrapper;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 
+import edu.utdallas.gamespecification.StemQuestion;
 import edu.utdallas.gamegenerator.Characters.Characters;
 import edu.utdallas.gamegenerator.Characters.GameCharacter;
 import edu.utdallas.gamegenerator.LearningAct.LearningAct;
@@ -33,11 +34,15 @@ import edu.utdallas.gamespecification.ClassificationType;
 import edu.utdallas.gamespecification.GameElementType;
 import edu.utdallas.gamespecification.GenericInteraction;
 import edu.utdallas.gamespecification.Hint;
+import edu.utdallas.gamespecification.Layout;
 import edu.utdallas.gamespecification.Location;
+import edu.utdallas.gamespecification.MultipleChoiceItem;
 import edu.utdallas.gamespecification.Option;
+import edu.utdallas.gamespecification.QuizChallenge;
 import edu.utdallas.gamespecification.Scene;
 import edu.utdallas.gamespecification.Screen;
 import edu.utdallas.gamespecification.Size;
+import edu.utdallas.gamespecification.Stem;
 import edu.utdallas.sharedfiles.Shared.Asset;
 import edu.utdallas.sharedfiles.Shared.Behavior;
 import edu.utdallas.sharedfiles.Shared.BehaviorType;
@@ -113,6 +118,7 @@ public class Locale {
     private List<Scene> buildChallenges(int learningActId) {
         UUID currentScreen = screenTransitions.get(TransitionType.BEGINNING_OF_CHALLENGE);
         LessonAct lessonAct = learningActs.get(learningActId).getLessonActs().get(0);
+        
         List<Screen> screenNodes = new ArrayList<Screen>();
         List<ChallengeScreen> challenges = lessonAct.getLessonChallenges();
         List<Scene> sceneNodes = new ArrayList<Scene>();
@@ -267,9 +273,10 @@ public class Locale {
                 LearningActCharacterType characterType = themeCharacter.getCharacterType();
                 SharedCharacter localeCharacter = localeScreen.getCharacters().get(characterType);
                 GameCharacter gameCharacter = characters.getCharacter(characterType);
-                GameElementType nextElement = convertGameObjects(localeCharacter);             
-                
-                assets.add(new Asset(localeCharacter, gameCharacter, themeCharacter));
+                Asset characterAsset = new Asset(localeCharacter, gameCharacter, themeCharacter);
+                assets.add(characterAsset);
+                GameElementType nextElement = convertGameObjects(localeCharacter);
+                nextElement.setName(characterAsset.getDisplayImage());                
             }
         }
 
@@ -277,10 +284,13 @@ public class Locale {
         Map<TextType, SharedInformationBox> localeInformationBoxes = localeScreen.getInformationBoxes();
         if(screenInformationBoxes != null) {
             for(GameText gameText : screenInformationBoxes) {
-                assets.add(new Asset(localeInformationBoxes.get(gameText.getTextType()), gameText));
+            	Asset infoBoxAsset = new Asset(localeInformationBoxes.get(gameText.getTextType()), gameText);
+                assets.add(infoBoxAsset);
                 GenericInteraction infoBox = new GenericInteraction();
-                infoBox.setHint(new Hint());
-                infoBox.getHint().setHint(gameText.getText());
+                infoBox.setText(gameText.getText());
+                infoBox.setName("Infobox");
+                infoBox.setLocation(new Location(infoBoxAsset.getX(), infoBoxAsset.getY()));
+                infoBox.setSize(new Size(infoBoxAsset.getWidth(), infoBoxAsset.getHeight()));
                 screenNode.getGameElement().add(infoBox);
             }
         }
@@ -290,12 +300,23 @@ public class Locale {
         	
             ChallengeScreen challenge = (ChallengeScreen) screen;
             List<ChallengeOption> options = challenge.getChallengeOptions();
+            QuizChallenge currentChallenge = new QuizChallenge();
             
+            currentChallenge.setClassification(ClassificationType.INTERACTIVE);
+            currentChallenge.setLayout(new Layout());
+            MultipleChoiceItem currentItem = new MultipleChoiceItem();
+            currentItem.setStem(new Stem());
+            currentItem.getStem().setStemQuestion(new StemQuestion());
+            currentChallenge.setItem(currentItem);
+            
+            currentChallenge.getLayout().setLayoutName("Placeholder name");
             if(options != null) {
             	
                 gameButtons.addAll(options);
                 for (ChallengeOption option : options) {
                 	Option nextOption = new Option();
+                	nextOption.setHint(new Hint());
+                	nextOption.getHint().setHint(option.getText());
                 	nextOption.setReward(option.getReward().toString()); //Need to change this to a proper reward
                 	
                 	//Need to set all the options up as buttons. 
@@ -303,15 +324,8 @@ public class Locale {
                 
             }
             //Add in buttons, which are Generic interactionElements
-            Challenge currentChallenge = new Challenge();
-            for (GameButton button: gameButtons) {
-            	GenericInteraction nextElement = new GenericInteraction();
-            	
-            	nextElement.setHint(new Hint());
-            	nextElement.getHint().setHint(button.getText());
-            	currentChallenge.getGameElement().add(nextElement);
-            }
-            currentChallenge.setClassification(ClassificationType.INTERACTIVE);
+            
+            
             screenNode.getChallenge().add(currentChallenge);
         }
         Map<ButtonLocationType, SharedButton> localeButtons = localeScreen.getButtons();
@@ -358,6 +372,12 @@ public class Locale {
                             break;
                     }
                 }
+                GenericInteraction nextElement = new GenericInteraction();
+                nextElement.setName("Button Type");
+                nextElement.setLocation(new Location(asset.getX(), asset.getY()));
+                nextElement.setSize(new Size(asset.getWidth(), asset.getHeight()));
+                nextElement.setText(gameButton.getText());
+                screenNode.getGameElement().add(nextElement);
                 assets.add(asset);
             }
         }
