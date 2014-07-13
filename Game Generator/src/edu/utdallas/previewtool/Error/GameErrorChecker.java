@@ -245,31 +245,33 @@ public class GameErrorChecker
 														{
 															MultipleChoiceItem mcItem = (MultipleChoiceItem) item;
 															
-															Option option = mcItem.getOption();
+															List<Option> options = mcItem.getOption();
 															//Catches C_15 & C_16
-															if(option == null) 
-															{
+															if(options == null) 
+															{/*
 																errors.add(new PreviewError(Level.SCREEN, Severity.MEDIUM, "There are no answers to choose from in Question " + (u+1) +" in " + srName) {
 																	public void fixError() { } //TODO
-																});
+																});*/
 															}
 															else
 															{
-																	if(option == null || isNullOrEmpty(option.getHint().getHint()))
-																	{
-																		errors.add(new PreviewError(Level.SCREEN, Severity.LOW, "Option in Challenge Question in " + srName + " has no hint") {
-																			public void fixError() { } //TODO
-																		});
+																	for (Option option : options) {
+																		if(option == null || isNullOrEmpty(option.getHint().getHint()))
+																		{
+																			errors.add(new PreviewError(Level.SCREEN, Severity.LOW, "Option in Challenge Question in " + srName + " has no hint") {
+																				public void fixError() { } //TODO
+																			});
+																		}
 																	}
-																
-															}
-															/*Editing this out, since there's only one option right now.
-															if(options.size() == 1)
-															{
-																errors.add(new PreviewError(Level.SCREEN, Severity.LOW, "Only one response in Challenge Question in " + srName) {
-																	public void fixError() { } //TODO
-																});
-															}
+															
+															
+																if(options.size() == 1)
+																{
+																	errors.add(new PreviewError(Level.SCREEN, Severity.LOW, "Only one response in Challenge Question in " + srName) {
+																		public void fixError() { } //TODO
+																	});
+																}
+															}/*
 															else if(options.size() > 6)
 															{
 																errors.add(new PreviewError(Level.SCREEN, Severity.LOW, "More than 6 responses in Challenge Question in " + srName) {
@@ -292,24 +294,27 @@ public class GameErrorChecker
 																		public void fixError() { } //TODO
 																	});
 																}
-																else if(isNullOrEmpty(stem.getStemQuestion().getHint().getHint()))
+																/*
+																else if(isNullOrEmpty(stem.getStemQuestion().getHint()))
 																{
 																	errors.add(new PreviewError(Level.SCREEN, Severity.LOW, "STEM Question with empty Text field in Challenge in " + srName) {
 																		public void fixError() { } //TODO
 																	});
-																}
+																}*/
+																/*
 																if(stem.getStemText() == null)
 																{
 																	errors.add(new PreviewError(Level.SCREEN, Severity.MEDIUM, "No STEM text in Challenge in " + srName) {
 																		public void fixError() { } //TODO
 																	});
-																}
+																}*/
+																/*
 																else if(isNullOrEmpty(stem.getStemText().getHint().getHint()))
 																{
 																	errors.add(new PreviewError(Level.SCREEN, Severity.LOW, "STEM Text with empty Text field in Challenge in " + srName) {
 																		public void fixError() { } //TODO
 																	});
-																}
+																}*/
 															}
 														} 
 														else 
@@ -321,18 +326,18 @@ public class GameErrorChecker
 											// Only one summary for a Quiz Challenge. So replacing List with a single Summary object
 											Summary summary = qChallenge.getSummary();
 											if(summary == null)
-											{
+											{/*
 												errors.add(new PreviewError(Level.SCREEN, Severity.MEDIUM, "No Summaries in Challenge in " + srName) {
 													public void fixError() { } //TODO
-												});
+												});*/
 											}
 											
 											Introduction intro = qChallenge.getIntroduction();
 											if(intro == null)
-											{
+											{/*
 												errors.add(new PreviewError(Level.SCREEN, Severity.MEDIUM, "No Introduction in Challenge in " + srName) {
 													public void fixError() { } //TODO
-												});
+												});*/
 											}
 											
 										} 

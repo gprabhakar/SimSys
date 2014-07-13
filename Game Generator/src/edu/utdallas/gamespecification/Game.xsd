@@ -92,19 +92,13 @@
 		</complexContent>
 	</complexType>
 	
-	<complexType name="GenericInteraction.java">
+	<complexType name="GenericInteraction">
 		<complexContent>
 			<extension base="tns:Prop">
 				<sequence>
 					<element name="Text" type="string"></element>
 				</sequence>
 			</extension>
-		</complexContent>
-	</complexType>
-
-	<complexType name="GenericInteraction">
-		<complexContent>
-			<extension base="tns:Prop"></extension>
 		</complexContent>
 	</complexType>
 
@@ -310,7 +304,6 @@
 		<complexContent>
 			<extension base="tns:Character">
 				<sequence>
-
 					<element name="PlayerID" type="ID" maxOccurs="1" minOccurs="1"></element>
 				</sequence>
 			</extension>
@@ -352,8 +345,7 @@
 		</complexContent>
 	</complexType>
 	
-	<complexType name="Profile">
-		
+	<complexType name="Profile">		
 		<sequence>
 			<element name="ProfilePhoto" type="string"></element>
 			<element name="Title" type="string"></element>
