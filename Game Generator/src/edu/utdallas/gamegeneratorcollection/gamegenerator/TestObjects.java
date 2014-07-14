@@ -1,9 +1,16 @@
 package edu.utdallas.gamegeneratorcollection.gamegenerator;
 
+<<<<<<< HEAD
 
 import edu.utdallas.gamegenerator.LearningAct.Challenge.Reward;
 
 
+=======
+//import edu.utdallas.gamegenerator.Characters.*;
+import edu.utdallas.gamegenerator.LearningAct.Challenge.Reward;
+//import edu.utdallas.gamegenerator.LearningAct.Screen.*;
+//import edu.utdallas.sharedfiles.Shared.*;
+>>>>>>> upstream/master
 import edu.utdallas.gamegenerator.Subject.Subject;
 import edu.utdallas.gamegenerator.Theme.*;
 import edu.utdallas.gamegeneratorcollection.ComponentCreation.Behavior;
