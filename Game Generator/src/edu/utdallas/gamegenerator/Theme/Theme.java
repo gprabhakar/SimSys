@@ -80,7 +80,7 @@ public class Theme {
             if(screen.getGameObjects() != null) {
                 for(GameObject object : screen.getGameObjects()) {
                     assets.add(new Asset(object));
-                	GameElementType nextElement = convertGameObjects(object);
+                    GameElementType nextElement = convertGameObjects(object);
                 	screenNode.getGameElement().add(nextElement);
                 }
             }

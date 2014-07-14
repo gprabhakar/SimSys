@@ -6,7 +6,7 @@ import edu.utdallas.gamegeneratorcollection.ComponentCreation.SharedButton;
 import edu.utdallas.gamegeneratorcollection.ComponentCreation.SharedCharacter;
 import edu.utdallas.gamegeneratorcollection.ComponentCreation.SharedInformationBox;
 import edu.utdallas.gamegeneratorcollection.GameComposition.LearningActCharacterType;
-import edu.utdallas.sharedfiles.Shared.*;
+
 
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlElementWrapper;
