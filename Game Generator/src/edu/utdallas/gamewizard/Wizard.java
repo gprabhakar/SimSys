@@ -1,10 +1,9 @@
 //Ryan and David
-
 package edu.utdallas.gamewizard;
-
 import javax.imageio.ImageIO;
 import javax.swing.*;
 import javax.swing.event.*;
+import javax.swing.filechooser.FileNameExtensionFilter;
 import javax.swing.table.AbstractTableModel;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.TableColumn;
@@ -15,17 +14,13 @@ import javax.swing.text.StyledDocument;
 import javax.swing.tree.*;
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.Unmarshaller;
-
-
-
-
-
-
+ 
+ 
+ 
 /*
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Marshaller;
-
 import edu.utdallas.gamegenerator.RepoUpdate.Updates;
 import edu.utdallas.sharedfiles.Challenge.Challenge;
 import edu.utdallas.sharedfiles.Challenge.Introduction;
@@ -55,9 +50,7 @@ import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Vector;
-
 public class Wizard implements ActionListener {
-
     public static final int WIDTH = 1280;
     public static final int HEIGHT = 700;
     
@@ -65,7 +58,6 @@ public class Wizard implements ActionListener {
     private JTree wizardTree;
     private JPanel treePanel;
     private WizardPanel mainPanel;
-
     private final JComboBox<String> institutionBox;
     private JComboBox<String> domainBox;
     private final JComboBox<String> gradeBox;
@@ -175,7 +167,6 @@ public class Wizard implements ActionListener {
     JTable questionTable;
     private int numLO = 0;
     ArrayList<String> loList;
-
     public Wizard()
     {
         window.setSize(WIDTH,HEIGHT);
@@ -183,17 +174,13 @@ public class Wizard implements ActionListener {
         window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         window.setLocationRelativeTo(null);
         window.setTitle("Game Design");
-
         mainPanel = new WizardPanel("introBackground2.png", 0, 0);
         //learningObjectivePanel = new WizardPanel();
         treePanel = new JPanel();
         mainPanel.setLayout(null);
-
         //Begin Making Tree
-
         wizardTree = new JTree();
         mainRoot = new DefaultMutableTreeNode("Start/Introduction");
-
         model = new DefaultTreeModel(mainRoot);
         wizardTree.setRootVisible(false);
         wizardTree.setModel(model);
@@ -233,7 +220,7 @@ public class Wizard implements ActionListener {
         }
         catch(Exception e2)
         {
-        	e2.printStackTrace();
+         e2.printStackTrace();
         }
         wizardTree.addTreeSelectionListener(new TreeSelectionListener()
         {
@@ -273,7 +260,6 @@ public class Wizard implements ActionListener {
                     mainPanel.add(submitButton);
                     mainPanel.changeFileName("introBackground2.png");
                     mainPanel.updateUI();
-
                 }
                 else if (selectedNode != null && selectedNode == learningObjectiveNode )
                 {
@@ -292,7 +278,6 @@ public class Wizard implements ActionListener {
                     mainPanel.add(submitLOButton);
                     mainPanel.updateUI();
                 }
-
                 else if(selectedNode !=null && selectedNode == learningTaxonomyNode)
                 {
                     if(isErrorLearningObjective())
@@ -322,9 +307,7 @@ public class Wizard implements ActionListener {
                         mainPanel.add(taxContButton);
                         mainPanel.updateUI();
                     }
-
                 }
-
                 else if(selectedNode !=null && selectedNode == subTaxNode)
                 {
                 
@@ -397,7 +380,6 @@ public class Wizard implements ActionListener {
                         JScrollPane scroll = JTable.createScrollPaneForTable(challengeTable);
                         scroll.setBorder(BorderFactory.createMatteBorder(3, 3, 3, 3, Color.GRAY));
                         scroll.setBounds(85,300,950,260);
-
                         challengeButton.setFont(font2);
                         challengeButton.setBounds(650,225,150,50);
                         challengeButton.setBorder(BorderFactory.createMatteBorder(3, 3, 3, 3, Color.GRAY));
@@ -451,10 +433,9 @@ public class Wizard implements ActionListener {
                         mainPanel.updateUI();
                     }
                 }
-
                 else if(selectedNode != null && selectedNode == lowerSummaryNode)
                 {
-                	mainPanel.removeAll();
+                 mainPanel.removeAll();
                     if(isErrorChallenge())
                     {
                         printErrorChallenge();
@@ -550,17 +531,17 @@ public class Wizard implements ActionListener {
                     speechBubble.setFont(font3);
                     speechBubble.setBounds(455,100,345,105);
                     speechBubble.setText("There Are Two Choices To Change\n         Your Game:\n 1. Multiply The Previous Set-Up\n2. Add An Act To the Summary");
-            		actBox.setFont(font2);
-            		mainPanel.add(addActButton);
+              actBox.setFont(font2);
+              mainPanel.add(addActButton);
                     mainPanel.add(actBox);
                     mainPanel.add(speechBubble);
-            		mainPanel.updateUI();
+              mainPanel.updateUI();
                 
                 }
                 
                 else if(selectedNode != null && selectedNode == actSumNode)
                 {
-                	 mainPanel.removeAll();
+                  mainPanel.removeAll();
                      mainPanel.changeFileName("wizardBackground.png");
                      mainPanel.changeCoord(0, -70);
                      template = new JTextPane();
@@ -588,7 +569,7 @@ public class Wizard implements ActionListener {
                 }
                 else if(selectedNode != null && selectedNode == quesTableNode)
                 {
-                	mainPanel.removeAll();
+                 mainPanel.removeAll();
                     mainPanel.changeFileName("wizardBackground.png");
                     mainPanel.changeCoord(0, -70);
                     speechBubble.setFont(font);
@@ -598,16 +579,16 @@ public class Wizard implements ActionListener {
                     JScrollPane scroll = JTable.createScrollPaneForTable(questionTable);
                     scroll.setBorder(BorderFactory.createMatteBorder(3, 3, 3, 3, Color.GRAY));
                     scroll.setBounds(100,300,950,350);
-    				
+        
                     mainPanel.add(scroll);
                     mainPanel.add(speechBubble);
                     mainPanel.add(quesButton);
-    				mainPanel.updateUI();
+        mainPanel.updateUI();
                 }
                 
                 else if(selectedNode != null && selectedNode == conclusionNode)
                 {
-                	mainPanel.removeAll();
+                 mainPanel.removeAll();
                     mainPanel.changeFileName("introBackground2.png");
                     mainPanel.changeCoord(0,0);
                     speechBubble.setFont(font);
@@ -615,32 +596,25 @@ public class Wizard implements ActionListener {
                     speechBubble.setText("Congratulations You Are Done!\nPress Save To Save The Game");
                     mainPanel.add(speechBubble);
                     mainPanel.add(saveButton);
-    				mainPanel.updateUI();
+        mainPanel.updateUI();
                 }
             }
         });
-
-
-
+ 
         JSplitPane main = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT,treePanel, mainPanel);
         main.setDividerLocation(160);
-
         institutionBox = new JComboBox<String>(institutions);
         domainBox = new JComboBox<String>(domains);
         gradeBox = new JComboBox<String>(grades);
         subjectBox = new JComboBox<String>(subjects);
-
         speechBubble = new JTextArea("  Welcome to the SimSYS Game \n            Design Tool! \n  Please Click Continue To Begin!");
         speechBubble.setFont(font);
         speechBubble.setEditable(false);
-        speechBubble.setBounds(375,80,479,140);    
-
+        speechBubble.setBounds(375,80,479,140);   
         mainPanel.add(speechBubble);
-
         submitButton = new JButton("Continue");
         submitButton.setVisible(false);
         submitButton.setEnabled(false);
-
         submitButton.setBounds(400,475,150,50);
         
         submitLOButton = new JButton("Continue");
@@ -656,40 +630,31 @@ public class Wizard implements ActionListener {
         subLOButton.setEnabled(true);
         subLOButton.setBorder(BorderFactory.createMatteBorder(3, 3, 3, 3, Color.GRAY));
 
-
         subLOButton.setBounds(650,225,150,50);
         
         summaryContinue = new JButton();
         summaryBack = new JButton();
-
         welcomeButton = new JButton("Continue");
         welcomeButton.setVisible(true);
         welcomeButton.setEnabled(true);
         welcomeButton.setBorder(BorderFactory.createMatteBorder(3, 3, 3, 3, Color.GRAY));
         welcomeButton.setFont(font2);
         welcomeButton.setBounds(550,475,150,50);
-
         subTaxContButton = new JButton("Continue");
         taxContButton = new JButton("Continue");
 
-
         challengeButton = new JButton("Continue");
         mainPanel.add(welcomeButton);
-
         String[] taxonomy = {"Please Choose Your Taxonomy","Bloom's","Wisconsin Standard"};
         taxBox = new JComboBox<String>(taxonomy);
-
 
         conditionContinue = new JButton("Continue");
         conditionContinue.setVisible(true);
         conditionContinue.setEnabled(true);
         conditionContinue.setBorder(BorderFactory.createMatteBorder(3, 3, 3, 3, Color.GRAY));
         conditionContinue.setBounds(650,225,150,50);
-
         conditionErrorBack = new JButton();
-
         fullSumContinue =  new JButton("Continue");
-
         challengeErrorBack = new JButton("Back");
         challengeErrorBack.setFont(font2);
         challengeErrorBack.setBorder(BorderFactory.createMatteBorder(3, 3, 3, 3, Color.GRAY));
@@ -709,7 +674,6 @@ public class Wizard implements ActionListener {
         introTwoButton.setEnabled(true);
         introTwoButton.setBounds(600,475,150,50);
         introTwoButton.setBorder(BorderFactory.createMatteBorder(3, 3, 3, 3, Color.GRAY));
-
         charButton = new JButton("Continue");
         charButton.setBorder(BorderFactory.createMatteBorder(3, 3, 3, 3, Color.GRAY));
         charButton.setBounds(715,225,150,50);
@@ -732,7 +696,6 @@ public class Wizard implements ActionListener {
         
         locationButton = new JButton("Continue");
         locationButton.setBorder(BorderFactory.createMatteBorder(3, 3, 3, 3, Color.GRAY));
-
         template = new JTextPane();
         template.setEditable(false);
         
@@ -788,7 +751,6 @@ public class Wizard implements ActionListener {
                                 "Biology Department","Communications Department"};
                         domains = universities;
                         domainBox.setModel(new JComboBox<>(universities).getModel());
-
                         domainBox.setEnabled(true);
                         mainPanel.updateUI();
                     }
@@ -812,7 +774,6 @@ public class Wizard implements ActionListener {
                 }
             }
         });
-
         domainBox.addActionListener(new ActionListener(){
             public void actionPerformed(ActionEvent e){
                 int i = domainBox.getSelectedIndex();
@@ -845,7 +806,6 @@ public class Wizard implements ActionListener {
                             grades = schoolLevel;
                             gradeBox.setEnabled(true);
                             mainPanel.updateUI();
-
                         }else{
                             String []  schoolLevel = {"Please Choose Your Level","Tenth Grade","Eleventh Grade","Twelfth Grade"};
                             gradeBox.setModel(new JComboBox<>(schoolLevel).getModel());
@@ -853,7 +813,6 @@ public class Wizard implements ActionListener {
                             gradeBox.setEnabled(true);
                             mainPanel.updateUI();
                         }
-
                     }
                     else if(institutions[j] == institutions[3] || institutions[j] == institutions[4])
                     {
@@ -861,8 +820,7 @@ public class Wizard implements ActionListener {
                         gradeBox.setModel(new JComboBox<>(schoolLevel).getModel());
                         grades = schoolLevel;
                         gradeBox.setEnabled(true);
-                        mainPanel.updateUI();                         
-
+                        mainPanel.updateUI();                        
                     }
                     else{
                         if(i == 1)
@@ -881,7 +839,6 @@ public class Wizard implements ActionListener {
                             mainPanel.updateUI();
                         }
                     }
-
                 }else{    
                     gradeBox.setEnabled(false);
                     submitButton.setVisible(false);
@@ -892,7 +849,6 @@ public class Wizard implements ActionListener {
                 }
             }
         });
-
         gradeBox.addActionListener(new ActionListener(){
             public void actionPerformed(ActionEvent e){
                 int i = gradeBox.getSelectedIndex();
@@ -972,7 +928,6 @@ public class Wizard implements ActionListener {
                 }
             }
         });
-
         subjectBox.addActionListener(new ActionListener(){
             public void actionPerformed(ActionEvent e){
                 int i = subjectBox.getSelectedIndex();
@@ -1000,7 +955,6 @@ public class Wizard implements ActionListener {
                 }
             }
         });
-
         submitButton.addActionListener(new ActionListener(){
             public void actionPerformed(ActionEvent e){
                 submitButton.setEnabled(false);
@@ -1008,7 +962,6 @@ public class Wizard implements ActionListener {
                 rootNode.setUserObject(gradeBox.getSelectedItem() + " " + subjectBox.getSelectedItem());
                 model.nodeChanged(rootNode);
                 wizardTree.expandRow(0);
-
                 Vector <Vector <Object>> v = new Vector<Vector <Object>>();
                 Vector <Object> v1 = new Vector<Object>();
                 Vector <Object> v2 = new Vector<Object>();
@@ -1025,13 +978,11 @@ public class Wizard implements ActionListener {
                 v4.add( new Boolean(false));
                 v5.add("Geometry");
                 v5.add( new Boolean(false));
-
                 v.add(v1);
                 v.add(v2);
                 v.add(v3);
                 v.add(v4);
                 v.add(v5);
-
                 table = new JTable(new MyTableModel(v,false,false, false));
                 treePanel.add(wizardTree);
                 mainPanel.removeAll();
@@ -1182,11 +1133,9 @@ public class Wizard implements ActionListener {
                 mainPanel.updateUI();
             }
         });
-
         subLOButton.addActionListener(new ActionListener(){
             public void actionPerformed(ActionEvent e){    
                 mainPanel.removeAll();
-
                 JTextPane selectedLO = new JTextPane();
                 selectedLO.setBorder(BorderFactory.createMatteBorder(3, 3, 3, 3, Color.GRAY));
                 StyledDocument doc = selectedLO.getStyledDocument();
@@ -1272,7 +1221,6 @@ public class Wizard implements ActionListener {
                                 System.out.println("Font does not Exist!");
                             }
                             mainCount++;
-
                         }
                         //selected = selected+v.get(i).get(0)+"\n";
                     }
@@ -1340,7 +1288,6 @@ public class Wizard implements ActionListener {
                     mainPanel.add(scroll);
                     mainPanel.updateUI();
                 }
-
             }
         });
         
@@ -1386,7 +1333,6 @@ public class Wizard implements ActionListener {
                 mainPanel.updateUI();
             }
         });
-
         summaryBack.addActionListener(new ActionListener(){
             public void actionPerformed(ActionEvent e){
                 mainPanel.removeAll();
@@ -1408,7 +1354,6 @@ public class Wizard implements ActionListener {
                 mainPanel.updateUI();
             }
         });
-
         summaryContinue.addActionListener(new ActionListener(){
             public void actionPerformed(ActionEvent e){
                 if(learningObjectiveNode.getNextSibling()!=learningTaxonomyNode)
@@ -1417,17 +1362,12 @@ public class Wizard implements ActionListener {
                     DefaultTreeModel model = (DefaultTreeModel)wizardTree.getModel();
                     model.reload(mainRoot);
                 }
-
                 wizardTree.expandRow(0);
                 mainPanel.removeAll();
-
                 taxPane.setEditable(false);
-
-
-
+ 
 
                 //import learning taxonomy
-
 
                 speechBubble.setFont(font);
                 speechBubble.setBounds(347,65,400,78);
@@ -1448,14 +1388,11 @@ public class Wizard implements ActionListener {
                 mainPanel.add(taxContButton);
                 mainPanel.add(speechBubble);
 
-
                 treePanel.add(wizardTree);
                 mainPanel.updateUI();
                 treePanel.updateUI();
-
             }
         });
-
         taxBox.addActionListener(new ActionListener(){
             public void actionPerformed(ActionEvent e){
                 int i = taxBox.getSelectedIndex();
@@ -1495,7 +1432,6 @@ public class Wizard implements ActionListener {
                     StyleConstants.setUnderline(s, false);
                     StyleConstants.setFontSize(s, 18);
                     StyleConstants.setBold(s, false);
-
                     if(taxBox.getSelectedItem().equals("Bloom's")){
                         bloomSelected = true;
                         speechBubble.setFont(font);
@@ -1540,7 +1476,6 @@ public class Wizard implements ActionListener {
                         {
                             System.out.println("catch other");
                         }
-
                     }
                     //taxPane.setStyledDocument(doc);
                     bloomsScroll = new JScrollPane(taxPane);
@@ -1556,7 +1491,6 @@ public class Wizard implements ActionListener {
                 }
             }
         });
-
         taxContButton.addActionListener(new ActionListener(){
             public void actionPerformed(ActionEvent e){
                 if(learningTaxonomyNode.getNextSibling()!=subTaxNode)
@@ -1565,7 +1499,6 @@ public class Wizard implements ActionListener {
                     DefaultTreeModel model = (DefaultTreeModel)wizardTree.getModel();
                     model.reload(mainRoot);
                 }
-
                 wizardTree.expandRow(0);
                 mainPanel.removeAll();
                 mainPanel.changeFileName("wizardBackground.png");
@@ -1591,16 +1524,13 @@ public class Wizard implements ActionListener {
                     v5.add( new Boolean(false));
                     v6.add("-Evaluation (E)");
                     v6.add( new Boolean(false));
-
                     v.add(v1);
                     v.add(v2);
                     v.add(v3);
                     v.add(v4);
                     v.add(v5);
                     v.add(v6);
-
                     subTaxTable = new JTable(new MyTableModel(v,false,false, false));
-
                     subTaxTable.setRowHeight(45);
                     subTaxTable.setShowHorizontalLines(true);
                     subTaxTable.setRowSelectionAllowed(true);
@@ -1612,9 +1542,7 @@ public class Wizard implements ActionListener {
                     scroll = JTable.createScrollPaneForTable(subTaxTable);
                     scroll.setBorder(BorderFactory.createMatteBorder(3, 3, 3, 3, Color.GRAY));
                     scroll.setBounds(85,300,950,260);
-
-
-
+ 
 
                 }else{
                     Vector <Vector <Object>> v = new Vector<Vector <Object>>();
@@ -1625,7 +1553,6 @@ public class Wizard implements ActionListener {
                     Vector <Object> v5 = new Vector<Object>();
                     Vector <Object> v6 = new Vector<Object>();
                     Vector <Object> v7 = new Vector<Object>();
-
                     v1.add("-Make sense of problems and persevere in solving them");
                     v1.add( new Boolean(false));
                     v2.add("-Reason abstractly and quantitatively");
@@ -1640,7 +1567,6 @@ public class Wizard implements ActionListener {
                     v6.add( new Boolean(false));
                     v7.add("-Look for and express regularity in repeated reasoning");
                     v7.add( new Boolean(false));
-
                     v.add(v1);
                     v.add(v2);
                     v.add(v3);
@@ -1648,9 +1574,7 @@ public class Wizard implements ActionListener {
                     v.add(v5);
                     v.add(v6);
                     v.add(v7);
-
                     subTaxTable = new JTable(new MyTableModel(v,false,false,false));
-
                     subTaxTable.setRowHeight(45);
                     subTaxTable.setShowHorizontalLines(true);
                     subTaxTable.setRowSelectionAllowed(true);
@@ -1684,14 +1608,11 @@ public class Wizard implements ActionListener {
                     DefaultTreeModel model = (DefaultTreeModel)wizardTree.getModel();
                     model.reload(mainRoot);
                 }
-
-
-
+ 
                 wizardTree.expandRow(0);
                 mainPanel.removeAll();
                 mainPanel.changeFileName("wizardBackground.png");
                 mainPanel.changeCoord(0,-70);
-
                 Vector<Vector<Object>> v = generateChallengeTable();
                 challengeTable = new JTable(new MyTableModel(v,false,false,false));
                 challengeTable.setRowHeight(45);
@@ -1706,9 +1627,7 @@ public class Wizard implements ActionListener {
                 JScrollPane scroll = JTable.createScrollPaneForTable(challengeTable);
                 scroll.setBorder(BorderFactory.createMatteBorder(3, 3, 3, 3, Color.GRAY));
                 scroll.setBounds(85,300,950,260);
-
-
-
+ 
 
                 challengeButton.setFont(font2);
                 challengeButton.setBounds(650,225,150,50);
@@ -1725,9 +1644,7 @@ public class Wizard implements ActionListener {
                 mainPanel.updateUI();
             }
         });
-
-
-
+ 
         challengeButton.addActionListener(new ActionListener(){
             public void actionPerformed(ActionEvent e){
                 MyTableModel tm = (MyTableModel) challengeTable.getModel();
@@ -1740,13 +1657,11 @@ public class Wizard implements ActionListener {
                 }
                 wizardTree.expandRow(0);
                 mainPanel.removeAll();
-
                 speechBubble.setFont(font);
                 speechBubble.setBounds(415,45,400,90);
                 speechBubble.setText("      Please Select Your\n        Game Conditions");
                 mainPanel.changeFileName("wizardBackground.png");
                 mainPanel.changeCoord(0, -70);
-
                 if(isErrorChallenge())
                 {
                     printErrorChallenge();
@@ -1769,13 +1684,11 @@ public class Wizard implements ActionListener {
                     v4.add( new Boolean(false));
                     v5.add("Antagonistic");
                     v5.add( new Boolean(false));
-
                     vNew.add(v1);
                     vNew.add(v2);
                     vNew.add(v3);
                     vNew.add(v4);
                     vNew.add(v5);
-
                     conditionsTable = new JTable(new MyTableModel(vNew, false,false,false));
                     conditionsTable.setRowHeight(45);
                     conditionsTable.setShowHorizontalLines(true);
@@ -1817,17 +1730,13 @@ public class Wizard implements ActionListener {
                 mainPanel.add(speechBubble);
                 treePanel.updateUI();
                 mainPanel.updateUI();
-
             }
         });
         conditionContinue.addActionListener(new ActionListener(){
             public void actionPerformed(ActionEvent e){
-
                 generateSummary();
-
             }
         });
-
         conditionErrorBack.addActionListener(new ActionListener(){
             public void actionPerformed(ActionEvent e){
                 mainPanel.removeAll();
@@ -1844,7 +1753,6 @@ public class Wizard implements ActionListener {
                 mainPanel.add(speechBubble);
                 mainPanel.updateUI();
                 treePanel.updateUI();
-
 
             }
         });
@@ -1868,23 +1776,23 @@ public class Wizard implements ActionListener {
         });
             
         fullSumContinue.addActionListener(new ActionListener(){
-        	public void actionPerformed(ActionEvent e){
-        		 mainPanel.removeAll();
-        		 if(rootNode.getNextSibling()!=topNode)
-        		 {
+         public void actionPerformed(ActionEvent e){
+           mainPanel.removeAll();
+           if(rootNode.getNextSibling()!=topNode)
+           {
                      mainRoot.add(topNode);
                      topNode.add(locationNode);
                      DefaultTreeModel model = (DefaultTreeModel)wizardTree.getModel();
                      model.reload(mainRoot); 
                      wizardTree.expandRow(1);
                      wizardTree.collapseRow(0);
-        		 }
-        		 else
-        		 {
+           }
+           else
+           {
                      wizardTree.setSelectionPath(new TreePath(locationNode)); 
                      wizardTree.expandRow(1);
                      wizardTree.collapseRow(0);
-        		 }
+           }
                  backgroundPane = new JTextPane();
                  backgroundPane.removeAll();
                  backgroundPane.updateUI();
@@ -1906,7 +1814,7 @@ public class Wizard implements ActionListener {
                  mainPanel.add(locationButton);
                  treePanel.updateUI();
                  mainPanel.updateUI();
-        	}
+         }
         });
         
         
@@ -1922,13 +1830,12 @@ public class Wizard implements ActionListener {
                 
                 wizardTree.expandRow(1);
                 Vector <Vector <Object>> v = new Vector<Vector <Object>>();
-
                 try
                 {
                     File file = new File("Office, Classroom\\"+backgroundBox.getSelectedItem()+"_Chars.xml");
                     JAXBContext jaxbContext = JAXBContext.newInstance(CharList.class);
-        			Unmarshaller jaxbUnmarshaller = jaxbContext.createUnmarshaller();
-        			CharList charList = (CharList) jaxbUnmarshaller.unmarshal(file);
+           Unmarshaller jaxbUnmarshaller = jaxbContext.createUnmarshaller();
+           CharList charList = (CharList) jaxbUnmarshaller.unmarshal(file);
                     int numCharacters = charList.getCharacters().size();
                     for(int i=0; i<numCharacters; i++)
                     {
@@ -2085,12 +1992,11 @@ public class Wizard implements ActionListener {
                 mainPanel.updateUI();
             }
         });
-
         actButton.addActionListener(new ActionListener(){
-        	public void actionPerformed(ActionEvent e){
-        		mainPanel.removeAll();
-        		mainPanel.changeCoord(0, 0);
-        		 if(actNode.getNextSibling()!=addActNode)
+         public void actionPerformed(ActionEvent e){
+          mainPanel.removeAll();
+          mainPanel.changeCoord(0, 0);
+           if(actNode.getNextSibling()!=addActNode)
                  {
                      topNode.add(addActNode);
                      DefaultTreeModel model = (DefaultTreeModel)wizardTree.getModel();
@@ -2098,20 +2004,20 @@ public class Wizard implements ActionListener {
                  }
                 wizardTree.expandRow(1);
                 mainPanel.removeAll();
-        		speechBubble.setFont(font3);
+          speechBubble.setFont(font3);
                 speechBubble.setBounds(455,100,345,105);
                 speechBubble.setText("There Are Two Choices To Change\n         Your Game:\n 1. Add Another Set of Acts\n2. Add Additional Questions");
-        		actBox.setFont(font2);
-        		mainPanel.add(addActButton);
+          actBox.setFont(font2);
+          mainPanel.add(addActButton);
                 mainPanel.add(actBox);
                 mainPanel.add(speechBubble);
-        		mainPanel.updateUI();
-        	}
+          mainPanel.updateUI();
+         }
         });
         
         addActButton.addActionListener(new ActionListener(){
-        	public void actionPerformed(ActionEvent e){
-        		mainPanel.removeAll();
+         public void actionPerformed(ActionEvent e){
+          mainPanel.removeAll();
                 mainPanel.changeFileName("wizardBackground.png");
                 mainPanel.changeCoord(0, -70);
                 actButton.setText("Add More");
@@ -2121,20 +2027,20 @@ public class Wizard implements ActionListener {
                 actButton.setVisible(true);
                 
                 if(addActNode.getNextSibling()!=actSumNode)
-                	
+                 
                 {
                     topNode.add(actSumNode);
                     DefaultTreeModel model = (DefaultTreeModel)wizardTree.getModel();
                     model.reload(mainRoot);
                 }
                 wizardTree.expandRow(1);
-        		if(actBox.getSelectedItem().equals("Add Another Set of Acts"))
-        		{
-        			 template = new JTextPane(); 
-        			 template.setEditable(false);
-        			 multiplyAct++;
-        			 showActs(multiplyAct, false);
-        			 templateScroll = new JScrollPane(template);
+          if(actBox.getSelectedItem().equals("Add Another Set of Acts"))
+          {
+            template = new JTextPane(); 
+            template.setEditable(false);
+            multiplyAct++;
+            showActs(multiplyAct, false);
+            templateScroll = new JScrollPane(template);
                      template.setCaretPosition(0);
                      templateScroll.setBorder(BorderFactory.createMatteBorder(3, 3, 3, 3, Color.GRAY));
                      templateScroll.setBounds(180,300,720,330);
@@ -2148,27 +2054,27 @@ public class Wizard implements ActionListener {
                      mainPanel.add(templateScroll);
                      mainPanel.add(contActButton);
                      mainPanel.updateUI();
-        		}
-        		else if(actBox.getSelectedItem().equals("Add a Question"))
-        		{
-        			 template = new JTextPane();
-        			 template.setEditable(false);
-        			 if(addAct != 0)
-        			 {
-	        			 for(int i=addAct; i>=1;i--)
-	        			 {
-	            			 System.out.println(i);
-	            			 gametemplate.getActs().get(1).getScenes().remove(i); 
-	        			 }
-        			 }
-        			 addAct++;
-        			 templateScroll = new JScrollPane(template);
+          }
+          else if(actBox.getSelectedItem().equals("Add a Question"))
+          {
+            template = new JTextPane();
+            template.setEditable(false);
+            if(addAct != 0)
+            {
+             for(int i=addAct; i>=1;i--)
+             {
+                 System.out.println(i);
+                 gametemplate.getActs().get(1).getScenes().remove(i); 
+             }
+            }
+            addAct++;
+            templateScroll = new JScrollPane(template);
                      template.setCaretPosition(0);
                      templateScroll.setBorder(BorderFactory.createMatteBorder(3, 3, 3, 3, Color.GRAY));
                      templateScroll.setBounds(180,300,720,330);
                      template.updateUI();
                      templateScroll.updateUI();
-         			 showActs(multiplyAct, true);
+             showActs(multiplyAct, true);
                      speechBubble.setFont(font2);
                      speechBubble.setBounds(425,30,345,100);
                      speechBubble.setText("\n       Here is How It Looks!");
@@ -2177,19 +2083,19 @@ public class Wizard implements ActionListener {
                      mainPanel.add(templateScroll);
                      mainPanel.add(contActButton);
                      mainPanel.updateUI();
-        		}
-        		else if(actBox.getSelectedItem().equals("Back to Original"))
-        		{
-        			 multiplyAct =1;
-        			 for(int i=addAct; i>=1;i--)
-        			 {
-            			 gametemplate.getActs().get(1).getScenes().remove(i); 
-        			 }
-        			 addAct = 0;
-        			 template = new JTextPane(); 
-        			 template.setEditable(false);
-        			 showActs(multiplyAct, false);
-        			 templateScroll = new JScrollPane(template);
+          }
+          else if(actBox.getSelectedItem().equals("Back to Original"))
+          {
+            multiplyAct =1;
+            for(int i=addAct; i>=1;i--)
+            {
+                gametemplate.getActs().get(1).getScenes().remove(i); 
+            }
+            addAct = 0;
+            template = new JTextPane(); 
+            template.setEditable(false);
+            showActs(multiplyAct, false);
+            templateScroll = new JScrollPane(template);
                      template.setCaretPosition(0);
                      templateScroll.setBorder(BorderFactory.createMatteBorder(3, 3, 3, 3, Color.GRAY));
                      templateScroll.setBounds(180,300,720,330);
@@ -2203,11 +2109,11 @@ public class Wizard implements ActionListener {
                      mainPanel.add(templateScroll);
                      mainPanel.add(contActButton);
                      mainPanel.updateUI();
-        		}
-        		else
-        		{
-        			mainPanel.removeAll();
-        			 if(addActNode.getNextSibling()!=quesTableNode)
+          }
+          else
+          {
+           mainPanel.removeAll();
+            if(addActNode.getNextSibling()!=quesTableNode)
                      {
                          topNode.add(quesTableNode);
                          DefaultTreeModel model = (DefaultTreeModel)wizardTree.getModel();
@@ -2220,27 +2126,27 @@ public class Wizard implements ActionListener {
                     speechBubble.setBounds(415,45,400,90);
                     speechBubble.setText("Please Select Your Types\n Of Questions!");
                     
-    				int numOfQuestions = (1+addAct) * multiplyAct * loList.size();
-    				makeQuesTable(numOfQuestions);
-    				
+        int numOfQuestions = (1+addAct) * multiplyAct * loList.size();
+        makeQuesTable(numOfQuestions);
+        
                     @SuppressWarnings("deprecation")
                     JScrollPane scroll = JTable.createScrollPaneForTable(questionTable);
                     scroll.setBorder(BorderFactory.createMatteBorder(3, 3, 3, 3, Color.GRAY));
                     scroll.setBounds(100,300,950,350);
-    				
+        
                     mainPanel.add(scroll);
                     mainPanel.add(speechBubble);
                     mainPanel.add(quesButton); 
-    				mainPanel.updateUI();
-        		}
-        		mainPanel.updateUI();
-        	}
+        mainPanel.updateUI();
+          }
+          mainPanel.updateUI();
+         }
         });
         
         contActButton.addActionListener(new ActionListener(){
-			public void actionPerformed(ActionEvent arg0) {
-				mainPanel.removeAll();
-				 if(addActNode.getNextSibling()!=quesTableNode)
+   public void actionPerformed(ActionEvent arg0) {
+    mainPanel.removeAll();
+     if(addActNode.getNextSibling()!=quesTableNode)
                  {
                      topNode.add(quesTableNode);
                      DefaultTreeModel model = (DefaultTreeModel)wizardTree.getModel();
@@ -2253,35 +2159,35 @@ public class Wizard implements ActionListener {
                 speechBubble.setBounds(415,45,400,90);
                 speechBubble.setText("Please Select Your Types\n Of Questions!");
                 
-				int numOfQuestions = (1+addAct) * multiplyAct * loList.size();
-				makeQuesTable(numOfQuestions);
-				
+    int numOfQuestions = (1+addAct) * multiplyAct * loList.size();
+    makeQuesTable(numOfQuestions);
+    
                 @SuppressWarnings("deprecation")
                 JScrollPane scroll = JTable.createScrollPaneForTable(questionTable);
                 scroll.setBorder(BorderFactory.createMatteBorder(3, 3, 3, 3, Color.GRAY));
                 scroll.setBounds(100,300,950,350);
-				
+    
                 mainPanel.add(scroll);
                 mainPanel.add(speechBubble);
                 mainPanel.add(quesButton); 
-				mainPanel.updateUI();
-				
-			}
+    mainPanel.updateUI();
+    
+   }
         });
         
         quesButton.addActionListener(new ActionListener(){
-        	public void actionPerformed(ActionEvent arg0)
-        	{
-        		Vector<Vector<Object>> data2 = ((MyTableModel)questionTable.getModel()).getData();
-        		System.out.println(data2.get(0).get(1));
-        		System.out.println(data2.get(1).get(1));
-        		System.out.println(data2.get(0).get(2));
-        		System.out.println(data2.get(1).get(2));
-        		
-        		mainPanel.removeAll();
+         public void actionPerformed(ActionEvent arg0)
+         {
+          Vector<Vector<Object>> data2 = ((MyTableModel)questionTable.getModel()).getData();
+          System.out.println(data2.get(0).get(1));
+          System.out.println(data2.get(1).get(1));
+          System.out.println(data2.get(0).get(2));
+          System.out.println(data2.get(1).get(2));
+          
+          mainPanel.removeAll();
                 mainPanel.changeFileName("introBackground2.png");
                 mainPanel.changeCoord(0,0);
-        		 if(quesTableNode.getNextSibling()!=conclusionNode)
+           if(quesTableNode.getNextSibling()!=conclusionNode)
                  {
                      topNode.add(conclusionNode);
                      DefaultTreeModel model = (DefaultTreeModel)wizardTree.getModel();
@@ -2293,63 +2199,91 @@ public class Wizard implements ActionListener {
                 speechBubble.setText("Congratulations You Are Done!\nPress Save To Save The Game");
                 mainPanel.add(speechBubble);
                 mainPanel.add(saveButton);
-        		mainPanel.updateUI();
-        	}
+          mainPanel.updateUI();
+         }
         });
         
+        saveButton.addActionListener(new ActionListener(){
+   public void actionPerformed(ActionEvent e) {
+    //Used from InputWizard.java
+    JFileChooser chooser = new JFileChooser();
+        chooser.setDialogTitle("Enter a name for the file");
+        chooser.setFileFilter(new FileNameExtensionFilter("Game XML", "XML"));
+        chooser.setAcceptAllFileFilterUsed(false);
+        int retval = chooser.showSaveDialog(null);
+        
+        if(retval == JFileChooser.APPROVE_OPTION)
+        {
+                  File file = chooser.getSelectedFile();
+                  // check for .xml (of any case variation) at the end ($) of the filename
+                  if(!file.getName().matches(".*[.][Xx][Mm][Ll]$"))
+                  {
+                   System.out.println("didn't match");
+                   file = new File(file.getPath() + ".XML");
+                  }
+            System.out.println("saved as " + file.getPath());
+              } 
+        else 
+        {
+                  System.out.println("Save command cancelled by user.");
+              }
+    
+   }
+         
+        });
         window.add(main);
         window.setVisible(true);
     }
     
     public void makeQuesTable(int numOfQuestions)
     {
-    	 ArrayList<String> challengesSelected = new ArrayList<String>();
+      ArrayList<String> challengesSelected = new ArrayList<String>();
          Vector<Vector<Object>> data2 = ((MyTableModel)challengeTable.getModel()).getData();
          for(int i = 0; i<data2.size(); i++ ){
-         	if((boolean)data2.get(i).get(1) == true){
-         		challengesSelected.add((String)data2.get(i).get(0));
-         	}
+          if((boolean)data2.get(i).get(1) == true){
+           challengesSelected.add((String)data2.get(i).get(0));
+          }
          }
          
          ArrayList<String> conditionsSelected = new ArrayList<String>();
          Vector<Vector<Object>> data = ((MyTableModel)conditionsTable.getModel()).getData();
          for(int i = 0; i<data.size(); i++ ){
-         	if((boolean)data.get(i).get(1) == true){
-         		conditionsSelected.add((String)data.get(i).get(0));
-         	}
+          if((boolean)data.get(i).get(1) == true){
+           conditionsSelected.add((String)data.get(i).get(0));
+          }
          }
          
-		firstQuesBox = new JComboBox[numOfQuestions];
-		secondQuesBox = new JComboBox[numOfQuestions];
-		
-		String[] challenges = new String[challengesSelected.size()];
-		String[] conditions = new String[conditionsSelected.size()];
-		
-		for(int j=0; j<challengesSelected.size(); j++)
-		{
-			challenges[j] = challengesSelected.get(j);
-		}
-		
-		for(int j=0; j<conditionsSelected.size(); j++)
-		{
-			conditions[j] = conditionsSelected.get(j);
-		}
-		
+  firstQuesBox = new JComboBox[numOfQuestions];
+  secondQuesBox = new JComboBox[numOfQuestions];
+  
+  String[] challenges = new String[challengesSelected.size()];
+  String[] conditions = new String[conditionsSelected.size()];
+  
+  for(int j=0; j<challengesSelected.size(); j++)
+  {
+   challenges[j] = challengesSelected.get(j);
+  }
+  
+  for(int j=0; j<conditionsSelected.size(); j++)
+  {
+   conditions[j] = conditionsSelected.get(j);
+  }
+  
         Vector <Vector <Object>> v = new Vector<Vector <Object>>();
-		
+  
         for(int i=0; i<numOfQuestions; i++)
         {
-        	firstQuesBox[i] = new JComboBox(challenges);
-        	secondQuesBox[i] = new JComboBox(conditions);
-        	firstQuesBox[i].setFont(font2);
-        	secondQuesBox[i].setFont(font2);
+         firstQuesBox[i] = new JComboBox(challenges);
+         secondQuesBox[i] = new JComboBox(conditions);
+         firstQuesBox[i].setFont(font2);
+         secondQuesBox[i].setFont(font2);
             Vector <Object> v1 = new Vector<Object>();
-        	v1.add("Question " + (i+1));
-        	v1.add(challengesSelected.get(0));
-        	v1.add(conditionsSelected.get(0));
-//        	v1.add(firstQuesBox[i]);
-//        	v1.add(secondQuesBox[i]);
-        	v.add(v1);
+         v1.add("Question " + (i+1));
+         v1.add(challengesSelected.get(0));
+         v1.add(conditionsSelected.get(0));
+//         v1.add(firstQuesBox[i]);
+//         v1.add(secondQuesBox[i]);
+         v.add(v1);
         }
         
         questionTable = new JTable(new MyTableModel(v, false,false,true));
@@ -2375,7 +2309,7 @@ public class Wizard implements ActionListener {
     
     public void showActs(int n, boolean b)
     {
-    	 StyledDocument doc = template.getStyledDocument();
+      StyledDocument doc = template.getStyledDocument();
          javax.swing.text.Style def = StyleContext.getDefaultStyleContext().getStyle(StyleContext.DEFAULT_STYLE);
          javax.swing.text.Style normal = doc.addStyle("font 2", def); 
          StyleConstants.setFontFamily(def, "Comic Sans MS");
@@ -2389,65 +2323,65 @@ public class Wizard implements ActionListener {
          ArrayList<String> challengesSelected = new ArrayList<String>();
          Vector<Vector<Object>> data2 = ((MyTableModel)challengeTable.getModel()).getData();
          for(int i = 0; i<data2.size(); i++ ){
-         	if((boolean)data2.get(i).get(1) == true){
-         		challengesSelected.add((String)data2.get(i).get(0));
-         	}
+          if((boolean)data2.get(i).get(1) == true){
+           challengesSelected.add((String)data2.get(i).get(0));
+          }
          }
          int challengeIndex = 0;
          try
          {
              int count =1;
-        	 for(int numLO=0; numLO<loList.size();numLO++)
-        	 {
-	             int numActs = gametemplate.getActs().size();
-	             doc.insertString(doc.getLength(), "Learning Objective: " + loList.get(numLO)+"\n", doc.getStyle("font 3"));
-	             if(b==true && numLO==0)
-	             {
-	            	 for(int add=0; add<addAct; add++)
-	            	 {
-	            		 System.out.println(addAct);
-	            		 System.out.println(add);
-	            		 Scene scene = makeScene();
-	            		 scene.getScreens().get(0).setType(("Question"));
-	            		 gametemplate.getActs().get(1).getScenes().add(add+1,scene);
-	            	 }
-	             }
-	             for(int l=0; l<n; l++)
-	             {
-		             for(int i=0;i<numActs;i++)
-		             {
-		                 doc.insertString(doc.getLength(), gametemplate.getActs().get(i).getName()+"\n", doc.getStyle("font 2"));
-		                 int numScenes = gametemplate.getActs().get(i).getScenes().size();
-		                 for(int j=0; j<numScenes; j++)
-		                 {
-		                     doc.insertString(doc.getLength(), "\tScene "+ (j+1) + "\n", doc.getStyle("font 3"));
-		                     int numScreens = gametemplate.getActs().get(i).getScenes().get(j).getScreens().size();
-		                     for(int k=0; k<numScreens; k++)
-		                     {
-		                         doc.insertString(doc.getLength(), "\t"+"\tScreen "+(k+1)+"="
-		                                 +gametemplate.getActs().get(i).getScenes().get(j).getScreens()
-		                                 .get(k).getType(), doc.getStyle("font 3"));
-		                         String type = gametemplate.getActs().get(i).getScenes().get(j).getScreens()
-		                                 .get(k).getType();
-		                         if(type.equals("Question")){
-		                        	 doc.insertString(doc.getLength(), "  "+count+"\n", doc.getStyle("font 3"));
-		                        	 count++;
-		                         	 doc.insertString(doc.getLength(), "\t\t\tChallenge: "+challengesSelected.get(challengeIndex)+"\n", doc.getStyle("font 3"));
-		                         	 if(challengeIndex >= challengesSelected.size()-1){
-		                         		 challengeIndex = 0;
-		                         	 }else{
-		                         		 challengeIndex++;
-		                         	 }
-		                         }
-		                         else
-		                         {
-		                        	 doc.insertString(doc.getLength(),"\n", doc.getStyle("font 3"));
-		                         }
-		                     }
-		                 }
-		             }
-	             }
-        	 }
+          for(int numLO=0; numLO<loList.size();numLO++)
+          {
+              int numActs = gametemplate.getActs().size();
+              doc.insertString(doc.getLength(), "Learning Objective: " + loList.get(numLO)+"\n", doc.getStyle("font 3"));
+              if(b==true && numLO==0)
+              {
+               for(int add=0; add<addAct; add++)
+               {
+                System.out.println(addAct);
+                System.out.println(add);
+                Scene scene = makeScene();
+                scene.getScreens().get(0).setType(("Question"));
+                gametemplate.getActs().get(1).getScenes().add(add+1,scene);
+               }
+              }
+              for(int l=0; l<n; l++)
+              {
+               for(int i=0;i<numActs;i++)
+               {
+                   doc.insertString(doc.getLength(), gametemplate.getActs().get(i).getName()+"\n", doc.getStyle("font 2"));
+                   int numScenes = gametemplate.getActs().get(i).getScenes().size();
+                   for(int j=0; j<numScenes; j++)
+                   {
+                       doc.insertString(doc.getLength(), "\tScene "+ (j+1) + "\n", doc.getStyle("font 3"));
+                       int numScreens = gametemplate.getActs().get(i).getScenes().get(j).getScreens().size();
+                       for(int k=0; k<numScreens; k++)
+                       {
+                           doc.insertString(doc.getLength(), "\t"+"\tScreen "+(k+1)+"="
+                                   +gametemplate.getActs().get(i).getScenes().get(j).getScreens()
+                                   .get(k).getType(), doc.getStyle("font 3"));
+                           String type = gametemplate.getActs().get(i).getScenes().get(j).getScreens()
+                                   .get(k).getType();
+                           if(type.equals("Question")){
+                            doc.insertString(doc.getLength(), "  "+count+"\n", doc.getStyle("font 3"));
+                            count++;
+                             doc.insertString(doc.getLength(), "\t\t\tChallenge: "+challengesSelected.get(challengeIndex)+"\n", doc.getStyle("font 3"));
+                             if(challengeIndex >= challengesSelected.size()-1){
+                              challengeIndex = 0;
+                             }else{
+                              challengeIndex++;
+                             }
+                           }
+                           else
+                           {
+                            doc.insertString(doc.getLength(),"\n", doc.getStyle("font 3"));
+                           }
+                       }
+                   }
+               }
+              }
+          }
          }
          catch(Exception e2)
          {
@@ -2457,14 +2391,14 @@ public class Wizard implements ActionListener {
     }
     public Scene makeScene()
     {
-    	Scene scene = new Scene();
-    	Screen screen = new Screen();
-    	Screen screen2 = new Screen();
-    	screen.setType("Question");
-    	screen2.setType("Transition: Response To Answer");
-    	scene.getScreens().add(screen);
-    	scene.getScreens().add(screen2);
-    	return scene;
+     Scene scene = new Scene();
+     Screen screen = new Screen();
+     Screen screen2 = new Screen();
+     screen.setType("Question");
+     screen2.setType("Transition: Response To Answer");
+     scene.getScreens().add(screen);
+     scene.getScreens().add(screen2);
+     return scene;
     }
     public JTable constructCharTable(){
         JTable jt;
@@ -2534,7 +2468,6 @@ public class Wizard implements ActionListener {
                 if(((String)(v.get(i).get(0))).charAt(0) == '-'){
                     subCount++;
                 }else{
-
                     int j=1;
                     boolean error = true;
                     while(((String)(v.get(i+j).get(0))).charAt(0) == '-')
@@ -2550,7 +2483,6 @@ public class Wizard implements ActionListener {
                         break;
                     }
                     mainCount++;
-
                 }
             }
         }
@@ -2577,7 +2509,6 @@ public class Wizard implements ActionListener {
         mainPanel.changeFileName("errorBackground.png");
         mainPanel.updateUI();
     }
-
     private void printErrorLO()
     {
         mainPanel.removeAll();
@@ -2605,13 +2536,10 @@ public class Wizard implements ActionListener {
         mainPanel.changeFileName("errorBackground.png");
         mainPanel.updateUI();
     }
-
     @Override
     public void actionPerformed(ActionEvent e) {
         // TODO Auto-generated method stub
-
     }
-
     private boolean isErrorChallenge()
     {
         MyTableModel tm = (MyTableModel) challengeTable.getModel();
@@ -2631,7 +2559,6 @@ public class Wizard implements ActionListener {
             return false;
         }
     }
-
     private void printErrorChallenge()
     {
         mainPanel.removeAll();
@@ -2645,7 +2572,6 @@ public class Wizard implements ActionListener {
         mainPanel.changeFileName("errorBackground.png");
         mainPanel.updateUI();
     }
-
     private Vector<Vector<Object>> generateChallengeTable()
     {
         MyTableModel tm = (MyTableModel) subTaxTable.getModel();
@@ -2655,15 +2581,12 @@ public class Wizard implements ActionListener {
         if((boolean)v.get(0).get(1)==true && (boolean)v.get(1).get(1)==true && (boolean)v.get(2).get(1)==true && 
                 (boolean)v.get(3).get(1)==true && (boolean)v.get(5).get(1)==true)
         {
-
             hit = true;
             Vector<Object> v1 = new Vector<Object>();
             v1.add("Composition (K,C,Ap,An,E) -evaluate, create & consequence");
             v1.add( new Boolean(false));
             v2.add(v1);
-
         }
-
         if((boolean)v.get(0).get(1)==true && (boolean)v.get(1).get(1)==true && (boolean)v.get(2).get(1)==true && 
                 (boolean)v.get(4).get(1)==true && (boolean)v.get(5).get(1)==true)
         {
@@ -2672,9 +2595,7 @@ public class Wizard implements ActionListener {
             v1.add("Deliberation (K,C,Ap,S,E) -drag and drop & consequence");
             v1.add( new Boolean(false));
             v2.add(v1);
-
         }
-
         if((boolean)v.get(0).get(1)==true && (boolean)v.get(1).get(1)==true && (boolean)v.get(2).get(1)==true)
         {
             hit = true;
@@ -2696,9 +2617,7 @@ public class Wizard implements ActionListener {
     {
         Wizard wiz = new Wizard();
     }
-
     public void generateSummary(){
-
         mainPanel.removeAll();
         mainPanel.changeFileName("wizardBackground.png");
         mainPanel.changeCoord(0,-70);
@@ -2720,7 +2639,6 @@ public class Wizard implements ActionListener {
         MyTableModel tm = (MyTableModel) conditionsTable.getModel();
         Vector <Vector <Object>> v = tm.getData();
         int mainCount = 0;
-
         try{
             doc.insertString(doc.getLength(), "Institution:\n", doc.getStyle("font 2"));
             doc.insertString(doc.getLength(), institutionBox.getSelectedItem()+"\n", doc.getStyle("font 3"));
@@ -2735,10 +2653,8 @@ public class Wizard implements ActionListener {
         {
             System.out.println("Font does not Exist!");
         }
-
         MyTableModel tmLO = (MyTableModel) table.getModel();
         Vector <Vector <Object>> vLO = tmLO.getData();
-
         for(int i=0;i<table.getRowCount();i++)
         {
             if((boolean)vLO.get(i).get(1)==true)
@@ -2751,7 +2667,6 @@ public class Wizard implements ActionListener {
                     {
                         System.out.println("Font does not Exist!");
                     }
-
                 }else{
                     try{
                         doc.insertString(doc.getLength(), vLO.get(i).get(0)+"\n", doc.getStyle("font 2"));
@@ -2761,10 +2676,8 @@ public class Wizard implements ActionListener {
                         System.out.println("Font does not Exist!");
                     }
                 }
-
             }
         }
-
         try{
             doc.insertString(doc.getLength(), "BLOOMS Learning Taxonomy\n", doc.getStyle("font 2"));
             doc.insertString(doc.getLength(), "-Knowledge (K)\n", doc.getStyle("font 3"));
@@ -2778,7 +2691,6 @@ public class Wizard implements ActionListener {
         {
             System.out.println("Font does not Exist!");
         }
-
 
         try{
             doc.insertString(doc.getLength(), "Challenge\n", doc.getStyle("font 2"));
@@ -2794,7 +2706,6 @@ public class Wizard implements ActionListener {
         {
             System.out.println("Font does not Exist!");
         }
-
         try{
             doc.insertString(doc.getLength(), "Conditions\n", doc.getStyle("font 2"));
         }
@@ -2802,12 +2713,10 @@ public class Wizard implements ActionListener {
         {
             System.out.println("Font does not Exist!");
         }
-
         for(int i=0;i<conditionsTable.getRowCount();i++)
         {
             if((boolean)v.get(i).get(1)==true)
             {
-
                 try{
                     doc.insertString(doc.getLength(), v.get(i).get(0)+"\n", doc.getStyle("font 3"));
                 }
@@ -2838,7 +2747,6 @@ public class Wizard implements ActionListener {
             mainPanel.changeFileName("errorBackground.png");
             mainPanel.updateUI();
         }
-
         else
         {
             if(conditionsNode.getNextSibling()!=lowerSummaryNode)
@@ -2847,7 +2755,6 @@ public class Wizard implements ActionListener {
                 DefaultTreeModel model = (DefaultTreeModel)wizardTree.getModel();
                 model.reload(mainRoot);
             }
-
             wizardTree.expandRow(0);
             summary.setEditable(false);
             summary.setCaretPosition(0);
@@ -2864,9 +2771,7 @@ public class Wizard implements ActionListener {
             treePanel.updateUI();
             mainPanel.updateUI();
         }
-
     }
-
     class MyTableModel extends AbstractTableModel {
         /**
          * 
@@ -2902,13 +2807,11 @@ public class Wizard implements ActionListener {
             }
             return columnNames.length;
         }
-
         public int getRowCount() {
             return data.size();
         }
         
         public boolean nothingSelected(){
-
             for(int i = 0; i<data.size(); i++){
                 if((Boolean)data.get(i).get(1)){
                     return false;
@@ -2916,7 +2819,6 @@ public class Wizard implements ActionListener {
             }
             return true;
         }
-
         public String getColumnName(int col) {
             if(isImageTable){
                 return columnNamesImages[col];
@@ -2926,7 +2828,6 @@ public class Wizard implements ActionListener {
             }
             return columnNames[col];
         }
-
         public Object getValueAt(int row, int col) {
             return (data.get(row)).get(col);
         }
@@ -2938,23 +2839,23 @@ public class Wizard implements ActionListener {
             //Note that the data/cell address is constant,
             //no matter where the cell appears on screen.
             if(isImageTable){
-            	
-            		return false;
-            	
+             
+              return false;
+             
             }
-        	
+         
             if(isQuesTable && col>0){
-            	
-        		return true;
-        	
+             
+          return true;
+         
             }
             
             if(isQuesTable && col==0)
             {
-            	return false;
+             return false;
             }
             
-        	if(isLOTable)
+         if(isLOTable)
             {
                 if(col==1 && row ==0)
                 {
@@ -2979,7 +2880,6 @@ public class Wizard implements ActionListener {
         }
         public Object[][] findLearningObjective(String name)
         {
-
             if(name.equals("Operations and Algebraic Thinking"))
             {
                 Object [][] data2 = {
@@ -2988,7 +2888,6 @@ public class Wizard implements ActionListener {
                         {"--Generate and Analyze Patterns",new Boolean(false)}
                 };
                 return data2;
-
             }
             else if(name.equals("Number and Operations - Base 10"))
             {
@@ -2997,7 +2896,6 @@ public class Wizard implements ActionListener {
                         {"--Use Place Value Understanding and Properties of Operations to Perform Multi-Digit Arithmetic",new Boolean(false)}
                 };
                 return data2;
-
             }
             else if(name.equals("Number and Operations - Fractions"))
             {
@@ -3007,7 +2905,6 @@ public class Wizard implements ActionListener {
                         {"--Understand Decimal Notation for Fractions, and Compare Decimal Fractions",new Boolean(false)}
                 };
                 return data2;
-
             }
             else if(name.equals("Measurement and Data"))
             {
@@ -3030,7 +2927,6 @@ public class Wizard implements ActionListener {
                 return null;
             }
         }
-
         public void setValueAt(Object value, int row, int col) {
             if( isLOTable){
                 if((Boolean)(data.get(row)).get(col))
@@ -3108,13 +3004,10 @@ public class Wizard implements ActionListener {
                     fireTableCellUpdated(row, col);
                     mainPanel.updateUI();
                 }
-
             }
             fireTableCellUpdated(row, col);
         }
-
     }
-
 }
 //else if(background.equals("Classroom"))
 //{
@@ -3702,7 +3595,6 @@ public class Wizard implements ActionListener {
 //  treePanel.updateUI();
 //  mainPanel.updateUI();
 //}
-
 //charBack.addActionListener(new ActionListener(){
 //  public void actionPerformed(ActionEvent e){
 //      mainPanel.removeAll();
@@ -3726,7 +3618,6 @@ public class Wizard implements ActionListener {
 //      mainPanel.updateUI();
 //  }
 //});
-
 //locationButton.addActionListener(new ActionListener(){
 //  public void actionPerformed(ActionEvent e){
 //      mainPanel.removeAll();
@@ -3849,7 +3740,6 @@ public class Wizard implements ActionListener {
 //  treePanel.updateUI();
 //}
 //});
-
 //introTwoButton.addActionListener(new ActionListener(){
 //public void actionPerformed(ActionEvent e){
 //  mainPanel.removeAll();
@@ -3874,3 +3764,4 @@ public class Wizard implements ActionListener {
 //  mainPanel.updateUI();
 //}
 //});
+ 
