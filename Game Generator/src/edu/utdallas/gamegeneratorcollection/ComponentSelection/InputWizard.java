@@ -14,7 +14,6 @@ import edu.utdallas.gamePlayEngine.model.GameModel;
 import edu.utdallas.gamePlayEngine.model.GameModelBoundary;
 import edu.utdallas.gamePlayEngine.view.GameView;
 import edu.utdallas.gamegenerator.RepoUpdate.Updates;
-import edu.utdallas.sharedfiles.Shared.*;
 import edu.utdallas.gamegeneratorcollection.ComponentCreation.Asset;
 import edu.utdallas.gamegeneratorcollection.ComponentCreation.AudioPlayer;
 import edu.utdallas.gamegeneratorcollection.ComponentCreation.CharacterAsset;
@@ -52,19 +51,18 @@ import java.awt.event.WindowListener;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.StringTokenizer;
 
 
 public class InputWizard implements ActionListener {
 /**
  * @Authors Kaleb Breault, Alex Hunsberger, Zayed Alfalasi, Abdulla Alfalasi, Jacob Dahleen
  * This class makes a GUI interface for entering input and previewing XML games
- * implements ActionListener so a subclass for it is not needed. 
+ * implements ActionListener so a subclass for it is not needed.
  */
-	
-	public static final int WIDTH = 1280;
-	public static final int HEIGHT = 481;
-	private Matrix[] componentInputs;
+
+        public static final int WIDTH = 1280;
+        public static final int HEIGHT = 720;
+        private Matrix[] componentInputs;
 	private boolean submitClicked = false;
  	private JFrame window = new JFrame();
  	private JPanel mainPannel;
@@ -133,13 +131,13 @@ public class InputWizard implements ActionListener {
 		componentInputs = input;
 		initializeComponentInputs();
         window.setSize(WIDTH, HEIGHT);
-        window.setResizable(true);
+        window.setResizable(false);
         window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         int nextOpenRow = 0;
         // next available row slot
         final String none = "no";
         mainPannel = new JPanel(new GridLayout(wizardRowSize, 1));
-// making menu
+        // making menu
         menuBar = new JMenuBar();
         fileMenu = new JMenu("File");
         fileMenu.setMnemonic(KeyEvent.VK_F);
@@ -464,18 +462,18 @@ public class InputWizard implements ActionListener {
 	    games.add(openGame);
 	    games.addSeparator();
 	    games.add(quit);
-	    
+
 	    menuBar.add(games);
-	    
+
 	    final GameView gameView = new GameView();
-				
+
 		final JPanel jPanel = new JPanel(new BorderLayout());
 		//jPanel.setLocationRelativeTo(null);
 		//jPanel.pack();
 		jPanel.setVisible(true);
-		jPanel.setSize(600, 600);
+		jPanel.setSize(1280, 720);
 		jPanel.setLayout(new BorderLayout());
-		
+
 		Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
 		jPanel.setLocation(dim.width / 2 - jPanel.getSize().width / 2,
 				dim.height / 2 - jPanel.getSize().height / 2);
@@ -512,8 +510,8 @@ public class InputWizard implements ActionListener {
 		    
         JPanel browsePanel = new JPanel(new BorderLayout()); // browse/click on Acts/Scenes
         browsePanel.add(scrollPane);
-        
-        JPanel toolbarPanel = new JPanel(new GridLayout(3,2,0,0));
+
+        JPanel toolbarPanel = new JPanel(new GridLayout(3, 2, 0, 0));
         characterButton = new JButton("Character");
         characterButton.addActionListener(this);
         characterButton.setEnabled(false);
