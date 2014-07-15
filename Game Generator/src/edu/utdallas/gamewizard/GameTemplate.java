@@ -11,11 +11,11 @@ import javax.xml.bind.annotation.XmlRootElement;
 public class GameTemplate {
 	@XmlElementWrapper(name="acts")
     @XmlElement(name="act")
-	ArrayList <Act> actList;
+	ArrayList <Act2> actList;
 	String name;
 	
 	public GameTemplate(){
-		actList = new ArrayList<Act>();
+		actList = new ArrayList<Act2>();
 	}
 	
 	public String getName(){
@@ -27,12 +27,12 @@ public class GameTemplate {
 		this.name = name;
 	}
 	
-	public ArrayList <Act> getActs(){
+	public ArrayList <Act2> getActs(){
 		return actList;
 	}
 	
 	@XmlElement
-	public void setActs(ArrayList <Act> actList){
+	public void setActs(ArrayList <Act2> actList){
 		this.actList = actList;
 	}
 	
