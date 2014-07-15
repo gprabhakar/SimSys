@@ -1,7 +1,4 @@
-package edu.utdallas.gamegenerator.Theme;
-
-import edu.utdallas.gamegeneratorcollection.GameComposition.BaseScreen;
-import edu.utdallas.gamegeneratorcollection.GameComposition.ScreenType;
+package edu.utdallas.gamegeneratorcollection.GameComposition;
 
 import javax.xml.bind.annotation.XmlRootElement;
 

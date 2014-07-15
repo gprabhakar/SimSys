@@ -3,7 +3,7 @@ package edu.utdallas.gamegeneratorcollection.GameComposition;
 import javax.xml.bind.annotation.XmlElement;
 
 /**
- * User: clocke
+ * User: clocke.
  * Date: 2/17/13
  * Time: 3:25 PM
  */

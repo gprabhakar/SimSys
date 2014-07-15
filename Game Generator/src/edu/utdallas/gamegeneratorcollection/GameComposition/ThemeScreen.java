@@ -1,11 +1,11 @@
-package edu.utdallas.gamegenerator.Theme;
+package edu.utdallas.gamegeneratorcollection.GameComposition;
 
 import edu.utdallas.gamegeneratorcollection.ComponentCreation.ButtonLocationType;
 import edu.utdallas.gamegeneratorcollection.ComponentCreation.GameObject;
 import edu.utdallas.gamegeneratorcollection.ComponentCreation.SharedButton;
 import edu.utdallas.gamegeneratorcollection.ComponentCreation.SharedCharacter;
 import edu.utdallas.gamegeneratorcollection.ComponentCreation.SharedInformationBox;
-import edu.utdallas.gamegeneratorcollection.GameComposition.LearningActCharacterType;
+
 
 
 import javax.xml.bind.annotation.XmlElement;

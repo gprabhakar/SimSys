@@ -1,4 +1,4 @@
-package edu.utdallas.gamegenerator.Theme;
+package edu.utdallas.gamegeneratorcollection.GameComposition;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -17,10 +17,6 @@ import edu.utdallas.gamegeneratorcollection.ComponentCreation.GameObject;
 import edu.utdallas.gamegeneratorcollection.ComponentCreation.SharedButton;
 import edu.utdallas.gamegeneratorcollection.ComponentCreation.SharedCharacter;
 import edu.utdallas.gamegeneratorcollection.ComponentCreation.SharedInformationBox;
-import edu.utdallas.gamegeneratorcollection.GameComposition.Characters;
-import edu.utdallas.gamegeneratorcollection.GameComposition.GameCharacter;
-import edu.utdallas.gamegeneratorcollection.GameComposition.LearningActCharacterType;
-import edu.utdallas.gamegeneratorcollection.GameComposition.TransitionType;
 import edu.utdallas.gamespecification.BackgroundType;
 import edu.utdallas.gamespecification.GameElementType;
 import edu.utdallas.gamespecification.GenericInteraction;
@@ -61,7 +57,7 @@ public class Theme {
     }
 
     /**
-     * Returns a list of ScreenNode built from the passed list of ThemeScreen
+     * Returns a list of ScreenNode built from the passed list of ThemeScreen.
      * @param screens a list of ThemeScreen
      * @return a list of ScreenNode
      */
@@ -71,48 +67,58 @@ public class Theme {
         BackgroundType currentBackground = new BackgroundType();
         //UUID currentScreen = UUID.randomUUID();
         UUID nextScreen = UUID.randomUUID();
-        for(ThemeScreen screen : screens) {
+        for (ThemeScreen screen : screens) {
             Screen screenNode = new Screen();
             //screenNode.setId(currentScreen);
             currentBackground.setBackground(screen.getBackground());
             currentScene.setBackground(currentBackground);
             List<Asset> assets = new ArrayList<Asset>();
-            if(screen.getGameObjects() != null) {
-                for(GameObject object : screen.getGameObjects()) {
+            if (screen.getGameObjects() != null) {
+                for (GameObject object : screen.getGameObjects()) {
                     assets.add(new Asset(object));
                     GameElementType nextElement = convertGameObjects(object);
-                	screenNode.getGameElement().add(nextElement);
+                    screenNode.getGameElement().add(nextElement);
                 }
             }
-            if(screen.getThemeCharacters() != null) {
-                for(SharedCharacter character : screen.getThemeCharacters().values()) {
-                    LearningActCharacterType characterType = character.getCharacterType();
-                    GameCharacter gameCharacter = characters.getCharacter(characterType);
+            if (screen.getThemeCharacters() != null) {
+                for (SharedCharacter character
+                         : screen.getThemeCharacters().values()) {
+                    LearningActCharacterType characterType =
+                             character.getCharacterType();
+                    GameCharacter gameCharacter =
+                             characters.getCharacter(characterType);
                     Asset characterAsset = new Asset(character, gameCharacter);
                     assets.add(characterAsset);
-                    GameElementType nextElement = convertGameObjects(character); 
-                    nextElement.setName(characterAsset.getDisplayImage());//Add the image from the asset class item.
+                    GameElementType nextElement =
+                             convertGameObjects(character);
+                    //Add the image from the asset class item.
+                    nextElement.setName(characterAsset.getDisplayImage());
                     //nextElement.setName(character.getText());
-                    
+
                     screenNode.getGameElement().add(nextElement);
                 }
             }
-            if(screen.getInformationBoxes() != null) {
-                for(SharedInformationBox informationBox : screen.getInformationBoxes()) {
-                	assets.add(new Asset(informationBox));
-                    GameElementType nextElement = new GenericInteraction(informationBox);
+            if (screen.getInformationBoxes() != null) {
+                for (SharedInformationBox informationBox
+                          : screen.getInformationBoxes()) {
+                    assets.add(new Asset(informationBox));
+                    GameElementType nextElement =
+                            new GenericInteraction(informationBox);
                     screenNode.getGameElement().add(nextElement);
                 }
             }
-            if(screen.getButtons() != null) {
-                for(SharedButton button : screen.getButtons().values()) {
+            if (screen.getButtons() != null) {
+                for (SharedButton button : screen.getButtons().values()) {
                     Asset asset = new Asset(button);
-                    GameElementType nextElement = new GenericInteraction(button);
-                    
-                    if(asset.getBehaviors() != null) {
-                        for(Behavior behavior : asset.getBehaviors()) {
-                            if(BehaviorType.TRANSITION_BEHAVIOR == behavior.getBehaviorType() &&
-                                    TransitionType.NEXT_SCREEN == behavior.getTransition()) {
+                    GameElementType nextElement =
+                             new GenericInteraction(button);
+
+                    if (asset.getBehaviors() != null) {
+                        for (Behavior behavior : asset.getBehaviors()) {
+                            if (BehaviorType.TRANSITION_BEHAVIOR
+                                    == behavior.getBehaviorType()
+                                    && TransitionType.NEXT_SCREEN
+                                    == behavior.getTransition()) {
                                 behavior.setTransitionId(nextScreen);
                             }
                         }
@@ -129,13 +135,15 @@ public class Theme {
         }
         return currentScene;
     }
-    
+
     public GameElementType convertGameObjects(GameObject rawObject) {
-    	GameElementType nextElement = new GameElementType();
-    	nextElement.setLocation(new Location(rawObject.getX(), rawObject.getY()));
-    	nextElement.setSize(new Size(rawObject.getWidth(), rawObject.getHeight()));
-    	nextElement.setName(rawObject.getPathToAsset());
-    	return nextElement;
+        GameElementType nextElement = new GameElementType();
+        nextElement.setLocation(
+                new Location(rawObject.getX(), rawObject.getY()));
+        nextElement.setSize(
+                new Size(rawObject.getWidth(), rawObject.getHeight()));
+        nextElement.setName(rawObject.getPathToAsset());
+        return nextElement;
     }
 
     public Subject getSubject() {

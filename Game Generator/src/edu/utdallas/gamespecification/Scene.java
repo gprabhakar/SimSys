@@ -61,6 +61,11 @@ private List<LearningObjectiveType> learningObjective;
  @XmlElement(name = "Music")
  private MusicType music;
 
+     public Scene(){
+         
+         this.background = null;
+         this.music = null;
+     }
  /**
   * Gets the value of the learningObjective property.
   *
@@ -70,7 +75,10 @@ private List<LearningObjectiveType> learningObjective;
   *
   */
  public final List<LearningObjectiveType> getLearningObjective() {
-     return learningObjective;
+     if (learningObjective == null) {
+         learningObjective = new ArrayList<LearningObjectiveType>();
+     }
+     return this.learningObjective;
  }
 
  /**

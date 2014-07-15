@@ -17,30 +17,6 @@ import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
 
 
-/**
- * <p>Java class for AnimationEffectType complex type.
- *
- * <p>The following schema fragment specifies the expected content contained within this class.
- *
- * <pre>
- * &lt;complexType name="AnimationEffectType">
- *   &lt;complexContent>
- *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
- *       &lt;sequence>
- *         &lt;element name="Effect" type="{http://www.w3.org/2001/XMLSchema}string" maxOccurs="unbounded"/>
- *         &lt;element name="Speed" type="{http://www.example.org/Game/}SpeedType"/>
- *         &lt;element name="StartLocation" type="{http://www.w3.org/2001/XMLSchema}string"/>
- *         &lt;element name="EndLocation" type="{http://www.w3.org/2001/XMLSchema}string"/>
- *         &lt;element name="Duration" type="{http://www.w3.org/2001/XMLSchema}string"/>
- *         &lt;element name="Images" type="{http://www.example.org/Game/}ImageType" maxOccurs="unbounded"/>
- *       &lt;/sequence>
- *     &lt;/restriction>
- *   &lt;/complexContent>
- * &lt;/complexType>
- * </pre>
- *
- *
- */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "AnimationEffectType", propOrder = {
     "effect",
@@ -72,7 +48,8 @@ public class AnimationEffectType {
      * This accessor method returns a reference to the live list,
      * not a snapshot. Therefore any modification you make to the
      * returned list will be present inside the JAXB object.
-     * This is why there is not a <CODE>set</CODE> method for the effect property.
+     * This is why there is not a <CODE>set</CODE> method for the
+     * effect property.
      *
      * <p>
      * For example, to add a new item, do as follows:
@@ -86,7 +63,7 @@ public class AnimationEffectType {
      *      possible object is
      *      {@link String }
      *
-     *@return the list of effects for the background
+     *
      */
     public final List<String> getEffect() {
         if (effect == null) {
@@ -115,7 +92,7 @@ public class AnimationEffectType {
      *     {@link SpeedType }
      *
      */
-    public final void setSpeed(SpeedType value) {
+    public final void setSpeed(final SpeedType value) {
         this.speed = value;
     }
 
@@ -198,7 +175,8 @@ public class AnimationEffectType {
      * This accessor method returns a reference to the live list,
      * not a snapshot. Therefore any modification you make to the
      * returned list will be present inside the JAXB object.
-     * This is why there is not a <CODE>set</CODE> method for the images property.
+     * This is why there is not a <CODE>set</CODE> method for the
+     * images property.
      *
      * <p>
      * For example, to add a new item, do as follows:
@@ -210,9 +188,9 @@ public class AnimationEffectType {
      * <p>
      * @return
      *      possible object is
-     *      {@link ImageType }
+     *      {@link ItemImage }
      *
-     *@return the list of images associated with the animation effect
+     *
      */
     public final List<ItemImage> getImages() {
         if (images == null) {

@@ -4,9 +4,9 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
-import edu.utdallas.gamegenerator.Theme.Theme;
 import edu.utdallas.gamegeneratorcollection.GameComposition.Characters;
 import edu.utdallas.gamegeneratorcollection.GameComposition.Locale;
+import edu.utdallas.gamegeneratorcollection.GameComposition.Theme;
 import edu.utdallas.gamespecification.Act;
 import edu.utdallas.gamespecification.BackgroundType;
 import edu.utdallas.gamespecification.Behavior;

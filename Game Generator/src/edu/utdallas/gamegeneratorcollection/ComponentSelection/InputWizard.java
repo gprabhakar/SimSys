@@ -368,7 +368,7 @@ public class InputWizard implements ActionListener {
             	}
             	else if(isGameNode(selectedNode))
             	{
-            		List<Character> chars = game.getCharacter();
+            		List<? extends Character> chars = game.getCharacter();
             		
             		scenePanel.clear();
             		System.out.println("calling clear rootnode\n");

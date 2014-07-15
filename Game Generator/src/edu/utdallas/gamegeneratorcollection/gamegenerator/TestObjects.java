@@ -1,16 +1,11 @@
 package edu.utdallas.gamegeneratorcollection.gamegenerator;
 
-<<<<<<< HEAD
+
 
 import edu.utdallas.gamegenerator.LearningAct.Challenge.Reward;
 
 
-=======
-//import edu.utdallas.gamegenerator.Characters.*;
 import edu.utdallas.gamegenerator.LearningAct.Challenge.Reward;
-//import edu.utdallas.gamegenerator.LearningAct.Screen.*;
-//import edu.utdallas.sharedfiles.Shared.*;
->>>>>>> upstream/master
 import edu.utdallas.gamegenerator.Subject.Subject;
 import edu.utdallas.gamegenerator.Theme.*;
 import edu.utdallas.gamegeneratorcollection.ComponentCreation.Behavior;
@@ -41,6 +36,11 @@ import edu.utdallas.gamegeneratorcollection.GameComposition.ObjectMovement;
 import edu.utdallas.gamegeneratorcollection.GameComposition.ObjectMovementType;
 import edu.utdallas.gamegeneratorcollection.GameComposition.ScreenType;
 import edu.utdallas.gamegeneratorcollection.GameComposition.TextType;
+import edu.utdallas.gamegeneratorcollection.GameComposition.Theme;
+import edu.utdallas.gamegeneratorcollection.GameComposition.ThemeScreen;
+import edu.utdallas.gamegeneratorcollection.GameComposition.ThemeStory;
+import edu.utdallas.gamegeneratorcollection.GameComposition.ThemeStoryScreenIntro;
+import edu.utdallas.gamegeneratorcollection.GameComposition.ThemeStoryScreenOutro;
 import edu.utdallas.gamegeneratorcollection.GameComposition.TransitionType;
 import edu.utdallas.gamegeneratorcollection.GameOutput.Structure;
 
