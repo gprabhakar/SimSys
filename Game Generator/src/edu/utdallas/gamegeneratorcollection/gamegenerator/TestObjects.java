@@ -6,8 +6,6 @@ import edu.utdallas.gamegenerator.LearningAct.Challenge.Reward;
 
 
 import edu.utdallas.gamegenerator.LearningAct.Challenge.Reward;
-import edu.utdallas.gamegenerator.Subject.Subject;
-import edu.utdallas.gamegenerator.Theme.*;
 import edu.utdallas.gamegeneratorcollection.ComponentCreation.Behavior;
 import edu.utdallas.gamegeneratorcollection.ComponentCreation.BehaviorType;
 import edu.utdallas.gamegeneratorcollection.ComponentCreation.ButtonLocationType;
@@ -35,6 +33,7 @@ import edu.utdallas.gamegeneratorcollection.GameComposition.LocaleScreen;
 import edu.utdallas.gamegeneratorcollection.GameComposition.ObjectMovement;
 import edu.utdallas.gamegeneratorcollection.GameComposition.ObjectMovementType;
 import edu.utdallas.gamegeneratorcollection.GameComposition.ScreenType;
+import edu.utdallas.gamegeneratorcollection.GameComposition.Subject;
 import edu.utdallas.gamegeneratorcollection.GameComposition.TextType;
 import edu.utdallas.gamegeneratorcollection.GameComposition.Theme;
 import edu.utdallas.gamegeneratorcollection.GameComposition.ThemeScreen;

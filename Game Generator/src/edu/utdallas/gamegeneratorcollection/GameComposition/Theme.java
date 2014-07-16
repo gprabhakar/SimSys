@@ -9,7 +9,6 @@ import javax.xml.bind.annotation.XmlElementWrapper;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 
-import edu.utdallas.gamegenerator.Subject.Subject;
 import edu.utdallas.gamegeneratorcollection.ComponentCreation.Asset;
 import edu.utdallas.gamegeneratorcollection.ComponentCreation.Behavior;
 import edu.utdallas.gamegeneratorcollection.ComponentCreation.BehaviorType;
@@ -26,7 +25,7 @@ import edu.utdallas.gamespecification.Screen;
 import edu.utdallas.gamespecification.Size;
 
 /**
- * User: clocke
+ * User: clocke.
  * Date: 2/17/13
  * Time: 6:04 PM
  */
@@ -43,7 +42,7 @@ public class Theme {
      * If there are no intro screens it will return an empty list
      * @return the list of intro screens
      */
-    public Scene getIntro() {
+    public final Scene getIntro() {
         return (introScreens != null ? getScreens(introScreens) : new Scene());
     }
 
@@ -52,7 +51,7 @@ public class Theme {
      * If there are no outro screens it will return an empty list
      * @return the list of outro screens
      */
-    public Scene getOutro() {
+    public final Scene getOutro() {
         return (outroScreens != null ? getScreens(outroScreens) : new Scene());
     }
 
@@ -61,7 +60,7 @@ public class Theme {
      * @param screens a list of ThemeScreen
      * @return a list of ScreenNode
      */
-    private Scene getScreens(List<ThemeScreen> screens) {
+    private Scene getScreens(final List<ThemeScreen> screens) {
         //List<Screen> screenNodes = new ArrayList<Screen>();
         Scene currentScene = new Scene();
         BackgroundType currentBackground = new BackgroundType();

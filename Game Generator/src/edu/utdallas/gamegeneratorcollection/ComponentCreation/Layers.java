@@ -1,9 +1,9 @@
 package edu.utdallas.gamegeneratorcollection.ComponentCreation;
 
-import edu.utdallas.gamegenerator.Subject.Subject;
 import edu.utdallas.gamegeneratorcollection.GameComposition.Characters;
 import edu.utdallas.gamegeneratorcollection.GameComposition.LearningAct;
 import edu.utdallas.gamegeneratorcollection.GameComposition.Locale;
+import edu.utdallas.gamegeneratorcollection.GameComposition.Subject;
 import edu.utdallas.gamegeneratorcollection.GameComposition.Theme;
 import edu.utdallas.gamegeneratorcollection.GameOutput.Structure;
 

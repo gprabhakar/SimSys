@@ -19,6 +19,7 @@ import edu.utdallas.gamegeneratorcollection.ComponentCreation.GameObject;
 import edu.utdallas.gamegeneratorcollection.ComponentCreation.SharedButton;
 import edu.utdallas.gamegeneratorcollection.ComponentCreation.SharedCharacter;
 import edu.utdallas.gamegeneratorcollection.ComponentCreation.SharedInformationBox;
+import edu.utdallas.gamegeneratorcollection.GameComposition.TextType;
 import edu.utdallas.gamespecification.Act;
 import edu.utdallas.gamespecification.BackgroundType;
 import edu.utdallas.gamespecification.ClassificationType;
@@ -35,6 +36,7 @@ import edu.utdallas.gamespecification.Scene;
 import edu.utdallas.gamespecification.Screen;
 import edu.utdallas.gamespecification.Size;
 import edu.utdallas.gamespecification.Stem;
+import edu.utdallas.gamespecification.StemText;
 
 /**
  * User: clocke.
@@ -107,21 +109,34 @@ public class Locale {
                 TransitionType.BEGINNING_OF_CHALLENGE);
         LessonAct lessonAct = learningActs.get(
                 learningActId).getLessonActs().get(0);
-
+        Scene testScene = new Scene();
+        testScene = null;
         List<Screen> screenNodes = new ArrayList<Screen>();
         List<ChallengeScreen> challenges = lessonAct.getLessonChallenges();
-        List<Scene> sceneNodes = new ArrayList<Scene>();
+        List<Scene> allScenes = new ArrayList<Scene>();
         for (ChallengeScreen challenge : challenges) {
             UUID nextChallenge = UUID.randomUUID();
+            testScene = buildChallenge(learningActId, challenge, currentScreen);
+            int numScenes = allScenes.size();
+            if (numScenes >= 1) {
+                if (allScenes.get(numScenes - 1).getBackground().getBackground()
+                        .equals(testScene.getBackground().getBackground())) {
+                    allScenes.get(numScenes - 1).getScreen().addAll(
+                            testScene.getScreen());
+                } else {
+                    allScenes.add(testScene);
+                }
+            } else {
+                allScenes.add(testScene);
+            }
+
             screenTransitions.put(TransitionType.NEXT_CHALLENGE, nextChallenge);
             screenTransitions.put(
                     TransitionType.CURRENT_CHALLENGE, currentScreen);
-            sceneNodes.add(
-                    buildChallenge(learningActId, challenge, currentScreen));
             currentScreen = nextChallenge;
         }
 
-        return sceneNodes;
+        return allScenes;
     }
 
     /**
@@ -153,9 +168,6 @@ public class Locale {
         List<Screen> lessonScreens = new ArrayList<Screen>();
         List<Scene> allScenes = new ArrayList<Scene>();
         Scene testScene = new Scene();
-        Scene lastScene = new Scene();
-        lastScene.setBackground(new BackgroundType());
-        lastScene.getBackground().setBackground(null);
         testScene = null;
         UUID currentScreen = UUID.randomUUID();
         UUID nextScreen = null;
@@ -173,17 +185,18 @@ public class Locale {
             testScene = buildScreen(learningActId, screen,
                     localeScreens.get(screenType),
                     currentScreen, nextScreen);
-            if (testScene.getBackground().getBackground().equals(
-                    testScene.getBackground().getBackground())) {
-                testScene.getScreen().addAll(
-                //Just add the screens in this case.
-                        testScene.getScreen());
+            int numScenes = allScenes.size();
+            if (numScenes >= 1) {
+                if (allScenes.get(numScenes - 1).getBackground().getBackground()
+                        .equals(testScene.getBackground().getBackground())) {
+                    allScenes.get(numScenes - 1).getScreen().addAll(
+                            testScene.getScreen());
+                } else {
+                    allScenes.add(testScene);
+                }
             } else {
-                 allScenes.add(testScene);
-
+                allScenes.add(testScene);
             }
-          //Next loop, we test against the last scene we fetched.
-            lastScene = testScene;
         }
 
         if (screenType.equals(ScreenType.LESSON_STORY_INTRO)) {
@@ -203,7 +216,6 @@ public class Locale {
         List<Screen> lessonScreens = new ArrayList<Screen>();
         List<Scene> allScenes = new ArrayList<Scene>();
         Scene testScene = new Scene();
-        Scene lastScene = new Scene();
         UUID currentScreen = screenTransitions.get(
                 TransitionType.BEGINNING_OF_LESSON);
         UUID nextScreen = null;
@@ -212,22 +224,23 @@ public class Locale {
         List<? extends BaseScreen> screens = lessonAct.getLessonScreens();
         for (BaseScreen screen : screens) {
             nextScreen = UUID.randomUUID();
+            nextScreen = UUID.randomUUID();
             testScene = buildScreen(learningActId, screen,
                     localeScreens.get(screen.getType()),
                     currentScreen, nextScreen);
-            if (testScene.getBackground().getBackground().equals(
-                    testScene.getBackground().getBackground())) {
-              //Just add the screens in this case.
-                testScene.getScreen().addAll(testScene.getScreen());
-
-            }
-            else
-            {
+            int numScenes = allScenes.size();
+            if (numScenes >= 1) {
+                if (allScenes.get(numScenes - 1).getBackground().getBackground()
+                        .equals(testScene.getBackground().getBackground())) {
+                    allScenes.get(numScenes - 1).getScreen().addAll(
+                            testScene.getScreen());
+                } else {
+                    allScenes.add(testScene);
+                }
+            } else {
                 allScenes.add(testScene);
 
             }
-            lastScene = testScene;
-
         }
 
         screenTransitions.put(
@@ -254,12 +267,25 @@ public class Locale {
         Scene currentScene = new Scene();
         List<Screen> screenNodes = new ArrayList<Screen>();
         List<Asset> assets = new ArrayList<Asset>();
-        LearningObjectiveType objective = new LearningObjectiveType();
         Screen screenNode = new Screen();
         List<Option> gameOptions = new ArrayList<Option>();
-
         List<GameObject> localeObjects = localeScreen.getGameObjects();
         List<LearningActCharacter> screenCharacters = screen.getCharacters();
+        Boolean isChallenge = (screen instanceof ChallengeScreen);
+        QuizChallenge currentChallenge = new QuizChallenge();
+        MultipleChoiceItem currentItem = new MultipleChoiceItem();
+
+        if (isChallenge) {
+            currentChallenge.setClassification(ClassificationType.INTERACTIVE);
+            currentChallenge.setLayout(new Layout());
+            currentItem.setStem(new Stem());
+            currentItem.getStem().setStemText(new StemText());
+            currentItem.getStem().setStemQuestion(new StemQuestion());
+            currentChallenge.setItem(currentItem);
+            currentChallenge.getLayout().setLayoutName("Placeholder name");
+
+        }
+
         currentScene.setBackground(
                 new BackgroundType(localeScreen.getBackground()));
 
@@ -288,24 +314,28 @@ public class Locale {
                 assets.add(infoBoxAsset);
                 screenNode.getGameElement().add(
                         convertInfoBoxes(gameText, infoBoxAsset));
+                if (isChallenge) {
+                    switch (gameText.getTextType()) {
+                        case CHALLENGE_QUESTION:
+                            currentItem.getStem().getStemText().setHint(
+                                    new Hint(gameText.getText()));
+                            break;
+                        case CHALLENGE_DESCRIPTION:
+                            currentItem.getStem().getStemQuestion().setHint(
+                                    new Hint(gameText.getText()));
+                            break;
+                        default:
+                            break;
+                    }
+                }
             }
         }
 
         List<GameButton> gameButtons =
                 new ArrayList<GameButton>(screen.getButtons());
-        if (screen instanceof ChallengeScreen) {
+        if (isChallenge) {
             ChallengeScreen challenge = (ChallengeScreen) screen;
             List<ChallengeOption> options = challenge.getChallengeOptions();
-            QuizChallenge currentChallenge = new QuizChallenge();
-
-            currentChallenge.setClassification(ClassificationType.INTERACTIVE);
-            currentChallenge.setLayout(new Layout());
-            MultipleChoiceItem currentItem = new MultipleChoiceItem();
-            currentItem.setStem(new Stem());
-            currentItem.getStem().setStemQuestion(new StemQuestion());
-            currentChallenge.setItem(currentItem);
-
-            currentChallenge.getLayout().setLayoutName("Placeholder name");
             if (options != null) {
 
                 gameButtons.addAll(options);
@@ -316,12 +346,13 @@ public class Locale {
                     //Need to change this to a proper reward
                     nextOption.setReward(option.getReward().toString());
                     currentItem.getOption().add(nextOption);
-
                 }
-
+            currentChallenge.setItem(currentItem);
             }
+
             screenNode.getChallenge().add(currentChallenge);
         }
+
         Map<ButtonLocationType, SharedButton> localeButtons =
                 localeScreen.getButtons();
         if (gameButtons != null) {

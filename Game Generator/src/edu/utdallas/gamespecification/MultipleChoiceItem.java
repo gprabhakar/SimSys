@@ -10,6 +10,7 @@ package edu.utdallas.gamespecification;
 
 //package org.example.game;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.xml.bind.annotation.XmlAccessType;
@@ -117,7 +118,10 @@ public class MultipleChoiceItem
   *
   */
  public final List<Option> getOption() {
-     return option;
+     if (option == null) {
+         option = new ArrayList<Option>();
+     }
+     return this.option;
  }
 
 
