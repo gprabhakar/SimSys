@@ -86,7 +86,7 @@ public class Locale {
      * @param learningActId the index of the learning act
      * @return a list of ScreenNode
      */
-    public Act getAct(int learningActId) {
+    public final Act getAct(final int learningActId) {
         Act currentAct = new Act();
         List<Scene> actScenes = new ArrayList<Scene>();
         actScenes.addAll(
@@ -146,8 +146,8 @@ public class Locale {
      * @param currentScreen the UUID of the screen to be built
      * @return a list of ScreenNode containing the challenge
      */
-    private Scene buildChallenge(int learningActId,
-            ChallengeScreen challenge, UUID currentScreen) {
+    private Scene buildChallenge(final int learningActId,
+            final ChallengeScreen challenge, final UUID currentScreen) {
         UUID nextScreen = UUID.randomUUID();
 
         List<Screen> screenNodes = new ArrayList<Screen>();
@@ -164,7 +164,8 @@ public class Locale {
      * @param screenType the type of screens to build
      * @return a list of ScreenNode
      */
-    private List<Scene> buildScreens(int learningActId, ScreenType screenType) {
+    private List<Scene> buildScreens(final int learningActId,
+            final ScreenType screenType) {
         List<Screen> lessonScreens = new ArrayList<Screen>();
         List<Scene> allScenes = new ArrayList<Scene>();
         Scene testScene = new Scene();
@@ -212,7 +213,7 @@ public class Locale {
      * @param learningActId the id of the learning act
      * @return a list of ScreenNode containing the built lesson screens
      */
-    private List<Scene> buildLesson(int learningActId) {
+    private List<Scene> buildLesson(final int learningActId) {
         List<Screen> lessonScreens = new ArrayList<Screen>();
         List<Scene> allScenes = new ArrayList<Scene>();
         Scene testScene = new Scene();
@@ -438,7 +439,8 @@ public class Locale {
      * @return a list of ScreenNode representing the built additional screens
      */
     private List<Screen> buildAdditionalScreens(
-            List<BaseScreen> additionalScreens, UUID additionalScreenId) {
+            final List<BaseScreen> additionalScreens,
+            UUID additionalScreenId) {
         List<Screen> screenNodes = new ArrayList<Screen>();
         List<Scene> sceneNodes = new ArrayList<Scene>();
         UUID nextScreen = UUID.randomUUID();
