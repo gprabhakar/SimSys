@@ -19,6 +19,7 @@ import edu.utdallas.gamespecification.Player;
 import edu.utdallas.gamespecification.Profile;
 import edu.utdallas.gamespecification.Scene;
 import edu.utdallas.gamespecification.Screen;
+import edu.utdallas.gamespecification.Transition;
 
 /**
  * User: clocke.
@@ -145,7 +146,7 @@ public class Structure {
                     Screen screen = scene.getScreen().get(k);
                     if (screen.getTransition() == null) {
                         act.getScene().get(j).getScreen().get(k)
-                        .setTransition("Straight Cut");
+                        .setTransition(new Transition());
 
                     }
 

@@ -327,10 +327,43 @@
 
 	<complexType name="GameUnitType">
 		<sequence>
-			<element name="Transition" type="string"></element>
+			<element name="Transition" type="tns:Transition"></element>
 			<element name="Sequence" type="string"></element>
 		</sequence>
 	</complexType>
+
+	<complexType name="Transition">
+		<sequence>
+			<element name="TransitionType" type="tns:TransitionType"></element>
+			<element name="Duration" type="tns:Duration"></element>
+		</sequence>
+	</complexType>
+	
+		 <simpleType name="TransitionType">
+          <restriction base="string">
+         	<enumeration value="fadeIn"/>
+            <enumeration value="fadeOut"/>
+            <enumeration value="dissolve"/>
+            <enumeration value="wipe"/>
+            <enumeration value="morph"/> 
+            <enumeration value="straightCut"/>   
+            <enumeration value="contrastCut"/>   
+            <enumeration value="lCut"/>
+            <enumeration value="formCut"/>  
+            <enumeration value="matchCut"/>  
+            <enumeration value="parallelEditingCut"/>
+             <enumeration value="jumpCut"/>             
+          </restriction>
+        </simpleType>
+        
+       <simpleType name="Duration">
+          <restriction base="string">
+         	<enumeration value="slow"/>
+            <enumeration value="medium"/>
+            <enumeration value="fast"/>
+          </restriction>
+        </simpleType>
+
 
 	<complexType name="Character">
 		<complexContent>
