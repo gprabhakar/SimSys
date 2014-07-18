@@ -47,7 +47,7 @@ public class GameUnitType {
      * to other items of the same type.
      */
     @XmlElement(name = "Sequence", required = true)
-    private String sequence;
+    private Sequence sequence;
 
     /**
      * Gets the value of the transition property.
@@ -81,7 +81,7 @@ public class GameUnitType {
      *     {@link String }
      *
      */
-    public final String getSequence() {
+    public final Sequence getSequence() {
         return sequence;
     }
 
@@ -93,7 +93,7 @@ public class GameUnitType {
      *     {@link String }
      *
      */
-    public final void setSequence(final String value) {
+    public final void setSequence(final Sequence value) {
         this.sequence = value;
     }
 

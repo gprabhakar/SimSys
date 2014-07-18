@@ -19,6 +19,7 @@ import edu.utdallas.gamespecification.Player;
 import edu.utdallas.gamespecification.Profile;
 import edu.utdallas.gamespecification.Scene;
 import edu.utdallas.gamespecification.Screen;
+import edu.utdallas.gamespecification.Sequence;
 import edu.utdallas.gamespecification.Transition;
 
 /**
@@ -63,10 +64,13 @@ public class Structure {
     public final Game createGame() {
 
         acts = new ArrayList<Act>();
+        //Adds the intro. This act has no challenges.
         acts.add(createActFromScreens(theme.getIntro()));
+        //Adds the middle acts, which contain challenges.
         for (int i = 0; i < locale.getLearningActs().size(); i++) {
             acts.add(locale.getAct(i));
         }
+        //Adds the outro act. This act has no challenges.
         acts.add(createActFromScreens(theme.getOutro()));
 
         game = new Game();
@@ -137,23 +141,29 @@ public class Structure {
      */
 
     private void wireUpActs(final List<Act> actList) {
-        for (int i = 0; i < actList.size() - 1; i++) {
+        for (int i = 0; i < actList.size(); i++) {
             if (actList.get(i).getTransition() == null) {
                 actList.get(i).setTransition(new Transition());
             }
+            actList.get(i).setSequence(new Sequence(i));
             for (int j = 0; j < actList.get(i).getScene().
-                    size() - 1; j++) {
+                    size(); j++) {
+
                 if (actList.get(i).getScene().get(j).getTransition() == null) {
                     actList.get(i).getScene().get(j).setTransition(
                             new Transition());
                 }
+                actList.get(i).getScene().get(j).setSequence(new Sequence(j));
                 for (int k = 0; k < actList.get(i).getScene().get(j)
-                        .getScreen().size() - 1; k++) {
+                        .getScreen().size(); k++) {
+
                     if (actList.get(i).getScene().get(j).getScreen().get(k)
                             == null) {
                         actList.get(i).getScene().get(j).getScreen().get(k)
                         .setTransition(new Transition());
                     }
+                    actList.get(i).getScene().get(j).getScreen().get(k)
+                    .setSequence(new Sequence(k));
                 }
             }
         }

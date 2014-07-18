@@ -1,5 +1,10 @@
 package edu.utdallas.gamespecification;
 
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlType;
+
 /**
  *
  * @author Sean
@@ -7,17 +12,25 @@ package edu.utdallas.gamespecification;
  * Screen objects in terms of transition type and
  * duration.
  */
+
+@XmlAccessorType(XmlAccessType.FIELD)
+@XmlType(name = "Transition", propOrder = {
+ "type",
+ "duration"
+})
 public class Transition {
 
     /**
      * Enumerated type detailing the kind of
      * transition.
      */
+    @XmlElement(name = "TransitionType")
     private TransitionType type;
     /**
      * Enumerated type detailing the duration of
      * transition.
      */
+    @XmlElement(name = "Duration")
     private Duration duration;
 
     /**

@@ -331,6 +331,13 @@
 			<element name="Sequence" type="string"></element>
 		</sequence>
 	</complexType>
+	
+	<complexType name="Sequence">
+		<sequence>
+			<element name="SequenceNumber" type="integer"></element>
+			<element name="NextSequence" type="integer"></element>
+		</sequence>
+	</complexType>
 
 	<complexType name="Transition">
 		<sequence>
