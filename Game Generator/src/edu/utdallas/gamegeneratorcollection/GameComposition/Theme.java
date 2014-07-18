@@ -15,7 +15,7 @@ import edu.utdallas.gamegeneratorcollection.ComponentCreation.BehaviorType;
 import edu.utdallas.gamegeneratorcollection.ComponentCreation.GameObject;
 import edu.utdallas.gamegeneratorcollection.ComponentCreation.SharedButton;
 import edu.utdallas.gamegeneratorcollection.ComponentCreation.SharedCharacter;
-import edu.utdallas.gamegeneratorcollection.ComponentCreation.SharedInformationBox;
+import edu.utdallas.gamegeneratorcollection.ComponentCreation.SharedInfoBox;
 import edu.utdallas.gamespecification.BackgroundType;
 import edu.utdallas.gamespecification.GameElementType;
 import edu.utdallas.gamespecification.GenericInteraction;
@@ -32,10 +32,27 @@ import edu.utdallas.gamespecification.Transition;
  */
 @XmlRootElement(name = "Theme")
 public class Theme {
+    /**
+     * Subject object, pulled from Subject XML.
+     */
     private Subject subject;
+    /**
+     * Characters object, pulled from Characters XML.
+     */
     private Characters characters;
+    /**
+     * A list of screens, typically listed in a
+     * Theme XML file.
+     */
     private List<ThemeScreen> introScreens;
+    /**
+     * A list of screens, typically listed in a
+     * Theme XML file.
+     */
     private List<ThemeScreen> outroScreens;
+    /**
+     * A list of story screens.
+     */
     private List<ThemeStory> themeStories;
 
     /**
@@ -103,7 +120,7 @@ public class Theme {
                 }
             }
             if (screen.getInformationBoxes() != null) {
-                for (SharedInformationBox informationBox
+                for (SharedInfoBox informationBox
                           : screen.getInformationBoxes()) {
                     assets.add(new Asset(informationBox));
                     GameElementType nextElement =
@@ -141,7 +158,15 @@ public class Theme {
         return currentScene;
     }
 
-    public GameElementType convertGameObjects(GameObject rawObject) {
+    /**
+     *
+     * @param rawObject
+     * {@link GameObject}
+     * @return
+     * {@link GameElementType}
+     */
+    public final GameElementType convertGameObjects(
+            final GameObject rawObject) {
         GameElementType nextElement = new GameElementType();
         nextElement.setLocation(
                 new Location(rawObject.getX(), rawObject.getY()));
@@ -151,51 +176,91 @@ public class Theme {
         return nextElement;
     }
 
-    public Subject getSubject() {
+    /**
+     * @return
+     * {@link Subject}
+     */
+    public final Subject getSubject() {
         return subject;
     }
 
+    /**
+     * @param subjectToBeSet
+     * {@link Subject}
+     */
     @XmlTransient
-    public void setSubject(Subject subject) {
-        this.subject = subject;
+    public final void setSubject(final Subject subjectToBeSet) {
+        this.subject = subjectToBeSet;
     }
 
-    public Characters getCharacters() {
+    /**
+     * @return
+     * {@link Characters}
+     */
+    public final Characters getCharacters() {
         return characters;
     }
 
+    /**
+     * @param charactersToBeSet
+     * {@link Characters}
+     */
     @XmlTransient
-    public void setCharacters(Characters characters) {
-        this.characters = characters;
+    public final void setCharacters(final Characters charactersToBeSet) {
+        this.characters = charactersToBeSet;
     }
 
-    public List<ThemeScreen> getIntroScreens() {
+    /**
+     * @return
+     * {@link ThemeScreen}
+     */
+    public final List<ThemeScreen> getIntroScreens() {
         return introScreens;
     }
 
+    /**
+     * @param screens
+     * {@link ThemeScreen}
+     */
     @XmlElementWrapper(name = "IntroScreens")
     @XmlElement(name = "IntroScreen")
-    public void setIntroScreens(List<ThemeScreen> introScreens) {
-        this.introScreens = introScreens;
+    public final void setIntroScreens(final List<ThemeScreen> screens) {
+        this.introScreens = screens;
     }
 
-    public List<ThemeScreen> getOutroScreens() {
+    /**
+     * @return
+     * {@link ThemeScreen}
+     */
+    public final List<ThemeScreen> getOutroScreens() {
         return outroScreens;
     }
 
+    /**
+     * @param screens
+     * {@link ThemeScreen}
+     */
     @XmlElementWrapper(name = "OutroScreens")
     @XmlElement(name = "OutroScreen")
-    public void setOutroScreens(List<ThemeScreen> outroScreens) {
-        this.outroScreens = outroScreens;
+    public final void setOutroScreens(final List<ThemeScreen> screens) {
+        this.outroScreens = screens;
     }
 
-    public List<ThemeStory> getThemeStories() {
+    /**
+     * @return
+     * {@link ThemeStory}
+     */
+    public final List<ThemeStory> getThemeStories() {
         return themeStories;
     }
 
+    /**
+     * @param stories
+     * {@link ThemeStory}
+     */
     @XmlElementWrapper(name = "ThemeStories")
     @XmlElement(name = "ThemeStory")
-    public void setThemeStories(List<ThemeStory> themeStories) {
-        this.themeStories = themeStories;
+    public final void setThemeStories(final List<ThemeStory> stories) {
+        this.themeStories = stories;
     }
 }

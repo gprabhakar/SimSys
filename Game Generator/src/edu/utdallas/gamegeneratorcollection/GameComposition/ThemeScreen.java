@@ -4,7 +4,7 @@ import edu.utdallas.gamegeneratorcollection.ComponentCreation.ButtonLocationType
 import edu.utdallas.gamegeneratorcollection.ComponentCreation.GameObject;
 import edu.utdallas.gamegeneratorcollection.ComponentCreation.SharedButton;
 import edu.utdallas.gamegeneratorcollection.ComponentCreation.SharedCharacter;
-import edu.utdallas.gamegeneratorcollection.ComponentCreation.SharedInformationBox;
+import edu.utdallas.gamegeneratorcollection.ComponentCreation.SharedInfoBox;
 
 
 
@@ -24,7 +24,7 @@ public class ThemeScreen {
     private Map<LearningActCharacterType, SharedCharacter> themeCharacters;
     private List<GameObject> gameObjects;
     private Map<ButtonLocationType, SharedButton> buttons;
-    private List<SharedInformationBox> informationBoxes;
+    private List<SharedInfoBox> informationBoxes;
 
     public String getBackground() {
         return background;
@@ -63,13 +63,13 @@ public class ThemeScreen {
         this.buttons = buttons;
     }
 
-    public List<SharedInformationBox> getInformationBoxes() {
+    public List<SharedInfoBox> getInformationBoxes() {
         return informationBoxes;
     }
 
     @XmlElementWrapper(name = "InformationBoxes")
     @XmlElement(name = "InformationBox")
-    public void setInformationBoxes(List<SharedInformationBox> informationBoxes) {
+    public void setInformationBoxes(List<SharedInfoBox> informationBoxes) {
         this.informationBoxes = informationBoxes;
     }
 }

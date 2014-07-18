@@ -12,7 +12,7 @@ import edu.utdallas.gamegeneratorcollection.ComponentCreation.ButtonLocationType
 import edu.utdallas.gamegeneratorcollection.ComponentCreation.GameObject;
 import edu.utdallas.gamegeneratorcollection.ComponentCreation.SharedButton;
 import edu.utdallas.gamegeneratorcollection.ComponentCreation.SharedCharacter;
-import edu.utdallas.gamegeneratorcollection.ComponentCreation.SharedInformationBox;
+import edu.utdallas.gamegeneratorcollection.ComponentCreation.SharedInfoBox;
 import edu.utdallas.gamegeneratorcollection.GameComposition.BaseScreen;
 import edu.utdallas.gamegeneratorcollection.GameComposition.ChallengeOption;
 import edu.utdallas.gamegeneratorcollection.GameComposition.ChallengeOptionType;
@@ -126,8 +126,8 @@ public class TestObjects {
                 movements));
         localeCharactersMap.put(ScreenType.LESSON, localeCharacters);
 
-        Map<TextType, SharedInformationBox> informationBoxMap = new HashMap<TextType, SharedInformationBox>();
-        SharedInformationBox informationBox = new SharedInformationBox(100, 100, 100, 100, "", "hero");
+        Map<TextType, SharedInfoBox> informationBoxMap = new HashMap<TextType, SharedInfoBox>();
+        SharedInfoBox informationBox = new SharedInfoBox(100, 100, 100, 100, "", "hero");
         informationBoxMap.put(TextType.HERO, informationBox);
 
 

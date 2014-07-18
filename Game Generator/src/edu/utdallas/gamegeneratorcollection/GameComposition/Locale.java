@@ -18,7 +18,7 @@ import edu.utdallas.gamegeneratorcollection.ComponentCreation.ButtonLocationType
 import edu.utdallas.gamegeneratorcollection.ComponentCreation.GameObject;
 import edu.utdallas.gamegeneratorcollection.ComponentCreation.SharedButton;
 import edu.utdallas.gamegeneratorcollection.ComponentCreation.SharedCharacter;
-import edu.utdallas.gamegeneratorcollection.ComponentCreation.SharedInformationBox;
+import edu.utdallas.gamegeneratorcollection.ComponentCreation.SharedInfoBox;
 import edu.utdallas.gamegeneratorcollection.GameComposition.TextType;
 import edu.utdallas.gamespecification.Act;
 import edu.utdallas.gamespecification.BackgroundType;
@@ -305,7 +305,7 @@ public class Locale {
         }
 
         List<GameText> screenInformationBoxes = screen.getInformationBoxes();
-        Map<TextType, SharedInformationBox> localeInformationBoxes =
+        Map<TextType, SharedInfoBox> localeInformationBoxes =
                 localeScreen.getInformationBoxes();
         if (screenInformationBoxes != null) {
             for (GameText gameText : screenInformationBoxes) {

@@ -1,5 +1,6 @@
 package edu.utdallas.gamespecification;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.xml.bind.annotation.XmlAccessType;
@@ -37,7 +38,12 @@ public class Profile
 	//private String teamwork;
 	//private String attendance;
 
-    
+    /**
+     * Default constructor.
+     */
+    public Profile() {
+
+    }
 	public String getProfilePhoto() {
 		return profilePhoto;
 	}

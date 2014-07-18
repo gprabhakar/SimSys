@@ -131,13 +131,13 @@ public class Asset implements Cloneable {
         this.behaviors.add(button.getBehavior());
     }
 
-    public Asset(SharedInformationBox informationBox) {
+    public Asset(SharedInfoBox informationBox) {
         this((GameObject)informationBox);
         this.name = informationBox.getName();
         type = "InformationBoxAsset";
     }
 
-    public Asset(SharedInformationBox informationBox, GameText gameText) {
+    public Asset(SharedInfoBox informationBox, GameText gameText) {
         this(informationBox);
         this.name = gameText.getText();
     }

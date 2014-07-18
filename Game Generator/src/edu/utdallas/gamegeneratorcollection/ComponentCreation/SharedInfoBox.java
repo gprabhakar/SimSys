@@ -6,14 +6,14 @@ package edu.utdallas.gamegeneratorcollection.ComponentCreation;
  * Time: 8:57 PM
  */
 
-public class SharedInformationBox extends GameObject {
+public class SharedInfoBox extends GameObject {
     private String name;
 
-    public SharedInformationBox() {
+    public SharedInfoBox() {
         super();
     }
 
-    public SharedInformationBox(int locX, int locY, int width, int height, String pathToAsset, String name) {
+    public SharedInfoBox(int locX, int locY, int width, int height, String pathToAsset, String name) {
         super(locX, locY, width, height, pathToAsset);
         this.name = name;
     }
