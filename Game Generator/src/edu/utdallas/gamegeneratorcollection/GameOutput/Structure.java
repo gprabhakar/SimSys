@@ -45,7 +45,6 @@ public class Structure {
      * has only 4 characters possible.
      */
 
-
     /**
      * The list of acts used to build the game.
      */
@@ -68,8 +67,8 @@ public class Structure {
         for (int i = 0; i < locale.getLearningActs().size(); i++) {
             acts.add(locale.getAct(i));
         }
-
         acts.add(createActFromScreens(theme.getOutro()));
+
         game = new Game();
 
         wireUpActs(acts);
@@ -139,17 +138,22 @@ public class Structure {
 
     private void wireUpActs(final List<Act> actList) {
         for (int i = 0; i < actList.size() - 1; i++) {
-            Act act = actList.get(i);
-            for (int j = 0; j < act.getScene().size() - 1; j++) {
-                Scene scene = act.getScene().get(j);
-                for (int k = 0; k < scene.getScreen().size() - 1; k++) {
-                    Screen screen = scene.getScreen().get(k);
-                    if (screen.getTransition() == null) {
-                        act.getScene().get(j).getScreen().get(k)
+            if (actList.get(i).getTransition() == null) {
+                actList.get(i).setTransition(new Transition());
+            }
+            for (int j = 0; j < actList.get(i).getScene().
+                    size() - 1; j++) {
+                if (actList.get(i).getScene().get(j).getTransition() == null) {
+                    actList.get(i).getScene().get(j).setTransition(
+                            new Transition());
+                }
+                for (int k = 0; k < actList.get(i).getScene().get(j)
+                        .getScreen().size() - 1; k++) {
+                    if (actList.get(i).getScene().get(j).getScreen().get(k)
+                            == null) {
+                        actList.get(i).getScene().get(j).getScreen().get(k)
                         .setTransition(new Transition());
-
                     }
-
                 }
             }
         }

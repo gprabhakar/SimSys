@@ -23,6 +23,7 @@ import edu.utdallas.gamespecification.Location;
 import edu.utdallas.gamespecification.Scene;
 import edu.utdallas.gamespecification.Screen;
 import edu.utdallas.gamespecification.Size;
+import edu.utdallas.gamespecification.Transition;
 
 /**
  * User: clocke.
@@ -43,7 +44,11 @@ public class Theme {
      * @return the list of intro screens
      */
     public final Scene getIntro() {
-        return (introScreens != null ? getScreens(introScreens) : new Scene());
+        if (introScreens != null) {
+            return getScreens(introScreens);
+        } else {
+            return new Scene();
+        }
     }
 
     /**
@@ -52,7 +57,11 @@ public class Theme {
      * @return the list of outro screens
      */
     public final Scene getOutro() {
-        return (outroScreens != null ? getScreens(outroScreens) : new Scene());
+        if (outroScreens != null) {
+            return getScreens(outroScreens);
+        } else {
+            return new Scene();
+        }
     }
 
     /**
@@ -61,10 +70,9 @@ public class Theme {
      * @return a list of ScreenNode
      */
     private Scene getScreens(final List<ThemeScreen> screens) {
-        //List<Screen> screenNodes = new ArrayList<Screen>();
         Scene currentScene = new Scene();
         BackgroundType currentBackground = new BackgroundType();
-        //UUID currentScreen = UUID.randomUUID();
+
         UUID nextScreen = UUID.randomUUID();
         for (ThemeScreen screen : screens) {
             Screen screenNode = new Screen();
@@ -91,8 +99,6 @@ public class Theme {
                              convertGameObjects(character);
                     //Add the image from the asset class item.
                     nextElement.setName(characterAsset.getDisplayImage());
-                    //nextElement.setName(character.getText());
-
                     screenNode.getGameElement().add(nextElement);
                 }
             }
@@ -126,11 +132,12 @@ public class Theme {
                     screenNode.getGameElement().add(nextElement);
                 }
             }
-            
+            screenNode.setTransition(new Transition());
             currentScene.getScreen().add(screenNode);
-            //currentScreen = nextScreen;
+
             nextScreen = UUID.randomUUID();
         }
+        currentScene.setTransition(new Transition());
         return currentScene;
     }
 
