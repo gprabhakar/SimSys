@@ -23,7 +23,8 @@ import edu.utdallas.gamespecification.Profile;
 */
 public final class GameErrorChecker {
 // Check entire Game hierarchy for errors and return a list of errors
-    static GameErrorList errors = new GameErrorList();
+    /** The errors. */
+private static GameErrorList errors = new GameErrorList();
 /**
 * Instantiates a new game error checker.
 */
@@ -38,7 +39,8 @@ private GameErrorChecker() {
 * @param panelHeight the panel height
 * @return the game error list
 */
-public static GameErrorList checkErrors(final Game game, final int panelWidth, final int panelHeight) {
+public static GameErrorList checkErrors(
+       final Game game, final int panelWidth, final int panelHeight) {
 //don't save if no game file open
 
 //Check for Game-level errors
@@ -80,21 +82,26 @@ public static GameErrorList checkErrors(final Game game, final int panelWidth, f
           public void fixError() { }
           });
          } else {
-           checkProfileProperties(characters.get(i));
+           checkProfile(characters.get(i));
            }
         }
        }
 // Check for Act-level errors
 //Acts wrapper check needed, or if this is not possible
 //may need to change error to be more general
-         checkActProperties(game);
+         checkAct(game);
          }
   return errors;
  }
 
 
 
-public static void checkProfileProperties(Character character) {
+/**
+ * Check profile properties.
+ *
+ * @param character the character
+ */
+public static void checkProfile(final Character character) {
 
         Profile profile = character.getProfile();
         String cName = character.getName();
@@ -139,7 +146,12 @@ errors.add(new PreviewError(Level.GAME, Severity.LOW, "The <YearsOfExperience> "
         }
  }
 
-private static void checkActProperties(Game game) {
+/**
+ * Check act properties.
+ *
+ * @param game the game
+ */
+private static void checkAct(final Game game) {
     // TODO Auto-generated method stub
     if (game.getAct() == null || game.getAct().size() == 0) {
         errors.add(new PreviewError(
@@ -152,11 +164,16 @@ private static void checkActProperties(Game game) {
            //Check for Scene-level errors
            //Scenes wrapper check needed, or if this is not
            //possible may need to change error to be more general
-           checkSceneProperties(acts);
+           checkScene(acts);
            }
 }
 
-private static void checkSceneProperties(List<Act> acts) {
+/**
+ * Check scene properties.
+ *
+ * @param acts the acts
+ */
+private static void checkScene(final List<Act> acts) {
     // TODO Auto-generated method stub
     for (int i = 0; i < acts.size(); i++) {
         // Need a way to refer to which Act has an error
@@ -182,13 +199,19 @@ private static void checkSceneProperties(List<Act> acts) {
 //Ryan 4/8 10AM "Don't think so,
 //Longstreet never specified that background music is mandatory"
 //Check for Screen-level errors
-       checkScreenProperties(sName, scenes.get(j));
+       checkScreen(sName, scenes.get(j));
    }
   }
  }
 }
 
-private static void checkScreenProperties(String sName, Scene scene) {
+/**
+ * Check screen properties.
+ *
+ * @param sName the s name
+ * @param scene the scene
+ */
+private static void checkScreen(final String sName, final Scene scene) {
     // TODO Auto-generated method stub
     List<Screen> screens = scene.getScreen();
     if (screens == null || screens.size() == 0) {
@@ -324,158 +347,167 @@ private static void checkScreenProperties(String sName, Scene scene) {
           System.out.println();
          }
         }
- //Check for Asset-level errors
- /*
- final List<Asset> assets = screens.get(k).getAssets();
- if(assets == null || assets.size() == 0)
- {
- errors.add(new PreviewError(Level.SCREEN, Severity.LOW,
- "No <Assets> detected for " + srName) {
- public void fixError() { } //TODO
- });
- }
- else
- {
- for(int m = 0; m < assets.size(); m++)
- {
- final Asset asset = assets.get(m);
+  //Check for Asset-level errors
+    checkAsset(screens);
 
- //Need a way to refer to which Asset has an error
- String asName = srName + " " + "Asset [in position " + (m+1) + "]";
-
- if(asset.getWidth() <= 0)
- {
- errors.add(new PreviewError(Level.SCREEN, Severity.LOW,
- "The <Width> property of " + asName + " is zero or not specified") {
- public void fixError() { asset.setWidth(100); } //TODO
- });
- }
- if(asset.getHeight() <= 0)
- {
- errors.add(new PreviewError(Level.SCREEN, Severity.LOW,
- "The <Height> property of " + asName +
- " is zero or not specified") {
- public void fixError() { asset.setHeight(100); } //TODO
- });
- }
-
- if(asset.getX() > panelWidth)
- {
- errors.add(new PreviewError(Level.SCREEN, Severity.LOW,
- asName + " is not visible, right of the coordinate system") {
- public void fixError() { asset.setX(panelWidth - 100); }
- //TODO
- });
- }
- if(asset.getX() + asset.getWidth() <= 0)// too far left
- {
- errors.add(new PreviewError(Level.SCREEN, Severity.LOW,
- asName + " is not visible, left of the coordinate system") {
- public void fixError() { asset.setX(100); } //TODO
- });
- }
- if(asset.getY() > panelHeight)// too far down
- {
- errors.add(new PreviewError(Level.SCREEN, Severity.LOW,
- asName + " is not visible, below the coordinate system") {
- public void fixError() { asset.setY(panelHeight - 100);
- }//TODO
- });
- }
- if(asset.getY() + asset.getHeight() <= 0)// too far up
- {
- errors.add(new PreviewError(Level.SCREEN, Severity.LOW,
- asName + " is not visible, above the coordinate system") {
- public void fixError() { asset.setY(100); } //TODO
- });
- }
-
- if(asset instanceof CharacterAsset || asset instanceof ImageAsset)
- {
- if(isNullOrEmpty(asset.getDisplayImage()))
- {
- errors.add(new PreviewError(Level.SCREEN, Severity.LOW,
- "The <DisplayImage> property of " + asName + "
- is not specified") {
- public void fixError() {
- asset.setDisplayImage("error_button.png"); }
- });
- }
- else if(asset instanceof CharacterAsset) {
- String baseDir = "Office, Classroom\\Characters\\";
- try{
- BufferedImage image = ImageIO.read(
- new File(baseDir + asset.getDisplayImage()));
- int width = image.getWidth();
- final double desiredWidth = asset.getWidth();
- double scaleFactor = desiredWidth / width;
- BufferedImage scaledImage ;
- scaledImage = ImageHelper.getScaledImage(
- image, scaleFactor);
- } catch (IOException ex) {
- errors.add(new PreviewError( Level.SCREEN, Severity.MEDIUM, "The <DisplayImage>
- property of " + asName + " is missing from the repository") {
- public void fixError() { asset.setDisplayImage("error_button.png"); }
- });
- }
- } else if(assets.get(m) instanceof ImageAsset) {
- String baseDir = "Office, Classroom\\";
- try{
- BufferedImage image = ImageIO.read(new File(
- baseDir + assets.get(m).getDisplayImage()));
- int width = image.getWidth();
- final double desiredWidth = asset.getWidth();
- double scaleFactor = desiredWidth / width;
- BufferedImage scaledImage = ImageHelper.getScaledImage(
- image, scaleFactor);
- } catch (IOException ex) {
- errors.add(new PreviewError( Level.SCREEN, Severity.MEDIUM,
- "The <DisplayImage> property of " + asName
- + " is missing from the repository") {
- public void fixError() {} //TODO this fix error is below
- });
- asset.setDisplayImage("error_button.png");
- }
- }
- }
- if(asset instanceof ButtonAsset || asset instanceof ThoughtBubbleAsset
- || asset instanceof ConversationBubbleAsset
- || asset instanceof InformationBoxAsset)
- {
- if(isNullOrEmpty(asset.getName()))
- {
- errors.add(new PreviewError(Level.SCREEN, Severity.LOW, asName
- + " contains no text, will be filled with null") {
- public void fixError() { asset.setName("null"); }
- });
- }
- if(asset instanceof ThoughtBubbleAsset)
- {
- ThoughtBubbleAsset tbAsset = (ThoughtBubbleAsset)asset;
- if(tbAsset.getPointDirection() == null)
- {
- errors.add(new PreviewError(Level.SCREEN, Severity.LOW,
- "ThoughtBubble in " + asName + " requires a PointDirection field") {
- public void fixError() { } //TODO
- });
- }
- }
- if(asset instanceof ConversationBubbleAsset)
- {
- ConversationBubbleAsset cbAsset = (ConversationBubbleAsset)asset;
- if(cbAsset.getPointDirection() == null)
- {
- errors.add(new PreviewError(Level.SCREEN, Severity.LOW,
- "ConversationBubble in " + asName + " requires a PointDirection field") {
- public void fixError() { } //TODO
- });
- }
- }
- }
- }
- }*/
       }
      }
+}
+
+/**
+ * Check asset properties.
+ *
+ * @param screens the screens
+ */
+private static void checkAsset(final List<Screen> screens) {
+    // TODO Auto-generated method stub
+    /* final List<Asset> assets = screens.get(k).getAssets();
+    if(assets == null || assets.size() == 0)
+    {
+    errors.add(new PreviewError(Level.SCREEN, Severity.LOW,
+    "No <Assets> detected for " + srName) {
+    public void fixError() { } //TODO
+    });
+    }
+    else
+    {
+    for(int m = 0; m < assets.size(); m++)
+    {
+    final Asset asset = assets.get(m);
+    //Need a way to refer to which Asset has an error
+    String asName = srName + " " + "Asset [in position " + (m+1) + "]";
+    if(asset.getWidth() <= 0)
+    {
+    errors.add(new PreviewError(Level.SCREEN, Severity.LOW,
+    "The <Width> property of " + asName + " is zero or not specified") {
+    public void fixError() { asset.setWidth(100); } //TODO
+    });
+    }
+    if(asset.getHeight() <= 0)
+    {
+    errors.add(new PreviewError(Level.SCREEN, Severity.LOW,
+    "The <Height> property of " + asName +
+    " is zero or not specified") {
+    public void fixError() { asset.setHeight(100); } //TODO
+    });
+    }
+
+    if(asset.getX() > panelWidth)
+    {
+    errors.add(new PreviewError(Level.SCREEN, Severity.LOW,
+    asName + " is not visible, right of the coordinate system") {
+    public void fixError() { asset.setX(panelWidth - 100); }
+    //TODO
+    });
+    }
+    if(asset.getX() + asset.getWidth() <= 0)// too far left
+    {
+    errors.add(new PreviewError(Level.SCREEN, Severity.LOW,
+    asName + " is not visible, left of the coordinate system") {
+    public void fixError() { asset.setX(100); } //TODO
+    });
+    }
+    if(asset.getY() > panelHeight)// too far down
+    {
+    errors.add(new PreviewError(Level.SCREEN, Severity.LOW,
+    asName + " is not visible, below the coordinate system") {
+    public void fixError() { asset.setY(panelHeight - 100);
+    }//TODO
+    });
+    }
+    if(asset.getY() + asset.getHeight() <= 0)// too far up
+    {
+    errors.add(new PreviewError(Level.SCREEN, Severity.LOW,
+    asName + " is not visible, above the coordinate system") {
+    public void fixError() { asset.setY(100); } //TODO
+    });
+    }
+
+    if(asset instanceof CharacterAsset || asset instanceof ImageAsset)
+    {
+    if(isNullOrEmpty(asset.getDisplayImage()))
+    {
+    errors.add(new PreviewError(Level.SCREEN, Severity.LOW,
+    "The <DisplayImage> property of " + asName + "
+    is not specified") {
+    public void fixError() {
+    asset.setDisplayImage("error_button.png"); }
+    });
+    }
+    else if(asset instanceof CharacterAsset) {
+    String baseDir = "Office, Classroom\\Characters\\";
+    try{
+    BufferedImage image = ImageIO.read(
+    new File(baseDir + asset.getDisplayImage()));
+    int width = image.getWidth();
+    final double desiredWidth = asset.getWidth();
+    double scaleFactor = desiredWidth / width;
+    BufferedImage scaledImage ;
+    scaledImage = ImageHelper.getScaledImage(
+    image, scaleFactor);
+    } catch (IOException ex) {
+errors.add(new PreviewError( Level.SCREEN, Severity.MEDIUM, "The <DisplayImage>
+    property of " + asName + " is missing from the repository") {
+    public void fixError() { asset.setDisplayImage("error_button.png"); }
+    });
+    }
+    } else if(assets.get(m) instanceof ImageAsset) {
+    String baseDir = "Office, Classroom\\";
+    try{
+    BufferedImage image = ImageIO.read(new File(
+    baseDir + assets.get(m).getDisplayImage()));
+    int width = image.getWidth();
+    final double desiredWidth = asset.getWidth();
+    double scaleFactor = desiredWidth / width;
+    BufferedImage scaledImage = ImageHelper.getScaledImage(
+    image, scaleFactor);
+    } catch (IOException ex) {
+    errors.add(new PreviewError( Level.SCREEN, Severity.MEDIUM,
+    "The <DisplayImage> property of " + asName
+    + " is missing from the repository") {
+    public void fixError() {} //TODO this fix error is below
+    });
+    asset.setDisplayImage("error_button.png");
+    }
+    }
+    }
+    if(asset instanceof ButtonAsset || asset instanceof ThoughtBubbleAsset
+    || asset instanceof ConversationBubbleAsset
+    || asset instanceof InformationBoxAsset)
+    {
+    if(isNullOrEmpty(asset.getName()))
+    {
+    errors.add(new PreviewError(Level.SCREEN, Severity.LOW, asName
+    + " contains no text, will be filled with null") {
+    public void fixError() { asset.setName("null"); }
+    });
+    }
+    if(asset instanceof ThoughtBubbleAsset)
+    {
+    ThoughtBubbleAsset tbAsset = (ThoughtBubbleAsset)asset;
+    if(tbAsset.getPointDirection() == null)
+    {
+    errors.add(new PreviewError(Level.SCREEN, Severity.LOW,
+    "ThoughtBubble in " + asName + " requires a PointDirection field") {
+    public void fixError() { } //TODO
+    });
+    }
+    }
+    if(asset instanceof ConversationBubbleAsset)
+    {
+    ConversationBubbleAsset cbAsset = (ConversationBubbleAsset)asset;
+    if(cbAsset.getPointDirection() == null)
+    {
+    errors.add(new PreviewError(Level.SCREEN, Severity.LOW,
+    "ConversationBubble in " + asName + " requires a PointDirection field") {
+    public void fixError() { } //TODO
+    });
+    }
+    }
+    }
+    }
+    }*/
+
 }
 /**
 * Checks if is null or empty.
