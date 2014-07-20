@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <!-- -->
 <!-- Test Game 1 contains 1 act, 1 scene and 2 screens -->
-<game>
+<Game>
     <Act>
         <Transition>
             <TransitionType>straightCut</TransitionType>
@@ -203,4 +203,4 @@
 		<rewards>5000</rewards>
 		<PlayerID> Player 1 </PlayerID>
     </Character>
-</game>
+</Game>
