@@ -1241,7 +1241,7 @@ GAME,
         scenePanel.clear();
         scenePanel.loadErrors(errorList);
         hasCriticalGameErrors = errorList.hasCriticalErrors();
-        
+
         //Debug
         for (PreviewError e : errorList) {
         	System.out.println(e);
@@ -1256,9 +1256,8 @@ GAME,
 	 * @param game1 the game1
 	 * @param name the name
 	 */
-	private void displayGame(final Game game1, final String name)
-	{
-		((DefaultMutableTreeNode) gameTree.getModel().getRoot()).removeAllChildren();
+	private void displayGame(final Game game1, final String name) {
+	((DefaultMutableTreeNode) gameTree.getModel().getRoot()).removeAllChildren();
         DefaultMutableTreeNode rootNode = new DefaultMutableTreeNode(name);
         rootNode.setUserObject(game1);
         ((DefaultTreeModel) gameTree.getModel()).setRoot(rootNode);
@@ -1280,18 +1279,20 @@ GAME,
 					
 
 					if (screens.get(k).getChallenge() != null) {
-						QuizChallenge challenge = (QuizChallenge)(screens.get(k).getChallenge());
+					    System.out.println("Chall "+ screens.get(k).getChallenge());
+					    List<Challenge> challenge = (screens.get(k).getChallenge());
 
-
-						Introduction intro = challenge.getIntroduction();
+					    	for(int l = 0; l < challenge.size(); l++){
+					    	    QuizChallenge qChallenge = (QuizChallenge) challenge.get(l);
+						Introduction intro = qChallenge.getIntroduction();
 						if (intro != null) {
 							DefaultMutableTreeNode introNode = new DefaultMutableTreeNode("Introduction");
-							introNode.setUserObject(challenge.getIntroduction());
+							introNode.setUserObject(qChallenge.getIntroduction());
 							screenNode.add(introNode);
 						}
 						
 						//
-						Item item = challenge.getItem();
+						Item item = qChallenge.getItem();
 						if (item != null) {
 							//for(int m = 0; m < items.size(); m++)
 							//{
@@ -1303,7 +1304,7 @@ GAME,
 						}
 
 						//List<Summary> summaries = challenge.getSummary();
-						Summary summary = challenge.getSummary();
+						Summary summary = qChallenge.getSummary();
 						if (summary != null) {
 							//for(int m = 0; m < summaries.size(); m++)
 							//{
@@ -1312,6 +1313,7 @@ GAME,
 								screenNode.add(summaryNode);
 							//}
 						}
+					    	}
 					}
 
 					sceneNode.add(screenNode);
