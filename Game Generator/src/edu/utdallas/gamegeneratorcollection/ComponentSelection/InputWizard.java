@@ -1898,8 +1898,7 @@ GAME,
 			updater= new Updates();
 			int returnValue2 = saveFileChooser.showOpenDialog(saveFileChooser);
 			String gameName;
-			if (returnValue2 == JFileChooser.APPROVE_OPTION)
-			{
+			if (returnValue2 == JFileChooser.APPROVE_OPTION) {
 				File file = saveFileChooser.getSelectedFile();
 				gameName = file.getAbsolutePath();
 				
@@ -1915,13 +1914,13 @@ GAME,
 			{
 				System.out.println("Open cancelled by user. /n Returning.");
 			}
-			
+
 			break;
 		case "remakeRepo":
 			updater = new Updates();
 			updater.remakeRepo();
 			break;
-			// Grade 
+                // Grade 
 		case "primary":
 			gameGradeLevel = "primary";
 			break;
@@ -1940,8 +1939,8 @@ GAME,
 		case "no grade":
 			gameGradeLevel = "none";
 		break;
-//Gender			
-		case "Male": 
+                //Gender
+                case "Male":
 			playerGender = "Male";
 			break;
 		case "Female":
@@ -1949,7 +1948,7 @@ GAME,
 			break;
 		case "no gender":
 			playerGender = "none";
-//Age					
+                //Age
 		case "Young":
 			playerAge = "Young";
 			break;
