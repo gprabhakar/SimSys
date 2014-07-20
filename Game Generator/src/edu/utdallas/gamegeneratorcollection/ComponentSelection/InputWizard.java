@@ -83,7 +83,7 @@ public class InputWizard implements ActionListener {
 
 	 /** The main pannel. */
 	 private JPanel mainPannel;
-
+     
 	 /** The menu bar. */
 	 private JMenuBar menuBar;
 
@@ -331,10 +331,10 @@ GAME,
 				}
 				else
 				{
-					List<Asset> currentAssets = lastSelectedScreen.getAssets();
-					currentAssets.add(characterSelectWindow.getNewCharacterAsset());
-					lastSelectedScreen.setAssets(currentAssets);
-					displayScreen(lastSelectedScene, lastSelectedScreen);
+                    List<Asset> currentAssets = lastSelectedScreen.getAssets();
+                    currentAssets.add(characterSelectWindow.getNewCharacterAsset());
+                    lastSelectedScreen.setAssets(currentAssets);
+                    displayScreen(lastSelectedScene, lastSelectedScreen);
 				}*/
 			}
 			public void windowDeiconified(final WindowEvent e) { }
@@ -972,7 +972,10 @@ GAME,
         submitButton.setActionCommand("Submit");
         submitPanel.add(submitButton);
         mainPannel.add(submitPanel, nextOpenRow++);
+        
         generateTab.add(mainPannel);
+        
+        
         window.add(tabbedPane,BorderLayout.CENTER);
         window.setJMenuBar(menuBar);
         window.setVisible(true); // this needs to happen last to avoid blank window on start-up

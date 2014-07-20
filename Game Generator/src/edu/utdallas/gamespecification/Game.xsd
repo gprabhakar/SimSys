@@ -353,8 +353,8 @@
             <enumeration value="dissolve"/>
             <enumeration value="wipe"/>
             <enumeration value="morph"/> 
-            <enumeration value="straightCut"/>   
-            <enumeration value="contrastCut"/>   
+            <enumeration value="straightCut"/>
+            <enumeration value="contrastCut"/>
             <enumeration value="lCut"/>
             <enumeration value="formCut"/>  
             <enumeration value="matchCut"/>  
