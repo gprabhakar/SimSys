@@ -1,6 +1,8 @@
 package edu.utdallas.gamespecification;
 
-public class Reward 
-{
-
+/**
+ * The Class Reward.
+ */
+public class Reward {
+	
 }
