@@ -14,6 +14,7 @@ import edu.utdallas.gamePlayEngine.model.GameModel;
 import edu.utdallas.gamePlayEngine.model.GameModelBoundary;
 import edu.utdallas.gamePlayEngine.view.GameView;
 import edu.utdallas.gamegenerator.RepoUpdate.Updates;
+
 import edu.utdallas.gamegeneratorcollection.ComponentCreation.Asset;
 import edu.utdallas.gamegeneratorcollection.ComponentCreation.AudioPlayer;
 import edu.utdallas.gamegeneratorcollection.ComponentCreation.CharacterAsset;
@@ -53,79 +54,219 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class InputWizard implements ActionListener {
+// TODO: Auto-generated Javadoc
 /**
+ * The Class InputWizard.
+ */
+public class InputWizard implements ActionListener {
+
+/**
+ * The Constant WIDTH.
+ *
  * @Authors Kaleb Breault, Alex Hunsberger, Zayed Alfalasi, Abdulla Alfalasi, Jacob Dahleen
  * This class makes a GUI interface for entering input and previewing XML games
  * implements ActionListener so a subclass for it is not needed.
  */
 
         public static final int WIDTH = 1280;
+        /** The Constant HEIGHT. */
         public static final int HEIGHT = 720;
+
+        /** The component inputs. */
         private Matrix[] componentInputs;
+
+        /** The submit clicked. */
 	private boolean submitClicked = false;
- 	private JFrame window = new JFrame();
- 	private JPanel mainPannel;
- 	private JMenuBar menuBar;
- 	private JMenu menu;
- 	private JMenu fileMenu;
- 	private JMenu gameengine;
- 	private JMenu gameEngineMenu;
- 	private JMenuItem openFileItem;
- 	private JMenuItem opengame;
- 	private JMenuItem addToRepo;
- 	private JMenuItem remakeRepo;
- 	private JMenuItem saveToRepo;
- 	private JMenuItem saveToRepoAs;
- 	private JMenuItem checkErrorList;
- 	private JMenuItem openEngine;
- 	private static String label1 = "Preview after generating: ";
- 	private JTree gameTree;
- 	private ScenePanel scenePanel;
+
+	 /** The window. */
+	 private JFrame window = new JFrame();
+
+	 /** The main pannel. */
+	 private JPanel mainPannel;
+     
+	 /** The menu bar. */
+	 private JMenuBar menuBar;
+
+	 /** The menu. */
+	 private JMenu menu;
+
+	 /** The file menu. */
+	 private JMenu fileMenu;
+
+	 /** The gameengine. */
+	 private JMenu gameengine;
+
+	 /** The game engine menu. */
+	 private JMenu gameEngineMenu;
+
+	 /** The open file item. */
+	 private JMenuItem openFileItem;
+
+	 /** The opengame. */
+	 private JMenuItem opengame;
+
+	 /** The add to repo. */
+	 private JMenuItem addToRepo;
+
+	 /** The remake repo. */
+	 private JMenuItem remakeRepo;
+
+	 /** The save to repo. */
+	 private JMenuItem saveToRepo;
+
+	 /** The save to repo as. */
+	 private JMenuItem saveToRepoAs;
+
+	 /** The check error list. */
+	 private JMenuItem checkErrorList;
+
+	 /** The open engine. */
+	 private JMenuItem openEngine;
+
+	 /** The label1. */
+	 private static String label1 = "Preview after generating: ";
+
+	 /** The game tree. */
+	 private JTree gameTree;
+
+	 /** The scene panel. */
+	 private ScenePanel scenePanel;
  	//JD character selection class parameters
- 	private CharacterSelectWindow characterSelectWindow;
- 	private CharacterAsset characterSelectAsset;
- 	private PropSelectWindow propSelectWindow;
- 	private ImageAsset propSelectAsset;
- 	private BackgroundSelectWindow backgroundSelectWindow;
- 	private String backgroundSelectPath;
- 	private SoundSelectWindow soundSelectWindow;
- 	private String soundSelectPath;
- 	public enum gameLevel{GAME, ACT, SCENE, SCREEN, CHALLENGE};
- 	private gameLevel selectedLevel = null;
- 	private JButton characterButton;
- 	private JButton propButton;
- 	private JButton backgroundAndHiddenButton;
- 	private JButton soundButton;
- 	private JButton textButton;
- 	private JButton buttonButton;
- 	private Scene lastSelectedScene = null;
- 	private Screen lastSelectedScreen = null;
- 	private File Currentfile = null;
- 	private boolean hasCriticalGameErrors = false;
- 	private String toggleHiddenText = "Show/Hide";
+ 	/** The character select window. */
+	 private CharacterSelectWindow characterSelectWindow;
+
+	 /** The character select asset. */
+	 private CharacterAsset characterSelectAsset;
+
+	 /** The prop select window. */
+	 private PropSelectWindow propSelectWindow;
+
+	 /** The prop select asset. */
+	 private ImageAsset propSelectAsset;
+
+	 /** The background select window. */
+	 private BackgroundSelectWindow backgroundSelectWindow;
+
+	 /** The background select path. */
+	 private String backgroundSelectPath;
+
+	 /** The sound select window. */
+	 private SoundSelectWindow soundSelectWindow;
+
+	 /** The sound select path. */
+	 private String soundSelectPath;
+
+	 /**
+	  * The Enum gameLevel.
+	  */
+	 public enum gameLevel{
+/** The game. */
+GAME, 
+ /** The act. */
+ ACT, 
+ /** The scene. */
+ SCENE, 
+ /** The screen. */
+ SCREEN, 
+ /** The challenge. */
+ CHALLENGE};
+ 	
+	 /** The selected level. */
+	 private gameLevel selectedLevel = null;
+ 	
+	 /** The character button. */
+	 private JButton characterButton;
+ 	
+	 /** The prop button. */
+	 private JButton propButton;
+ 	
+	 /** The background and hidden button. */
+	 private JButton backgroundAndHiddenButton;
+ 	
+	 /** The sound button. */
+	 private JButton soundButton;
+ 	
+	 /** The text button. */
+	 private JButton textButton;
+ 	
+	 /** The button button. */
+	 private JButton buttonButton;
+ 	
+	 /** The last selected scene. */
+	 private Scene lastSelectedScene = null;
+ 	
+	 /** The last selected screen. */
+	 private Screen lastSelectedScreen = null;
+ 	
+	 /** The Currentfile. */
+	 private File Currentfile = null;
+ 	
+	 /** The has critical game errors. */
+	 private boolean hasCriticalGameErrors = false;
+ 	
+	 /** The toggle hidden text. */
+	 private String toggleHiddenText = "Show/Hide";
  	//JD end
  	
- 	private Game game;
+ 	/** The game. */
+	 private Game game;
  	
- 	private String playerGender= "none"; 
-  	private String playerAge= "none";	
-  	private String playerDress= "none";  	
-   	private String gameTheme= "none";	
- 	private String gameSubject= "none";  	
- 	private String gameSetting= "none";   	
- 	private String gameDifficulty= "none"; 
- 	private JFileChooser saveFileChooser;
- 	private String gameSavePath = "C:\\";
- 	private static final int wizardRowSize = 10; //row size for wizard
- 	private String gameGradeLevel = "none";
-	private Updates updater;
-	private String charBaseDir = "Office, Classroom\\Characters\\";
-	public static final String soundFolder = "AudioAssetRepository\\";
-	private int selectedValue = 1;
-	CharacterAsset c;
-	final JTabbedPane tabbedPane = new JTabbedPane(JTabbedPane.TOP);
+ 	/** The player gender. */
+	 private String playerGender= "none"; 
+  	
+	  /** The player age. */
+	  private String playerAge= "none";	
+  	
+	  /** The player dress. */
+	  private String playerDress= "none";  	
+   	
+	   /** The game theme. */
+	   private String gameTheme= "none";	
+ 	
+	 /** The game subject. */
+	 private String gameSubject= "none";  	
+ 	
+	 /** The game setting. */
+	 private String gameSetting= "none";   	
+ 	
+	 /** The game difficulty. */
+	 private String gameDifficulty= "none"; 
+ 	
+	 /** The save file chooser. */
+	 private JFileChooser saveFileChooser;
+ 	
+	 /** The game save path. */
+	 private String gameSavePath = "C:\\";
+ 	
+	 /** The Constant wizardRowSize. */
+	 private static final int wizardRowSize = 10; //row size for wizard
+ 	
+	 /** The game grade level. */
+	 private String gameGradeLevel = "none";
 	
+	/** The updater. */
+	private Updates updater;
+	
+	/** The char base dir. */
+	private String charBaseDir = "Office, Classroom\\Characters\\";
+	
+	/** The Constant soundFolder. */
+	public static final String soundFolder = "AudioAssetRepository\\";
+	
+	/** The selected value. */
+	private int selectedValue = 1;
+	
+	/** The c. */
+	CharacterAsset c;
+	
+	/** The tabbed pane. */
+	final JTabbedPane tabbedPane = new JTabbedPane(JTabbedPane.TOP);
+
+	/**
+	 * Instantiates a new input wizard.
+	 *
+	 * @param input the input
+	 */
 	public InputWizard(final Matrix[] input)
 	{
 		componentInputs = input;
@@ -190,10 +331,10 @@ public class InputWizard implements ActionListener {
 				}
 				else
 				{
-					List<Asset> currentAssets = lastSelectedScreen.getAssets();
-					currentAssets.add(characterSelectWindow.getNewCharacterAsset());
-					lastSelectedScreen.setAssets(currentAssets);
-					displayScreen(lastSelectedScene, lastSelectedScreen);
+                    List<Asset> currentAssets = lastSelectedScreen.getAssets();
+                    currentAssets.add(characterSelectWindow.getNewCharacterAsset());
+                    lastSelectedScreen.setAssets(currentAssets);
+                    displayScreen(lastSelectedScene, lastSelectedScreen);
 				}*/
 			}
 			public void windowDeiconified(final WindowEvent e) { }
@@ -367,7 +508,7 @@ public class InputWizard implements ActionListener {
             	}
             	else if(isGameNode(selectedNode))
             	{
-            		List<Character> chars = game.getCharacter();
+            		List<? extends Character> chars = game.getCharacter();
             		
             		scenePanel.clear();
             		System.out.println("calling clear rootnode\n");
@@ -831,41 +972,98 @@ public class InputWizard implements ActionListener {
         submitButton.setActionCommand("Submit");
         submitPanel.add(submitButton);
         mainPannel.add(submitPanel, nextOpenRow++);
+        
         generateTab.add(mainPannel);
+        
+        
         window.add(tabbedPane,BorderLayout.CENTER);
         window.setJMenuBar(menuBar);
         window.setVisible(true); // this needs to happen last to avoid blank window on start-up
 	}
 	
+	/**
+	 * Checks if is game node.
+	 *
+	 * @param node the node
+	 * @return true, if is game node
+	 */
 	private boolean isGameNode(final DefaultMutableTreeNode node)
 	{
 		return node != null && node.isRoot();
 	}
+	
+	/**
+	 * Checks if is act node.
+	 *
+	 * @param node the node
+	 * @return true, if is act node
+	 */
 	private boolean isActNode(final DefaultMutableTreeNode node)
 	{
 		return node != null && node.getUserObject() != null && node.getUserObject() instanceof Act;
 	}
+	
+	/**
+	 * Checks if is scene node.
+	 *
+	 * @param node the node
+	 * @return true, if is scene node
+	 */
 	private boolean isSceneNode(final DefaultMutableTreeNode node)
 	{
 		return node != null && node.getUserObject() != null && node.getUserObject() instanceof Scene;
 	}
+	
+	/**
+	 * Checks if is screen node.
+	 *
+	 * @param node the node
+	 * @return true, if is screen node
+	 */
 	private boolean isScreenNode(final DefaultMutableTreeNode node)
 	{
 		return node != null && node.getUserObject() != null && node.getUserObject() instanceof Screen;
 	}
+	
+	/**
+	 * Checks if is question node.
+	 *
+	 * @param node the node
+	 * @return true, if is question node
+	 */
 	private boolean isQuestionNode(final DefaultMutableTreeNode node)
 	{
 		return node != null && node.getUserObject() != null && node.getUserObject() instanceof Item;
 	}
+	
+	/**
+	 * Checks if is summary node.
+	 *
+	 * @param node the node
+	 * @return true, if is summary node
+	 */
 	private boolean isSummaryNode(final DefaultMutableTreeNode node)
 	{
 		return node != null && node.getUserObject() != null && node.getUserObject() instanceof Summary;
 	}
+	
+	/**
+	 * Checks if is intro node.
+	 *
+	 * @param node the node
+	 * @return true, if is intro node
+	 */
 	private boolean isIntroNode(final DefaultMutableTreeNode node)
 	{
 		return node != null && node.getUserObject() != null && node.getUserObject() instanceof Introduction;
 	}
 	
+	/**
+	 * Gets the screen character names.
+	 *
+	 * @param chars the chars
+	 * @return the screen character names
+	 */
 	private ArrayList<String> getScreenCharacterNames(final ArrayList<CharacterAsset> chars)
 	{
 		ArrayList<String> charStrings = new ArrayList<String>();
@@ -883,6 +1081,11 @@ public class InputWizard implements ActionListener {
 		return charStrings;
 	}
 	
+	/**
+	 * Gets the game generic character names.
+	 *
+	 * @return the game generic character names
+	 */
 	private ArrayList<String> getGameGenericCharacterNames()
 	{
 		ArrayList<String> charStrings = new ArrayList<String>();
@@ -902,6 +1105,9 @@ public class InputWizard implements ActionListener {
 	}
 	
 	//sets all the component Inputs to 0
+	/**
+	 * Initialize component inputs.
+	 */
 	private void initializeComponentInputs()
 	{
 		for(int x=0; x<componentInputs.length;x++)
@@ -911,22 +1117,35 @@ public class InputWizard implements ActionListener {
 		
 	}
 	// read in and return an XML game file given the path to the file
-	private Game readGameFile(final File gameFile)
-	{
+	/**
+	 * Read game file.
+	 *
+	 * @param gameFile the game file
+	 * @return the game
+	 */
+	private Game readGameFile(final File gameFile) {
 		Game game1 = null;
-		
+
 		try {
-			game1 = (Game)JAXBContext.newInstance(Game.class).createUnmarshaller().unmarshal(gameFile);
+		 game1 = (Game)JAXBContext.newInstance(Game.class).createUnmarshaller().unmarshal(gameFile);
 		}
 		catch (JAXBException e) {
 			//TODO this was printing errors before, do we want it in?
 			e.printStackTrace();
-			System.out.println(e.toString());
+			
+			System.out.println("error" + e.toString());
 			System.out.println("Unable to open " + gameFile);
 		}
 		
 		return game1;
 	}
+	
+	/**
+	 * Save game file.
+	 *
+	 * @param gameFile the game file
+	 * @return the game
+	 */
 	private Game saveGameFile(final File gameFile)
     {
             try {
@@ -942,6 +1161,9 @@ public class InputWizard implements ActionListener {
             return game;
     }
 	
+	/**
+	 * Save game file as.
+	 */
 	private void saveGameFileAs()
 	{
 		JFileChooser chooser = new JFileChooser();
@@ -969,6 +1191,9 @@ public class InputWizard implements ActionListener {
 	}
 
 	// C40 handle loading an XML game into the preview window
+	/**
+	 * Load game.
+	 */
 	private void loadGame()
 	{
 		JFileChooser chooser = new JFileChooser();
@@ -1005,13 +1230,18 @@ public class InputWizard implements ActionListener {
 	}
 	
 	// return true if there are critical errors
+	/**
+	 * Load and display errors.
+	 *
+	 * @param game the game
+	 */
 	private void loadAndDisplayErrors(final Game game)
 	{
         GameErrorList errorList = GameErrorChecker.checkErrors(game, scenePanel.getWidth(), scenePanel.getHeight());
         scenePanel.clear();
         scenePanel.loadErrors(errorList);
         hasCriticalGameErrors = errorList.hasCriticalErrors();
-        
+
         //Debug
         for (PreviewError e : errorList) {
         	System.out.println(e);
@@ -1020,9 +1250,14 @@ public class InputWizard implements ActionListener {
 
 	// divide game into Acts and Scenes translating to java swing TreeNodes
 	// file name is required because it will be the name of the root node
-	private void displayGame(final Game game1, final String name)
-	{
-		((DefaultMutableTreeNode) gameTree.getModel().getRoot()).removeAllChildren();
+	/**
+	 * Display game.
+	 *
+	 * @param game1 the game1
+	 * @param name the name
+	 */
+	private void displayGame(final Game game1, final String name) {
+	((DefaultMutableTreeNode) gameTree.getModel().getRoot()).removeAllChildren();
         DefaultMutableTreeNode rootNode = new DefaultMutableTreeNode(name);
         rootNode.setUserObject(game1);
         ((DefaultTreeModel) gameTree.getModel()).setRoot(rootNode);
@@ -1044,18 +1279,19 @@ public class InputWizard implements ActionListener {
 					
 
 					if (screens.get(k).getChallenge() != null) {
-						QuizChallenge challenge = (QuizChallenge)(screens.get(k).getChallenge());
+					    List<Challenge> challenge = (screens.get(k).getChallenge());
 
-
-						Introduction intro = challenge.getIntroduction();
+					    	for(int l = 0; l < challenge.size(); l++){
+					    	    QuizChallenge qChallenge = (QuizChallenge) challenge.get(l);
+						Introduction intro = qChallenge.getIntroduction();
 						if (intro != null) {
 							DefaultMutableTreeNode introNode = new DefaultMutableTreeNode("Introduction");
-							introNode.setUserObject(challenge.getIntroduction());
+							introNode.setUserObject(qChallenge.getIntroduction());
 							screenNode.add(introNode);
 						}
 						
 						//
-						Item item = challenge.getItem();
+						Item item = qChallenge.getItem();
 						if (item != null) {
 							//for(int m = 0; m < items.size(); m++)
 							//{
@@ -1067,7 +1303,7 @@ public class InputWizard implements ActionListener {
 						}
 
 						//List<Summary> summaries = challenge.getSummary();
-						Summary summary = challenge.getSummary();
+						Summary summary = qChallenge.getSummary();
 						if (summary != null) {
 							//for(int m = 0; m < summaries.size(); m++)
 							//{
@@ -1076,6 +1312,7 @@ public class InputWizard implements ActionListener {
 								screenNode.add(summaryNode);
 							//}
 						}
+					    	}
 					}
 
 					sceneNode.add(screenNode);
@@ -1088,6 +1325,12 @@ public class InputWizard implements ActionListener {
 	}
 
 	//paint the scene in all of its glory
+	/**
+	 * Display screen.
+	 *
+	 * @param scene the scene
+	 * @param screen the screen
+	 */
 	private void displayScreen(final Scene scene, final Screen screen) 
 	{
 		//List<Asset> assets = screen.getAssets();
@@ -1102,6 +1345,13 @@ public class InputWizard implements ActionListener {
 	}
 
 	//paint the Challenge Multiple Choice question
+	/**
+	 * Display challenge.
+	 *
+	 * @param scene the scene
+	 * @param challenge the challenge
+	 * @param item the item
+	 */
 	private void displayChallenge(final Scene scene, final Challenge challenge, final Item item)
 	{
 		System.out.println("in displayChallenge()");
@@ -1131,6 +1381,13 @@ public class InputWizard implements ActionListener {
 	}
 
 	// sets all the values of the matrix to the given value. 
+	/**
+	 * Initialize matrix.
+	 *
+	 * @param inputMatrix the input matrix
+	 * @param initValue the init value
+	 * @return the matrix
+	 */
 	private Matrix initializeMatrix(final Matrix inputMatrix, final double initValue)
 	{
 		double[][] inputMatrixArray = inputMatrix.getArray();
@@ -1142,6 +1399,13 @@ public class InputWizard implements ActionListener {
      return inputMatrix;
 	}
 	//same as above, only with an array instead of a matrix 
+	/**
+	 * Initialize array.
+	 *
+	 * @param inputMatrixArray the input matrix array
+	 * @param initValue the init value
+	 * @return the double[][]
+	 */
 	private double[][] initializeArray(final double[][] inputMatrixArray, final double initValue)
 	{
 		for (int y = 0; y < inputMatrixArray.length; y++) {
@@ -1152,6 +1416,11 @@ public class InputWizard implements ActionListener {
      return inputMatrixArray;		
 	}
 	//prints the given matrix
+	/**
+	 * Prints the matrix.
+	 *
+	 * @param inputMatrix the input matrix
+	 */
 	private void printMatrix(final Matrix  inputMatrix)
 	{
 		double[][] inputArray = inputMatrix.getArray();
@@ -1162,6 +1431,12 @@ public class InputWizard implements ActionListener {
 			System.out.println("");
 		}
 	}
+	
+	/**
+	 * Gets the wizard inputs.
+	 *
+	 * @return the wizard inputs
+	 */
 	public final Matrix[] getWizardInputs() {
 		while (!submitClicked) {
 			//WAIT!!!! waits for the user to hit submit once called
@@ -1171,6 +1446,12 @@ public class InputWizard implements ActionListener {
 		}
 		return componentInputs;
 	}
+	
+	/**
+	 * Preview game.
+	 *
+	 * @param filename the filename
+	 */
 	public final void previewGame(final File filename){
 		System.out.println(selectedValue);
     	  if (selectedValue == 0) {
@@ -1187,6 +1468,13 @@ public class InputWizard implements ActionListener {
 	}
 	// a way to weight the options for each component against each other (ie age v gender) on which is more important
 	// add a third input to this method called weight and replace the optionTotal in the assignment statement with it. 
+	/**
+	 * Option matrix.
+	 *
+	 * @param optionNumber the option number
+	 * @param optionTotal the option total
+	 * @return the matrix
+	 */
 	private Matrix optionMatrix(final int optionNumber, final int optionTotal)
 	{
 		double[][] outputArray = new double[optionTotal][optionTotal];
@@ -1200,6 +1488,9 @@ public class InputWizard implements ActionListener {
 		return new Matrix(outputArray);
 	}
 	//called once after the submit button was clicked and a valid location is given.
+	/**
+	 * Distribute inputs.
+	 */
 	private void distributeInputs() {
 		//start with character component
 		int socialRating = 0;
@@ -1400,6 +1691,10 @@ public class InputWizard implements ActionListener {
 			}
 		}
 	}	
+	
+	/**
+	 * Prints the strings.
+	 */
 	public final void printStrings()
 	{
 		System.out.println(gameGradeLevel);
@@ -1411,10 +1706,22 @@ public class InputWizard implements ActionListener {
 		System.out.println(gameDifficulty);
 		System.out.println(gameSubject);
 	}
+	
+	/**
+	 * Gets the file location.
+	 *
+	 * @return the file location
+	 */
 	public final String getFileLocation()
 	{
 		return gameSavePath;
 	}
+	
+	/**
+	 * Check for xml.
+	 *
+	 * @param input the input
+	 */
 	public final void checkForXML(final String input)
 	{			
 		if (!input.contains(".")) {
@@ -1427,6 +1734,10 @@ public class InputWizard implements ActionListener {
 			}
 		}
 	}
+	
+	/* (non-Javadoc)
+	 * @see java.awt.event.ActionListener#actionPerformed(java.awt.event.ActionEvent)
+	 */
 	public final void actionPerformed(final ActionEvent e) 
 	{
 		switch (e.getActionCommand()) {

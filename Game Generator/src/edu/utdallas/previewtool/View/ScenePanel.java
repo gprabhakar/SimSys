@@ -736,8 +736,9 @@ if (act.getLearningObjective() != null) {
 //component to nest 1.1.1 within 1.1 when necessary.
 JLabel actLearningObjectives = new JLabel("<html><p style=\"text-align:left\">"
 + "Learning Objectives provided by WDPI" + (
-		//For now, setting the below line to just get the first one. This will need changes-Sean
-act.getLearningObjective().get(0).getLearningObjective()) + "</p></html>"); 
+//For now, setting the below line to just get the first one.
+//This will need changes-Sean
+act.getLearningObjective().get(0).getLearningObjective()) + "</p></html>");
 actLearningObjectives.setBounds(actDisplay.getWidth() / SIXTEEN,
 (actDisplay.getHeight() / THREE) + FIFTEEN,
 actDisplay.getWidth() / EIGHT * SEVEN,
@@ -762,7 +763,8 @@ add(actDisplay);
  * @param list the list
  * @return the string
  */
-private String htmlListWrap(List<String> list){
+@SuppressWarnings("unused")
+private String htmlListWrap(final List<String> list) {
 String htmlListString = "";
 for (int i = 0; i < list.size(); i++) {
 htmlListString = htmlListString + "<li>" + list.get(i) + "</li>";
@@ -771,11 +773,14 @@ htmlListString = "<ul>" + htmlListString + "</ul>";
 return htmlListString;
 }
 
-	
-	
-	private String htmlWrap(String s)
-	{
-		return "<html><p style=\"text-align:center\">" + s + "</p></html>";
-	}
 
+/**
+ * Html wrap.
+ *
+ * @param s the s
+ * @return the string
+ */
+private String htmlWrap(final String s) {
+    return "<html><p style=\"text-align:center\">" + s + "</p></html>";
+}
 }

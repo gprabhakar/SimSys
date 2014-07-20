@@ -1,12 +1,12 @@
 package edu.utdallas.gamegeneratorcollection.gamegenerator;
 
-import edu.utdallas.gamegenerator.Subject.Subject;
-import edu.utdallas.gamegenerator.Theme.Theme;
 import edu.utdallas.gamegenerator.old.Challenge.Challenge;
 import edu.utdallas.gamegeneratorcollection.GameComposition.Characters;
 import edu.utdallas.gamegeneratorcollection.GameComposition.LearningAct;
 import edu.utdallas.gamegeneratorcollection.GameComposition.Lesson;
 import edu.utdallas.gamegeneratorcollection.GameComposition.Locale;
+import edu.utdallas.gamegeneratorcollection.GameComposition.Subject;
+import edu.utdallas.gamegeneratorcollection.GameComposition.Theme;
 import edu.utdallas.gamegeneratorcollection.GameOutput.Structure;
 import edu.utdallas.gamespecification.Game;
 import edu.utdallas.gamespecification.Scene;

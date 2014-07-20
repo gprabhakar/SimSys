@@ -1,18 +1,18 @@
 package edu.utdallas.gamegeneratorcollection.gamegenerator;
 
-//import edu.utdallas.gamegenerator.Characters.*;
+
+
 import edu.utdallas.gamegenerator.LearningAct.Challenge.Reward;
-//import edu.utdallas.gamegenerator.LearningAct.Screen.*;
-//import edu.utdallas.sharedfiles.Shared.*;
-import edu.utdallas.gamegenerator.Subject.Subject;
-import edu.utdallas.gamegenerator.Theme.*;
+
+
+import edu.utdallas.gamegenerator.LearningAct.Challenge.Reward;
 import edu.utdallas.gamegeneratorcollection.ComponentCreation.Behavior;
 import edu.utdallas.gamegeneratorcollection.ComponentCreation.BehaviorType;
 import edu.utdallas.gamegeneratorcollection.ComponentCreation.ButtonLocationType;
 import edu.utdallas.gamegeneratorcollection.ComponentCreation.GameObject;
 import edu.utdallas.gamegeneratorcollection.ComponentCreation.SharedButton;
 import edu.utdallas.gamegeneratorcollection.ComponentCreation.SharedCharacter;
-import edu.utdallas.gamegeneratorcollection.ComponentCreation.SharedInformationBox;
+import edu.utdallas.gamegeneratorcollection.ComponentCreation.SharedInfoBox;
 import edu.utdallas.gamegeneratorcollection.GameComposition.BaseScreen;
 import edu.utdallas.gamegeneratorcollection.GameComposition.ChallengeOption;
 import edu.utdallas.gamegeneratorcollection.GameComposition.ChallengeOptionType;
@@ -33,7 +33,13 @@ import edu.utdallas.gamegeneratorcollection.GameComposition.LocaleScreen;
 import edu.utdallas.gamegeneratorcollection.GameComposition.ObjectMovement;
 import edu.utdallas.gamegeneratorcollection.GameComposition.ObjectMovementType;
 import edu.utdallas.gamegeneratorcollection.GameComposition.ScreenType;
+import edu.utdallas.gamegeneratorcollection.GameComposition.Subject;
 import edu.utdallas.gamegeneratorcollection.GameComposition.TextType;
+import edu.utdallas.gamegeneratorcollection.GameComposition.Theme;
+import edu.utdallas.gamegeneratorcollection.GameComposition.ThemeScreen;
+import edu.utdallas.gamegeneratorcollection.GameComposition.ThemeStory;
+import edu.utdallas.gamegeneratorcollection.GameComposition.ThemeStoryScreenIntro;
+import edu.utdallas.gamegeneratorcollection.GameComposition.ThemeStoryScreenOutro;
 import edu.utdallas.gamegeneratorcollection.GameComposition.TransitionType;
 import edu.utdallas.gamegeneratorcollection.GameOutput.Structure;
 
@@ -120,8 +126,8 @@ public class TestObjects {
                 movements));
         localeCharactersMap.put(ScreenType.LESSON, localeCharacters);
 
-        Map<TextType, SharedInformationBox> informationBoxMap = new HashMap<TextType, SharedInformationBox>();
-        SharedInformationBox informationBox = new SharedInformationBox(100, 100, 100, 100, "", "hero");
+        Map<TextType, SharedInfoBox> informationBoxMap = new HashMap<TextType, SharedInfoBox>();
+        SharedInfoBox informationBox = new SharedInfoBox(100, 100, 100, 100, "", "hero");
         informationBoxMap.put(TextType.HERO, informationBox);
 
 

@@ -48,7 +48,7 @@ import org.jdesktop.animation.timing.TimingSource;
  * ended, and repeated.
  * <p>
  * Most of the methods here are simle getters/setters for the properties
- * used by Animator.  Typical animations will simply use one of the 
+ * used by Animator.  Typical animations will simply use one of the
  * two constructors (depending on whether you are constructing a repeating
  * animation), optionally call any of the <code>set*</code> methods to alter
  * any of the other parameters, and then call start() to run the animation.
@@ -59,7 +59,7 @@ import org.jdesktop.animation.timing.TimingSource;
  *  Animator animator = new Animator(1000, myTarget);
  *  animator.start();
  * </pre>
- * The following variation will run a half-second animation 4 times, 
+ * The following variation will run a half-second animation 4 times,
  * reversing direction each time:
  * <pre>
  *  Animator animator = new Animator(500, 4, RepeatBehavior.REVERSE, myTarget);
@@ -70,24 +70,29 @@ import org.jdesktop.animation.timing.TimingSource;
  * Animator#setDeceleration}. More automated animations can be created and run
  * using the {@link org.jdesktop.animation.timing.triggers triggers}
  * package to control animations through events and {@link
- * org.jdesktop.animation.timing.interpolation.PropertySetter} to 
+ * org.jdesktop.animation.timing.interpolation.PropertySetter} to
  * handle animating object properties.
  */
 public final class Animator {
 
-    private TimingSource timer;    // Currently uses Swing timer.  This could change
-			    // in the future to use a more general mechanism
-			    // (and one of better timing resolution). An 
-                            // important advantage to the Swing timer is that
-                            // it ensures that we receive and send our timing
-                            // events on the Event Dispatch Thread, which makes
-                            // it easier to use the framework for GUI
-                            // animations.
+    /** The timer. */
+    private TimingSource timer;
+    // Currently uses Swing timer.This could change
+    // in the future to use a more general mechanism
+    // (and one of better timing resolution). An
+    // important advantage to the Swing timer is that
+    // it ensures that we receive and send our timing
+    // events on the Event Dispatch Thread, which makes
+    // it easier to use the framework for GUI animations.
+    /** The swing timer. */
     private TimingSource swingTimer;
+
+    /** The timing source target. */
     private TimingSourceTarget timingSourceTarget;
-    
-    private ArrayList<TimingTarget> targets = new ArrayList<TimingTarget>();    // Animators may have 
-                                                    // multiple targets
+
+    /** The targets. */
+    private ArrayList<TimingTarget> targets = new ArrayList<TimingTarget>();
+    // Animators may have  multiple targets
 
     private long startTime;	    // Tracks original Animator start time
     private long currentStartTime;  // Tracks start time of current cycle

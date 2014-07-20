@@ -5,46 +5,90 @@ import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
 
+/**
+ *
+ * @author Sean
+ *
+ */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "Location", propOrder = {
-	"x",
-	"y"	
+    "x",
+    "y"
 })
 
 public class Location {
-	@XmlElement(name = "x", required = true)
-	private int x;
-	@XmlElement(name = "y", required = true)
-	private int y;
-	
-	public Location() {
-		
-	}
-	
-	public Location(int x, int y) {
-		super();
-		this.x = x;
-		this.y = y;
-	}
 
-	public int getX() {
-		return x;
-	}
+    /**
+     * x value for an item's location.
+     */
+    @XmlElement(name = "x", required = true)
+    private int x;
+    /**
+     * y value for an item's location.
+     */
+    @XmlElement(name = "y", required = true)
+    private int y;
 
-	public void setX(int x) {
-		this.x = x;
-	}
+    /**
+     * Default constructor.
+     */
+    public Location() {
 
-	public int getY() {
-		return y;
-	}
+    }
 
-	public void setY(int y) {
-		this.y = y;
-	}
-	
-	
-	
-	
-	
+    /**
+     *
+     * @param xPos
+     * allowed object is
+     * {@link int}
+     * @param yPos
+     * allowed object is
+     * {@link int}
+     */
+    public Location(final int xPos, final int yPos) {
+        super();
+        this.x = xPos;
+        this.y = yPos;
+    }
+
+    /**
+     *
+     * @return
+     * possible object is
+     * {@link int}
+     */
+    public final int getX() {
+        return x;
+    }
+
+    /**
+     *
+     * @param xPos
+     * allowed object is
+     * {@link int}
+     */
+    public final void setX(final int xPos) {
+        this.x = xPos;
+    }
+
+    /**
+    *
+    * @return
+    * allowed object is
+    * {@link int}
+    */
+    public final int getY() {
+        return y;
+    }
+
+    /**
+    *
+    * @param yPos
+    * allowed object is
+    * {@link int}
+    */
+    public final void setY(final int yPos) {
+        this.y = yPos;
+    }
+
 }

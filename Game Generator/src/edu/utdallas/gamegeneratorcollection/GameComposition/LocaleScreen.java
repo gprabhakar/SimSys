@@ -4,8 +4,8 @@ import edu.utdallas.gamegeneratorcollection.ComponentCreation.ButtonLocationType
 import edu.utdallas.gamegeneratorcollection.ComponentCreation.GameObject;
 import edu.utdallas.gamegeneratorcollection.ComponentCreation.SharedButton;
 import edu.utdallas.gamegeneratorcollection.ComponentCreation.SharedCharacter;
-import edu.utdallas.gamegeneratorcollection.ComponentCreation.SharedInformationBox;
-//import edu.utdallas.sharedfiles.Shared.*;
+import edu.utdallas.gamegeneratorcollection.ComponentCreation.SharedInfoBox;
+
 
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlElementWrapper;
@@ -24,7 +24,7 @@ public class LocaleScreen {
     private String background;
     private List<GameObject> gameObjects;
     private Map<LearningActCharacterType, SharedCharacter> characters;
-    private Map<TextType, SharedInformationBox> informationBoxes;
+    private Map<TextType, SharedInfoBox> informationBoxes;
     private Map<ButtonLocationType, SharedButton> buttons;
 
     public String getBackground() {
@@ -55,12 +55,12 @@ public class LocaleScreen {
         this.characters = characters;
     }
 
-    public Map<TextType, SharedInformationBox> getInformationBoxes() {
+    public Map<TextType, SharedInfoBox> getInformationBoxes() {
         return informationBoxes;
     }
 
     @XmlElementWrapper(name = "InformationBoxes")
-    public void setInformationBoxes(Map<TextType, SharedInformationBox> informationBoxes) {
+    public void setInformationBoxes(Map<TextType, SharedInfoBox> informationBoxes) {
         this.informationBoxes = informationBoxes;
     }
 
