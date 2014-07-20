@@ -1,218 +1,206 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <!-- -->
-<!-- Top Level Game -->
 <!-- Test Game 1 contains 1 act, 1 scene and 2 screens -->
-<!-- **FINALIZED-->
 <game>
-	<!-- -->
-	<!-- The game contains a default player who is rewarded with 5000 points 
-		after playing the game -->
-	<!-- -->
-	<gameElement xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-		xsi:type="PLAYER">
-		<location>OSR</location>
-		<size>LARGE</size>
-		<!-- -->
-		<!-- The profile of the player starts here -->
-		<!-- -->
-		<profile>
-			<name> Default Player </name>
-			<type> Protagonist </type>
-			<title> Intern, Software Engineering </title>
-			<skills> Software Engineering, Project Management, Configuration
-				Management </skills>
-			<experience> 0 </experience>
-			<communication> Good </communication>
-			<leadership> Good </leadership>
-			<teamwork> Good </teamwork>
-			<demographics> Male, Caucasian </demographics>
-			<degrees> NONE </degrees>
-		</profile>
-		<reward>
-			<certificates>0</certificates>
-			<hint>0</hint>
-			<!-- -->
-			<!-- The player initally has 1000 points -->
-			<!-- -->
-			<points>3000</points>
-			<promotions>0</promotions>
-			<trophies>0</trophies>
-		</reward>
-	</gameElement>
-	<!-- -->
-	<!-- -->
-	<!-- The following section defines the constant values in test game 1 -->
-	<gameConstants>
-		<!-- This game has game elements which FADEIN/FADEOUT in 'QUICK' amount 
-			of time -->
-		<timer name="NONE">
-		<value>0</value>
-	</timer>
-	<timer name="QUICK">
-		<value>10000</value>
-	</timer>
-	</gameConstants>
-	<!-- -->
-	<!-- -->
-	<!-- The static structure of the game starts here -->
-	<!-- -->
-	<!-- -->
-	<actStructure>
-			<gameElement xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-				xsi:type="IDENTIFIER">
-				<!-- -->
-				<!-- The act is identified as act1 -->
-				<!-- -->
-				<id> act1 </id>
-			</gameElement>
-			<!--   Adding timer to the act   -->
-			<timer>NONE</timer>
-			<sceneStructure>
-				<!-- -->
-				<!-- The scene has a BlueSky backdrop and is identified as scene1 -->
-				<!-- -->
-				<identifier>scene1</identifier>
-				<timer>NONE</timer>
-				<backdrop>blue_bg.png</backdrop>
-				<screenStructure>
-					<!-- -->
-					<!-- The below properties are identified as screen1 -->
-					<!-- -->
-					<timer>NONE</timer>
-					<gameElement xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-						xsi:type="prop">
-						<gameElement xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-							xsi:type="Identifier">
-							<id> screen1 </id>
-						</gameElement>
-						<!-- -->
-						<!-- Following behavior is similar to MATLAB Scripting and is in format 
-							Model.Action.Parameter -->
-						<!-- -->
-						<behavior>Reward.AddPoints.4000</behavior>
-						<!-- -->
-						<!-- The button1 is displayed as a button and will HIDE on a 'click' -->
-						<!-- -->
-						<type>
-							<typeName>Button3</typeName>
-							<event>
-								<eventName>NONE</eventName>
-								<animation>FADEIN</animation>
-								<time>QUICK</time>
-							</event>
-							<event>
-								<eventName>CLICK</eventName>
-								<animation>FADEOUT</animation>
-								<time>QUICK</time>
-								
-							</event>
-							<!-- -->
-							<!-- This game element is present on screeen1 -->
-							<!-- -->
-							
-						</type>
-						<color>YELLOW</color>
-							<location>UC</location>
-							<size>SMALL</size>
-							<!-- -->
-							<!-- The below text is displayed on button1 -->
-							<!-- -->
-							<text>Play to Win!</text>
-							<textSize>12</textSize>
-							<font>Aerial</font>
-						
-						<!-- -->
-						<!-- The below value defines the next element to appearing on the view -->
-						<!-- -->
-						<next> screen2 </next>
-					</gameElement>
-				</screenStructure>
-					
-				<screenStructure>
-				    <timer>NONE</timer>
-					<gameElement xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-						xsi:type="prop">
-						<gameElement xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-							xsi:type="IDENTIFIER">
-							<id> screen2 </id>
-						</gameElement>
-						<!-- -->
-						<!-- The below properties are identified as screen2 -->
-						<!-- -->
-						<type>
-							<typeName>InformationBox1</typeName>
-							<event>
-								<eventName>NONE</eventName>
-								<animation>FADEIN</animation>
-								<time>QUICK</time>
-							</event>
-							<event>
-								<eventName>ENDGAME</eventName>
-								<animation>FADEOUT</animation>
-								<time>QUICK</time>								
-							</event>
-							
-						</type>
-						<color>YELLOW</color>
-							<location>UC</location>
-							<size>MEDIUM</size>
-							<!-- -->
-							<!-- The below text is appended with the points that the GetPoints 
-								method of the Reward class returns and is displayed on the view -->
-							<!-- The GetPoints method updates the points of the player adding the 
-								reward points to the player's initial player -->
-							<!-- -->
-							<text>You Won!!! Your current points are</text>
-							<textSize>14</textSize>
-							<font>Aerial</font>
-						<behavior> Reward.GetPoints </behavior>
-						<next>screen3</next>
-					</gameElement>
-				</screenStructure>
-					
-				<screenStructure> 
-				<timer>NONE</timer>	
-					<!-- -->
-					<!-- The below properties are identified as screen2 -->
-					<!-- -->
-					<gameElement xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-						xsi:type="prop">
-						<gameElement xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-							xsi:type="IDENTIFIER">
-							<id> screen3 </id>
-						</gameElement>
-						<!-- -->
-						<!-- The Stop method to stop the all the acts, scenes and screens is 
-							called when the player clicks on button1 to stop the game -->
-						<!-- -->
-						<behavior>GameControl.Stop</behavior>
-						<type>
-							<typeName>Button2</typeName>
-							<event>
-								<eventName>NONE</eventName>
-								<animation>FADEIN</animation>
-								<time>QUICK</time>
-							</event>
-							<event>
-								<eventName>CLICK</eventName>
-								<animation>FADEOUT</animation>
-								<time>QUICK</time>
-								
-							</event>
-                             
-						</type>
-						<color>YELLOW</color>
-						<location>DLC</location>
-						<size>SMALL</size>
-						<!-- -->
-						<!-- The below text is presented on the button1 -->
-						<!-- -->
-						<text>End Game</text>
-						<textSize>12</textSize>
-					    <font>Comic Sans MS-PLAIN-12</font>
-						<next>end game</next>
-					</gameElement>
-				</screenStructure>
-			</sceneStructure>
-		</actStructure>
-	</game>
+    <Act>
+        <Transition>
+            <TransitionType>straightCut</TransitionType>
+            <Duration>medium</Duration>
+        </Transition>
+        <Sequence>
+            <SequenceNumber>1</SequenceNumber>
+            <NextSequence>0</NextSequence>
+        </Sequence>
+		<!-- Learning Objective needs to be handled -->
+        <LearningObjective>
+            <LearningObjective>string</LearningObjective>
+        </LearningObjective>
+        <LearningObjective>
+            <LearningObjective>string</LearningObjective>
+        </LearningObjective>
+        <LearningObjective>
+            <LearningObjective>string</LearningObjective>
+        </LearningObjective>
+        <LearningObjective>
+            <LearningObjective>string</LearningObjective>
+        </LearningObjective>
+        <Scene>
+            <Transition>
+                <TransitionType>straightCut</TransitionType>
+                <Duration>medium</Duration>
+            </Transition>
+            <Sequence>
+                <SequenceNumber>1</SequenceNumber>
+                <NextSequence>0</NextSequence>
+            </Sequence>
+			<!-- Learning Objective needs to be handled -->
+            <LearningObjective>
+                <LearningObjective>string</LearningObjective>
+            </LearningObjective>
+            <Screen>
+                <Transition>
+                    <TransitionType>wipe</TransitionType>
+                    <Duration>medium</Duration>
+                </Transition>
+                <Sequence>
+                    <SequenceNumber>1</SequenceNumber>
+                    <NextSequence>0</NextSequence>
+                </Sequence>
+				!-- Learning Objective needs to be handled -->
+				<LearningObjective>
+					<LearningObjective>string</LearningObjective>
+				</LearningObjective>
+				<Challenge xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="Quiz">
+				<Introduction>
+					<IntroductionName> Intro Name </IntroductionName>
+				</Introduction>
+				<Pedagogy>
+					<PedagogyName> Pedagogy Name </PedagogyName>
+				</Pedagogy>
+				<Item xsi:type="MultipleChoiceItem">
+                        <Stem>
+                            <StemText>
+							<Hint>
+							<Hint>Using the knowledge learned during the tour:</Hint>
+							</Hint>
+                            </StemText>
+                            <StemQuestion>
+							<Hint>
+							<Hint>What is the closest planet to Earth?</Hint>
+							</Hint>
+                            </StemQuestion>
+							</Stem>
+							<Option>
+                            <Reward>edu.utdallas.gamegenerator.LearningAct.Challenge.Reward@2b1eb67d</Reward>
+                            <Hint>
+							<Hint>Mercury</Hint>
+                            </Hint>
+                        </Option>
+                        <Option>
+						<Reward>edu.utdallas.gamegenerator.LearningAct.Challenge.Reward@6d5edea8</Reward>
+                            <Hint>
+							<Hint>Mars</Hint>
+                            </Hint>
+							</Option>
+                        <Option>
+						<Reward>edu.utdallas.gamegenerator.LearningAct.Challenge.Reward@6f6c1fb0</Reward>
+                            <Hint>
+							<Hint>Venus</Hint>
+                            </Hint>
+                        </Option>
+                        <Option>
+						<Reward>edu.utdallas.gamegenerator.LearningAct.Challenge.Reward@239494f6</Reward>
+						<Hint>
+						<Hint>Jupiter</Hint>
+						</Hint>
+                        </Option>
+						</Item>
+						<Summary> 
+							<SummaryName> Summary Name </SummaryName>
+						</Summary>
+						<Layout>
+							<LayoutName>Placeholder name</LayoutName>
+						</Layout>
+						<Classification>Interactive</Classification>
+                </Challenge>
+				
+				<!--Game Elements of Scene 0 -->
+				<!--Game Elements don't have animation and sound elements-->
+				<GameElement>
+                    <Name>Props\GenericInteraction\TextBubble.png</Name>
+                    <Location>
+                        <x>327</x>
+                        <y>123</y>
+                    </Location>
+                    <Size>
+                        <width>247</width>
+                        <height>78</height>
+                    </Size>
+                </GameElement>
+                <GameElement>
+                    <Name>character_15\char15_WalkRBehind.png</Name>
+                    <Location>
+                        <x>209</x>
+                        <y>130</y>
+                    </Location>
+                    <Size>
+                        <width>171</width>
+                        <height>292</height>
+                    </Size>
+                </GameElement>
+                <GameElement xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="GenericInteraction">
+                    <Location>
+                        <x>346</x>
+                        <y>128</y>
+                    </Location>
+                    <Size>
+                        <width>210</width>
+                        <height>59</height>
+                    </Size>
+                    <Text>Today's lesson was difficult. I wonder if Gooble can help!</Text>
+                </GameElement>
+                <GameElement xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="GenericInteraction">
+                    <Name>Button Type</Name>
+                    <Location>
+                        <x>581</x>
+                        <y>332</y>
+                    </Location>
+                    <Size>
+                        <width>157</width>
+                        <height>50</height>
+                    </Size>
+                    <Text>Continue</Text>
+                </GameElement>
+            </Screen>
+            <Screen>
+                <Transition>
+                    <TransitionType>formCut</TransitionType>
+                    <Duration>fast</Duration>
+                </Transition>
+                <Sequence>
+                    <SequenceNumber>2</SequenceNumber>
+                    <NextSequence>0</NextSequence>
+                </Sequence>
+            </Screen>
+            <Background>Backdrops\Earth Orbit.png</Background>
+            <Music>
+                <Music>AudioAssetRepository\Dreamy-Summer.mid</Music>
+            </Music>
+        </Scene>
+    </Act>
+    
+    <LearningObjective>
+        <LearningObjective>string</LearningObjective>
+    </LearningObjective>
+    <LearningObjective>
+        <LearningObjective>string</LearningObjective>
+    </LearningObjective>
+    <Character xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="Player">
+        <Name>Sir Solvesalot</Name>
+		<Location>
+            <x>20</x>
+            <y>450</y>
+        </Location>
+        <Size>
+            <width>50</width>
+            <height>200</height>
+        </Size>
+        <CharacterName>Sir Solvesalot</CharacterName>
+        <AutonomousBehaviour>Behavior</AutonomousBehaviour>
+        <Profile>
+            <ProfilePhoto>Office, Classroom\Characters\character_3\char3_StandSmileOpen.png</ProfilePhoto>
+            <Title>Student</Title>
+            <YearsOfExperience>3</YearsOfExperience>
+            <Skills>Java</Skills>
+            <Skills>Software Architecture</Skills>
+            <Demographics>Male</Demographics>
+            <Demographics>23</Demographics>
+            <Demographics>American</Demographics>
+            <Demographics>English</Demographics>
+            <Degrees>BS</Degrees>
+            <Degrees>MS</Degrees>
+        </Profile>
+		<rewards>5000</rewards>
+		<PlayerID> Player 1 </PlayerID>
+    </Character>
+</game>
