@@ -1279,7 +1279,6 @@ GAME,
 					
 
 					if (screens.get(k).getChallenge() != null) {
-					    System.out.println("Chall "+ screens.get(k).getChallenge());
 					    List<Challenge> challenge = (screens.get(k).getChallenge());
 
 					    	for(int l = 0; l < challenge.size(); l++){
