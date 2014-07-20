@@ -140,11 +140,8 @@ if (comboBox.getSelectedItem() == null) { return; }
 final ArrayList<JLabel> jlabels = new ArrayList<JLabel>();
 String item = (String) comboBox.getSelectedItem();
 
-System.out.println(item);
-
 File dir = new File("Office, Classroom/" + item + "/");
 wPanel.removeAll();
-
 for (File child : dir.listFiles()) {
 if (child.isDirectory()) {
 continue;

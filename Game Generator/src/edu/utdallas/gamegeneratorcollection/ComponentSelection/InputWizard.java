@@ -1805,7 +1805,8 @@ GAME,
 		case "backgroundToolbar":
 			backgroundSelectPath = null;
 			String currentBackgroundPath = lastSelectedScene.getBackground().getBackground();
-			currentBackgroundPath = currentBackgroundPath.substring(0, currentBackgroundPath.lastIndexOf('\\'));
+			currentBackgroundPath = "Backdrops";
+//			currentBackgroundPath = currentBackgroundPath.substring(0, currentBackgroundPath.lastIndexOf('\\'));
 			backgroundSelectWindow.setBackgroundPathString(backgroundSelectPath);
 			backgroundSelectWindow.setBackgroundFolderPath(currentBackgroundPath);
 			backgroundSelectWindow.setVisible(true);
