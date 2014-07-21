@@ -36,7 +36,7 @@ private static final long serialVersionUID = 1L;
 
 /** The Constant HEIGHT. */
 public static final int WIDTH = 450, HEIGHT = 300;
-
+//Windows
 /** The Constant soundFolder. */
 public static final String SOUNDFOLDER = "AudioAssetRepository\\";
 
@@ -46,6 +46,17 @@ public static final String EFFECTSFOLDER = "effects\\sound "
 
 /** The Constant musicFolder. */
 public static final String MUSICFOLDER = "music\\";
+//MAC
+///** The Constant soundFolder. */
+//public static final String SOUNDFOLDER = "AudioAssetRepository//";
+//
+///** The Constant effectsFolder. */
+//public static final String EFFECTSFOLDER = "effects//sound "
+//+ "effects from WavSource//";
+//
+///** The Constant musicFolder. */
+//public static final String MUSICFOLDER = "music//";
+
 
 /** The sound folder string. */
 private String soundFolderString;
