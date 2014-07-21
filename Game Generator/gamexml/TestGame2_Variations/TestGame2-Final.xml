@@ -315,7 +315,9 @@
                 <Text>Continue</Text>
             </GameElement>
         </Screen>
-        <Background>Backdrops\bedroom master.png</Background>
+		<Background>
+        <Background>Classroom_1.png</Background>
+		</Background>
         <Music>
             <Music>PianoRoll3.mid</Music>
         </Music>
@@ -472,7 +474,9 @@
                 <Text>Continue</Text>
             </GameElement>
         </Screen>
-        <Background>Backdrops\bank.png</Background>
+		<Background>
+        <Background>Classroom_2.png</Background>
+		</Background>
         <Music>
             <Music>funeral-march.mid</Music>
         </Music>

@@ -315,7 +315,9 @@
                     <Text>Continue</Text>
                 </GameElement>
             </Screen>
-            <Background>Backdrops\bedroom master.png</Background>
+			<Background>
+            <Background>bedroom master.png</Background>
+			</Background>
             <Music>
                 <Music>PianoRoll3.mid</Music>
             </Music>
