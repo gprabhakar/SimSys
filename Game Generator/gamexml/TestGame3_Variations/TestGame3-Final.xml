@@ -155,7 +155,9 @@
                     <Text>Continue</Text>
                 </GameElement>
             </Screen>
-            <Background>Backdrops\bar.png</Background>
+            <Background>
+				<Background>bathroom_1.png</Background>
+			</Background>
             <Music>
                 <Music>Opening Credits.mid</Music>
             </Music>

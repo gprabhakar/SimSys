@@ -273,8 +273,9 @@
                 <Text>Continue</Text>
             </GameElement>
         </Screen>
-
+		<Background>
         <Background>Boss Office.png</Background>
+		</Background>
         <Music>
             <Music>Opening Credits.mid</Music>
         </Music>

@@ -162,7 +162,9 @@
                     <NextSequence>0</NextSequence>
                 </Sequence>
             </Screen>
-            <Background>Earth Orbit.png</Background>
+            <Background>
+				<Background>Earth Orbit.png</Background>
+			</Background>
             <Music>
                 <Music>Dreamy-Summer.mid</Music>
             </Music>

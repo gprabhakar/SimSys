@@ -390,8 +390,8 @@ GAME,
 					return;
 					}
 				else {
-					//lastSelectedScreen.setBackground(backgroundSelectWindow.getNewBackgroundPath());
-					//scenePanel.loadBackground(lastSelectedScene.getBackground());
+					//lastSelectedScene.setBackground(backgroundSelectWindow.getNewBackgroundPath());
+					scenePanel.loadBackground(lastSelectedScene.getBackground().getBackground());
 				}
 			}
 			public void windowDeiconified(final WindowEvent e) { }
@@ -466,7 +466,7 @@ GAME,
                     buttonButton.setEnabled(false);
             		
             		//scenePanel.loadAssets(intro.getAssets(), true);
-            		//scenePanel.loadBackground(scene.getBackground());
+            		scenePanel.loadBackground(scene.getBackground().getBackground());
             	}
             	else if (isSummaryNode(selectedNode))
             	{
@@ -515,7 +515,7 @@ GAME,
           			lastSelectedScene = s;
           			scenePanel.clear();
           			System.out.println("calling clear scene node\n");
-          			//scenePanel.loadBackground(s.getBackground());
+          			scenePanel.loadBackground(s.getBackground().getBackground());
           			scenePanel.backgroundMusicPreview(lastSelectedScene.getMusic() != null);
             	}
             	else if(isGameNode(selectedNode))
@@ -1353,7 +1353,7 @@ GAME,
 			System.out.println("assets null");
 		}
 
-		//scenePanel.loadBackground(scene.getBackground());
+		scenePanel.loadBackground(scene.getBackground().getBackground());
 	}
 
 	//paint the Challenge Multiple Choice question
@@ -1388,7 +1388,7 @@ GAME,
 			}
 
 			//scenePanel.loadAssets(layout.getAssets(), true);
-			//scenePanel.loadBackground(scene.getBackground());
+			scenePanel.loadBackground(scene.getBackground().getBackground());
 		}
 	}
 
