@@ -388,7 +388,6 @@
 		<complexContent>
 			<extension base="tns:GameElementType">
 				<sequence>
-					<element name="CharacterName" type="string"></element>
 					<element name="AutonomousBehaviour" type="string"></element>
 					<element name="Profile" type="tns:Profile"></element>
 					<element name="Rewards" type="tns:Reward"></element>
