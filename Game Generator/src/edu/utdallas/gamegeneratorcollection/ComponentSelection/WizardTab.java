@@ -6,7 +6,7 @@ import java.awt.LayoutManager;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
-import java.util.ArrayList;
+
 import java.util.LinkedList;
 import java.util.List;
 
@@ -15,65 +15,91 @@ import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JFileChooser;
 import javax.swing.JLabel;
-import javax.swing.JOptionPane;
+
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 
 import Jama.Matrix;
-import edu.utdallas.gamePlayEngine.menuFrame;
-import edu.utdallas.gamePlayEngine.view.GameView;
-import edu.utdallas.gamegenerator.RepoUpdate.Updates;
-import edu.utdallas.gamegeneratorcollection.ComponentCreation.Asset;
-import edu.utdallas.gamegeneratorcollection.ComponentCreation.AudioPlayer;
-import edu.utdallas.gamegeneratorcollection.ComponentCreation.CharacterAsset;
-import edu.utdallas.gamegeneratorcollection.ComponentSelection.InputWizard.gameLevel;
-import edu.utdallas.previewtool.View.SoundSelectWindow;
 import static java.util.Arrays.asList;
 
+/**
+ * Holds the class and methods needed to run the JPanel for
+ * the input wizard.
+ * @author Sean
+ *
+ */
 public class WizardTab extends JPanel implements ActionListener {
 
+    /**
+     * The game's gradelevel.
+     */
     private String gameGradeLevel = "none";
-    
+
     /** The player gender. */
-    private String playerGender= "none"; 
-   
+    private String playerGender = "none";
+
      /** The player age. */
-     private String playerAge= "none"; 
-   
+     private String playerAge = "none";
+
      /** The player dress. */
-     private String playerDress= "none";   
-   
+     private String playerDress = "none";
+
       /** The game theme. */
-      private String gameTheme= "none";    
-   
+      private String gameTheme = "none";
+
     /** The game subject. */
-    private String gameSubject= "none";    
-   
+    private String gameSubject = "none";
+
     /** The game setting. */
-    private String gameSetting= "none";    
-   
+    private String gameSetting = "none";
+
     /** The game difficulty. */
-    private String gameDifficulty= "none"; 
-   
+    private String gameDifficulty = "none";
+
     /** The save file chooser. */
     private JFileChooser saveFileChooser;
-    
+
+    /**
+     * The path for creating a game.
+     */
     private static String gameSavePath = "C:\\";
-    
+
+    /**
+     * Set to true when the "Submit" button on this
+     * panel is set to false.
+     */
     private boolean submitClicked = false;
-    
-    /** The Currentfile. */
-    private File Currentfile = null;
-    
+
+    /** The current file. */
+    private File currentFile = null;
+
+    /**
+     * The components inputted based on user's
+     * choices in the wizard.
+     */
     private Matrix[] componentInputs;
 
-    public WizardTab(LayoutManager layout) {
+    /**
+     * This constructor will probably be removed.
+     * @param layout
+     * {@link LayoutManager}
+     */
+    public WizardTab(final LayoutManager layout) {
         super(layout);
-       
-        
+
     }
 
-    public WizardTab(GridLayout layout, final Matrix[] input) {
+    /**
+     * Main constructor needed. The GridLayout is
+     * for standard JPanel stuff, and the input is so
+     * needed data is passed from the JFrame containing this panel
+     * to the panel itself.
+     * @param layout
+     * {@link GridLayout}
+     * @param input
+     * {@link Matrix}
+     */
+    public WizardTab(final GridLayout layout, final Matrix[] input) {
         // TODO Auto-generated constructor stub
         super(layout);
         componentInputs = input;
@@ -85,12 +111,9 @@ public class WizardTab extends JPanel implements ActionListener {
      * action command values are in this method.
      */
     public final void setSelectionRows() {
-        //JRadioButton nextButton;
+
         int nextOpenRow = 0;
 
-        //ButtonGroup gradeGroup = new ButtonGroup();
-
-        //JPanel gradePanel = generateLeftFlowPanel("Indended grade level:");
         List<String> labels = new LinkedList<String>(asList("Primary School",
                 "Secondary School",
                 "High School", "College", "Job Training", "No Preference"));
@@ -157,170 +180,32 @@ public class WizardTab extends JPanel implements ActionListener {
         JCheckBox tickBox = new JCheckBox("Preview after generating: ");
         previewCheckPanel.add(tickBox);
         this.add(previewCheckPanel, nextOpenRow++);
-        
-        JPanel submitPanel = new JPanel(new GridLayout(1,3));
+
+        JPanel submitPanel = new JPanel(new GridLayout(1, 3));
         JButton submitButton = new JButton("Submit");
         submitButton.addActionListener(this);
         submitButton.setActionCommand("Submit");
         submitPanel.add(submitButton);
         this.add(submitPanel, nextOpenRow++);
 
-        /*
-        nextButton = setButton("Primary School", "primary");
-        gradeGroup.add(nextButton);
-        gradePanel.add(nextButton);
-        nextButton = setButton("Secondary School", "secondary");
-        gradeGroup.add(nextButton);
-        gradePanel.add(nextButton);
-        nextButton = setButton("High School", "high");
-        gradeGroup.add(nextButton);
-        gradePanel.add(nextButton);
-        nextButton = setButton("College", "college");
-        gradeGroup.add(nextButton);
-        gradePanel.add(nextButton);
-        nextButton = setButton("Job Training", "jobTraining");
-        gradeGroup.add(nextButton);
-        gradePanel.add(nextButton);
-        nextButton = setButton("No Preference", true, "no grade");
-        gradeGroup.add(nextButton);
-        gradePanel.add(nextButton);
-        this.add(gradePanel, nextOpenRow++);
-
-        ButtonGroup genderGroup = new ButtonGroup();
-        JPanel genderPanel = generateLeftFlowPanel("Player Gender:");
-        nextButton = setButton("Male", "Male");
-        genderGroup.add(nextButton);
-        genderPanel.add(nextButton);
-        nextButton = setButton("Female", "Female");
-        genderGroup.add(nextButton);
-        genderPanel.add(nextButton);
-        nextButton = setButton("No Preference", true, "no gender");
-        genderGroup.add(nextButton);
-        genderPanel.add(nextButton);
-        this.add(genderPanel, nextOpenRow++);
-
-        ButtonGroup ageGroup = new ButtonGroup();
-        JPanel agePanel = generateLeftFlowPanel("Character age:");
-        nextButton = setButton("Young", "Young");
-        ageGroup.add(nextButton);
-        agePanel.add(nextButton);
-        nextButton = setButton("Old", "Old");
-        ageGroup.add(nextButton);
-        agePanel.add(nextButton);
-        nextButton = setButton("No Preference", true, "no age");        
-        ageGroup.add(nextButton);
-        agePanel.add(nextButton);
-        
-        this.add(agePanel, nextOpenRow++);
-
-        ButtonGroup dressGroup = new ButtonGroup();
-        JPanel dressPanel = generateLeftFlowPanel("Character dress:");
-        nextButton = setButton("Casual Dress", "Casual");
-        dressGroup.add(nextButton);
-        dressPanel.add(nextButton);
-        nextButton = setButton("Fancy Dress", "Fancy");
-        dressGroup.add(nextButton);
-        dressPanel.add(nextButton);
-        nextButton = setButton("No Preference", true, "no age");
-        dressGroup.add(nextButton);
-        dressPanel.add(nextButton);
-        this.add(dressPanel, nextOpenRow++);
-
-        ButtonGroup themeGroup = new ButtonGroup();
-        JPanel themePanel = generateLeftFlowPanel("Game Theme:");
-        nextButton = setButton("Gooble", "Gooble");
-        themeGroup.add(nextButton);
-        themePanel.add(nextButton);
-        nextButton = setButton("Dream", "Dream");
-        themeGroup.add(nextButton);
-        themePanel.add(nextButton);
-        nextButton = setButton("Virtual Tour", "VirtualTour");
-        themeGroup.add(nextButton);
-        themePanel.add(nextButton);
-        nextButton = setButton("Workplace", "Workplace");
-        themeGroup.add(nextButton);
-        themePanel.add(nextButton);
-        nextButton = setButton("Other", "Other");
-        themeGroup.add(nextButton);
-        themePanel.add(nextButton);
-        nextButton = setButton("No Preference", true, "no theme");
-        themeGroup.add(nextButton);
-        themePanel.add(nextButton);
-        this.add(themePanel, nextOpenRow++);
-
-        ButtonGroup subjectGroup = new ButtonGroup();
-        JPanel subjectPanel = generateLeftFlowPanel("Game subject:");
-        nextButton = setButton("English", "English");
-        subjectGroup.add(nextButton);
-        subjectPanel.add(nextButton);
-        nextButton = setButton("Math", "Math");
-        subjectGroup.add(nextButton);
-        subjectPanel.add(nextButton);
-        nextButton = setButton("Science", "Science");
-        subjectGroup.add(nextButton);
-        subjectPanel.add(nextButton);
-        nextButton = setButton("Social Studies", "Social Studies");
-        subjectGroup.add(nextButton);
-        subjectPanel.add(nextButton);
-        nextButton = setButton("Literature", "Literature");
-        subjectGroup.add(nextButton);
-        subjectPanel.add(nextButton);
-        nextButton = setButton("Professional", "Professional");
-        subjectGroup.add(nextButton);
-        subjectPanel.add(nextButton);
-        nextButton = setButton("No Preference", true, "no subject");
-        subjectGroup.add(nextButton);
-        subjectPanel.add(nextButton);
-        this.add(subjectPanel, nextOpenRow++);
-
-        ButtonGroup settingGroup = new ButtonGroup();
-        JPanel settingPanel = generateLeftFlowPanel("Game Setting:");
-        nextButton = setButton("Professional", "ProfessionalSetting");
-        settingGroup.add(nextButton);
-        settingPanel.add(nextButton);
-        nextButton = setButton("Casual", "CasualSetting");
-        settingGroup.add(nextButton);
-        settingPanel.add(nextButton);
-        nextButton = setButton("Natural", "NaturalSetting");
-        settingGroup.add(nextButton);
-        settingPanel.add(nextButton);
-        nextButton = setButton("Educational", "EducationalSetting");
-        settingGroup.add(nextButton);
-        settingPanel.add(nextButton);
-        nextButton = setButton("Non-terrestrial", "Non-terrestrialSetting");
-        settingGroup.add(nextButton);
-        settingPanel.add(nextButton);
-        nextButton = setButton("No Preference", true, "no setting");
-        settingGroup.add(nextButton);
-        settingPanel.add(nextButton);
-        this.add(settingPanel, nextOpenRow++);
-
-        ButtonGroup difficultyGroup = new ButtonGroup();
-        JPanel difficultyPanel = generateLeftFlowPanel(
-                "Challenge difficulty:");
-        nextButton = setButton("Easy", "Easy");
-        difficultyGroup.add(nextButton);
-        difficultyPanel.add(nextButton);
-        nextButton = setButton("Easy", "Easy");
-        difficultyGroup.add(nextButton);
-        difficultyPanel.add(nextButton);
-        nextButton = setButton("Easy", "Easy");
-        difficultyGroup.add(nextButton);
-        difficultyPanel.add(nextButton);
-        nextButton = setButton("No Preference", true, "no difficulty");
-        difficultyGroup.add(nextButton);
-        difficultyPanel.add(nextButton);
-        this.add(difficultyPanel, nextOpenRow++);
-
-        JPanel previewCheckPanel = new JPanel(new GridLayout(1, 1));
-        JCheckBox tickBox = new JCheckBox("Preview after generating: ");
-        previewCheckPanel.add(tickBox);
-        this.add(previewCheckPanel, nextOpenRow++); */
-
     }
 
-    public final void addPanelToRow(String rowLabel,
-            List<String> labels, List<String> commands, int rowNumber) {
+    /**
+     * Takes a row label, a list of button labels, and
+     * a list of commands, then adds a new row of RadioButtons
+     * to the panel.
+     * @param rowLabel
+     * {@link String}
+     * @param labels The labels to be given to each button.
+     * {@link String}
+     * @param commands The commands to be given to each button.
+     * {@link String}
+     * @param rowNumber
+     * {@link int} The row to add the buttons to.
+     */
+    public final void addPanelToRow(final String rowLabel,
+            final List<String> labels, final List<String> commands,
+            final int rowNumber) {
         if (labels.size() != commands.size()) {
             System.out.println("Warning: the number of labels and "
                     + "commands given are not equal.");
@@ -395,12 +280,11 @@ public class WizardTab extends JPanel implements ActionListener {
         button.addActionListener(this);
         return button;
     }
-    
+
     /**
      * Prints the strings.
      */
-    public final void printStrings()
-    {
+    public final void printStrings() {
         System.out.println(gameGradeLevel);
         System.out.println(playerGender);
         System.out.println(playerAge);
@@ -410,7 +294,7 @@ public class WizardTab extends JPanel implements ActionListener {
         System.out.println(gameDifficulty);
         System.out.println(gameSubject);
     }
-    
+
     /**
      * Option matrix.
      *
@@ -418,19 +302,21 @@ public class WizardTab extends JPanel implements ActionListener {
      * @param optionTotal the option total
      * @return the matrix
      */
-    private Matrix optionMatrix(final int optionNumber, final int optionTotal)
-    {
+    private Matrix optionMatrix(final int optionNumber,
+            final int optionTotal) {
         double[][] outputArray = new double[optionTotal][optionTotal];
-        outputArray = initializeArray(outputArray,1);
+        outputArray = initializeArray(outputArray, 1);
         for (int x = 0; x < optionTotal; x++) {
             if (x != optionNumber - 1) {
-                outputArray[optionNumber-1][x]=optionTotal; //replace optionTotal here with weight
-                outputArray[x][optionNumber-1]=(1.0 / optionTotal); //replace optionTotal here with weight
+              //replace optionTotal here with weight
+                outputArray[optionNumber - 1][x] = optionTotal;
+              //replace optionTotal here with weight
+                outputArray[x][optionNumber - 1] = (1.0 / optionTotal);
             }
         }
         return new Matrix(outputArray);
     }
-    
+
     /**
      * Initialize array.
      *
@@ -438,14 +324,14 @@ public class WizardTab extends JPanel implements ActionListener {
      * @param initValue the init value
      * @return the double[][]
      */
-    private double[][] initializeArray(final double[][] inputMatrixArray, final double initValue)
-    {
+    private double[][] initializeArray(final double[][] inputMatrixArray,
+            final double initValue) {
         for (int y = 0; y < inputMatrixArray.length; y++) {
             for (int z = 0; z < inputMatrixArray[y].length; z++) {
                 inputMatrixArray[y][z] = initValue;
             }
         }
-     return inputMatrixArray;       
+     return inputMatrixArray;
     }
     /**
      * Distribute inputs.
@@ -456,23 +342,24 @@ public class WizardTab extends JPanel implements ActionListener {
         int professionalRating = 0;
         int educationalRating = 0;
         System.out.println("distributing Inputs");
-        switch(gameGradeLevel){
-        //There is probably a better way to do this, with lists or whatnot but this was the quick
+        switch(gameGradeLevel) {
+        //There is probably a better way to do this, with lists or whatnot
+        //but this was the quick
         //implementation that I(Kaleb) decided to go with
         case "primary":
-            componentInputs[4].setMatrix(6,9,6,9,optionMatrix(1,4));
+            componentInputs[4].setMatrix(6, 9, 6, 9, optionMatrix(1, 4));
             educationalRating++;
             break;
         case "secondary":
-            componentInputs[4].setMatrix(6,9,6,9,optionMatrix(2,4));
+            componentInputs[4].setMatrix(6, 9, 6, 9, optionMatrix(2, 4));
             educationalRating++;
             break;
         case "high":
-            componentInputs[4].setMatrix(6,9,6,9,optionMatrix(3,4));
+            componentInputs[4].setMatrix(6, 9, 6, 9, optionMatrix(3, 4));
             educationalRating++;
             break;
         case "college":
-            componentInputs[4].setMatrix(6,9,6,9,optionMatrix(4,4));
+            componentInputs[4].setMatrix(6, 9, 6, 9, optionMatrix(4, 4));
             educationalRating++;
             break;
         case "jobTraining":
@@ -484,211 +371,214 @@ public class WizardTab extends JPanel implements ActionListener {
         default:
             break;
         }
-        switch(playerAge){
+        switch(playerAge) {
         case "Young":
-            componentInputs[0].setMatrix(0,1,0,1,optionMatrix(1,2));
+            componentInputs[0].setMatrix(0, 1, 0, 1, optionMatrix(1, 2));
             break;
         case "Old":
-            componentInputs[0].setMatrix(0,1,0,1,optionMatrix(2,2));
+            componentInputs[0].setMatrix(0, 1, 0, 1, optionMatrix(2, 2));
             break;
         case "none":
             break;
         default:
             break;
         }
-        switch(playerGender){
+        switch(playerGender) {
         case "Male":
-            componentInputs[0].setMatrix(2,3,2,3,optionMatrix(1,2));
+            componentInputs[0].setMatrix(2, 3, 2, 3, optionMatrix(1, 2));
             break;
         case "Female":
-            componentInputs[0].setMatrix(2,3,2,3,optionMatrix(2,2));
+            componentInputs[0].setMatrix(2, 3, 2, 3, optionMatrix(2, 2));
             break;
         case "none":
             break;
         default:
             break;
         }
-        switch(playerDress){
+        switch(playerDress) {
         case "Casual":
-            componentInputs[0].setMatrix(4,5,4,5,optionMatrix(1,2));
+            componentInputs[0].setMatrix(4, 5, 4, 5, optionMatrix(1, 2));
             //          socialRating++;
             break;
         case "Fancy":
-            componentInputs[0].setMatrix(4,5,4,5,optionMatrix(2,2));
+            componentInputs[0].setMatrix(4, 5, 4, 5, optionMatrix(2, 2));
             break;
         case "none":
             break;
         default:
             break;
         }
-        switch(gameTheme){
+        switch(gameTheme) {
         case "Gooble":
-            componentInputs[5].setMatrix(0,4,0,4,optionMatrix(1,5));
+            componentInputs[5].setMatrix(0, 4, 0, 4, optionMatrix(1, 5));
             educationalRating++;
             break;
         case "Dream":
-            componentInputs[5].setMatrix(0,4,0,4,optionMatrix(2,5));
+            componentInputs[5].setMatrix(0, 4, 0, 4, optionMatrix(2, 5));
             socialRating++;
             break;
         case "VirtualTour":
-            componentInputs[5].setMatrix(0,4,0,4,optionMatrix(3,5));
+            componentInputs[5].setMatrix(0, 4, 0, 4, optionMatrix(3, 5));
             professionalRating++;
             break;
         case "Workplace":
-            componentInputs[5].setMatrix(0,4,0,4,optionMatrix(4,5));
+            componentInputs[5].setMatrix(0, 4, 0, 4, optionMatrix(4, 5));
             socialRating++;
             break;
         case "Other":
-            componentInputs[5].setMatrix(0,4,0,4,optionMatrix(5,5));
+            componentInputs[5].setMatrix(0, 4, 0, 4, optionMatrix(5, 5));
             break;
         case "none":
             break;
         default:
-            System.out.println("Unanticipated Input for gameTheme " + gameTheme);
+            System.out.println("Unanticipated Input for gameTheme "
+                    + gameTheme);
             break;
         }
-        switch(gameSubject)
-        {
+        switch(gameSubject) {
         //Subject
         case "English":
-            componentInputs[4].setMatrix(0,5,0,5,optionMatrix(3,6));
+            componentInputs[4].setMatrix(0, 5, 0, 5, optionMatrix(3, 6));
             educationalRating++;
             break;
         case "Math":
-            componentInputs[4].setMatrix(0,5,0,5,optionMatrix(1,6));
+            componentInputs[4].setMatrix(0, 5, 0, 5, optionMatrix(1, 6));
             educationalRating++;
             break;
         case "Science":
-            componentInputs[4].setMatrix(0,5,0,5,optionMatrix(5,6));
+            componentInputs[4].setMatrix(0, 5, 0, 5, optionMatrix(5, 6));
             educationalRating++;
             break;
         case "Social Studies":
-            componentInputs[4].setMatrix(0,5,0,5,optionMatrix(4,6));
+            componentInputs[4].setMatrix(0, 5, 0, 5, optionMatrix(4, 6));
             educationalRating++;
             break;
         case "Literature":
-            componentInputs[4].setMatrix(0,5,0,5,optionMatrix(2,6));
+            componentInputs[4].setMatrix(0, 5, 0, 5, optionMatrix(2, 6));
             educationalRating++;
             break;
         case "Professional":
-            componentInputs[4].setMatrix(0,5,0,5,optionMatrix(6,6));
+            componentInputs[4].setMatrix(0, 5, 0 ,5, optionMatrix(6, 6));
             professionalRating++;
             break;
         case "none":
             break;
         default:
-            System.out.println("Unanticipated Input for gameSubject " + gameSubject);
+            System.out.println("Unanticipated Input for gameSubject "
+                    + gameSubject);
             break;
         }
-        switch(gameSetting){
+        switch(gameSetting) {
         //Setting
         case "Professional":
-            professionalRating+=2;
-            componentInputs[3].setMatrix(3,7,3,7,optionMatrix(1,5));
+            professionalRating += 2;
+            componentInputs[3].setMatrix(3, 7, 3, 7, optionMatrix(1, 5));
             break;
         case "Casual":
             socialRating+=2;
-            componentInputs[3].setMatrix(3,7,3,7,optionMatrix(2,5));
+            componentInputs[3].setMatrix(3, 7, 3, 7, optionMatrix(2, 5));
             break;
         case "Natural":
-            componentInputs[3].setMatrix(3,7,3,7,optionMatrix(3,5));
+            componentInputs[3].setMatrix(3, 7, 3, 7, optionMatrix(3, 5));
             break;
         case "Educational":
-            componentInputs[3].setMatrix(3,7,3,7,optionMatrix(4,5));
+            componentInputs[3].setMatrix(3, 7, 3, 7, optionMatrix(4, 5));
             educationalRating+=2;
             break;
         case "Non-terrestrial":
-            componentInputs[3].setMatrix(3,7,3,7,optionMatrix(5,5));
+            componentInputs[3].setMatrix(3, 7, 3, 7, optionMatrix(5, 5));
             break;
         case "none":
             break;
         default:
-            System.out.println("Unanticipated Input for gameSetting " + gameSetting);
+            System.out.println("Unanticipated Input for gameSetting "
+                    + gameSetting);
             break;
         }
-        switch(gameDifficulty){
+        switch(gameDifficulty) {
         //Difficulty
         case "Easy":
-            componentInputs[2].setMatrix(0,2,0,2,optionMatrix(1,3));
-            componentInputs[2].setMatrix(3,5,3,5,optionMatrix(1,3));
+            componentInputs[2].setMatrix(0, 2, 0, 2, optionMatrix(1, 3));
+            componentInputs[2].setMatrix(3, 5, 3, 5, optionMatrix(1, 3));
             break;
         case "Medium":
-            componentInputs[2].setMatrix(0,2,0,2,optionMatrix(2,3));
-            componentInputs[2].setMatrix(3,5,3,5,optionMatrix(2,3));
+            componentInputs[2].setMatrix(0, 2, 0, 2, optionMatrix(2, 3));
+            componentInputs[2].setMatrix(3, 5, 3, 5, optionMatrix(2, 3));
             break;
         case "Hard":
-            componentInputs[2].setMatrix(0,2,0,2,optionMatrix(3,3));
-            componentInputs[2].setMatrix(3,5,3,5,optionMatrix(3,3));
+            componentInputs[2].setMatrix(0, 2, 0, 2, optionMatrix(3, 3));
+            componentInputs[2].setMatrix(3, 5, 3, 5, optionMatrix(3, 3));
             break;
         case "none":
             break;
         default:
-            System.out.println("Unanticipated Input for gameDifficulity " + gameDifficulty);
+            System.out.println("Unanticipated Input for gameDifficulity "
+                    + gameDifficulty);
             break;
         }
-        System.out.println("social: "+ socialRating + " Professional: "+ professionalRating + " Educational: " + educationalRating);
+        System.out.println("social: " + socialRating + " Professional: "
+                + professionalRating + " Educational: " + educationalRating);
 
-        if(!(socialRating == professionalRating && professionalRating == educationalRating))
-        {
-            if(socialRating>professionalRating && socialRating>educationalRating)
-            {
-                componentInputs[2].setMatrix(6,8,6,8,optionMatrix(1,3));
-                componentInputs[1].setMatrix(0,2,0,2,optionMatrix(1,3));
-
-            }
-            if(professionalRating>=socialRating && professionalRating>educationalRating)
-            {
-                componentInputs[3].setMatrix(0,2,0,2,optionMatrix(2,3));
-                componentInputs[2].setMatrix(6,8,6,8,optionMatrix(2,3));
-                componentInputs[1].setMatrix(0,2,0,2,optionMatrix(3,3));
+        if (!(socialRating == professionalRating
+                && professionalRating == educationalRating)) {
+            if (socialRating > professionalRating
+                    && socialRating > educationalRating) {
+                componentInputs[2].setMatrix(6, 8, 6, 8, optionMatrix(1, 3));
+                componentInputs[1].setMatrix(0, 2, 0, 2, optionMatrix(1, 3));
 
             }
-            if(educationalRating>=socialRating && educationalRating>=professionalRating)
-            {
-                componentInputs[2].setMatrix(6,8,6,8,optionMatrix(3,3));
-                componentInputs[1].setMatrix(0,2,0,2,optionMatrix(2,3));
+            if (professionalRating >= socialRating
+                    && professionalRating > educationalRating) {
+                componentInputs[3].setMatrix(0, 2, 0, 2, optionMatrix(2, 3));
+                componentInputs[2].setMatrix(6, 8, 6, 8, optionMatrix(2, 3));
+                componentInputs[1].setMatrix(0, 2, 0, 2, optionMatrix(3, 3));
+
+            }
+            if (educationalRating >= socialRating
+                    && educationalRating >= professionalRating) {
+                componentInputs[2].setMatrix(6, 8, 6, 8,optionMatrix(3, 3));
+                componentInputs[1].setMatrix(0, 2, 0, 2, optionMatrix(2, 3));
             }
         }
     }
-    
+
     /**
      * Check for xml.
      *
      * @param input the input
      */
-    public final void checkForXML(final String input)
-    {           
+    public final void checkForXML(final String input) {
         if (!input.contains(".")) {
-            setGameSavePath(input+".xml");
-        }
-        else { 
-            String extension = input.substring(input.lastIndexOf(".") + 1, input.length());
+            setGameSavePath(input + ".xml");
+        } else {
+            String extension = input.substring(input.lastIndexOf(".") + 1,
+                    input.length());
             if (!extension.equalsIgnoreCase("XML")) {
-                setGameSavePath(input.substring(0,input.lastIndexOf("."))+".xml");
+                setGameSavePath(input.substring(0, input.lastIndexOf("."))
+                        + ".xml");
             }
         }
     }
-    
-    public final void actionPerformed(final ActionEvent e) 
-    {
+
+    @Override
+    public final void actionPerformed(final ActionEvent e) {
         switch (e.getActionCommand()) {
-        
+
         case "Submit":
             printStrings();
             distributeInputs();
             System.out.println("Submit Clicked");
             saveFileChooser = new JFileChooser("OutputGames//");
             int returnValue = saveFileChooser.showSaveDialog(saveFileChooser);
-            if (returnValue==JFileChooser.APPROVE_OPTION) {
+            if (returnValue == JFileChooser.APPROVE_OPTION) {
                 File file = saveFileChooser.getSelectedFile();
-                setGameSavePath(file.getAbsolutePath()); 
+                setGameSavePath(file.getAbsolutePath());
                 checkForXML(getGameSavePath());
-                System.out.println("Game Save Path: "+ getGameSavePath());
+                System.out.println("Game Save Path: " + getGameSavePath());
                 submitClicked = true;
-                Currentfile = file;
+                currentFile = file;
                 //previewGame(file);
-            }
-            else if (returnValue == JFileChooser.CANCEL_OPTION) {
+            } else if (returnValue == JFileChooser.CANCEL_OPTION) {
                 System.out.println("Save cancelled by user. \n Returning.");
             }
             break;
@@ -710,8 +600,8 @@ public class WizardTab extends JPanel implements ActionListener {
         case "no grade":
             gameGradeLevel = "none";
         break;
-//Gender            
-        case "Male": 
+//Gender
+        case "Male":
             playerGender = "Male";
             break;
         case "Female":
@@ -719,7 +609,7 @@ public class WizardTab extends JPanel implements ActionListener {
             break;
         case "no gender":
             playerGender = "none";
-//Age                   
+//Age
         case "Young":
             playerAge = "Young";
             break;
@@ -813,17 +703,28 @@ public class WizardTab extends JPanel implements ActionListener {
             gameDifficulty = "none";
             break;
         default:
-        System.out.println("Unanticipated Input in ActionPerformed:" + e.getActionCommand());
+        System.out.println("Unanticipated Input in ActionPerformed:"
+                + e.getActionCommand());
         break;
         }
     }
 
+    /**
+     * Returns the game save path after user input.
+     * @return
+     * {@link String}
+     */
     public static String getGameSavePath() {
         return gameSavePath;
     }
 
-    public void setGameSavePath(String gameSavePath) {
-        this.gameSavePath = gameSavePath;
+    /**
+     * Sets the game save path.
+     * @param savePath
+     * {@link String}
+     */
+    public final void setGameSavePath(final String savePath) {
+        WizardTab.gameSavePath = savePath;
     }
 
 }
