@@ -147,6 +147,7 @@ if (child.isDirectory()) {
 continue;
 }
 try {
+    System.out.println(child);
 BufferedImage image = ImageHelper.getScaledImage(
 ImageIO.read(child), FOURTHREE);
 

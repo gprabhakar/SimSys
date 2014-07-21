@@ -276,7 +276,7 @@
 
         <Background>Boss Office.png</Background>
         <Music>
-            <Music>music\Opening Credits.mid</Music>
+            <Music>Opening Credits.mid</Music>
         </Music>
     </Scene>
 </Act>

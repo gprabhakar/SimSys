@@ -164,7 +164,7 @@
             </Screen>
             <Background>Earth Orbit.png</Background>
             <Music>
-                <Music>music\Dreamy-Summer.mid</Music>
+                <Music>Dreamy-Summer.mid</Music>
             </Music>
         </Scene>
     </Act>
