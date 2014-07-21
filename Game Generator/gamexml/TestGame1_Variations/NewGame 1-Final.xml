@@ -162,9 +162,9 @@
                     <NextSequence>0</NextSequence>
                 </Sequence>
             </Screen>
-            <Background>Backdrops\Earth Orbit.png</Background>
+            <Background>Earth Orbit.png</Background>
             <Music>
-                <Music>AudioAssetRepository\Dreamy-Summer.mid</Music>
+                <Music>music\Dreamy-Summer.mid</Music>
             </Music>
         </Scene>
     </Act>

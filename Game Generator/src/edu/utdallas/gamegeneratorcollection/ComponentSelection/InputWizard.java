@@ -155,6 +155,8 @@ public class InputWizard implements ActionListener {
 
 	 /** The sound select path. */
 	 private String soundSelectPath;
+	 
+ 
 
 	 /**
 	  * The Enum gameLevel.
@@ -246,12 +248,22 @@ GAME,
 	
 	/** The updater. */
 	private Updates updater;
-	
-	/** The char base dir. */
+	//WINDOWS
+//	/** The char base dir. */
 	private String charBaseDir = "Office, Classroom\\Characters\\";
 	
 	/** The Constant soundFolder. */
 	public static final String soundFolder = "AudioAssetRepository\\";
+
+    private String insideSoundFolderPath = "AudioAssetRepository\\music\\";	
+//	MAC
+//	/** The char base dir. */
+//	private String charBaseDir = "Office, Classroom//Characters//";
+//	
+//	/** The Constant soundFolder. */
+//	public static final String soundFolder = "AudioAssetRepository//";
+//	
+//	private String insideSoundFolderPath = "AudioAssetRepository//music//";
 	
 	/** The selected value. */
 	private int selectedValue = 1;
@@ -1856,8 +1868,11 @@ GAME,
 		case "backgroundMusicPreviewPlay":
 			//TODO finish
 			if (lastSelectedScene.getMusic() != null) {
-				String insideSoundFolderPath = lastSelectedScene.getMusic().getMusic();
-				AudioPlayer.playAudio(soundFolder + insideSoundFolderPath);
+				 String insideSound = lastSelectedScene.getMusic().getMusic();
+				System.out.println("Sound  = "+insideSound);
+				System.out.println("Inside Sound Folder Path: "+insideSoundFolderPath);
+//				AudioPlayer.playAudio(soundFolder + insideSoundFolderPath);
+				AudioPlayer.playAudio(insideSoundFolderPath+insideSound);
 			} else {
 				System.out.println("Error: No background music found.");
 			}
@@ -1898,8 +1913,7 @@ GAME,
 			updater= new Updates();
 			int returnValue2 = saveFileChooser.showOpenDialog(saveFileChooser);
 			String gameName;
-			if (returnValue2 == JFileChooser.APPROVE_OPTION)
-			{
+			if (returnValue2 == JFileChooser.APPROVE_OPTION) {
 				File file = saveFileChooser.getSelectedFile();
 				gameName = file.getAbsolutePath();
 				
@@ -1915,13 +1929,13 @@ GAME,
 			{
 				System.out.println("Open cancelled by user. /n Returning.");
 			}
-			
+
 			break;
 		case "remakeRepo":
 			updater = new Updates();
 			updater.remakeRepo();
 			break;
-			// Grade 
+                // Grade 
 		case "primary":
 			gameGradeLevel = "primary";
 			break;
@@ -1940,8 +1954,8 @@ GAME,
 		case "no grade":
 			gameGradeLevel = "none";
 		break;
-//Gender			
-		case "Male": 
+                //Gender
+                case "Male":
 			playerGender = "Male";
 			break;
 		case "Female":
@@ -1949,7 +1963,7 @@ GAME,
 			break;
 		case "no gender":
 			playerGender = "none";
-//Age					
+                //Age
 		case "Young":
 			playerAge = "Young";
 			break;

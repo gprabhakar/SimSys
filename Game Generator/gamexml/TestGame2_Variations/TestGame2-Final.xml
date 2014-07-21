@@ -157,7 +157,7 @@
         </Screen>
         <Background>Backdrops\bar.png</Background>
         <Music>
-            <Music>AudioAssetRepository\music\Opening Credits.mid</Music>
+            <Music>Opening Credits.mid</Music>
         </Music>
     </Scene>
 </Act>
@@ -315,7 +315,7 @@
         </Screen>
         <Background>Backdrops\bedroom master.png</Background>
         <Music>
-            <Music>AudioAssetRepository\music\PianoRoll3.mid</Music>
+            <Music>PianoRoll3.mid</Music>
         </Music>
     </Scene>
 </Act>
@@ -472,7 +472,7 @@
         </Screen>
         <Background>Backdrops\bank.png</Background>
         <Music>
-            <Music>AudioAssetRepository\music\funeral-march.mid</Music>
+            <Music>funeral-march.mid</Music>
         </Music>
     </Scene>
 </Act>
