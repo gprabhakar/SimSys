@@ -2,10 +2,10 @@ package edu.utdallas.gamegeneratorcollection.gamegenerator;
 
 
 
-import edu.utdallas.gamegenerator.LearningAct.Challenge.Reward;
+import edu.utdallas.gamespecification.Reward;
 
 
-import edu.utdallas.gamegenerator.LearningAct.Challenge.Reward;
+import edu.utdallas.gamespecification.Reward;
 import edu.utdallas.gamegeneratorcollection.ComponentCreation.Behavior;
 import edu.utdallas.gamegeneratorcollection.ComponentCreation.BehaviorType;
 import edu.utdallas.gamegeneratorcollection.ComponentCreation.ButtonLocationType;

@@ -1,6 +1,6 @@
 package edu.utdallas.gamegeneratorcollection.GameComposition;
 
-import edu.utdallas.gamegenerator.LearningAct.Challenge.Reward;
+import edu.utdallas.gamespecification.Reward;
 import edu.utdallas.gamegeneratorcollection.ComponentCreation.ButtonLocationType;
 
 import javax.xml.bind.annotation.XmlElement;

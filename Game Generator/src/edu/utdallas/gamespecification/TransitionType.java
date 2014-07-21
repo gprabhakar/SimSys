@@ -7,6 +7,8 @@ import javax.xml.bind.annotation.XmlType;
 /**
  * Lists the various types of transitions
  * and cuts between Acts, Scenes, and Screens.
+ * Transitions are marked with Transition at the end of
+ * name, cuts with Cut.
  * @author Sean
  *
  */
@@ -17,28 +19,28 @@ public enum TransitionType {
     /**
      * Fade in transition.
      */
-    @XmlEnumValue("fadeIn")
-    FADEIN("fadeIn"),
+    @XmlEnumValue("fadeInTransition")
+    FADEIN("fadeInTransition"),
     /**
      * Fade out transition.
      */
-    @XmlEnumValue("fadeOut")
-    FADEOUT("fadeOut"),
+    @XmlEnumValue("fadeOutTransition")
+    FADEOUT("fadeOutTransition"),
     /**
      * Dissolve transition.
      */
-    @XmlEnumValue("dissolve")
-    DISSOLVE("dissolve"),
+    @XmlEnumValue("dissolveTransition")
+    DISSOLVE("dissolveTransition"),
     /**
      * Wipe transition.
      */
-    @XmlEnumValue("wipe")
-    WIPE("wipe"),
+    @XmlEnumValue("wipeTransition")
+    WIPE("wipeTransition"),
     /**
      * Morph transition.
      */
-    @XmlEnumValue("morph")
-    MORPH("morph"),
+    @XmlEnumValue("morphTransition")
+    MORPH("morphTransition"),
     /**
      * Straight cut.
      */

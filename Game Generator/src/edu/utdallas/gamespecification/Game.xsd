@@ -274,6 +274,18 @@
 		</sequence>
 	</complexType>
 
+	<complexType name="Reward">
+		<sequence>
+			<element name="Points" type="integer"></element>
+			<element name="Trophies" type="string" maxOccurs="unbounded"
+				minOccurs="0"></element>
+			<element name="Certificates" type="string" maxOccurs="unbounded"
+				minOccurs="0"></element>
+			<element name="PromotionDemotion" type="string" maxOccurs="1"
+				minOccurs="0"></element>
+		</sequence>
+	</complexType>
+
 	<complexType name="StemTextType">
 		<sequence>
 			<element name="Hint" type="tns:HintType" maxOccurs="1"
@@ -348,11 +360,11 @@
 	
 		 <simpleType name="TransitionType">
           <restriction base="string">
-         	<enumeration value="fadeIn"/>
-            <enumeration value="fadeOut"/>
-            <enumeration value="dissolve"/>
-            <enumeration value="wipe"/>
-            <enumeration value="morph"/> 
+         	<enumeration value="fadeInTransition"/>
+            <enumeration value="fadeOutTransition"/>
+            <enumeration value="dissolveTransition"/>
+            <enumeration value="wipeTransition"/>
+            <enumeration value="morphTransition"/> 
             <enumeration value="straightCut"/>
             <enumeration value="contrastCut"/>
             <enumeration value="lCut"/>
@@ -379,7 +391,7 @@
 					<element name="CharacterName" type="string"></element>
 					<element name="AutonomousBehaviour" type="string"></element>
 					<element name="Profile" type="tns:Profile"></element>
-					<element name="Rewards" type="string"></element>
+					<element name="Rewards" type="tns:Reward"></element>
 				</sequence>
 			</extension>
 		</complexContent>
@@ -396,8 +408,7 @@
 					minOccurs="1"></element>
 			<element name="Degrees" type="string" maxOccurs="unbounded"
 					minOccurs="1" ></element>
-		</sequence>
-		
+		</sequence>		
 	</complexType>
 
 <complexType name="BackgroundType">
