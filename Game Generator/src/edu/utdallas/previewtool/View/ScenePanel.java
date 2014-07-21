@@ -344,8 +344,9 @@ add(errorPanel);
  */
 public final void loadBackground(final String imageFile) {
 try {
+    System.out.println("Image File "+imageFile);
 background = ImageHelper.getScaledImage(
-ImageIO.read(new File("Office, Classroom\\" + imageFile)), ONEPOINTFIVE);
+ImageIO.read(new File("Office, Classroom\\Backdrops\\" + imageFile)), ONEPOINTFIVE);
 repaint();
 } catch (IOException ex) {
 System.out.println(imageFile + " is missing from repository, cannot load");

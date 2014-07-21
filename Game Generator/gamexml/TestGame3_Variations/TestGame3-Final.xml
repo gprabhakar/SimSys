@@ -155,9 +155,9 @@
                     <Text>Continue</Text>
                 </GameElement>
             </Screen>
-            <Background>Backdrops\bar.png</Background>
+            <Background>bar.png</Background>
             <Music>
-                <Music>AudioAssetRepository\music\Opening Credits.mid</Music>
+                <Music>music\Opening Credits.mid</Music>
             </Music>
         </Scene>
     </Act>
@@ -313,9 +313,9 @@
                     <Text>Continue</Text>
                 </GameElement>
             </Screen>
-            <Background>Backdrops\bedroom master.png</Background>
+            <Background>bedroom master.png</Background>
             <Music>
-                <Music>AudioAssetRepository\music\PianoRoll3.mid</Music>
+                <Music>music\PianoRoll3.mid</Music>
             </Music>
         </Scene>
     </Act>

@@ -471,7 +471,7 @@ GAME,
                     buttonButton.setEnabled(false);
             		
             		//scenePanel.loadAssets(summary.getAssets(), true);
-            		//scenePanel.loadBackground(scene.getBackground());
+            		scenePanel.loadBackground(scene.getBackground().getBackground());
             	}
             	else if (isScreenNode(selectedNode))
             	{

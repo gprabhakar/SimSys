@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+﻿<?xml version="1.0" encoding="UTF-8"?>
 <schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://www.example.org/Game/"
 	targetNamespace="http://www.example.org/Game/">
 
@@ -136,7 +136,7 @@
 					<element name="Screen" type="tns:ScreenType" maxOccurs="unbounded"
 						minOccurs="1">
 					</element>
-					<element name="Backgroud" type="tns:BackgroundType"
+					<element name="Background" type="tns:BackgroundType"
 						maxOccurs="1" minOccurs="1"></element>
 					<element name="Music" type="tns:MusicType" maxOccurs="1"
 						minOccurs="0"></element>
