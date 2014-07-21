@@ -155,6 +155,8 @@ public class InputWizard implements ActionListener {
 
 	 /** The sound select path. */
 	 private String soundSelectPath;
+	 
+ 
 
 	 /**
 	  * The Enum gameLevel.
@@ -246,12 +248,22 @@ GAME,
 	
 	/** The updater. */
 	private Updates updater;
-	
-	/** The char base dir. */
+	//WINDOWS
+//	/** The char base dir. */
 	private String charBaseDir = "Office, Classroom\\Characters\\";
 	
 	/** The Constant soundFolder. */
 	public static final String soundFolder = "AudioAssetRepository\\";
+
+    private String insideSoundFolderPath = "AudioAssetRepository\\music\\";	
+//	MAC
+//	/** The char base dir. */
+//	private String charBaseDir = "Office, Classroom//Characters//";
+//	
+//	/** The Constant soundFolder. */
+//	public static final String soundFolder = "AudioAssetRepository//";
+//	
+//	private String insideSoundFolderPath = "AudioAssetRepository//music//";
 	
 	/** The selected value. */
 	private int selectedValue = 1;
@@ -1856,8 +1868,11 @@ GAME,
 		case "backgroundMusicPreviewPlay":
 			//TODO finish
 			if (lastSelectedScene.getMusic() != null) {
-				String insideSoundFolderPath = lastSelectedScene.getMusic().getMusic();
-				AudioPlayer.playAudio(soundFolder + insideSoundFolderPath);
+				 String insideSound = lastSelectedScene.getMusic().getMusic();
+				System.out.println("Sound  = "+insideSound);
+				System.out.println("Inside Sound Folder Path: "+insideSoundFolderPath);
+//				AudioPlayer.playAudio(soundFolder + insideSoundFolderPath);
+				AudioPlayer.playAudio(insideSoundFolderPath+insideSound);
 			} else {
 				System.out.println("Error: No background music found.");
 			}
