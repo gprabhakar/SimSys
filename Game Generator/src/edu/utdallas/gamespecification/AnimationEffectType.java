@@ -37,7 +37,7 @@ public class AnimationEffectType {
      * Effect, a String.
      */
     @XmlElement(name = "Effect", required = true)
-    private List<String> effect;
+    private List<Effect> effect;
     /**
      * SpeedType, an enumerated type. Should be
      * FAST, MEDIUM, or SLOW. Code style checkers will
@@ -93,9 +93,9 @@ public class AnimationEffectType {
      *
      *
      */
-    public final List<String> getEffect() {
+    public final List<Effect> getEffect() {
         if (effect == null) {
-            effect = new ArrayList<String>();
+            effect = new ArrayList<Effect>();
         }
         return this.effect;
     }

@@ -20,27 +20,27 @@ public enum TransitionType {
      * Fade in transition.
      */
     @XmlEnumValue("fadeInTransition")
-    FADEIN("fadeInTransition"),
+    FADEINTRANSITION("fadeInTransition"),
     /**
      * Fade out transition.
      */
     @XmlEnumValue("fadeOutTransition")
-    FADEOUT("fadeOutTransition"),
+    FADEOUTTRANSITION("fadeOutTransition"),
     /**
      * Dissolve transition.
      */
     @XmlEnumValue("dissolveTransition")
-    DISSOLVE("dissolveTransition"),
+    DISSOLVETRANSITION("dissolveTransition"),
     /**
      * Wipe transition.
      */
     @XmlEnumValue("wipeTransition")
-    WIPE("wipeTransition"),
+    WIPETRANSITION("wipeTransition"),
     /**
      * Morph transition.
      */
     @XmlEnumValue("morphTransition")
-    MORPH("morphTransition"),
+    MORPHTRANSITION("morphTransition"),
     /**
      * Straight cut.
      */

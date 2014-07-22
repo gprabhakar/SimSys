@@ -104,7 +104,7 @@ public class Locale {
      * @param learningActId the id of the learning act to build
      * @return a list of ScreenNode representing the built challenge screens
      */
-    private List<Scene> buildChallenges(int learningActId) {
+    private List<Scene> buildChallenges(final int learningActId) {
         UUID currentScreen = screenTransitions.get(
                 TransitionType.BEGINNING_OF_CHALLENGE);
         LessonAct lessonAct = learningActs.get(

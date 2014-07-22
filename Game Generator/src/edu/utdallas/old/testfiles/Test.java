@@ -1,4 +1,4 @@
-package edu.utdallas.gamegeneratorcollection.gamegenerator;
+package edu.utdallas.old.testfiles;
 
 import edu.utdallas.gamegenerator.old.Challenge.Challenge;
 import edu.utdallas.gamegeneratorcollection.GameComposition.Characters;
