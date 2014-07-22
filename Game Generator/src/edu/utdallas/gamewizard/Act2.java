@@ -7,13 +7,11 @@ import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlElementWrapper;
 import javax.xml.bind.annotation.XmlRootElement;
 
-import edu.utdallas.gamespecification.*;
 public class Act2 {
 	@XmlElementWrapper(name="scenes")
     @XmlElement(name="scene")
 	ArrayList<Scene2> sceneList;
 	String name;
-	ArrayList<LearningObjectiveType> learningObjective;
 	public Act2(){
 		sceneList = new ArrayList<Scene2>();
 	}
@@ -37,18 +35,5 @@ public class Act2 {
 	@XmlElement
 	public void setScenes(ArrayList<Scene2> sceneList){
 		this.sceneList = sceneList;
-	}
-	
-	public void setLearningObjective(ArrayList<LearningObjectiveType> lo)
-	{
-		this.learningObjective = lo;
-	}
-	
-	public ArrayList<LearningObjectiveType> getLearningObjective()
-	{
-		 if (learningObjective == null) {
-			 learningObjective = new ArrayList<LearningObjectiveType>();
-	     }
-		return learningObjective;
 	}
 }
