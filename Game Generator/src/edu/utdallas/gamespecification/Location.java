@@ -13,7 +13,8 @@ import javax.xml.bind.annotation.XmlType;
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "Location", propOrder = {
     "x",
-    "y"
+    "y",
+    "z"
 })
 
 public class Location {
@@ -28,6 +29,11 @@ public class Location {
      */
     @XmlElement(name = "y", required = true)
     private int y;
+    /**
+     * z value for an item's location.
+     */
+    @XmlElement(name = "z", required = true)
+    private int z;
 
     /**
      * Default constructor.
@@ -49,7 +55,27 @@ public class Location {
         super();
         this.x = xPos;
         this.y = yPos;
+        this.z = 0;
     }
+    
+    /**
+    *
+    * @param xPos
+    * allowed object is
+    * {@link int}
+    * @param yPos
+    * allowed object is
+    * {@link int}
+    * @param zPos
+    * allowed object is
+    * {@link int}
+    */
+   public Location(final int xPos, final int yPos, final int zPos) {
+       super();
+       this.x = xPos;
+       this.y = yPos;
+       this.z = zPos;
+   }
 
     /**
      *
@@ -91,4 +117,23 @@ public class Location {
         this.y = yPos;
     }
 
+    /**
+    *
+    * @return
+    * allowed object is
+    * {@link int}
+    */
+    public final int getZ() {
+        return z;
+    }
+
+    /**
+    *
+    * @param zPos
+    * allowed object is
+    * {@link int}
+    */
+    public final void setZ(final int zPos) {
+        this.y = zPos;
+    }
 }

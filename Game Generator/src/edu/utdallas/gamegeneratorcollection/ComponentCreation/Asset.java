@@ -5,6 +5,9 @@ import edu.utdallas.gamegeneratorcollection.GameComposition.GameCharacter;
 import edu.utdallas.gamegeneratorcollection.GameComposition.GameText;
 import edu.utdallas.gamegeneratorcollection.GameComposition.LearningActCharacter;
 import edu.utdallas.gamegeneratorcollection.GameComposition.ObjectMovement;
+import edu.utdallas.gamespecification.Behavior;
+import edu.utdallas.gamespecification.BehaviorType;
+import edu.utdallas.gamespecification.Color;
 import edu.utdallas.gamespecification.Hint;
 
 import javax.xml.bind.annotation.*;

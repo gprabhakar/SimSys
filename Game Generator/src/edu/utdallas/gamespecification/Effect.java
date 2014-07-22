@@ -6,6 +6,8 @@ import javax.xml.bind.annotation.XmlType;
 
 /**
  * Lists the various types of Animation Effects.
+ * These are divided into movements and effects.
+ * All movement names have "MOVEMENT as the suffix.
  * All effect names have "EFFECT" as the suffix.
  * @author Sean
  *
@@ -14,6 +16,46 @@ import javax.xml.bind.annotation.XmlType;
 @XmlEnum
 public enum Effect {
 
+    /**
+     * Walk movement.
+     */
+    @XmlEnumValue("walkMovement")
+    WALKMOVEMENT("walkMovement"),
+    /**
+     * Glide movement.
+     */
+    @XmlEnumValue("glideMovement")
+    GLIDEMOVEMENT("glideMovement"),
+    /**
+     * Sit down movement.
+     */
+    @XmlEnumValue("sitDownMovement")
+    SITDOWNMOVEMENT("sitDownMovement"),
+    /**
+     * Stand up movement.
+     */
+    @XmlEnumValue("standUpMovement")
+    STANDUPMOVEMENT("standUpMovement"),
+    /**
+     * Talk movement.
+     */
+    @XmlEnumValue("talkMovement")
+    TALKMOVEMENT("talkMovement"),
+    /**
+     * Hand wave movement.
+     */
+    @XmlEnumValue("handWaveMovement")
+    HANDWAVEMOVEMENT("handWaveMovement"),
+    /**
+     * Handshake movement.
+     */
+    @XmlEnumValue("handShakeMovement")
+    HANDSHAKEMOVEMENT("handShakeMovement"),
+    /**
+     * Dance movement.
+     */
+    @XmlEnumValue("danceMovement")
+    DANCEMOVEMENT("danceMovement"),
     /**
      * Fade in effect.
      */

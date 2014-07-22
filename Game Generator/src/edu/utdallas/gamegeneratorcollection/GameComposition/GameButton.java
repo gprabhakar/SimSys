@@ -1,6 +1,7 @@
 package edu.utdallas.gamegeneratorcollection.GameComposition;
 
 import edu.utdallas.gamespecification.Reward;
+import edu.utdallas.gamespecification.TransitionBehaviorType;
 import edu.utdallas.gamegeneratorcollection.ComponentCreation.ButtonLocationType;
 
 import javax.xml.bind.annotation.XmlElement;
@@ -16,7 +17,7 @@ public class GameButton {
     private ButtonLocationType buttonLocationType;
     private String text;
     private int timer;
-    private TransitionType type;
+    private TransitionBehaviorType type;
     private Reward reward;
 
     public ButtonLocationType getButtonLocationType() {
@@ -46,12 +47,12 @@ public class GameButton {
         this.timer = timer;
     }
 
-    public TransitionType getTransitionType() {
+    public TransitionBehaviorType getTransitionType() {
         return type;
     }
 
     @XmlElement(name = "TransitionType")
-    public void setTransitionType(TransitionType type) {
+    public void setTransitionType(TransitionBehaviorType type) {
         this.type = type;
     }
 

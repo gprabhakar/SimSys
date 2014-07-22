@@ -1,5 +1,7 @@
 package edu.utdallas.gamegeneratorcollection.ComponentCreation;
 
+import edu.utdallas.gamespecification.Behavior;
+
 /**
  * User: clocke
  * Date: 3/3/13

@@ -10,13 +10,13 @@ import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 
 import edu.utdallas.gamegeneratorcollection.ComponentCreation.Asset;
-import edu.utdallas.gamegeneratorcollection.ComponentCreation.Behavior;
-import edu.utdallas.gamegeneratorcollection.ComponentCreation.BehaviorType;
 import edu.utdallas.gamegeneratorcollection.ComponentCreation.GameObject;
 import edu.utdallas.gamegeneratorcollection.ComponentCreation.SharedButton;
 import edu.utdallas.gamegeneratorcollection.ComponentCreation.SharedCharacter;
 import edu.utdallas.gamegeneratorcollection.ComponentCreation.SharedInfoBox;
 import edu.utdallas.gamespecification.BackgroundType;
+import edu.utdallas.gamespecification.Behavior;
+import edu.utdallas.gamespecification.BehaviorType;
 import edu.utdallas.gamespecification.GameElementType;
 import edu.utdallas.gamespecification.GenericInteraction;
 import edu.utdallas.gamespecification.Location;
@@ -24,6 +24,7 @@ import edu.utdallas.gamespecification.Scene;
 import edu.utdallas.gamespecification.Screen;
 import edu.utdallas.gamespecification.Size;
 import edu.utdallas.gamespecification.Transition;
+import edu.utdallas.gamespecification.TransitionBehaviorType;
 
 /**
  * User: clocke.
@@ -138,7 +139,7 @@ public class Theme {
                         for (Behavior behavior : asset.getBehaviors()) {
                             if (BehaviorType.TRANSITION_BEHAVIOR
                                     == behavior.getBehaviorType()
-                                    && TransitionType.NEXT_SCREEN
+                                    && TransitionBehaviorType.NEXT_SCREEN
                                     == behavior.getTransition()) {
                                 behavior.setTransitionId(nextScreen);
                             }

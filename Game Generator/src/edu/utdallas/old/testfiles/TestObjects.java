@@ -2,12 +2,13 @@ package edu.utdallas.old.testfiles;
 
 
 
+import edu.utdallas.gamespecification.Behavior;
+import edu.utdallas.gamespecification.BehaviorType;
 import edu.utdallas.gamespecification.Reward;
 
 
 import edu.utdallas.gamespecification.Reward;
-import edu.utdallas.gamegeneratorcollection.ComponentCreation.Behavior;
-import edu.utdallas.gamegeneratorcollection.ComponentCreation.BehaviorType;
+import edu.utdallas.gamespecification.TransitionBehaviorType;
 import edu.utdallas.gamegeneratorcollection.ComponentCreation.ButtonLocationType;
 import edu.utdallas.gamegeneratorcollection.ComponentCreation.GameObject;
 import edu.utdallas.gamegeneratorcollection.ComponentCreation.SharedButton;
@@ -40,7 +41,6 @@ import edu.utdallas.gamegeneratorcollection.GameComposition.ThemeScreen;
 import edu.utdallas.gamegeneratorcollection.GameComposition.ThemeStory;
 import edu.utdallas.gamegeneratorcollection.GameComposition.ThemeStoryScreenIntro;
 import edu.utdallas.gamegeneratorcollection.GameComposition.ThemeStoryScreenOutro;
-import edu.utdallas.gamegeneratorcollection.GameComposition.TransitionType;
 import edu.utdallas.gamegeneratorcollection.GameOutput.Structure;
 
 import java.util.ArrayList;
@@ -177,11 +177,11 @@ public class TestObjects {
         List<BaseScreen> baseScreens1 = new ArrayList<BaseScreen>();
         baseScreens1.add(screen);
         BaseScreen screen1 = screen.clone();
-        screen1.getButtons().get(0).setTransitionType(TransitionType.NEXT_CHALLENGE);
+        screen1.getButtons().get(0).setTransitionType(TransitionBehaviorType.NEXT_CHALLENGE);
         baseScreens1.add(screen);
         List<ChallengeOption> challengeOptions = new ArrayList<ChallengeOption>();
-        challengeOptions.add(new ChallengeOption(ChallengeOptionType.BUTTON, "additional screens", new Reward(), TransitionType.ADDITIONAL, baseScreens1, ButtonLocationType.CHALLENGE_1));
-        challengeOptions.add(new ChallengeOption(ChallengeOptionType.BUTTON, "end of story", null, TransitionType.END_OF_STORY, null, ButtonLocationType.CHALLENGE_2));
+        challengeOptions.add(new ChallengeOption(ChallengeOptionType.BUTTON, "additional screens", new Reward(), TransitionBehaviorType.ADDITIONAL, baseScreens1, ButtonLocationType.CHALLENGE_1));
+        challengeOptions.add(new ChallengeOption(ChallengeOptionType.BUTTON, "end of story", null, TransitionBehaviorType.END_OF_STORY, null, ButtonLocationType.CHALLENGE_2));
         challenge.setChallengeOptions(challengeOptions);
         challenge.setButtons(getGameButtons());
         challenges.add(challenge);
@@ -237,7 +237,7 @@ public class TestObjects {
         themeStory.setIntro(themeStoryScreenIntros);
 
         gameButtons = getGameButtons();
-        gameButtons.get(0).setTransitionType(TransitionType.NEXT_ACT);
+        gameButtons.get(0).setTransitionType(TransitionBehaviorType.NEXT_ACT);
         List<ThemeStoryScreenOutro> themeStoryScreenOutros = new ArrayList<ThemeStoryScreenOutro>();
         ThemeStoryScreenOutro themeStoryScreenOutro = new ThemeStoryScreenOutro();
         themeStoryScreenOutro.setCharacters(learningActCharacters);
@@ -270,7 +270,7 @@ public class TestObjects {
         gameButton.setReward(new Reward(500));
         gameButton.setButtonLocationType(ButtonLocationType.NEXT);
         gameButton.setText("Next");
-        gameButton.setTransitionType(TransitionType.NEXT_SCREEN);
+        gameButton.setTransitionType(TransitionBehaviorType.NEXT_SCREEN);
 
         gameButtons.add(gameButton);
         return gameButtons;

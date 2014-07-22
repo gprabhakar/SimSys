@@ -1,14 +1,30 @@
-package edu.utdallas.gamegeneratorcollection.ComponentCreation;
+package edu.utdallas.gamespecification;
+
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlType;
 
 /**
  * User: clocke
  * Date: 3/3/13
  * Time: 8:58 PM
  */
+@XmlAccessorType(XmlAccessType.FIELD)
+@XmlType(name = "Color", propOrder = {
+    "a",
+    "r",
+    "g",
+    "b"
+})
 public class Color {
+    @XmlElement(name = "A", required = true)
     private int a;
+    @XmlElement(name = "R", required = true)
     private int r;
+    @XmlElement(name = "G", required = true)
     private int g;
+    @XmlElement(name = "B", required = true)
     private int b;
 
     public int getA() {

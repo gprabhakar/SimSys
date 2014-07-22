@@ -12,8 +12,6 @@ import javax.xml.bind.annotation.XmlTransient;
 
 import edu.utdallas.gamespecification.StemQuestion;
 import edu.utdallas.gamegeneratorcollection.ComponentCreation.Asset;
-import edu.utdallas.gamegeneratorcollection.ComponentCreation.Behavior;
-import edu.utdallas.gamegeneratorcollection.ComponentCreation.BehaviorType;
 import edu.utdallas.gamegeneratorcollection.ComponentCreation.ButtonLocationType;
 import edu.utdallas.gamegeneratorcollection.ComponentCreation.GameObject;
 import edu.utdallas.gamegeneratorcollection.ComponentCreation.SharedButton;
@@ -22,7 +20,11 @@ import edu.utdallas.gamegeneratorcollection.ComponentCreation.SharedInfoBox;
 import edu.utdallas.gamegeneratorcollection.GameComposition.TextType;
 import edu.utdallas.gamespecification.Act;
 import edu.utdallas.gamespecification.BackgroundType;
+import edu.utdallas.gamespecification.Behavior;
+import edu.utdallas.gamespecification.BehaviorType;
 import edu.utdallas.gamespecification.ClassificationType;
+import edu.utdallas.gamespecification.Color;
+import edu.utdallas.gamespecification.ElementColor;
 import edu.utdallas.gamespecification.GameElementType;
 import edu.utdallas.gamespecification.GenericInteraction;
 import edu.utdallas.gamespecification.Hint;
@@ -37,6 +39,8 @@ import edu.utdallas.gamespecification.Screen;
 import edu.utdallas.gamespecification.Size;
 import edu.utdallas.gamespecification.Stem;
 import edu.utdallas.gamespecification.StemText;
+import edu.utdallas.gamespecification.Text;
+import edu.utdallas.gamespecification.TransitionBehaviorType;
 
 /**
  * User: clocke.
@@ -50,8 +54,8 @@ public class Locale {
     private Theme theme;
     private Map<ScreenType, LocaleScreen> localeScreens;
 
-    private Map<TransitionType, UUID> screenTransitions =
-            new HashMap<TransitionType, UUID>();;
+    private Map<TransitionBehaviorType, UUID> screenTransitions =
+            new HashMap<TransitionBehaviorType, UUID>();;
 
     public List<LearningAct> getLearningActs() {
         return learningActs;
@@ -106,7 +110,7 @@ public class Locale {
      */
     private List<Scene> buildChallenges(final int learningActId) {
         UUID currentScreen = screenTransitions.get(
-                TransitionType.BEGINNING_OF_CHALLENGE);
+                TransitionBehaviorType.BEGINNING_OF_CHALLENGE);
         LessonAct lessonAct = learningActs.get(
                 learningActId).getLessonActs().get(0);
         Scene testScene = new Scene();
@@ -130,9 +134,9 @@ public class Locale {
                 allScenes.add(testScene);
             }
 
-            screenTransitions.put(TransitionType.NEXT_CHALLENGE, nextChallenge);
+            screenTransitions.put(TransitionBehaviorType.NEXT_CHALLENGE, nextChallenge);
             screenTransitions.put(
-                    TransitionType.CURRENT_CHALLENGE, currentScreen);
+                    TransitionBehaviorType.CURRENT_CHALLENGE, currentScreen);
             currentScreen = nextChallenge;
         }
 
@@ -177,7 +181,7 @@ public class Locale {
         if (screenType.equals(ScreenType.LESSON_STORY_INTRO)) {
             themeStoryScreen = new ArrayList<BaseScreen>(themeStory.getIntro());
         } else {
-            screenTransitions.put(TransitionType.END_OF_STORY, currentScreen);
+            screenTransitions.put(TransitionBehaviorType.END_OF_STORY, currentScreen);
             themeStoryScreen = new ArrayList<BaseScreen>(themeStory.getOutro());
         }
 
@@ -202,7 +206,7 @@ public class Locale {
 
         if (screenType.equals(ScreenType.LESSON_STORY_INTRO)) {
             screenTransitions.put(
-                    TransitionType.BEGINNING_OF_LESSON, nextScreen);
+                    TransitionBehaviorType.BEGINNING_OF_LESSON, nextScreen);
         }
 
         return allScenes;
@@ -218,7 +222,7 @@ public class Locale {
         List<Scene> allScenes = new ArrayList<Scene>();
         Scene testScene = new Scene();
         UUID currentScreen = screenTransitions.get(
-                TransitionType.BEGINNING_OF_LESSON);
+                TransitionBehaviorType.BEGINNING_OF_LESSON);
         UUID nextScreen = null;
         LessonAct lessonAct = learningActs.get(
                 learningActId).getLessonActs().get(0);
@@ -245,7 +249,7 @@ public class Locale {
         }
 
         screenTransitions.put(
-                TransitionType.BEGINNING_OF_CHALLENGE, nextScreen);
+                TransitionBehaviorType.BEGINNING_OF_CHALLENGE, nextScreen);
 
 
         return allScenes;
@@ -372,26 +376,26 @@ public class Locale {
                     switch (gameButton.getTransitionType()) {
                         case BEGINNING_OF_LESSON:
                             behavior.setTransitionId(screenTransitions.get(
-                                    TransitionType.BEGINNING_OF_LESSON));
+                                    TransitionBehaviorType.BEGINNING_OF_LESSON));
                             break;
                         case NEXT_SCREEN:
                             behavior.setTransitionId(nextScreenId);
                             break;
                         case BEGINNING_OF_CHALLENGE:
                             behavior.setTransitionId(screenTransitions.get(
-                                    TransitionType.BEGINNING_OF_CHALLENGE));
+                                    TransitionBehaviorType.BEGINNING_OF_CHALLENGE));
                             break;
                         case CURRENT_CHALLENGE:
                             behavior.setTransitionId(screenTransitions.get(
-                                    TransitionType.CURRENT_CHALLENGE));
+                                    TransitionBehaviorType.CURRENT_CHALLENGE));
                             break;
                         case NEXT_CHALLENGE:
                             behavior.setTransitionId(screenTransitions.get(
-                                    TransitionType.NEXT_CHALLENGE));
+                                    TransitionBehaviorType.NEXT_CHALLENGE));
                             break;
                         case END_OF_STORY:
                             behavior.setTransitionId(screenTransitions.get(
-                                    TransitionType.END_OF_STORY));
+                                    TransitionBehaviorType.END_OF_STORY));
                             break;
                         case ADDITIONAL:
                             if (gameButton instanceof ChallengeOption) {
@@ -420,7 +424,14 @@ public class Locale {
                         new Location(asset.getX(), asset.getY()));
                 nextElement.setSize(
                         new Size(asset.getWidth(), asset.getHeight()));
-                nextElement.setText(gameButton.getText());
+                nextElement.setText(new Text(gameButton.getText()));
+                nextElement.getText().setFont(asset.getFontFamily());
+                nextElement.getText().setFontSize(asset.getFontSize());
+                nextElement.setColor(new ElementColor());
+                nextElement.getColor().setBackgroundColor(
+                        asset.getBackgroundColor());
+                nextElement.getColor().setForegroundColor(
+                        asset.getForegroundColor());
                 screenNode.getGameElement().add(nextElement);
                 assets.add(asset);
             }
@@ -484,6 +495,7 @@ public class Locale {
         GameElementType convertedCharacter =
                 convertGameObjects(localeCharacter);
         convertedCharacter.setName(characterAsset.getDisplayImage());
+        
         return convertedCharacter;
     }
 
@@ -500,13 +512,22 @@ public class Locale {
     public final GameElementType convertInfoBoxes(GameText boxText, Asset infoBoxAsset) {
         //TODO: May cause typing problems, consider altering this.
         GenericInteraction infoBox = new GenericInteraction();
-        infoBox.setText(boxText.getText());
+        infoBox.setText(new Text(boxText.getText()));
+        infoBox.getText().setFont(infoBoxAsset.getFontFamily());
+        infoBox.getText().setFontSize(infoBoxAsset.getFontSize());
+        infoBox.setColor(new ElementColor());
+        infoBox.getColor().setBackgroundColor(
+                infoBoxAsset.getBackgroundColor());
+        infoBox.getColor().setForegroundColor(
+                infoBoxAsset.getForegroundColor());
+        
         infoBox.setName("Infobox");
         infoBox.setLocation(
                 new Location(infoBoxAsset.getX(), infoBoxAsset.getY()));
         infoBox.setSize(
                 new Size(infoBoxAsset.getWidth(),
                         infoBoxAsset.getHeight()));
+        
         return infoBox;
     }
 
@@ -519,12 +540,12 @@ public class Locale {
         this.localeScreens = localeScreens;
     }
 
-    public Map<TransitionType, UUID> getScreenTransitions() {
+    public Map<TransitionBehaviorType, UUID> getScreenTransitions() {
         return screenTransitions;
     }
 
     @XmlTransient
-    public void setScreenTransitions(Map<TransitionType, UUID> screenTransitions) {
+    public void setScreenTransitions(Map<TransitionBehaviorType, UUID> screenTransitions) {
         this.screenTransitions = screenTransitions;
     }
 }

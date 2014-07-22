@@ -1,6 +1,7 @@
 package edu.utdallas.gamegeneratorcollection.GameComposition;
 
 import edu.utdallas.gamespecification.Reward;
+import edu.utdallas.gamespecification.TransitionBehaviorType;
 import edu.utdallas.gamegeneratorcollection.ComponentCreation.ButtonLocationType;
 
 import javax.xml.bind.annotation.XmlElement;
@@ -21,7 +22,7 @@ public class ChallengeOption extends GameButton {
     }
 
     public ChallengeOption(ChallengeOptionType challengeOptionType, String text, Reward reward,
-                           TransitionType transitionType, List<BaseScreen> additionalScreens,
+                           TransitionBehaviorType transitionType, List<BaseScreen> additionalScreens,
                            ButtonLocationType buttonLocationType) {
         this.challengeOptionType = challengeOptionType;
         setText(text);

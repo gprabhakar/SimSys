@@ -2,6 +2,8 @@ package edu.utdallas.gamegeneratorcollection.ComponentCreation;
 
 import javax.xml.bind.annotation.XmlType;
 
+import edu.utdallas.gamespecification.Behavior;
+
 /**
  * User: clocke
  * Date: 4/13/13

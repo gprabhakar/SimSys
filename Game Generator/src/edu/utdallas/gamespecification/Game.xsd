@@ -31,12 +31,35 @@
 			<element name="Size" type="tns:Size" maxOccurs="1"
 				minOccurs="1">
 			</element>
+			<element name="Color" type="tns:ElementColors" maxOccurs="1"
+				minOccurs="1">
+			</element>
+			<element name="Text" type="tns:Text" maxOccurs="1"
+				minOccurs="0">
+			</element>
 			<element name="AnimationEffect" type="tns:AnimationEffectType" maxOccurs="1"
 				minOccurs="0">
 			</element>
 			<element name="SoundEffect" type="string" maxOccurs="1"
 				minOccurs="0">
 			</element>
+			<element name="Behaviors" type="tns:Behavior" maxOccurs="unbounded"
+				minOccurs="0">
+			</element>
+			<element name="Rewards" type="tns:Reward" maxOccurs="1"
+				minOccurs="1">
+			</element>
+		</sequence>
+	</complexType>
+
+	<complexType name="Text">
+		<sequence>
+			<element name="Text" type="integer" maxOccurs="1" minOccurs="1">
+			</element>
+			<element name="Font" type="integer" maxOccurs="1" minOccurs="1">
+			</element>
+			<element name="FontSize" type="integer" maxOccurs="1" minOccurs="1">
+			</element>		
 		</sequence>
 	</complexType>
 	
@@ -45,7 +68,9 @@
 			<element name="x" type="integer" maxOccurs="1" minOccurs="1">
 			</element>
 			<element name="y" type="integer" maxOccurs="1" minOccurs="1">
-			</element>		
+			</element>
+			<element name="z" type="integer" maxOccurs="1" minOccurs="1">
+			</element>
 		</sequence>
 	</complexType>
 	
@@ -57,10 +82,75 @@
 			</element>		
 		</sequence>
 	</complexType>
-
-<complexType name="AnimationEffectType">
+	
+	<complexType name="ElementColors">
 		<sequence>
-		<element name="Effect" type="string" maxOccurs="unbounded"
+			<element name="BGColor" type="tns:Color" maxOccurs="1" minOccurs="0">
+			</element>
+			<element name="FGColor" type="tns:Color" maxOccurs="1" minOccurs="0">
+			</element>		
+		</sequence>
+	</complexType>
+	
+	<complexType name="Color">
+		<sequence>
+			<element name="A" type="integer" maxOccurs="1" minOccurs="1">
+			</element>
+			<element name="R" type="integer" maxOccurs="1" minOccurs="1">
+			</element>
+			<element name="G" type="integer" maxOccurs="1" minOccurs="1">
+			</element>		
+			<element name="B" type="integer" maxOccurs="1" minOccurs="1">
+			</element>				
+		</sequence>
+	</complexType>
+
+	<complexType name="Behavior">
+		<sequence>
+			<element name="BehaviorType" type="tns:BehaviorType" maxOccurs="1" minOccurs="1">
+			</element>
+			<element name="TriggerType" type="tns:TriggerType" maxOccurs="1" minOccurs="1">
+			</element>
+			<element name="Timer" type="integer" maxOccurs="1" minOccurs="0">
+			</element>	
+			<element name="TransitionBehaviorType" type="tns:TransitionBehaviorType" 
+				maxOccurs="1" minOccurs="0">
+			</element>			
+		</sequence>
+	</complexType>
+	
+		<simpleType name="BehaviorType">
+          <restriction base="string">
+         	<enumeration value="rewardBehavior"/>
+            <enumeration value="transitionBehavior"/>
+            <enumeration value="visibilityBehavior"/>
+            <enumeration value="endGameBehavior"/>
+          </restriction>
+        </simpleType>
+        
+        <simpleType name="TriggerType">
+          <restriction base="string">
+         	<enumeration value="click"/>
+            <enumeration value="timer"/>
+          </restriction>
+        </simpleType>
+        
+        <simpleType name="TransitionBehaviorType">
+          <restriction base="string">
+         	<enumeration value="beginningOfLesson"/>
+            <enumeration value="beginningOfChallenge"/>
+            <enumeration value="currentChallenge"/>
+            <enumeration value="nextChallenge"/>
+            <enumeration value="endOfStory"/> 
+            <enumeration value="additional"/>
+            <enumeration value="nextScreen"/>
+            <enumeration value="nextAct"/>
+          </restriction>
+        </simpleType>
+	
+	<complexType name="AnimationEffectType">
+		<sequence>
+		<element name="Effect" type="tns:Effect" maxOccurs="unbounded"
 				minOccurs="1"></element>
 			<element name="Speed" type="tns:SpeedType" maxOccurs="1"
 				minOccurs="1"></element>
@@ -74,6 +164,23 @@
 		</sequence>
 	</complexType>
 	
+	   <simpleType name="Effect">
+          <restriction base="string">
+         	<enumeration value="walkMovement"/>
+            <enumeration value="glideMovement"/>
+            <enumeration value="sitDownMovement"/>
+            <enumeration value="standUpMovement"/>
+            <enumeration value="talkMovement"/> 
+            <enumeration value="handWaveMovement"/>
+            <enumeration value="handShakeMovement"/>
+            <enumeration value="danceMovement"/>
+            <enumeration value="fadeInEffect"/>  
+            <enumeration value="fadeOutEffect"/>  
+            <enumeration value="twinkleEffect"/>
+             <enumeration value="shimmerEffect"/>
+          </restriction>
+        </simpleType>
+        
 		 <simpleType name="SpeedType">
           <restriction base="string">
          <enumeration value="FAST"/>
@@ -94,10 +201,7 @@
 	
 	<complexType name="GenericInteraction">
 		<complexContent>
-			<extension base="tns:Prop">
-				<sequence>
-					<element name="Text" type="string"></element>
-				</sequence>
+			<extension base="tns:Prop">				
 			</extension>
 		</complexContent>
 	</complexType>
