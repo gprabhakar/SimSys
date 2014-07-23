@@ -264,13 +264,13 @@ GAME,
 //	public static final String soundFolder = "AudioAssetRepository//";
 //	
 //	private String insideSoundFolderPath = "AudioAssetRepository//music//";
-	
+
 	/** The selected value. */
 	private int selectedValue = 1;
-	
+
 	/** The c. */
 	CharacterAsset c;
-	
+
 	/** The tabbed pane. */
 	final JTabbedPane tabbedPane = new JTabbedPane(JTabbedPane.TOP);
 
@@ -595,23 +595,26 @@ GAME,
             	}
             }
         });
-        
+
         JScrollPane scrollPane = new JScrollPane(gameTree);
-        
+
         // create tabbed layout
-        
+        final JTabbedPane gameGenerationPane = new JTabbedPane(JTabbedPane.TOP);
+
         JPanel generateTab = new JPanel(new BorderLayout());
         JPanel previewTab = new JPanel(new BorderLayout());
         JPanel gamePlayEngine = new JPanel(new BorderLayout());
-        tabbedPane.addTab("Generate", null, generateTab);
-        tabbedPane.addTab("Preview", null, previewTab);
+        gameGenerationPane.addTab("Generate", null, generateTab);
+        gameGenerationPane.addTab("Preview", null, previewTab);
+        tabbedPane.addTab("Game Generation Collection",
+	          null, gameGenerationPane);
         tabbedPane.addTab("Game Play Engine", null, gamePlayEngine);
-        
+
         //Adding game play engine menu in main panel
         JMenu games = new JMenu("Games");
 	    JMenuItem openGame = new JMenuItem("Open Game");
 	    JMenuItem quit = new JMenuItem("Quit");
-	    
+
 	    games.add(openGame);
 	    games.addSeparator();
 	    games.add(quit);
@@ -630,7 +633,7 @@ GAME,
 		Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
 		jPanel.setLocation(dim.width / 2 - jPanel.getSize().width / 2,
 				dim.height / 2 - jPanel.getSize().height / 2);
-        
+
 		 openGame.addActionListener(new ActionListener() {
 		        public void actionPerformed(final ActionEvent arg0) {
 		        	JFileChooser myFileChooser = new JFileChooser();
@@ -1277,8 +1280,8 @@ GAME,
 		List<Act> acts = game1.getAct();
 		for (int i = 0; i < acts.size(); i++) {
 			DefaultMutableTreeNode actNode = new DefaultMutableTreeNode("Act " + (i + 1));
-			actNode.setUserObject(acts.get(i));
-
+			//actNode.setUserObject(acts.get(i));
+			actNode.setUserObject("Act "+i);
 			List<Scene> scenes = acts.get(i).getScene();
 			for (int j = 0; j < scenes.size(); j++) {
 				DefaultMutableTreeNode sceneNode = new DefaultMutableTreeNode("Scene " + (j + 1));
